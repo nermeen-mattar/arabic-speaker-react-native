@@ -14,7 +14,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import {Card} from './card';
+import {Card} from './shared/card';
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     Card: null,
