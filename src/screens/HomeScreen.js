@@ -36,17 +36,17 @@ export default class HomeScreen extends React.Component {
     ]
     return (
       <View style={styles.container}>
-      <Card/>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
+          <View style={styles.cardsContainer}>
           {
             categories.map((category, index) => {
               return(
-                <View key ={index}>
-            <Text style={styles.getStartedText}>
-              {category.label}
-            </Text>
-             </View>
+            //     <View key ={index}>
+            // <Text style={styles.getStartedText}>
+            //   {category.label}
+            // </Text>
+            //  </View>
+              <Card key ={index} category = {category}/>
               );
             })
           }
@@ -123,6 +123,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  cardsContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+    // display: 'flex',
+    backgroundColor: 'blue',
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+
   developmentModeText: {
     marginBottom: 20,
     color: 'rgba(0,0,0,0.4)',
@@ -133,11 +145,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingTop: 30,
   },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
+
   welcomeImage: {
     width: 100,
     height: 80,

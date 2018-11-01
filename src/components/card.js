@@ -5,12 +5,34 @@ import {
   View,
 } from 'react-native';
 
+import Spacings from '../constants/Spacings';
 export class Card extends React.Component {
+  constructor (props) {
+    super();
+    this.state = {
+        // age: props.initialAge,
+        // status: 0
+        category: props.category
+    };
+  }
+
+  onMakeOlder() {
+    this.setState({
+        age: this.state.age + 3
+    });
+}
+
+
+  
     render() {
       return (
-        <View style={styles.container}>
-          <Text>nerro Foo 2018</Text>
-          <Text>Hyderabad</Text>
+        <View style={styles.container} >
+          {/* <Text>{this.props.name}</Text> */}
+          <Text>{this.state.category.label}</Text>
+          {/* <Button   onPress={() => {
+       this.setState({
+        age: this.state.age + 5 });
+        }}> Click me</Button> */}
         </View>
       );
     }
@@ -20,10 +42,19 @@ export class Card extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
+      width: Spacings.cardWidth,
+      height: Spacings.cardHeight,
+      backgroundColor: 'red',
+      marginHorizontal: 4.5,
+      marginVertical: 3.5,
+      // marginBottom: 4,
     }
   });
   
   
   
+
+// Card.propTypes = {
+//   name: React.PropTypes.string,
+//   initialAge: React.PropTypes.number
+// };
