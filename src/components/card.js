@@ -29,13 +29,14 @@ export class Card extends React.Component {
     render() {
       return (
         <View style={styles.container} >
+         <Image style={styles.cardImg} source={this.props.category.imgSrc} />
+
           {/* <Text>{this.props.name}</Text> */}
-          <Text>{this.state.category.label}</Text>
+          <Text style={styles.cardLabel}>{this.state.category.label}</Text>
           {/* <Button   onPress={() => {
        this.setState({
         age: this.state.age + 5 });
         }}> Click me</Button> */}
-        <Image source={this.props.category.imgSrc} />
         </View>
       );
     }
@@ -45,6 +46,9 @@ export class Card extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
+      display: 'flex',
+      // flexDirection: 'column',
+      alignItems: 'center',
       width: Spacings.cardWidth,
       height: Spacings.cardHeight,
       backgroundColor: Colors.primary,
@@ -52,6 +56,13 @@ export class Card extends React.Component {
       marginVertical: 3.5,
       borderRadius: 10 /* **N** */
       // marginBottom: 4,
+    },
+    cardImg: {
+      marginTop: 24
+    },
+    cardLabel: {
+      marginTop: 14,
+      fontWeight: 'bold'
     }
   });
   
