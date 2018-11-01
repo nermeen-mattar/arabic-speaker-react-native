@@ -24,15 +24,15 @@ export default class HomeScreen extends React.Component {
   render() {
     /* make it a class prop (part of state) */
     const categories = [
-      { label: 'عام', img: '../assets/images/robot-dev.png'},
-      { label: 'تحياتي', img: '../assets/images/robot-dev.png'},
-      { label: 'المفضلة', img: '../assets/images/robot-dev.png'},
-      { label: 'العمل', img: '../assets/images/robot-dev.png'},
-      { label: 'السوق', img: '../assets/images/robot-dev.png'},
-      { label: 'السفر', img: '../assets/images/robot-dev.png'},
-      { label: 'المدرسة', img: '../assets/images/robot-dev.png'},
-      { label: 'المطعم', img: '../assets/images/robot-dev.png'},
-      { label: 'المستشفى', img: '../assets/images/robot-dev.png'},
+      { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
+      { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
+      { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
+      { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
+      { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
+      { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
+      { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
+      { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
+      { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
     ]
     return (
       <View style={styles.container}>

@@ -3,9 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
+  Image
 } from 'react-native';
 
 import Spacings from '../constants/Spacings';
+import Colors from '../constants/Colors';
 export class Card extends React.Component {
   constructor (props) {
     super();
@@ -33,6 +35,7 @@ export class Card extends React.Component {
        this.setState({
         age: this.state.age + 5 });
         }}> Click me</Button> */}
+        <Image source={this.props.category.imgSrc} />
         </View>
       );
     }
@@ -44,9 +47,10 @@ export class Card extends React.Component {
     container: {
       width: Spacings.cardWidth,
       height: Spacings.cardHeight,
-      backgroundColor: 'red',
+      backgroundColor: Colors.primary,
       marginHorizontal: 4.5,
       marginVertical: 3.5,
+      borderRadius: 10 /* **N** */
       // marginBottom: 4,
     }
   });
