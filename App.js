@@ -1,8 +1,45 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, Text} from 'react-native';
+
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
-import { Header } from 'react-native-elements';
+
+import { DrawerNavigator} from 'react-navigation'
+
+const CustomDrawerContentComponent = (props) => (
+
+  // <Container>
+  //   <Header>
+  //     <Body>
+        <Text> الإعدادات </Text>
+  //     </Body>
+  //   </Header>
+  //   <Content>
+  //     <DrawerItems {...props} />
+  //   </Content>
+
+  // </Container>
+
+);
+
+
+const SettingsDrawer = DrawerNavigator({
+  // For each screen that you can navigate to, create a new entry like this:
+  AppNavigator: {
+    screen: AppNavigator
+  },
+},
+  {
+    drawerPosition: 'right',
+    contentComponent: CustomDrawerContentComponent,
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
+    // navigationOptions: {
+    //   header: 'none'
+    // }
+  });
+
 
 export default class App extends React.Component {
   state = {
@@ -22,12 +59,8 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <Header
-          // leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-          // rightComponent={{ icon: 'home', color: '#fff' }}
-        />
-          <AppNavigator />
+        <SettingsDrawer/>
+          {/* <AppNavigator /> */}
         </View>
       );
     }
