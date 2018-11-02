@@ -4,7 +4,7 @@ import { Platform, StatusBar, StyleSheet, View, Text} from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
 
-import { DrawerNavigator} from 'react-navigation'
+import { createDrawerNavigator} from 'react-navigation'
 
 const CustomDrawerContentComponent = (props) => (
 
@@ -23,7 +23,7 @@ const CustomDrawerContentComponent = (props) => (
 );
 
 
-const SettingsDrawer = DrawerNavigator({
+const SettingsDrawer = createDrawerNavigator({
   // For each screen that you can navigate to, create a new entry like this:
   AppNavigator: {
     screen: AppNavigator
