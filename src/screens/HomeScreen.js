@@ -12,9 +12,11 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import { Header } from 'react-native-elements';
 
 import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     Card: null,
@@ -36,7 +38,13 @@ export default class HomeScreen extends React.Component {
     ]
     return (
       <View style={styles.container}>
+        <Header
+          // leftComponent={{ icon: 'menu', color: '#fff' }}
+          centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+          // rightComponent={{ icon: 'home', color: '#fff' }}
+         />
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        
           <View style={styles.cardsContainer}>
           {
             categories.map((category, index) => {
