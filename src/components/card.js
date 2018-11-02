@@ -8,6 +8,8 @@ import {
 
 import Spacings from '../constants/Spacings';
 import Colors from '../constants/Colors';
+import { MonoText } from '../components/StyledText';
+
 export class Card extends React.Component {
   constructor (props) {
     super();
@@ -32,7 +34,7 @@ export class Card extends React.Component {
          <Image style={styles.cardImg} source={this.props.category.imgSrc} />
 
           {/* <Text>{this.props.name}</Text> */}
-          <Text style={styles.cardLabel}>{this.state.category.label}</Text>
+          <MonoText style={styles.cardLabel}>{this.state.category.label}</MonoText>
           {/* <Button   onPress={() => {
        this.setState({
         age: this.state.age + 5 });

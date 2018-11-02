@@ -16,6 +16,8 @@ import { Header } from 'react-native-elements';
 
 import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
+import CustomHeader from '../components/CustomHeader';
+import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -38,11 +40,14 @@ export default class HomeScreen extends React.Component {
     ]
     return (
       <View style={styles.container}>
-        <Header
-          // leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'MY nerro', style: { color: '#fff' } }}
-          // rightComponent={{ icon: 'home', color: '#fff' }}
-         />
+        {/* <Header
+          statusBarProps={{ barStyle: 'light-content' }}
+          leftComponent={{ icon: 'menu', color: '#fff' }}
+          centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
+          rightComponent={{ icon: 'home', color: '#fff' }}
+         /> */}
+         <CustomHeader title="المكتبات" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')}/>
+         {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         
           <View style={styles.cardsContainer}>
@@ -60,34 +65,34 @@ export default class HomeScreen extends React.Component {
           }
           </View>
 
-          <View style={styles.getStartedContainer}>
+          {/* <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by nermeen</Text>
+            <MonoText style={styles.getStartedText}>Get started by nermeen</MonoText>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
 
-            <Text style={styles.getStartedText}>
+            <MonoText style={styles.getStartedText}>
               Change this text and your app will automatically reload.
-            </Text>
-          </View>
+            </MonoText>
+          </View> */}
 
-          <View style={styles.helpContainer}>
+          {/* <View style={styles.helpContainer}>
             <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+              <MonoText style={styles.helpLinkText}>Help, it didn’t automatically reload!</MonoText>
             </TouchableOpacity>
-          </View>
+          </View> */}
         </ScrollView>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+        {/* <View style={styles.tabBarInfoContainer}>
+          <MonoText style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</MonoText>
 
           <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View>
-        </View>
+        </View> */}
       </View>
     );
   }
@@ -95,22 +100,22 @@ export default class HomeScreen extends React.Component {
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
+        <MonoText onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
           Learn more
-        </Text>
+        </MonoText>
       );
 
       return (
-        <Text style={styles.developmentModeText}>
+        <MonoText style={styles.developmentModeText}>
           Nermeen mode is enabled, your app will be slower but you can use useful development
           tools. {learnMoreButton}
-        </Text>
+        </MonoText>
       );
     } else {
       return (
-        <Text style={styles.developmentModeText}>
+        <MonoText style={styles.developmentModeText}>
           You are not in development mode, your app will run at full speed.
-        </Text>
+        </MonoText >
       );
     }
   }
@@ -129,98 +134,41 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.appBackground,
   },
   cardsContainer: {
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
     // display: 'flex',
-    backgroundColor: 'blue',
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
-
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+  // welcomeImage: {
+  //   resizeMode: 'contain',
+  // },
+  // tabBarInfoContainer: {
+  //   position: 'absolute',
+  //   bottom: 0,
+  //   left: 0,
+  //   right: 0,
+  //   ...Platform.select({
+  //     ios: {
+  //       shadowColor: 'black',
+  //       shadowOffset: { height: -3 },
+  //       shadowOpacity: 0.1,
+  //       shadowRadius: 3,
+  //     },
+  //     android: {
+  //       elevation: 20,
+  //     },
+  //   }),
+  //   alignItems: 'center',
+  //   backgroundColor: '#fbfbfb',
+  //   paddingVertical: 20,
+  // }
 });
 
 

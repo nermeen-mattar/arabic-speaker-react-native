@@ -4,11 +4,11 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import { Header } from 'react-native-elements';
+import { Header, colors } from 'react-native-elements';
 // import { Icon } from 'react-native-elements'
 import { Icon } from 'expo';
 import Colors from "../constants/Colors";
-import UniversalText from './UniversalText';
+import { MonoText } from '../components/StyledText';
 
 class CustomHeader extends Component {
     render() {
@@ -16,16 +16,27 @@ class CustomHeader extends Component {
             <View
             style={{
             //   flexDirection: 'row',
-              height: 116,
-              textAlign: 'right',
+            //   height: 116,
               backgroundColor: Colors.brand
-            //   padding: 20,
+            }}> 
+            <View  style={{
+                marginTop: 36,
+                marginBottom: 24,
+                marginRight: 17
             }}>
-            <View style={{ flex: 0.3}} />
+               <Icon.Ionicons
+                name="md-menu"
+                        size={32}
+                       style={{ textAlign: 'right' }}
+                       color="white"
+                  onPress={() => this.props.drawerOpen()} />  
+            </View>
             <View style={{ flex: 0.5}} />
             <Text  style={{
               textAlign: 'right',
               color: Colors.primary,
+              fontSize: 30,
+              marginRight: 13
             }}>{this.props.title}</Text>
           </View>
             // <Header style={styles.header}

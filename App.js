@@ -3,15 +3,14 @@ import { Platform, StatusBar, StyleSheet, View, Text} from 'react-native';
 
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
-
+import { MonoText } from './src/components/StyledText';
 import { createDrawerNavigator} from 'react-navigation'
-
 const CustomDrawerContentComponent = (props) => (
 
   // <Container>
   //   <Header>
   //     <Body>
-        <Text> الإعدادات </Text>
+        <MonoText> الإعدادات </MonoText>
   //     </Body>
   //   </Header>
   //   <Content>
@@ -77,7 +76,8 @@ export default class App extends React.Component {
         ...Icon.Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+        'tajawal': require('./assets/fonts/Tajawal-Regular.ttf'),
+        'tajawal-bold': require('./assets/fonts/Tajawal-Bold.ttf'),
       }),
     ]);
   };
