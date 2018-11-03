@@ -3,7 +3,7 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    TouchableOpacity
 } from "react-native";
 // import { Icon } from 'expo';
 import Colors from "../constants/Colors";
@@ -11,60 +11,32 @@ import { MonoText } from '../components/StyledText';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 class FormHeader extends Component {
+    constructor (props) {
+        super();
+    }
     render() {
         return (
-            <View
-            style={{
-            //   flexDirection: 'row',
-            //   height: 116,
-              backgroundColor: Colors.brand
-            }}> 
-            <View style={styles.iconsWrapper}>
-            
-              
-            {/* didn't work <Icon.Ionicons name="circle-with-plus" size={32}  style={{ textAlign: 'right' }} color="white" />   */}
-            <Image source={require( '../../assets/images/icons/plus.png')} />     
-                
-            {/* <Icon.Ionicons name="md-checkmark-circle" size={32}  color="white"/>   */}
-            <Image source={require( '../../assets/images/icons/checkmark-circle.png')} />
-
-            {/* <Icon.Ionicons name="md-menu" size={32} color="white" onPress={() => this.props.drawerOpen()} />   */}
-            <Image style={styles.icon} source= {require( '../../assets/images/icons/menu.png')}/>
-    
-
+        <View style={styles.container}> 
+            <View style={styles.actionsWrapper}>
+            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onCancelClicked}>
+            <MonoText style={styles.action}>إلغاء</MonoText>      
+            </TouchableOpacity>      
+            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSaveClicked}>
+            <MonoText style={styles.action}>حفظ</MonoText>
+            </TouchableOpacity>
             </View>
             <View  />
-            {/* style={{ flex: 0.5}} */}
             <Text  style={styles.title}>{this.props.title}</Text>
-          </View>
-            // <Header style={styles.header}
-            // rightComponent={
-            //     <View>
-            //   <Icon.Ionicons
-            //     name="md-menu"
-            //             size={26}
-            //            style={{ marginBottom: -3 }}
-            //            color="white"
-            //         //    onPress={() => this.props.drawerOpen()}
-            //          />            
-            //          <UniversalText>{this.props.title}</UniversalText>
-            //          </View>
-            //          }>
-                
-                      
-            //         {/* <Ionicons name="md-checkmark-circle" size={32} color="green
-            //     " onPress={() => this.props.drawerOpen()} /> */}
-         
-            // </Header>
+         </View>
         );
     }
 }
 export default FormHeader;
 
 const styles = StyleSheet.create({
-    header: { 
-        display: 'none',
-        backgroundColor: Colors.appBackground 
+    container: {
+        backgroundColor: Colors.brand,
+        height: 116
     },
     title : {
         textAlign: 'right',
@@ -72,17 +44,17 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginRight: 13
       },
-iconsWrapper: {
+    actionsWrapper: {
       marginTop: 36,
-      marginBottom: 24,
-      marginRight: 17,
-      flex: 1,
+      marginBottom: 12,
+    //   marginRight: 17,
       flexDirection: 'row',
-      flexWrap: 'wrap',
       justifyContent: 'space-between'
     },
-    icon: {
-        color: 'red'
+    action: {
+        color: Colors.primary,
+        marginHorizontal: 14,
+        fontSize: 17
     }
 });
   

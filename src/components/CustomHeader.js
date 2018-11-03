@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    TouchableOpacity
 } from "react-native";
 // import { Icon } from 'expo';
 import Colors from "../constants/Colors";
@@ -11,22 +12,26 @@ import { MonoText } from '../components/StyledText';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 class CustomHeader extends Component {
+    constructor (props) {
+        super();
+      }
+    
     render() {
         return (
-            <View
-            style={{
-            //   flexDirection: 'row',
-            //   height: 116,
-              backgroundColor: Colors.brand
-            }}> 
+            <View style={styles.container}> 
             <View style={styles.iconsWrapper}>
             
-              
+            <View style={styles.tools}>
             {/* didn't work <Icon.Ionicons name="circle-with-plus" size={32}  style={{ textAlign: 'right' }} color="white" />   */}
-            <Image source={require( '../../assets/images/icons/plus.png')} />     
-                
-            {/* <Icon.Ionicons name="md-checkmark-circle" size={32}  color="white"/>   */}
-            <Image source={require( '../../assets/images/icons/checkmark-circle.png')} />
+            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
+
+            <Image  
+            
+            style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />     
+            </TouchableOpacity>   
+            {/* <Icon.Ionicons style={styles.addIcon}  name="md-checkmark-circle" size={32}  color="white"/>   */}
+            <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} />
+            </View>
 
             {/* <Icon.Ionicons name="md-menu" size={32} color="white" onPress={() => this.props.drawerOpen()} />   */}
             <Image source= {require( '../../assets/images/icons/menu.png')}/>
@@ -62,9 +67,9 @@ class CustomHeader extends Component {
 export default CustomHeader;
 
 const styles = StyleSheet.create({
-    header: { 
-        display: 'none',
-        backgroundColor: Colors.appBackground 
+    container: {
+        backgroundColor: Colors.brand,
+        height: 116
     },
     title : {
         textAlign: 'right',
@@ -74,12 +79,17 @@ const styles = StyleSheet.create({
       },
 iconsWrapper: {
       marginTop: 36,
-      marginBottom: 24,
+      marginBottom: 12,
       marginRight: 17,
-      flex: 1,
       flexDirection: 'row',
-      flexWrap: 'wrap',
       justifyContent: 'space-between'
+    },
+    tools: {
+        flexDirection: 'row',  
+    },
+    addIcon: {
+        marginLeft: 18,
+        marginRight: 30
     }
 });
   
