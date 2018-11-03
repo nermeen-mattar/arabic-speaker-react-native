@@ -33,7 +33,8 @@ class CustomHeader extends Component {
                         size={32}
                        style={{ textAlign: 'right' }}
                        color="white" />   */}
-                       <Text style={styles.addIcon}> + </Text>
+                       <Text onPress={() => this.props.navigation.navigate('NewCategory')}     
+                       style={styles.addIcon}> + </Text>
                                  <Icon.Ionicons
                 name="md-checkmark-circle"
                         size={32}
