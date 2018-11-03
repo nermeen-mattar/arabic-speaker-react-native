@@ -16,7 +16,7 @@ export class Card extends React.Component {
     this.state = {
         // age: props.initialAge,
         // status: 0
-        category: props.category
+        cardInfo: props.cardInfo
     };
   }
 
@@ -31,10 +31,16 @@ export class Card extends React.Component {
     render() {
       return (
         <View style={styles.container} >
-         <Image style={styles.cardImg} source={this.props.category.imgSrc} />
+
+
+          {
+           this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> : null
+          }
+
+         {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
           {/* <Text>{this.props.name}</Text> */}
-          <MonoText style={styles.cardLabel}>{this.state.category.label}</MonoText>
+          <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
           {/* <Button   onPress={() => {
        this.setState({
         age: this.state.age + 5 });
