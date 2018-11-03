@@ -5,6 +5,7 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './src/navigation/AppNavigator';
 import { MonoText } from './src/components/StyledText';
 import { createDrawerNavigator} from 'react-navigation'
+import Colors from './src/constants/Colors';
 const CustomDrawerContentComponent = (props) => (
 
   // <Container>
@@ -38,7 +39,6 @@ const SettingsDrawer = createDrawerNavigator({
     //   header: 'none'
     // }
   });
-
 
 export default class App extends React.Component {
   state = {
@@ -96,7 +96,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ccc',
+    backgroundColor: Colors.appBackground,
   },
   header: {
     backgroundColor: '#1c1',
