@@ -29,7 +29,7 @@ class CustomHeader extends Component {
             <Image source={require( '../../assets/images/icons/checkmark-circle.png')} />
 
             {/* <Icon.Ionicons name="md-menu" size={32} color="white" onPress={() => this.props.drawerOpen()} />   */}
-            <Image style={styles.icon} source= {require( '../../assets/images/icons/menu.png')}/>
+            <Image source= {require( '../../assets/images/icons/menu.png')}/>
     
 
             </View>
@@ -80,9 +80,6 @@ iconsWrapper: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-between'
-    },
-    icon: {
-        color: 'red'
     }
 });
   

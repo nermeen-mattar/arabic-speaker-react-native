@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   cardIcon: {
     // color: Colors.textSecondary,
     // fontSize: 38,
-    marginTop: 12 // 17 didn't work
+    marginTop: 17
   } ,
   cardLabel: {
       color: Colors.textSecondary,
