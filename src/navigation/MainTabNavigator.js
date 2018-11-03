@@ -13,7 +13,7 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'المكتبات',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -31,7 +31,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'تنبيه',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -45,7 +45,7 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'المفضلة',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -55,9 +55,9 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
   LinksStack,
   SettingsStack,
+  HomeStack,
   NewCategoryScreen
 });
 

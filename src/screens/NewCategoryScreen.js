@@ -20,7 +20,7 @@ export default class NewCategoryScreen extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "اضافة تصنيف جديد",
+            title: "إضافة تصنيف جديد",
             cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
            inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
         };
