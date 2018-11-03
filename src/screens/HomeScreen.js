@@ -44,10 +44,9 @@ export default class HomeScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title="المكتبات" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')}/>
+         <CustomHeader title="المكتبات" onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        
           <View style={styles.cardsContainer}>
           {
             categories.map((category, index) => {
