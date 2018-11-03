@@ -36,7 +36,15 @@ export default class NewCategoryScreen extends React.Component {
          <View  style={styles.inputsWrapper}> 
         <View style={styles.card} >
         {/* <Icon.Ionicons name="md-camera" size={32} style={styles.cardIcon} />   */}
+        <PhotoUpload
+   onPhotoSelect={avatar => {
+     if (avatar) {
+       console.log('Image base64 string: ', avatar)
+     }
+   }}
+ >
           <Image style={styles.cardIcon} source={require( '../../assets/images/icons/camera_icon.png')} />
+          </PhotoUpload>
             <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
 
@@ -90,7 +98,7 @@ const styles = StyleSheet.create({
   cardIcon: {
     // color: Colors.textSecondary,
     // fontSize: 38,
-    marginTop: 12 // 17 didn't work
+    marginTop: 17
   } ,
   cardLabel: {
       color: Colors.textSecondary,
