@@ -19,25 +19,31 @@ class CustomHeader extends Component {
             //   height: 116,
               backgroundColor: Colors.brand
             }}> 
-            <View  style={{
-                marginTop: 36,
-                marginBottom: 24,
-                marginRight: 17
-            }}>
+            <View style={styles.iconsWrapper}>
                <Icon.Ionicons
                 name="md-menu"
                         size={32}
-                       style={{ textAlign: 'right' }}
+                    //    style={{ textAlign: 'right' }}
                        color="white"
                   onPress={() => this.props.drawerOpen()} />  
+         
+                      
+                  {/* <Icon.Ionicons
+                name="circle-with-plus"
+                        size={32}
+                       style={{ textAlign: 'right' }}
+                       color="white" />   */}
+                       <Text style={styles.addIcon}> + </Text>
+                                 <Icon.Ionicons
+                name="md-checkmark-circle"
+                        size={32}
+                    //    style={{ textAlign: 'right' }}
+                       color="white"/>  
+               
             </View>
-            <View style={{ flex: 0.5}} />
-            <Text  style={{
-              textAlign: 'right',
-              color: Colors.primary,
-              fontSize: 30,
-              marginRight: 13
-            }}>{this.props.title}</Text>
+            <View  />
+            {/* style={{ flex: 0.5}} */}
+            <Text  style={styles.title}>{this.props.title}</Text>
           </View>
             // <Header style={styles.header}
             // rightComponent={
@@ -68,16 +74,28 @@ const styles = StyleSheet.create({
         display: 'none',
         backgroundColor: Colors.appBackground 
     },
-    cardsContainer: {
-      alignItems: 'center',
-      marginTop: 10,
-      marginBottom: 20,
-      // display: 'flex',
-      backgroundColor: 'blue',
+    title : {
+        textAlign: 'right',
+        color: Colors.primary,
+        fontSize: 30,
+        marginRight: 13
+      },
+iconsWrapper: {
+      marginTop: 36,
+      marginBottom: 24,
+      marginRight: 17,
       flex: 1,
       flexDirection: 'row',
       flexWrap: 'wrap',
-      justifyContent: 'center'
+      justifyContent: 'space-between'
+    },
+    addIcon: {
+        color: Colors.brand,
+        fontSize: 20,
+        backgroundColor: Colors.primary,
+        width: 24,
+        height: 24,
+        borderRadius:12,
     }
 });
   
