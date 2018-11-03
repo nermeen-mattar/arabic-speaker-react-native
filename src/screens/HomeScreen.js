@@ -59,7 +59,7 @@ export default class HomeScreen extends React.Component {
             //   {category.label}
             // </Text>
             //  </View>
-              <Card key ={index} category = {category}/>
+              <Card key ={index} cardInfo = {category}/>
               );
             })
           }

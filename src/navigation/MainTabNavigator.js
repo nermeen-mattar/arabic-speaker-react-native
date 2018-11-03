@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import NewCategoryScreen from '../screens/NewCategoryScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -57,4 +58,22 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
+  NewCategoryScreen
 });
+
+
+
+// const NewCategoryStack = createStackNavigator({
+//   NewCategory: NewCategoryScreen,
+// });
+
+
+// NewCategoryStack.navigationOptions = {
+//   tabBarLabel: 'Settings',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
+//     />
+//   ),
+// };
