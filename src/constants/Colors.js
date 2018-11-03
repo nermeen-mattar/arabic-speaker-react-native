@@ -13,5 +13,6 @@ export default {
   noticeText: '#fff',
   brand: '#339870',
   appBackground: '#EFEFEF',
-  primary: '#fff'
+  primary: '#fff',
+  textSecondary: '#C6C6C6'
 };
