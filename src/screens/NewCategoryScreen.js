@@ -6,13 +6,15 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  Image,
   View,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
 import Colors from '../constants/Colors';
-import { Icon } from 'expo';
+// import { Icon } from 'expo';
+import PhotoUpload from 'react-native-photo-upload'
 
 export default class NewCategoryScreen extends React.Component {
     constructor() {
@@ -33,12 +35,8 @@ export default class NewCategoryScreen extends React.Component {
     <FormHeader title= {this.state.title}/>
          <View  style={styles.inputsWrapper}> 
         <View style={styles.card} >
-        <Icon.Ionicons
-                name="md-camera"
-                        size={32}
-                       style={styles.cardIcon}
-                    //    color="white"
-                       />  
+        {/* <Icon.Ionicons name="md-camera" size={32} style={styles.cardIcon} />   */}
+          <Image style={styles.cardIcon} source={require( '../../assets/images/icons/camera_icon.png')} />
             <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
 
@@ -90,10 +88,9 @@ const styles = StyleSheet.create({
             // marginBottom: 4,
   },
   cardIcon: {
-    color: Colors.textSecondary,
-    fontSize: 38,
+    // color: Colors.textSecondary,
+    // fontSize: 38,
     marginTop: 12 // 17 didn't work
-    // marginBottom: 13
   } ,
   cardLabel: {
       color: Colors.textSecondary,

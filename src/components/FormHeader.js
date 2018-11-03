@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import {
     View,
     Text,
-    StyleSheet
+    StyleSheet,
+    Image
 } from "react-native";
-import { Header, colors } from 'react-native-elements';
-// import { Icon } from 'react-native-elements'
-import { Icon } from 'expo';
+// import { Icon } from 'expo';
 import Colors from "../constants/Colors";
 import { MonoText } from '../components/StyledText';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 
 class FormHeader extends Component {
     render() {
@@ -20,27 +20,18 @@ class FormHeader extends Component {
               backgroundColor: Colors.brand
             }}> 
             <View style={styles.iconsWrapper}>
-               <Icon.Ionicons
-                name="md-menu"
-                        size={32}
-                    //    style={{ textAlign: 'right' }}
-                       color="white"
-                  onPress={() => this.props.drawerOpen()} />  
-         
-                      
-                  {/* <Icon.Ionicons
-                name="circle-with-plus"
-                        size={32}
-                       style={{ textAlign: 'right' }}
-                       color="white" />   */}
-                       <Text onPress={() => this.props.navigation.navigate('NewCategory')}     
-                       style={styles.addIcon}> + </Text>
-                                 <Icon.Ionicons
-                name="md-checkmark-circle"
-                        size={32}
-                    //    style={{ textAlign: 'right' }}
-                       color="white"/>  
-               
+            
+              
+            {/* didn't work <Icon.Ionicons name="circle-with-plus" size={32}  style={{ textAlign: 'right' }} color="white" />   */}
+            <Image source={require( '../../assets/images/icons/plus.png')} />     
+                
+            {/* <Icon.Ionicons name="md-checkmark-circle" size={32}  color="white"/>   */}
+            <Image source={require( '../../assets/images/icons/checkmark-circle.png')} />
+
+            {/* <Icon.Ionicons name="md-menu" size={32} color="white" onPress={() => this.props.drawerOpen()} />   */}
+            <Image style={styles.icon} source= {require( '../../assets/images/icons/menu.png')}/>
+    
+
             </View>
             <View  />
             {/* style={{ flex: 0.5}} */}
@@ -90,13 +81,8 @@ iconsWrapper: {
       flexWrap: 'wrap',
       justifyContent: 'space-between'
     },
-    addIcon: {
-        color: Colors.brand,
-        fontSize: 20,
-        backgroundColor: Colors.primary,
-        width: 24,
-        height: 24,
-        borderRadius:12,
+    icon: {
+        color: 'red'
     }
 });
   

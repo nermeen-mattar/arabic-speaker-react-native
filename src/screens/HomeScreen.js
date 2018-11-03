@@ -11,8 +11,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { WebBrowser } from 'expo';
-import { Header } from 'react-native-elements';
 
 import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
