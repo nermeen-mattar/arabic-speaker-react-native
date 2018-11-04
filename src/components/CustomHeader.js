@@ -25,9 +25,7 @@ class CustomHeader extends Component {
             {/* didn't work <Icon.Ionicons name="circle-with-plus" size={32}  style={{ textAlign: 'right' }} color="white" />   */}
             <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
 
-            <Image  
-            
-            style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />     
+            <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />     
             </TouchableOpacity>   
             {/* <Icon.Ionicons style={styles.addIcon}  name="md-checkmark-circle" size={32}  color="white"/>   */}
             <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} />

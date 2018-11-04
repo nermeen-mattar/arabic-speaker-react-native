@@ -8,6 +8,7 @@ import {
   TextInput,
   Image,
   View,
+  AsyncStorage
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -15,24 +16,28 @@ import FormHeader from '../components/FormHeader';
 import Colors from '../constants/Colors';
 // import { Icon } from 'expo';
 import PhotoUpload from 'react-native-photo-upload'
+import { Storage } from '../classes/storage';
 
 export default class NewCategoryScreen extends React.Component {
     constructor() {
         super();
         this.state = {
-            title: "إضافة تصنيف جديد",
-            cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
-           inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
+          title: "إضافة تصنيف جديد",
+          cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+          inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد",
+          categoryName: ''
         };
-    }
-  static navigationOptions = {
-    header: null
-  };
- 
-  render() {
+      }
+      static navigationOptions = {
+        header: null
+      };
+      
+      render() {
     return (
       <View>
-    <FormHeader title= {this.state.title}/>
+    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('HomeStack')}
+      onSaveClicked = {this.addNewCategory}
+    />
          <View  style={styles.inputsWrapper}> 
         <View style={styles.card} >
         {/* <Icon.Ionicons name="md-camera" size={32} style={styles.cardIcon} />   */}
@@ -41,15 +46,13 @@ export default class NewCategoryScreen extends React.Component {
      if (avatar) {
        console.log('Image base64 string: ', avatar)
      }
-   }}
- >
+   }}>
           <Image style={styles.cardIcon} source={require( '../../assets/images/icons/camera_icon.png')} />
           </PhotoUpload>
-            <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
+          <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
 
-            <TextInput  style={styles.textInput}
-        onChangeText={(text) => this.setState({text})}
+            <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true} />
         </View>
            
@@ -57,6 +60,71 @@ export default class NewCategoryScreen extends React.Component {
     );
   }
 
+  onTextChanged(text) {
+    this.setState({
+      // title: 'okokok',
+      categoryName: text,
+    });
+  }
+
+  addNewCategory = () => {
+    const test = new Storage();
+    // test.setItem('test', 'nermeen');
+    const result = {value: 'null'};
+    test.getItem('categories', result).then(res => {
+      test.setItem('categories', [...result.value, {label: this.state.categoryName, 
+      imgSrc: '../../assets/images/categories/chat.png'}]).then(res => {
+        this.props.navigation.navigate('HomeStack');
+      })
+      this.props.navigation.navigate('HomeStack');
+    })
+
+  //   const newCategory  =  [
+  //     { label: 'nerrro', imgSrc:  require('../../assets/images/categories/favourites.png')},
+  // ];
+  //   test.setItem('categories', newCategory).then(res => {
+  //     this.setState({
+  //       title: 'yeees',
+  //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+  //       inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
+  //     });
+  //     this.props.navigation.navigate('HomeStack');
+  //   })
+
+
+    //   AsyncStorage.getItem('UID123', (err, result) => {
+    //     this.setState({
+    //       title: 'wow',
+    //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+    //     inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
+    //   });
+    // });    
+  };
+
+  getItem = async (key) => {
+    value = 'initial';
+    try {
+       value = await AsyncStorage.getItem('test');
+      if (value === null) {
+        value = 'null';
+      }
+      
+    } catch (error) {
+      // Error retrieving data
+      this.setState({
+        title: 'error',
+        cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+        inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
+      });
+      
+    }
+        this.setState({
+          title: value,
+          cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+         inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
+      });
+  // }
+    }
 }
 
 const styles = StyleSheet.create({

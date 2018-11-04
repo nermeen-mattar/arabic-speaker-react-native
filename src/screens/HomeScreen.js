@@ -3,39 +3,38 @@
 
 import React from 'react';
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Button,
+  AsyncStorage
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
+import { Storage } from '../classes/storage';
 
 export default class HomeScreen extends React.Component {
+
+  constructor(props) {
+    super();
+    this.state = {
+      title: "المكتبات",
+      categories: []
+    };
+  }
   static navigationOptions = {
     header: null
   };
- 
-
+  
   render() {
+    this.initCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
     /* make it a class prop (part of state) */
-    const categories = [
-      { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
-      { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
-      { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
-      { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
-      { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
-      { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
-      { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
-      { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
-      { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
-    ]
     return (
       <View style={styles.container}>
         {/* <Header
@@ -44,12 +43,12 @@ export default class HomeScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title="المكتبات" onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}/>
+         <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.cardsContainer}>
           {
-            categories.map((category, index) => {
+            this.state.categories.map((category, index) => {
               return(
             //     <View key ={index}>
             // <Text style={styles.getStartedText}>
@@ -92,6 +91,35 @@ export default class HomeScreen extends React.Component {
         </View> */}
       </View>
     );
+  }
+
+  initCategories = ()  => {
+    const defaultCategories = [
+      { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
+      { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
+      { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
+      { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
+      { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
+      { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
+      { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
+      { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
+      { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
+    ];
+    const storage = new Storage();
+    const result = {value: 'null'};
+    // storage.removeItem('categories');
+    storage.getItem('categories', result).then(res => {
+      if(result.value) {
+        this.setState({
+          categories: result.value
+        });
+      } else {
+        this.setState({
+          categories: defaultCategories
+        });
+        storage.setItem('categories', defaultCategories);
+      }
+    })
   }
 
   _maybeRenderDevelopmentModeWarning() {
