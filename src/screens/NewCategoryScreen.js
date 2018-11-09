@@ -68,11 +68,11 @@ export default class NewCategoryScreen extends React.Component {
   }
 
   addNewCategory = () => {
-    const test = new Storage();
-    // test.setItem('test', 'nermeen');
+    const storageInstance = Storage.getInstance();
+    // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
-    test.getItem('categories', result).then(res => {
-      test.setItem('categories', [...result.value, {label: this.state.categoryName, 
+    storageInstance.getItem('categories', result).then(res => {
+      storageInstance.setItem('categories', [...result.value, {label: this.state.categoryName, 
       imgSrc: '../../assets/images/categories/chat.png'}]).then(res => {
         this.props.navigation.navigate('HomeStack');
       })
@@ -82,7 +82,7 @@ export default class NewCategoryScreen extends React.Component {
   //   const newCategory  =  [
   //     { label: 'nerrro', imgSrc:  require('../../assets/images/categories/favourites.png')},
   // ];
-  //   test.setItem('categories', newCategory).then(res => {
+  //   storageInstance.setItem('categories', newCategory).then(res => {
   //     this.setState({
   //       title: 'yeees',
   //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},

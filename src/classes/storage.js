@@ -1,6 +1,13 @@
 import { AsyncStorage } from "react-native"
-
 export class Storage {
+      static instance;
+
+      static getInstance() {
+        if(!this.instance) {
+            this.instance = new Storage();    
+        }
+        return this.instance;
+      }
 
       getItem = async (key, result) => {
         try {

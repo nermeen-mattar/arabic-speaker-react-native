@@ -3,14 +3,9 @@
 
 import React from 'react';
 import {
-  Platform,
   ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
-  Button,
-  AsyncStorage
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -105,10 +100,10 @@ export default class HomeScreen extends React.Component {
       { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
       { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
     ];
-    const storage = new Storage();
+    const storageInstance = Storage.getInstance();
     const result = {value: 'null'};
     // storage.removeItem('categories');
-    storage.getItem('categories', result).then(res => {
+    storageInstance.getItem('categories', result).then(res => {
       if(result.value) {
         this.setState({
           categories: result.value
@@ -117,7 +112,7 @@ export default class HomeScreen extends React.Component {
         this.setState({
           categories: defaultCategories
         });
-        storage.setItem('categories', defaultCategories);
+        storageInstance.setItem('categories', defaultCategories);
       }
     })
   }
