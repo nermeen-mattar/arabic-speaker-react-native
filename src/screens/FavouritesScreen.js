@@ -92,7 +92,6 @@ export default class FavouritesScreen extends React.Component {
   initFavourites = ()  => {
     const storageInstance = Storage.getInstance();
     const result = {value: 'null'};
-    // storage.removeItem('favourites');
     storageInstance.getItem('favourites', result).then(res => {
       if(result.value) {
         this.setState({
