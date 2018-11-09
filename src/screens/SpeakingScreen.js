@@ -6,6 +6,7 @@ import Colors from '../constants/Colors';
 import CustomHeader from '../components/CustomHeader';
 import { TextToSpeach } from '../classes/text-to-speach';
 import { MonoText } from '../components/StyledText';
+import { Storage } from '../classes/storage';
 
 export default class TextToSpeachScreen extends React.Component {
   constructor() {
@@ -32,33 +33,40 @@ export default class TextToSpeachScreen extends React.Component {
         {/* <ExpoLinksView /> */}
         <CustomHeader />
 
-        <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
+        <TextInput value={this.state.text} style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true} />
         <MonoText> {this.state.text}</MonoText>
         <View style={styles.toolsbar}> 
-        <TouchableOpacity onPress={this._onPressButton} style={styles.tool}>
+        <TouchableOpacity  onPress={() => this.clear()}style={styles.tool}>
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
           />
+            <MonoText> مسح </MonoText>
+
     </TouchableOpacity>
     <TouchableOpacity onPress={() => this.addToFavourites()} style={styles.space}>
+
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
           />
+            <MonoText> المفضلة </MonoText>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => this.addSpace()} style={styles.space}>
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
           />
+                      <MonoText> مسافة </MonoText>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => this.speak()} style={styles.space}>
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
           />
+                      <MonoText> تحدث </MonoText>
+
     </TouchableOpacity>
         </View>
         <ScrollView>
@@ -81,9 +89,24 @@ export default class TextToSpeachScreen extends React.Component {
       text: this.state.text.concat(' '),
     });
   }
+  clear() {
+    this.setState({
+      text: '',
+    });
+  }
 
   addToFavourites() {
-  
+    const storageInstance = Storage.getInstance();
+    // storageInstance.setItem('storageInstance', 'nermeen');
+    const result = {value: 'null'};
+    storageInstance.getItem('favourites', result).then(res => {
+      const currFavourites = result.value ? result.value : [];
+      storageInstance.setItem('favourites', [...currFavourites, this.state.text]).then(res => {
+        // this.props.navigation.navigate('FavouritesStack');
+        alert( [...currFavourites, this.state.text].length);
+      })
+      // this.props.navigation.navigate('FavouritesStack');
+    });
   }
 
   _onPressButton() {
