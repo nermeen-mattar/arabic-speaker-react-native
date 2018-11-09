@@ -5,11 +5,11 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import SpeakingScreen from '../screens/SpeakingScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import FavouritesScreen from '../screens/FavouritesScreen';
 import NewCategoryScreen from '../screens/NewCategoryScreen'; 
 
 const CategoriesStack = createStackNavigator({
-  Home: CategoriesScreen,
+  Categories: CategoriesScreen,
 });
 
 CategoriesStack.navigationOptions = {
@@ -40,11 +40,11 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const FavourtiesStack = createStackNavigator({
+  Favourites: FavouritesScreen,
 });
 
-SettingsStack.navigationOptions = {
+FavourtiesStack.navigationOptions = {
   tabBarLabel: 'المفضلة',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -56,7 +56,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   NewCategoryScreen,
-  SettingsStack,
+  FavourtiesStack,
   CategoriesStack,
   LinksStack
 });
