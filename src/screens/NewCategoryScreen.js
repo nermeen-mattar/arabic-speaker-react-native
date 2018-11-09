@@ -35,7 +35,7 @@ export default class NewCategoryScreen extends React.Component {
       render() {
     return (
       <View>
-    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('HomeStack')}
+    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesStack')}
       onSaveClicked = {this.addNewCategory}
     />
          <View  style={styles.inputsWrapper}> 
@@ -74,9 +74,9 @@ export default class NewCategoryScreen extends React.Component {
     storageInstance.getItem('categories', result).then(res => {
       storageInstance.setItem('categories', [...result.value, {label: this.state.categoryName, 
       imgSrc: '../../assets/images/categories/chat.png'}]).then(res => {
-        this.props.navigation.navigate('HomeStack');
+        this.props.navigation.navigate('CategoriesStack');
       })
-      this.props.navigation.navigate('HomeStack');
+      this.props.navigation.navigate('CategoriesStack');
     })
 
   //   const newCategory  =  [

@@ -118,7 +118,7 @@ export default class App extends React.Component {
       Font.loadAsync({
         // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,
-        // We include SpaceMono because we use it in HomeScreen.js. Feel free
+        // We include SpaceMono because we use it in CategoriesScreen.js. Feel free
         // to remove this if you are not using it in your app
         'tajawal': require('./assets/fonts/Tajawal-Regular.ttf'),
         'tajawal-bold': require('./assets/fonts/Tajawal-Bold.ttf'),
