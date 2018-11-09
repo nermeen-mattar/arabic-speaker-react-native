@@ -9,7 +9,7 @@ import {
 // import { Icon } from 'expo';
 import Colors from "../constants/Colors";
 import { MonoText } from '../components/StyledText';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class CustomHeader extends Component {
     constructor (props) {
@@ -24,15 +24,19 @@ class CustomHeader extends Component {
             <View style={styles.tools}>
             {/* didn't work <Icon.Ionicons name="circle-with-plus" size={32}  style={{ textAlign: 'right' }} color="white" />   */}
             <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
-
-            <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />     
+            <Icon style={styles.addIcon}  name="plus-circle" size={32}  color="white"/>  
+            {/* <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />      */}
             </TouchableOpacity>   
-            {/* <Icon.Ionicons style={styles.addIcon}  name="md-checkmark-circle" size={32}  color="white"/>   */}
-            <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} />
+
+            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
+            <Icon style={styles.addIcon}  name="check-circle" size={32}  color="white"/>  
+            {/* <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} /> */}
+            </TouchableOpacity>
+
             </View>
 
-            {/* <Icon.Ionicons name="md-menu" size={32} color="white" onPress={() => this.props.drawerOpen()} />   */}
-            <Image source= {require( '../../assets/images/icons/menu.png')}/>
+            <Icon name="bars" size={32} color="white" onPress={() => this.props.drawerOpen()} />  
+            {/* <Image source= {require( '../../assets/images/icons/menu.png')}/> */}
     
 
             </View>

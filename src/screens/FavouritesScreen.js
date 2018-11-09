@@ -106,38 +106,6 @@ export default class FavouritesScreen extends React.Component {
     })
   }
 
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <MonoText onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </MonoText>
-      );
-
-      return (
-        <MonoText style={styles.developmentModeText}>
-          Nermeen mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </MonoText>
-      );
-    } else {
-      return (
-        <MonoText style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </MonoText >
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({

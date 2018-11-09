@@ -5,7 +5,6 @@ import {
   View,
   Image
 } from 'react-native';
-// import { CheckBox } from 'react-native-elements'
 
 import Spacings from '../constants/Spacings';
 import Colors from '../constants/Colors';
@@ -36,7 +35,18 @@ export class Card extends React.Component {
           {/* <CheckBox
           checked={this.state.checked}
         /> */}
-        <Icon name="rocket" size={30} color="#900" />
+          {/* <View  style={styles.selectIconWrapper} > */}
+          {
+            this.props.selectMode ? <Icon onPress={() => {
+              this.setState({
+                selected: true });
+               }}
+                style={styles.selectIcon} name={this.state.selected ? "check-circle": "circle-thin"} size={30} /> : null
+          }
+           {/* <Icon  style={styles.unSelectIcon} name="circle-thin" size={30} /> */}
+
+           {/* or check-square-o */}
+            {/* </View> */}
 
           {
            this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> : null
@@ -77,6 +87,19 @@ export class Card extends React.Component {
     cardLabel: {
       marginTop: 14,
       fontWeight: 'bold'
+    },
+    // selectIconWrapper: {
+    //   display: 'flex',
+    //   justifyContent: 'flex-end',
+    //   textAlign: 'right',
+    // },
+    selectIcon: {
+      // width:16,
+      // height: 16,
+      position:'absolute',
+      right:0,
+      fontSize: 25,
+      color: Colors.brand
     }
   });
   

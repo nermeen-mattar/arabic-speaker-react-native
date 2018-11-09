@@ -89,12 +89,17 @@ export default class CategoriesScreen extends React.Component {
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View>
         </View> */}
-        {/* <View  style={styles.buttonsWrapper} >
-          <TouchableOpacity>
-          </TouchableOpacity>
-          <TouchableOpacity>
-          </TouchableOpacity>
-          </View> */}
+       {
+         this.state.selectMode ? 
+         <View  style={styles.buttonsWrapper} >
+         <TouchableOpacity>
+           الغاء
+         </TouchableOpacity>
+         <TouchableOpacity>
+           حذف
+         </TouchableOpacity>
+         </View> : null
+       }
       </View>
     );
   }
