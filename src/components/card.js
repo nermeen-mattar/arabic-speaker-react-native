@@ -5,10 +5,13 @@ import {
   View,
   Image
 } from 'react-native';
+// import { CheckBox } from 'react-native-elements'
 
 import Spacings from '../constants/Spacings';
 import Colors from '../constants/Colors';
 import { MonoText } from '../components/StyledText';
+import Icon from 'react-native-vector-icons/FontAwesome';
+// import FontAwesome, { Icons } from "react-native-fontawesome";
 
 export class Card extends React.Component {
   constructor (props) {
@@ -31,7 +34,13 @@ export class Card extends React.Component {
     render() {
       return (
         <View style={styles.container} >
-
+          {/* <CheckBox
+          checked={this.state.checked}
+        /> */}
+        {/* <Text>
+        (<Icon name="rocket" size={30} color="#900" />
+        </Text> */}
+        {/* <FontAwesome>{Icons.chevronLeft}</FontAwesome> */}
 
           {
            this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> : null

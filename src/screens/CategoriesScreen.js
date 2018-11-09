@@ -6,6 +6,8 @@ import {
   ScrollView,
   StyleSheet,
   View,
+  TouchableOpacity
+
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -20,7 +22,8 @@ export default class CategoriesScreen extends React.Component {
     super();
     this.state = {
       title: "المكتبات",
-      categories: []
+      categories: [],
+      selectMode: false
     };
   }
   static navigationOptions = {
@@ -38,7 +41,9 @@ export default class CategoriesScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}/>
+         <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}
+          onSelectClicked= {() => this.setState({selectMode: true})}
+         />
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.cardsContainer}>
@@ -50,7 +55,7 @@ export default class CategoriesScreen extends React.Component {
             //   {category.label}
             // </Text>
             //  </View>
-              <Card key ={index} cardInfo = {category}/>
+              <Card key ={index} cardInfo = {category} selectMode= {this.state.selectMode}/>
               );
             })
           }
@@ -84,6 +89,12 @@ export default class CategoriesScreen extends React.Component {
             <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
           </View>
         </View> */}
+        {/* <View  style={styles.buttonsWrapper} >
+          <TouchableOpacity>
+          </TouchableOpacity>
+          <TouchableOpacity>
+          </TouchableOpacity>
+          </View> */}
       </View>
     );
   }
@@ -166,6 +177,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
+  buttonsWrapper: {
+    flex: 1,
+    flexDirection: 'row'
+  }
   // welcomeImage: {
   //   resizeMode: 'contain',
   // },
