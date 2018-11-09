@@ -4,7 +4,8 @@ import Colors from '../constants/Colors';
 // import { ExpoLinksView } from '@expo/samples';
 
 import CustomHeader from '../components/CustomHeader';
-// import { TextToSpeach } from '../classes/text-to-speach';
+import { TextToSpeach } from '../classes/text-to-speach';
+import { MonoText } from '../components/StyledText';
 
 export default class TextToSpeachScreen extends React.Component {
   constructor() {
@@ -33,6 +34,7 @@ export default class TextToSpeachScreen extends React.Component {
 
         <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true} />
+        <MonoText> {this.state.text}</MonoText>
         <View style={styles.toolsbar}> 
         <TouchableOpacity onPress={this._onPressButton} style={styles.tool}>
           <Image
@@ -40,19 +42,19 @@ export default class TextToSpeachScreen extends React.Component {
             source={require('../../assets/images/categories/favourites.png')}
           />
     </TouchableOpacity>
-    <TouchableOpacity onPress={this._onPressButton} style={styles.tool}>
+    <TouchableOpacity onPress={() => this.addToFavourites()} style={styles.space}>
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
           />
     </TouchableOpacity>
-    <TouchableOpacity onPress={this._onPressButton} style={styles.space}>
+    <TouchableOpacity onPress={() => this.addSpace()} style={styles.space}>
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
           />
     </TouchableOpacity>
-    <TouchableOpacity onPress={this._onPressButton} style={styles.tool}>
+    <TouchableOpacity onPress={() => this.speak()} style={styles.space}>
           <Image
             style={styles.button}
             source={require('../../assets/images/categories/favourites.png')}
@@ -64,14 +66,24 @@ export default class TextToSpeachScreen extends React.Component {
       </View>
     );
   }
-
   onTextChanged(text) {
     this.setState({
-      // title: 'okokok',
       text: text,
     });
-    // const TextToSpeach = new TextToSpeach();
-    // TextToSpeach.speak(text);
+  }
+
+  speak() {
+    TextToSpeach.getInstance().speak(this.state.text);
+  }
+
+  addSpace() {
+    this.setState({
+      text: this.state.text.concat(' '),
+    });
+  }
+
+  addToFavourites() {
+  
   }
 
   _onPressButton() {
