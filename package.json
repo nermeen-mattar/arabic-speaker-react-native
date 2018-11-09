@@ -10,6 +10,8 @@
     "crypto-js": "^3.1.9-1",
     "react": "16.5.0",
     "react-native": "0.57.1",
+    "react-native-elements": "^0.19.1",
+    "react-native-fontawesome": "^5.7.0",
     "react-native-fs": "^2.12.1",
     "react-native-image-picker": "^0.27.1",
     "react-native-image-resizer": "^1.0.0",
@@ -29,6 +31,11 @@
     "react-test-renderer": "16.5.0",
     "react-native-tts": "^2.0.0",
     "react-navigation": "^2.16.0"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
   },
   "jest": {
     "preset": "react-native"
