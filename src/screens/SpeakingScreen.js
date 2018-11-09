@@ -100,11 +100,12 @@ export default class TextToSpeachScreen extends React.Component {
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
     storageInstance.getItem('favourites', result).then(res => {
-      const currFavourites = result.value ? result.value : [];
-      storageInstance.setItem('favourites', [...currFavourites, this.state.text]).then(res => {
-        // this.props.navigation.navigate('FavouritesStack');
-        alert( [...currFavourites, this.state.text].length);
-      })
+      const currFavourites = result.value ? result.value : []; 
+      if(!currFavourites.includes(this.state.text)) {
+        storageInstance.setItem('favourites', [...currFavourites, this.state.text]).then(res => {
+          // this.props.navigation.navigate('FavouritesStack');
+        })
+      }
       // this.props.navigation.navigate('FavouritesStack');
     });
   }
