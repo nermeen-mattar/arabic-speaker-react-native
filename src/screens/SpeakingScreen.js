@@ -4,8 +4,9 @@ import Colors from '../constants/Colors';
 // import { ExpoLinksView } from '@expo/samples';
 
 import CustomHeader from '../components/CustomHeader';
+// import { TextToSpeach } from '../classes/text-to-speach';
 
-export default class LinksScreen extends React.Component {
+export default class TextToSpeachScreen extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -69,6 +70,8 @@ export default class LinksScreen extends React.Component {
       // title: 'okokok',
       text: text,
     });
+    // const TextToSpeach = new TextToSpeach();
+    // TextToSpeach.speak(text);
   }
 
   _onPressButton() {
