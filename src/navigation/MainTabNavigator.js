@@ -31,7 +31,7 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'تنبيه',
+  tabBarLabel: 'التحدث',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -55,10 +55,10 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  LinksStack,
+  NewCategoryScreen,
   SettingsStack,
   HomeStack,
-  NewCategoryScreen
+  LinksStack
 });
 
 

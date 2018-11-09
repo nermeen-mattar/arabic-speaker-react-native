@@ -37,8 +37,10 @@ class CustomHeader extends Component {
 
             </View>
             <View  />
+
+                 { this.props.title ?  <Text  style={styles.title}>{this.props.title}</Text> : null}
+
             {/* style={{ flex: 0.5}} */}
-            <Text  style={styles.title}>{this.props.title}</Text>
           </View>
             // <Header style={styles.header}
             // rightComponent={
