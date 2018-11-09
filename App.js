@@ -1,6 +1,5 @@
 import React from 'react';
 import {Platform, StyleSheet, StatusBar, View, ActivityIndicator} from 'react-native';
-import Tts from 'react-native-tts';
 import { createDrawerNavigator} from 'react-navigation'
 
 import AppNavigator from './src/navigation/AppNavigator';
