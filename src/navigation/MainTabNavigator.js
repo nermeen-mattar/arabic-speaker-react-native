@@ -3,16 +3,16 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import CategoriesScreen from '../screens/CategoriesScreen';
 import SpeakingScreen from '../screens/SpeakingScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import NewCategoryScreen from '../screens/NewCategoryScreen';
+import NewCategoryScreen from '../screens/NewCategoryScreen'; 
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+const CategoriesStack = createStackNavigator({
+  Home: CategoriesScreen,
 });
 
-HomeStack.navigationOptions = {
+CategoriesStack.navigationOptions = {
   tabBarLabel: 'المكتبات',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -57,7 +57,7 @@ SettingsStack.navigationOptions = {
 export default createBottomTabNavigator({
   NewCategoryScreen,
   SettingsStack,
-  HomeStack,
+  CategoriesStack,
   LinksStack
 });
 

@@ -14,7 +14,7 @@ import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import { Storage } from '../classes/storage';
 
-export default class HomeScreen extends React.Component {
+export default class CategoriesScreen extends React.Component {
 
   constructor(props) {
     super();
@@ -62,7 +62,7 @@ export default class HomeScreen extends React.Component {
             <MonoText style={styles.getStartedText}>Get started by nermeen</MonoText>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+              <MonoText style={styles.codeHighlightText}>screens/CategoriesScreen.js</MonoText>
             </View>
 
             <MonoText style={styles.getStartedText}>
