@@ -37,11 +37,11 @@ export class Card extends React.Component {
         /> */}
           {/* <View  style={styles.selectIconWrapper} > */}
           {
-            this.props.selectMode ? <Icon onPress={() => {
-              this.setState({
-                selected: true });
-               }}
-                style={styles.selectIcon} name={this.state.selected ? "check-circle": "circle-thin"} size={30} /> : null
+            this.props.selectMode && this.props.cardInfo.selectable ? <Icon
+            onPress={() => {
+              this.onCardToggeled()
+           }}
+                style={styles.selectIcon} name={this.props.cardInfo.selected ? "check-circle": "circle-thin"} size={30} /> : null
           }
            {/* <Icon  style={styles.unSelectIcon} name="circle-thin" size={30} /> */}
 
@@ -63,8 +63,13 @@ export class Card extends React.Component {
         </View>
       );
     }
+    
+      onCardToggeled() {
+        this.setState({
+          selected: !this.state.selected });
+          this.props.onCardToggeled();
+      }
   }
-  
 
 
   const styles = StyleSheet.create({
