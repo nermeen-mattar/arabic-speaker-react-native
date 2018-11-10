@@ -19,7 +19,7 @@ import PhotoUpload from 'react-native-photo-upload'
 import { Storage } from '../classes/storage';
 
 export default class NewCategoryScreen extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
           title: "إضافة تصنيف جديد",
@@ -27,7 +27,14 @@ export default class NewCategoryScreen extends React.Component {
           inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد",
           categoryName: ''
         };
+        props.navigation.addListener('willFocus', this.load)
       }
+
+      load = () => {
+          this.setState({
+            categoryName: ''
+          });
+       }
       static navigationOptions = {
         header: null
       };
@@ -53,7 +60,7 @@ export default class NewCategoryScreen extends React.Component {
         </View>
 
             <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
-        placeholder= {this.state.inputPlaceholder}  multiline = {true} />
+        placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.categoryName}/>
         </View>
            
       </View>
@@ -71,9 +78,9 @@ export default class NewCategoryScreen extends React.Component {
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
-    storageInstance.getItem('categories', result).then(res => {
+    storageInstance.getItem('categories', result).then(() => {
       storageInstance.setItem('categories', [...result.value, {label: this.state.categoryName, 
-      imgSrc: '../../assets/images/categories/chat.png'}]).then(res => {
+      imgSrc: '../../assets/images/categories/chat.png', selectable: true}]).then(res => {
         this.props.navigation.navigate('CategoriesStack');
       })
       this.props.navigation.navigate('CategoriesStack');
