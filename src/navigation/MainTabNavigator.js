@@ -7,9 +7,14 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import SpeakingScreen from '../screens/SpeakingScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import NewCategoryScreen from '../screens/NewCategoryScreen'; 
+import SentencesScreen from '../screens/SentencesScreen'; 
+import NewSentenceScreen from '../screens/NewSentenceScreen'; 
 
 const CategoriesStack = createStackNavigator({
-  Categories: CategoriesScreen,
+  CategoriesScreen: CategoriesScreen,
+  NewCategoryScreen: NewCategoryScreen,
+  SentencesScreen: SentencesScreen,
+  NewSentenceScreen: NewSentenceScreen
 });
 
 CategoriesStack.navigationOptions = {
@@ -55,7 +60,7 @@ FavourtiesStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  NewCategoryScreen,
+  SentencesScreen,
   FavourtiesStack,
   CategoriesStack,
   LinksStack
