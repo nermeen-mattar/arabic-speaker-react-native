@@ -87,9 +87,7 @@ export default class CategoriesScreen extends React.Component {
           //     this.categoryToggled(index)
           //  }}>
           <View>
-                       <MonoText style={styles.getStartedText}>
-              {index}
-            </MonoText>
+
               <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
                 selected = {category.selected} // this.state.selectedCategories.includes(category)
 
