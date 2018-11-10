@@ -39,7 +39,7 @@ export default class CategoriesScreen extends React.Component {
       categories: [],
       selectedCategories: [],
       selectMode: false,
-      test: 'hello'
+      test: ''
     };
     // this.load();
     props.navigation.addListener('willFocus', this.load)
@@ -49,6 +49,7 @@ export default class CategoriesScreen extends React.Component {
   };
   
   load = () => {
+    this.cancelSelectMode();
       // if(!this.state.selectMode) {
         this.updateCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
         /* make it a class prop (part of state) */
@@ -89,7 +90,7 @@ export default class CategoriesScreen extends React.Component {
                        <MonoText style={styles.getStartedText}>
               {index}
             </MonoText>
-              <Card key ={index} cardInfo = {category} selectMode= {this.state.selectMode}
+              <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
                 selected = {category.selected} // this.state.selectedCategories.includes(category)
 
                   onCardToggeled= {() =>  this.categoryToggled(index)}
@@ -175,7 +176,7 @@ export default class CategoriesScreen extends React.Component {
     this.storageInstance.getItem('categories', result).then(res => {
       if(result.value) {
         this.setState({
-          categories: result.value,
+          categories: result.value
         });
       } 
     })
@@ -185,8 +186,7 @@ export default class CategoriesScreen extends React.Component {
     const categories = this.state.categories;
     categories[categoryIndex].selected = !categories[categoryIndex].selected;
     this.setState({
-      categories: categories,
-      test: JSON.stringify( categories )
+      categories: categories
     });
     // const selectedCategories = this.state.selectedCategories;
     // const categories = this.state.categories;
@@ -209,24 +209,18 @@ export default class CategoriesScreen extends React.Component {
     categories.map(category => category.selected = false);
     this.setState({
       selectMode: false,
-      categories: categories,
-      test: JSON.stringify( categories )
+      categories: categories
     });
   }; 
 
   removeSelectedCategories = ()  => {
-    this.storageInstance.setItem('categories', this.state.categories).then(res => {
+    const unselectedCategories = this.state.categories.filter(category => !category.selected);
+    this.storageInstance.setItem('categories', unselectedCategories).then(res => {
         this.setState({
-          categories: this.state.categories.filter(category => !category.selected),
-          test: 'not nerro'
+          categories: unselectedCategories,
         });
-        const result = {value: 'null'};
-        this.storageInstance.getItem('categories', result).then(res => {
-          this.setState({
-            // categories: this.state.categories.filter(category => !category.selected),
-            test: JSON.stringify(result.value)
-          });
-      });
+      // this.updateCategories();
+
     });
   }
 
