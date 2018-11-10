@@ -8,7 +8,10 @@ import {
   TextInput,
   Image,
   View,
-  AsyncStorage
+  AsyncStorage,
+  // CameraRoll,
+  // ScrollView,
+  // Button
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -26,9 +29,11 @@ export default class NewCategoryScreen extends React.Component {
           title: "إضافة تصنيف جديد",
           cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
           inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد",
-          categoryName: ''
+          categoryName: '',
+          // photos: []
         };
         props.navigation.addListener('willFocus', this.load)
+        // thi._handleButtonPress()
 
 
 
@@ -44,7 +49,7 @@ const options = {
         /**
  * The first arg is the options object for customization (it can also be null or omitted for default options),
  * The second arg is the callback which sends object: response (more info in the API Reference)
- */
+
 ImagePicker.showImagePicker(options, (response) => {
   console.log('Response = ', response);
 
@@ -64,8 +69,23 @@ ImagePicker.showImagePicker(options, (response) => {
       avatarSource: source,
     });
   }
-});
+}); */
       }
+
+
+      // _handleButtonPress = () => {
+      //   CameraRoll.getPhotos({
+      //       first: 20,
+      //       assetType: 'Photos',
+      //     })
+      //     .then(r => {
+      //       this.setState({ photos: r.edges });
+      //     })
+      //     .catch((err) => {
+      //        //Error Loading Images
+      //     });
+      //   };
+
 
       load = () => {
           this.setState({
@@ -81,7 +101,26 @@ ImagePicker.showImagePicker(options, (response) => {
       render() {
     return (
       <View>
-    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesStack')}
+
+         {/* <View>
+     <Button title="Load Images" onPress={this._handleButtonPress} />
+     <ScrollView>
+       {this.state.photos.map((p, i) => {
+       return (
+         <Image
+           key={i}
+           style={{
+             width: 300,
+             height: 100,
+           }}
+           source={{ uri: p.node.image.uri }}
+         />
+       );
+     })}
+     </ScrollView>
+   </View> */}
+
+    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesScreen')}
       onSaveClicked = {this.addNewCategory}
     />
          <View  style={styles.inputsWrapper}> 
@@ -120,9 +159,9 @@ ImagePicker.showImagePicker(options, (response) => {
     storageInstance.getItem('categories', result).then(() => {
       storageInstance.setItem('categories', [...result.value, {label: this.state.categoryName, 
       imgSrc: '../../assets/images/categories/chat.png', selectable: true}]).then(res => {
-        this.props.navigation.navigate('CategoriesStack');
+        this.props.navigation.navigate('CategoriesScreen');
       })
-      this.props.navigation.navigate('CategoriesStack');
+      this.props.navigation.navigate('CategoriesScreen');
     })
 
   //   const newCategory  =  [
