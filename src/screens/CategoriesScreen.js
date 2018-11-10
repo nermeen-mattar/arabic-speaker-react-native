@@ -20,19 +20,44 @@ export default class CategoriesScreen extends React.Component {
 
   constructor(props) {
     super();
+    defaultCategories = [
+      { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
+      { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
+      { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
+      { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
+      { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
+      { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
+      { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
+      { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
+      { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
+    ];
+    this.initCategories();
+    storageInstance = Storage.getInstance();
+    // storageInstance.removeItem('categories');
     this.state = {
       title: "المكتبات",
       categories: [],
-      selectMode: false
+      selectedCategories: [],
+      selectMode: false,
+      test: 'hello'
     };
+    // this.load();
+    props.navigation.addListener('willFocus', this.load)
   }
   static navigationOptions = {
     header: null
   };
   
+  load = () => {
+      // if(!this.state.selectMode) {
+        this.updateCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
+        /* make it a class prop (part of state) */
+      // }
+}
+  // componentDidMount() {
+  // }
   render() {
-    this.initCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
-    /* make it a class prop (part of state) */
+  
     return (
       <View style={styles.container}>
         {/* <Header
@@ -42,29 +67,44 @@ export default class CategoriesScreen extends React.Component {
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
          <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}
-          onSelectClicked= {() => this.setState({selectMode: true})}
+          onSelectClicked= {
+            this.state.categories.length > defaultCategories.length ? () =>
+             this.setState({selectMode: true}) : null
+          }
          />
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+
           <View style={styles.cardsContainer}>
           {
             this.state.categories.map((category, index) => {
               return(
             //     <View key ={index}>
-            // <Text style={styles.getStartedText}>
-            //   {category.label}
-            // </Text>
+                
             //  </View>
-              <Card key ={index} cardInfo = {category} selectMode= {this.state.selectMode}/>
+          //   <TouchableOpacity   onPress={() => {
+          //     this.categoryToggled(index)
+          //  }}>
+          <View>
+                       <MonoText style={styles.getStartedText}>
+              {index}
+            </MonoText>
+              <Card key ={index} cardInfo = {category} selectMode= {this.state.selectMode}
+                selected = {category.selected} // this.state.selectedCategories.includes(category)
+
+                  onCardToggeled= {() =>  this.categoryToggled(index)}
+                 
+              />
+              </View>
               );
             })
           }
           </View>
 
+            <MonoText>{this.state.test}</MonoText>
           {/* <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <MonoText style={styles.getStartedText}>Get started by nermeen</MonoText>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/CategoriesScreen.js</MonoText>
@@ -93,10 +133,18 @@ export default class CategoriesScreen extends React.Component {
          this.state.selectMode ? 
          <View  style={styles.buttonsWrapper} >
          <TouchableOpacity>
+           <MonoText onPress={() => {
+             this.cancelSelectMode();
+               }}>
            الغاء
+             </MonoText>
          </TouchableOpacity>
-         <TouchableOpacity>
+         <TouchableOpacity  onPress={() => {
+              this.removeSelectedCategories()
+            }}>
+         <MonoText>
            حذف
+             </MonoText>
          </TouchableOpacity>
          </View> : null
        }
@@ -105,32 +153,81 @@ export default class CategoriesScreen extends React.Component {
   }
 
   initCategories = ()  => {
-    const defaultCategories = [
-      { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
-      { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
-      { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
-      { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
-      { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
-      { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
-      { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
-      { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
-      { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
-    ];
-    const storageInstance = Storage.getInstance();
+    this.storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    // storage.removeItem('categories');
-    storageInstance.getItem('categories', result).then(res => {
+    this.storageInstance.getItem('categories', result).then(res => {
       if(result.value) {
         this.setState({
           categories: result.value
         });
       } else {
         this.setState({
-          categories: defaultCategories
+          categories: this.defaultCategories
         });
-        storageInstance.setItem('categories', defaultCategories);
+        this.storageInstance.setItem('categories', this.defaultCategories);
       }
     })
+  }
+
+  updateCategories = ()  => {
+    this.storageInstance = Storage.getInstance(); // temp 
+    const result = {value: 'null'};
+    this.storageInstance.getItem('categories', result).then(res => {
+      if(result.value) {
+        this.setState({
+          categories: result.value,
+        });
+      } 
+    })
+  }
+
+  categoryToggled(categoryIndex) {
+    const categories = this.state.categories;
+    categories[categoryIndex].selected = !categories[categoryIndex].selected;
+    this.setState({
+      categories: categories,
+      test: JSON.stringify( categories )
+    });
+    // const selectedCategories = this.state.selectedCategories;
+    // const categories = this.state.categories;
+
+    // if(categories[categoryIndex].selected && !selectedCategories.includes(categoryIndex) ) {
+    //   selectedCategories.push(categoryIndex)
+    // } else if( !categories[categoryIndex].selected && selectedCategories.includes(categoryIndex) ) {
+    //   selectedCategories.splice(categoryIndex, 1);
+    // }
+    // categories[categoryIndex].selected =  !categories[categoryIndex].selected;
+    // this.setState({ categories: categories, selectedCategories: selectedCategories});
+    
+    
+    // this.state.categories[categoryIndex].setState({ selected: !this.state.categories[categoryIndex].selected});
+  }
+
+
+  cancelSelectMode = () => {
+    const categories = this.state.categories;
+    categories.map(category => category.selected = false);
+    this.setState({
+      selectMode: false,
+      categories: categories,
+      test: JSON.stringify( categories )
+    });
+  }; 
+
+  removeSelectedCategories = ()  => {
+    this.storageInstance.setItem('categories', this.state.categories).then(res => {
+        this.setState({
+          categories: this.state.categories.filter(category => !category.selected),
+          test: 'not nerro'
+        });
+        const result = {value: 'null'};
+        this.storageInstance.getItem('categories', result).then(res => {
+          this.setState({
+            // categories: this.state.categories.filter(category => !category.selected),
+            test: JSON.stringify(result.value)
+          });
+      });
+    });
   }
 
   _maybeRenderDevelopmentModeWarning() {
@@ -183,7 +280,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   buttonsWrapper: {
-    flex: 1,
+    display: 'flex',
     flexDirection: 'row'
   }
   // welcomeImage: {
