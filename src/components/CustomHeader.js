@@ -28,10 +28,14 @@ class CustomHeader extends Component {
             {/* <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />      */}
             </TouchableOpacity>   
 
-            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
-            <Icon style={styles.addIcon}  name="check-circle" size={32}  color="white"/>  
-            {/* <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} /> */}
-            </TouchableOpacity>
+            {
+                this.props.onSelectClicked ? 
+                <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
+                <Icon style={styles.addIcon}  name="check-circle" size={32}  color="white"/>  
+                {/* <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} /> */}
+                </TouchableOpacity>: null
+            }
+         
 
             </View>
 
