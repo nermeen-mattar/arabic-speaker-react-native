@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage;
-import com.soundapp.SoundModulePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import net.no_mad.tts.TextToSpeechPackage;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
@@ -31,7 +30,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNSoundRecorderPackage(),
-            new SoundModulePackage(),
             new VectorIconsPackage(),
             new TextToSpeechPackage(),
             new ImageResizerPackage(),

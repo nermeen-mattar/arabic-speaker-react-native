@@ -42,7 +42,6 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		337271B75D0440AB93B323EC /* libTextToSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E957B6B0F44D28A87F73FF /* libTextToSpeech.a */; };
 		3770B451E137403796CDE574 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C96DE11DE80E42528814EDC4 /* libRNFS.a */; };
-		3D277B0E43BA4018B742A66E /* libPlaySound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2D01EA9C6B439AB56BE9B6 /* libPlaySound.a */; };
 		3E061446E0A04F11A98EA211 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB4AB9A6ED2E41D2B8FD0218 /* libRCTImageResizer.a */; };
 		4074B2AF0544417ABE0EE591 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */; };
 		517D00B483D5463FAB64D7C6 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 321F115A80AD46939242415F /* FontAwesome5_Solid.ttf */; };
@@ -375,13 +374,6 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = SpeechSynthesizer;
 		};
-		9B1173DD2197B7FA0040FC18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1FDB348DB2B04B2086B0632E /* PlaySound.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E957A9331FE7A97E0009C115;
-			remoteInfo = PlaySound;
-		};
 		9B1173E12197B7FA0040FC18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EC51A77611C94C01ABFF0852 /* RNVectorIcons.xcodeproj */;
@@ -434,7 +426,6 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = textApp/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		171B8BE303EA4DFFA8B67CAE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		1FDB348DB2B04B2086B0632E /* PlaySound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = PlaySound.xcodeproj; path = "../node_modules/react-native-play-sound/PlaySound/PlaySound.xcodeproj"; sourceTree = "<group>"; };
 		23B9B72D0ED34B7C80EF70F9 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "fontawesome-webfont.ttf"; path = "../assets/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		27C0E6D128BA428D9A9B175F /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* textApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "textApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -478,7 +469,6 @@
 		EC51A77611C94C01ABFF0852 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		F02BBB827379405F924979A9 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TextToSpeech.xcodeproj; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; };
 		F4C23D1469CA4C7D9776910F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		FA2D01EA9C6B439AB56BE9B6 /* libPlaySound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libPlaySound.a; sourceTree = "<group>"; };
 		85EE28AF22F1468290976171 /* RNSoundRecorder.xcodeproj */ = {isa = PBXFileReference; name = "RNSoundRecorder.xcodeproj"; path = "../node_modules/react-native-sound-recorder/ios/RNSoundRecorder.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */ = {isa = PBXFileReference; name = "libRNSoundRecorder.a"; path = "libRNSoundRecorder.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
@@ -514,7 +504,6 @@
 				9D029B8F37E2430C96810015 /* libSpeechSynthesizer.a in Frameworks */,
 				337271B75D0440AB93B323EC /* libTextToSpeech.a in Frameworks */,
 				0EEAE907D83348569885DD63 /* libRNVectorIcons.a in Frameworks */,
-				3D277B0E43BA4018B742A66E /* libPlaySound.a in Frameworks */,
 				8B7A277B2C65422D89BD78AA /* libRNSoundRecorder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,7 +698,6 @@
 				8604EEF0D5F54880A48549A7 /* SpeechSynthesizer.xcodeproj */,
 				F02BBB827379405F924979A9 /* TextToSpeech.xcodeproj */,
 				EC51A77611C94C01ABFF0852 /* RNVectorIcons.xcodeproj */,
-				1FDB348DB2B04B2086B0632E /* PlaySound.xcodeproj */,
 				85EE28AF22F1468290976171 /* RNSoundRecorder.xcodeproj */,
 			);
 			name = Libraries;
@@ -812,14 +800,6 @@
 			children = (
 				9B1173E22197B7FA0040FC18 /* libRNVectorIcons.a */,
 				9B1173E42197B7FA0040FC18 /* libRNVectorIcons-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9B1173DA2197B7F60040FC18 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9B1173DE2197B7FA0040FC18 /* libPlaySound.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -976,10 +956,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 9B1173DA2197B7F60040FC18 /* Products */;
-					ProjectRef = 1FDB348DB2B04B2086B0632E /* PlaySound.xcodeproj */;
-				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -1351,13 +1327,6 @@
 			remoteRef = 9B1173D42197B7F50040FC18 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9B1173DE2197B7FA0040FC18 /* libPlaySound.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPlaySound.a;
-			remoteRef = 9B1173DD2197B7FA0040FC18 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		9B1173E22197B7FA0040FC18 /* libRNVectorIcons.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1557,7 +1526,6 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = textAppTests/Info.plist;
@@ -1565,15 +1533,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1598,7 +1557,6 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = textAppTests/Info.plist;
@@ -1606,15 +1564,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1640,7 +1589,6 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = textApp/Info.plist;
@@ -1669,7 +1617,6 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = textApp/Info.plist;
@@ -1705,22 +1652,12 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = "textApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1754,22 +1691,12 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = "textApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1802,22 +1729,12 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = "textApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1850,22 +1767,12 @@
 					"$(SRCROOT)/../node_modules/react-native-speech",
 					"$(SRCROOT)/../node_modules/react-native-tts/ios/TextToSpeech",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 					"$(SRCROOT)/../node_modules/react-native-sound-recorder/ios",
 				);
 				INFOPLIST_FILE = "textApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

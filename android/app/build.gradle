@@ -138,7 +138,6 @@ android {
 
 dependencies {
     compile project(':react-native-sound-recorder')
-    compile project(':react-native-play-sound')
     compile project(':react-native-vector-icons')
     compile project(':react-native-tts')
     compile project(':react-native-image-resizer')
