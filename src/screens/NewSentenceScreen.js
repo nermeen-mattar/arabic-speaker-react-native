@@ -23,10 +23,11 @@ export default class NewSentenceScreen extends React.Component {
     constructor(props) {
         super();
         this.state = {
-          title: "إضافة تصنيف جديد",
+          title: "إضافة عبارة جديدة",
           cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
-          sentence: ''
+          sentence: '',
+          categoryName: props.navigation.getParam('categoryName')
         };
         props.navigation.addListener('willFocus', this.load)
       }
@@ -47,7 +48,7 @@ export default class NewSentenceScreen extends React.Component {
     return (
       <View>
 
-    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('SentencesStack')}
+    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('SentencesScreen')}
       onSaveClicked = {this.addNewSentence}
     />
          <View  style={styles.inputsWrapper}> 
@@ -83,18 +84,18 @@ export default class NewSentenceScreen extends React.Component {
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
-    storageInstance.getItem('sentences', result).then(() => {
-      storageInstance.setItem('sentences', [...result.value, {label: this.state.sentence, 
+    storageInstance.getItem('sentences-'.concat(this.state.categoryName), result).then(() => {
+      storageInstance.setItem('sentences-'.concat(this.state.categoryName), [...result.value, {label: this.state.sentence, 
       imgSrc: '../../assets/images/sentences/chat.png', selectable: true}]).then(res => {
-        this.props.navigation.navigate('SentencesStack');
+        this.props.navigation.navigate('SentencesScreen');
       })
-      this.props.navigation.navigate('SentencesStack');
+      this.props.navigation.navigate('SentencesScreen');
     })
 
   //   const newSentence  =  [
   //     { label: 'nerrro', imgSrc:  require('../../assets/images/sentences/favourites.png')},
   // ];
-  //   storageInstance.setItem('sentences', newSentence).then(res => {
+  //   storageInstance.setItem('sentences-'.concat(this.state.categoryName), newSentence).then(res => {
   //     this.setState({
   //       title: 'yeees',
   //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/sentences/chat.png')},
