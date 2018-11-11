@@ -60,8 +60,8 @@ FavourtiesStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  SentencesScreen,
-  FavourtiesStack,
+  CategoriesStack,
+    FavourtiesStack,
   CategoriesStack,
   LinksStack
 });

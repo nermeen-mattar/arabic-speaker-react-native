@@ -36,11 +36,8 @@ export class Card extends React.Component {
           checked={this.state.checked}
         /> */}
           {/* <View  style={styles.selectIconWrapper} > */}
-          {
+          { 
             this.props.selectMode && this.props.cardInfo.selectable ? <Icon
-            onPress={() => {
-              this.onCardToggeled()
-           }}
                 style={styles.selectIcon} name={this.props.cardInfo.selected ? "check-circle": "circle-thin"} size={30} /> : null
           }
            {/* <Icon  style={styles.unSelectIcon} name="circle-thin" size={30} /> */}
@@ -63,12 +60,7 @@ export class Card extends React.Component {
         </View>
       );
     }
-    
-      onCardToggeled() {
-        this.setState({
-          selected: !this.state.selected });
-          this.props.onCardToggeled();
-      }
+
   }
 
 

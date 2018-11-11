@@ -20,27 +20,27 @@ export default class CategoriesScreen extends React.Component {
 
   constructor(props) {
     super();
-    defaultCategories = [
-      { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
-      { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
-      { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
-      { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
-      { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
-      { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
-      { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
-      { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
-      { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
-    ];
-    this.initCategories();
-    storageInstance = Storage.getInstance();
+    // storageInstance = Storage.getInstance();
     // storageInstance.removeItem('categories');
     this.state = {
-      title: "المكتبات",
-      categories: [],
-      selectedCategories: [],
-      selectMode: false,
-      test: ''
-    };
+                title: "المكتبات",
+                categories: [],
+                selectedCategories: [],
+                selectMode: false,
+                test: '',
+                defaultCategories: [
+                  { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
+                  { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
+                  { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
+                  { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
+                  { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
+                  { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
+                  { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
+                  { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
+                  { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
+                ]
+              };
+    this.initCategories();
     // this.load();
     props.navigation.addListener('willFocus', this.load)
   }
@@ -69,7 +69,7 @@ export default class CategoriesScreen extends React.Component {
          /> */}
          <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}
           onSelectClicked= {
-            this.state.categories.length > defaultCategories.length ? () =>
+            this.state.categories.length > this.state.defaultCategories.length ? () =>
              this.setState({selectMode: true}) : null
           }
          />
@@ -87,13 +87,18 @@ export default class CategoriesScreen extends React.Component {
           //     this.categoryToggled(index)
           //  }}>
           <View>
-
+            <TouchableOpacity    onPress={() => {
+                  this.categoryClicked(index)
+               }}>
+      
               <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
                 selected = {category.selected} // this.state.selectedCategories.includes(category)
-
-                  onCardToggeled= {() =>  this.categoryToggled(index)}
+             
+                  // onCardToggeled= {() =>  this.categoryToggled(index)}
                  
               />
+                      </TouchableOpacity>
+
               </View>
               );
             })
@@ -152,26 +157,26 @@ export default class CategoriesScreen extends React.Component {
   }
 
   initCategories = ()  => {
-    this.storageInstance = Storage.getInstance(); // temp 
+    const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    this.storageInstance.getItem('categories', result).then(res => {
+    storageInstance.getItem('categories', result).then(res => {
       if(result.value) {
         this.setState({
           categories: result.value
         });
       } else {
         this.setState({
-          categories: this.defaultCategories
+          categories: this.state.defaultCategories
         });
-        this.storageInstance.setItem('categories', this.defaultCategories);
+        storageInstance.setItem('categories', this.state.defaultCategories);
       }
     })
   }
 
   updateCategories = ()  => {
-    this.storageInstance = Storage.getInstance(); // temp 
+    const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    this.storageInstance.getItem('categories', result).then(res => {
+    storageInstance.getItem('categories', result).then(res => {
       if(result.value) {
         this.setState({
           categories: result.value
@@ -180,7 +185,17 @@ export default class CategoriesScreen extends React.Component {
     })
   }
 
-  categoryToggled(categoryIndex) {
+  categoryClicked(index) {
+    if(this.state.selectMode) {
+        this.categorySelectionToggled(index);
+    } else {
+      this.props.navigation.navigate('SentencesScreen', {
+        categoryName: this.state.categories[index].label
+      });
+    }
+  }
+
+  categorySelectionToggled(categoryIndex) {
     const categories = this.state.categories;
     categories[categoryIndex].selected = !categories[categoryIndex].selected;
     this.setState({
@@ -212,8 +227,9 @@ export default class CategoriesScreen extends React.Component {
   }; 
 
   removeSelectedCategories = ()  => {
+    const storageInstance = new Storage();
     const unselectedCategories = this.state.categories.filter(category => !category.selected);
-    this.storageInstance.setItem('categories', unselectedCategories).then(res => {
+    storageInstance.setItem('categories', unselectedCategories).then(res => {
         this.setState({
           categories: unselectedCategories,
         });
