@@ -15,34 +15,32 @@ import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import { Storage } from '../classes/storage';
+import CategoriesSentences from '../constants/CategoriesSentences';
+import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
+import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
+// import soundfile from'../../assets/sounds/FemaleSounds/general_f_1.mp3'
 
 export default class SentencesScreen extends React.Component {
 
   constructor(props) {
     super();
-    this.initSentences();
-    storageInstance = Storage.getInstance();
-    // storageInstance.removeItem('sentences');
+    const categoryName = props.navigation.getParam('categoryName');
     this.state = {
-      title: "العبارات",
-      sentences: [],
-      selectedSentences: [],
-      selectMode: false,
-      test: '',
-      defaultSentences: [
-        { label: 'المفضلة'},
-        { label: 'تحياتي'},
-        { label: 'عام'},
-        { label: 'السفر'},
-        { label: 'السوق'},
-        { label: 'العمل'},
-        { label: 'المستشفى'},
-        { label: 'المطعم'},
-        { label: 'المدرسة'},
-      ]
+        title: "العبارات",
+        sentences: CategoriesSentences[categoryName] || [],
+        selectedSentences: [],
+        selectMode: false,
+        categoryName: categoryName,
+        // categoriesSentences : CategoriesSentences,
+        test: '',
+        // JSON.stringify(CategoriesSentences[categoryName] ),
+        
+        defaultSentences: CategoriesSentences[categoryName] || []
     };
+
+    this.initSentences();
     // this.load();
-    // props.navigation.addListener('willFocus', this.load)
+    props.navigation.addListener('willFocus', this.load)
   }
   static navigationOptions = {
     header: null
@@ -67,7 +65,7 @@ export default class SentencesScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewSentenceScreen')}
+         <CustomHeader title={this.state.title + '>' +  this.state.categoryName} onNewClicked= {() => this.props.navigation.navigate('NewSentenceScreen')}
           onSelectClicked= {
             this.state.sentences.length > this.state.defaultSentences.length ? () =>
              this.setState({selectMode: true}) : null
@@ -90,12 +88,14 @@ export default class SentencesScreen extends React.Component {
                        {/* <MonoText style={styles.getStartedText}>
               {index}
             </MonoText> */}
+               <TouchableOpacity    onPress={() => {
+                  this.sentenceClicked(index)
+               }}>
+      
               <Card key ={sentence.label} cardInfo = {sentence} selectMode= {this.state.selectMode}
-                selected = {sentence.selected} // this.state.selectedSentences.includes(sentence)
-
-                  onCardToggeled= {() =>  this.sentenceToggled(index)}
-                 
+                selected = {sentence.selected} // this.state.selectedSentences.includes(sentence)                
               />
+              </TouchableOpacity>
               </View>
               );
             })
@@ -154,17 +154,20 @@ export default class SentencesScreen extends React.Component {
   }
 
   initSentences = ()  => {
-    this.storageInstance = Storage.getInstance(); // temp 
+    const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    this.storageInstance.getItem('sentences', result).then(res => {
+    storageInstance.getItem('sentences', result).then(res => {
       if(!result.value || result.value === 'error') {
         this.setState({
-            sentences: this.state.defaultSentences
+            sentences: this.state.defaultSentences[categoryName] || [],
+            test: JSON.stringify(this.state.defaultSentences)
+
           });
-          this.storageInstance.setItem('sentences', this.state.defaultSentences);
+          storageInstance.setItem('sentences', this.state.defaultSentences);
         } else {
             this.setState({
-                sentences: result.value
+                sentences: result.value[categoryName]|| [],
+                test: JSON.stringify(result.value)
            });
       }
     });
@@ -172,15 +175,22 @@ export default class SentencesScreen extends React.Component {
 
 
   updateSentences = ()  => {
-    this.storageInstance = Storage.getInstance(); // temp 
+    const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    this.storageInstance.getItem('sentences', result).then(res => {
+    storageInstance.getItem('sentences', result).then(res => {
       if(result.value) {
         this.setState({
-          sentences: result.value
+          sentences: result.value[categoryName] || [],
+          test: 'update sentences'
         });
       } 
     })
+  }
+
+
+  sentenceClicked(sentenceIndex) {
+      
+    PlaySound('MaleSounds/'.concat(CategoriesArabicToEnglish[this.state.categoryName].concat('_m_')).concat(sentenceIndex + 1));
   }
 
   sentenceToggled(sentenceIndex) {
@@ -215,8 +225,9 @@ export default class SentencesScreen extends React.Component {
   }; 
 
   removeSelectedSentences = ()  => {
+    const storageInstance = Storage.getInstance(); 
     const unselectedSentences = this.state.sentences.filter(sentence => !sentence.selected);
-    this.storageInstance.setItem('sentences', unselectedSentences).then(res => {
+    storageInstance.setItem('sentences', unselectedSentences).then(res => {
         this.setState({
           sentences: unselectedSentences,
         });
