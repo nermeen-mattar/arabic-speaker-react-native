@@ -5,8 +5,8 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  SectionList
-
+  SectionList,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -47,16 +47,18 @@ export default class IconsLibrariesScreen extends React.Component {
         {/* <ScrollView style={styles.container} > */}
         <SectionList
           sections={[{ data: this.state.iconsLibraries}]}
-          renderItem={({ item, index, section }) => 
-          <View key={index}
-          style={styles.library}
+          renderItem={({ item, index }) => 
+          <TouchableOpacity key={index}
+          style={styles.library} onPress= { () => this.props.navigation.navigate('IconsScreen', {
+            libraryName: item
+          })}
           >
           <Icon style={styles.navigateIcon}  name="chevron-left" /> 
 
           <MonoText  style={styles.libraryName}> {item}           </MonoText>        
-          </View>}
+          </TouchableOpacity>}
           // renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section}</Text>}
-          // keyExtractor={(item, index) => index}
+          // keyExtractor={(library, index) => index}
         />
             <MonoText>{this.state.test}</MonoText>
 
