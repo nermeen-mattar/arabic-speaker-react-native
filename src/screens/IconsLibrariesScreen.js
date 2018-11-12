@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { MonoText } from '../components/StyledText';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
+import CustomListStyle, { CustomListItemSyle } from '../styles/CustomListStyle';
 
 export default class IconsLibrariesScreen extends React.Component {
 
@@ -39,10 +40,10 @@ export default class IconsLibrariesScreen extends React.Component {
         {/* <Header
           statusBarProps={{ barStyle: 'light-content' }}
           leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
+          centerComponent= {<CustomHeader navigation = {this.props.navigation} title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+         <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
         <SectionList
@@ -53,9 +54,9 @@ export default class IconsLibrariesScreen extends React.Component {
             libraryName: item
           })}
           >
-          <Icon style={styles.navigateIcon}  name="chevron-left" /> 
+          <Icon style={styles.itemIcon}  name="chevron-left" /> 
 
-          <MonoText  style={styles.libraryName}> {item}           </MonoText>        
+          <MonoText  style={styles.itemLabel}> {item}           </MonoText>        
           </TouchableOpacity>}
           // renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section}</Text>}
           // keyExtractor={(library, index) => index}
@@ -80,25 +81,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.appBackground,
   },
-  library: {
-    height: 44,
-    paddingRight: 16,
-    paddingLeft: 16,
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    borderWidth: 0.25,
-    borderColor: Colors.borderColor
-  },
-  libraryName: {
-    fontSize: 17
-  },
-  navigateIcon: {
-    color: Colors.iconsColor,
-    fontSize: 15
-  }
+  library: CustomListStyle,
+  ...CustomListItemSyle
 });
 
 

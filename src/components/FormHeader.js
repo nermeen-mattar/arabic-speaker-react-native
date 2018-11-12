@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
     View,
-    Text,
     StyleSheet,
     TouchableOpacity
 } from "react-native";
@@ -26,7 +25,7 @@ class FormHeader extends Component {
             </TouchableOpacity>
             </View>
             <View  />
-            <Text  style={styles.title}>{this.props.title}</Text>
+            <MonoText  style={styles.title}>{this.props.title}</MonoText>
          </View>
         );
     }

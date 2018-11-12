@@ -34,7 +34,7 @@ export default class IconsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-         <CustomHeader title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+         <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
     

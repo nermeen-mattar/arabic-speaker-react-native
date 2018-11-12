@@ -41,11 +41,11 @@ class CustomHeader extends Component {
             </View>
             {
                 this.props.onBackClicked ? 
-                <TouchableOpacity  style={styles.backWrapper} onPress={() => this.props.onBackClicked()} > 
+                <TouchableOpacity  style={styles.backWrapper} onPress={() =>  this.props.navigation.goBack()} > 
                     <MonoText  style={styles.smallText}> للخلف </MonoText> 
                 <Icon name="chevron-right" size={28} color="white" />
                 </TouchableOpacity> :
-                <Icon name="bars" size={28} color="white" onPress={() => this.props.drawerOpen()} />  
+                <Icon name="bars" size={28} color="white" onPress={() => this.props.navigation.openDrawer()} />  
             }
             {/* <Image source= {require( '../../assets/images/icons/menu.png')}/> */}
     

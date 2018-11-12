@@ -31,7 +31,7 @@ export default class TextToSpeachScreen extends React.Component {
         {/* Go ahead and delete ExpoLinksView and replace it with your
            * content, we just wanted to provide you with some helpful links */}
         {/* <ExpoLinksView /> */}
-        <CustomHeader />
+        <CustomHeader navigation = {this.props.navigation} />
 
         <TextInput value={this.state.text} style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true} />
