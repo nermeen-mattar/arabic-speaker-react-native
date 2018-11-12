@@ -39,10 +39,10 @@ export default class IconsLibrariesScreen extends React.Component {
         {/* <Header
           statusBarProps={{ barStyle: 'light-content' }}
           leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
+          centerComponent= {<CustomHeader navigation = {this.props.navigation} title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+         <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
         <SectionList

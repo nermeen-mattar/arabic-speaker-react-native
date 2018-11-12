@@ -67,7 +67,7 @@ export default class CategoriesScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}
+         <CustomHeader navigation= {this.props.navigation} title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}
           onSelectClicked= {
             this.state.categories.length > this.state.defaultCategories.length ? () =>
              this.setState({selectMode: true}) : null
