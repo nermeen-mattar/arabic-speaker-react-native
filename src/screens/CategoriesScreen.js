@@ -86,7 +86,6 @@ export default class CategoriesScreen extends React.Component {
           //   <TouchableOpacity   onPress={() => {
           //     this.categoryToggled(index)
           //  }}>
-          <View>
             <TouchableOpacity    onPress={() => {
                   this.categoryClicked(index)
                }}>
@@ -98,8 +97,6 @@ export default class CategoriesScreen extends React.Component {
                  
               />
                       </TouchableOpacity>
-
-              </View>
               );
             })
           }
