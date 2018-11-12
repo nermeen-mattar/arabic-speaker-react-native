@@ -9,12 +9,14 @@ import FavouritesScreen from '../screens/FavouritesScreen';
 import NewCategoryScreen from '../screens/NewCategoryScreen'; 
 import SentencesScreen from '../screens/SentencesScreen'; 
 import NewSentenceScreen from '../screens/NewSentenceScreen'; 
+import IconsLibrariesScreen from '../screens/IconsLibrariesScreen'; 
 
 const CategoriesStack = createStackNavigator({
   CategoriesScreen: CategoriesScreen,
   NewCategoryScreen: NewCategoryScreen,
   SentencesScreen: SentencesScreen,
-  NewSentenceScreen: NewSentenceScreen
+  NewSentenceScreen: NewSentenceScreen,
+  IconsLibrariesScreen: IconsLibrariesScreen
 });
 
 CategoriesStack.navigationOptions = {

@@ -67,6 +67,9 @@ export default class NewSentenceScreen extends React.Component {
 
             <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.sentence}/>
+        <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen')}> 
+          <MonoText> افتح مكتبة الأيقونات</MonoText>
+        </TouchableOpacity>
         </View>
            
       </View>
