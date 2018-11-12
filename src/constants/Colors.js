@@ -14,5 +14,7 @@ export default {
   brand: '#339870',
   appBackground: '#EFEFEF',
   primary: '#fff',
-  textSecondary: '#C6C6C6'
+  textSecondary: '#C6C6C6',
+  borderColor: '#B7B7B7',
+  iconsColor: '#AFAFAF'
 };
