@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import {
     View,
-    Text,
     StyleSheet,
-    Image,
     TouchableOpacity
 } from "react-native";
 // import { Icon } from 'expo';
@@ -22,31 +20,40 @@ class CustomHeader extends Component {
             <View style={styles.iconsWrapper}>
             
             <View style={styles.tools}>
-            {/* didn't work <Icon.Ionicons name="circle-with-plus" size={32}  style={{ textAlign: 'right' }} color="white" />   */}
-            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
-            <Icon style={styles.addIcon}  name="plus-circle" size={32}  color="white"/>  
+            {/* didn't work <Icon.Ionicons name="circle-with-plus" size={28}  style={{ textAlign: 'right' }} color="white" />   */}
+          
+            {
+                this.props.onNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
+            <Icon style={styles.addIcon}  name="plus-circle" size={28}  color="white"/> 
             {/* <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />      */}
-            </TouchableOpacity>   
+            </TouchableOpacity>   : null
+            }
 
             {
                 this.props.onSelectClicked ? 
                 <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
-                <Icon style={styles.addIcon}  name="check-circle" size={32}  color="white"/>  
+                <Icon style={styles.addIcon}  name="check-circle" size={28}  color="white"/>  
                 {/* <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} /> */}
                 </TouchableOpacity>: null
             }
          
 
             </View>
-
-            <Icon name="bars" size={32} color="white" onPress={() => this.props.drawerOpen()} />  
+            {
+                this.props.onBackClicked ? 
+                <TouchableOpacity  style={styles.backWrapper} onPress={() => this.props.onBackClicked()} > 
+                    <MonoText  style={styles.smallText}> للخلف </MonoText> 
+                <Icon name="chevron-right" size={28} color="white" />
+                </TouchableOpacity> :
+                <Icon name="bars" size={28} color="white" onPress={() => this.props.drawerOpen()} />  
+            }
             {/* <Image source= {require( '../../assets/images/icons/menu.png')}/> */}
     
 
             </View>
             <View  />
 
-                 { this.props.title ?  <Text  style={styles.title}>{this.props.title}</Text> : null}
+                 { this.props.title ?  <MonoText  style={styles.title}>{this.props.title}</MonoText> : null}
 
             {/* style={{ flex: 0.5}} */}
           </View>
@@ -55,7 +62,7 @@ class CustomHeader extends Component {
             //     <View>
             //   <Icon.Ionicons
             //     name="md-menu"
-            //             size={26}
+            //             size={28}
             //            style={{ marginBottom: -3 }}
             //            color="white"
             //         //    onPress={() => this.props.drawerOpen()}
@@ -65,7 +72,7 @@ class CustomHeader extends Component {
             //          }>
                 
                       
-            //         {/* <Ionicons name="md-checkmark-circle" size={32} color="green
+            //         {/* <Ionicons name="md-checkmark-circle" size={28} color="green
             //     " onPress={() => this.props.drawerOpen()} /> */}
          
             // </Header>
@@ -98,6 +105,15 @@ iconsWrapper: {
     addIcon: {
         marginLeft: 18,
         marginRight: 30
+    },
+    backWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    smallText: {
+        fontSize: 17,
+        color: 'white'
     }
 });
   
