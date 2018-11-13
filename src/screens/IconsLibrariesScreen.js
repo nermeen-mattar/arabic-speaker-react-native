@@ -54,7 +54,7 @@ export default class IconsLibrariesScreen extends React.Component {
             libraryName: item
           })}
           >
-          <Icon style={styles.itemIcon}  name="chevron-left" /> 
+          <Icon style={styles.itemArrowIcon}  name="chevron-left" /> 
 
           <MonoText  style={styles.itemLabel}> {item}           </MonoText>        
           </TouchableOpacity>}

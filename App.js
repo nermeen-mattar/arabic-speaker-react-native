@@ -4,33 +4,17 @@ import { createDrawerNavigator} from 'react-navigation'
 
 import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
-import { MonoText } from './src/components/StyledText';
-const CustomDrawerContentComponent = (props) => (
-
-  // <Container>
-  //   <Header>
-  //     <Body>
-        <MonoText> الإعدادات </MonoText>
-  //     </Body>
-  //   </Header>
-  //   <Content>
-  //     <DrawerItems {...props} />
-  //   </Content>
-
-  // </Container>
-
-);
-
+import SettingsComponent from './src/components/SettingsComponent'
 
 const SettingsDrawer = createDrawerNavigator({
-  // For each screen that you can navigate to, create a new entry like this:
   AppNavigator: {
     screen: AppNavigator
   },
 },
   {
+    drawerWidth: 310,
     drawerPosition: 'right',
-    contentComponent: CustomDrawerContentComponent,
+    contentComponent: SettingsComponent,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
     drawerToggleRoute: 'DrawerToggle',

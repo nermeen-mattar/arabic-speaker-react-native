@@ -18,7 +18,7 @@ export default
     itemLabel: {
         fontSize: 17
       },
-    itemIcon: {
+    itemArrowIcon: {
         color: Colors.iconsColor,
         fontSize: 15
     }
