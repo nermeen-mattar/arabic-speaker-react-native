@@ -92,7 +92,6 @@ class SettingsComponent extends Component {
     render() {
         return (
         <View  style={styles.container}>
-        <View >
         <View style={styles.drawerHeader} > 
             <TouchableOpacity  style={styles.closeDrawerIcon} onPress={ () => {
               this.props.navigation.closeDrawer();
@@ -111,7 +110,8 @@ class SettingsComponent extends Component {
           { 
             item.left  ? 
             (item.left.type === 'switch' ? <Switch style={styles.switch}
-             thumbColor= {Colors.brand}/> : 
+            //  thumbColor= {Colors.brand}
+             /> : 
             <View style={{display: 'flex', flexDirection: 'row'}}>
                {
             item.left.options.map((option, index) => {
@@ -147,14 +147,11 @@ class SettingsComponent extends Component {
             
           }
         />
-
-
-         </ScrollView>
-         </View>
          <View style={styles.logo}> 
            <Image source = {require('../../assets/images/logo.png')}/>
          </View>
 
+         </ScrollView>
          </View>
         );
     }
@@ -172,10 +169,10 @@ const styles = StyleSheet.create({
 
     },
     logo: {
-      // display: 'flex',
-      marginHorizontal: 'auto',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
       marginVertical: 24,
-      textAlign: 'center'
     },
     drawerHeader: {
 
