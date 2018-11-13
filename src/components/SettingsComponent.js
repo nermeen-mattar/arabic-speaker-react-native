@@ -92,6 +92,7 @@ class SettingsComponent extends Component {
     render() {
         return (
         <View  style={styles.container}>
+        <View >
         <View style={styles.drawerHeader} > 
             <TouchableOpacity  style={styles.closeDrawerIcon} onPress={ () => {
               this.props.navigation.closeDrawer();
@@ -117,17 +118,18 @@ class SettingsComponent extends Component {
             item.left.options.map((option, index) => {
               return(
               <TouchableOpacity style={{display: 'flex', flexDirection: 'row', alignItems: 'center',
-                marginLeft:                index !== 0 ? 22: 0
+                marginLeft: index !== 0 ? 20: 0
             }} onPress= {() => {
                 this.setState({[item.left.groupName]: option})
               }}>
               <MonoText style={styles.smallFontSize}> {option} </MonoText>
             <Icon name={this.state[item.left.groupName] === option ? 'dot-circle-o' : 'circle'} 
-            style={ [{ borderRadius: 14, fontSize: 28, height: 28, width:28 },
+            size={28}
+            style={ //  [{ borderRadius: 14, fontSize: 28, height: 28, width:28 },
             (this.state[item.left.groupName] === option) ? 
-            {color: Colors.brand, borderWidth: 1, borderColor: Colors.brand } : 
-            { color: 'white', borderWidth: 1, borderColor: Colors.borderColor }
-            ]}/> 
+            {color: Colors.brand } : //  borderWidth: 1, borderColor: Colors.brand
+            { color: 'white'} //  borderWidth: 1, borderColor: Colors.borderColor 
+            }/> 
               </TouchableOpacity> 
               )
             })
@@ -147,11 +149,14 @@ class SettingsComponent extends Component {
             
           }
         />
+
+
+         </ScrollView>
+         </View>
          <View style={styles.logo}> 
            <Image source = {require('../../assets/images/logo.png')}/>
          </View>
 
-         </ScrollView>
          </View>
         );
     }
@@ -182,7 +187,7 @@ const styles = StyleSheet.create({
         height: 32,
         backgroundColor: '#f2f2f2', 
         borderRadius: 16,
-        marginTop: 18,
+        marginTop: 20,
         marginBottom: 14,
         marginLeft: 18,
         display: 'flex',
