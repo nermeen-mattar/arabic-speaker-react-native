@@ -60,6 +60,7 @@
 		9B1173E92197B9250040FC18 /* general_f_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173E82197B9250040FC18 /* general_f_1.mp3 */; };
 		9B1173F02197BD190040FC18 /* MaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EE2197BD190040FC18 /* MaleSounds */; };
 		9B1173F12197BD190040FC18 /* FemaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EF2197BD190040FC18 /* FemaleSounds */; };
+		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		9D029B8F37E2430C96810015 /* libSpeechSynthesizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -1465,6 +1466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
