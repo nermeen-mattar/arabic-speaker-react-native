@@ -84,15 +84,18 @@ export default class NewSentenceScreen extends React.Component {
   }
 
   addNewSentence = () => {
+
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
     storageInstance.getItem('sentences-'.concat(this.state.categoryName), result).then(() => {
+      result.value = result.value ? result.value : [];
       storageInstance.setItem('sentences-'.concat(this.state.categoryName), [...result.value, {label: this.state.sentence, 
       imgSrc: '../../assets/images/sentences/chat.png', selectable: true}]).then(res => {
         this.props.navigation.navigate('SentencesScreen');
       })
-      this.props.navigation.navigate('SentencesScreen');
+
+      // this.props.navigation.navigate('SentencesScreen');
     })
 
   //   const newSentence  =  [

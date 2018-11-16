@@ -29,7 +29,8 @@ export default class SentencesScreen extends React.Component {
     this.state = {
         voiceGender: Genders.female,
         title: "العبارات",
-        sentences: CategoriesSentences[categoryName] || [],
+        sentences: [],
+        //  CategoriesSentences[categoryName] || [],
         selectedSentences: [],
         selectMode: false,
         categoryName: categoryName,
@@ -40,9 +41,9 @@ export default class SentencesScreen extends React.Component {
         defaultSentences: CategoriesSentences[categoryName] || []
     };
 
-    this.initSentences();
     // this.load();
     props.navigation.addListener('willFocus', this.load)
+    this.initSentences();
   }
   static navigationOptions = {
     header: null
@@ -68,12 +69,18 @@ export default class SentencesScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader title={this.state.title + '>' +  this.state.categoryName} onNewClicked= {() => this.props.navigation.navigate('NewSentenceScreen')}
+         <CustomHeader title={this.state.title + '>' +  this.state.categoryName} onNewClicked= {() => this.props.navigation.navigate('NewSentenceScreen', 
+         {
+           categoryName: this.state.categoryName
+           })}
           onSelectClicked= {
             this.state.sentences.length > this.state.defaultSentences.length ? () =>
              this.setState({selectMode: true}) : null
           }
          />
+          {/* <MonoText style={styles.getStartedText}>
+              {this.state.test}
+            </MonoText> */}
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
@@ -88,9 +95,7 @@ export default class SentencesScreen extends React.Component {
           //     this.sentenceToggled(index)
           //  }}>
           <View>
-                       {/* <MonoText style={styles.getStartedText}>
-              {index}
-            </MonoText> */}
+                      
                <TouchableOpacity    onPress={() => {
                   this.sentenceClicked(index)
                }}>
@@ -156,24 +161,44 @@ export default class SentencesScreen extends React.Component {
     );
   }
 
+  // initSentences2 = ()  => {
+  //   const storageInstance = Storage.getInstance(); // temp 
+  //   const result = {value: 'null'};
+  //   storageInstance.getItem('sentences', result).then(res => {
+  //     if(!result.value || result.value === 'error') {
+  //       this.setState({
+  //           sentences: this.state.defaultSentences[categoryName] || [],
+  //           test: JSON.stringify(this.state.defaultSentences)
+
+  //         });
+  //         storageInstance.setItem('sentences', this.state.defaultSentences);
+  //       } else {
+  //           this.setState({
+  //               sentences: result.value[categoryName]|| [],
+  //               test: JSON.stringify(result.value)
+  //          });
+  //     }
+  //   });
+  // }
+
+
+
   initSentences = ()  => {
     const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    storageInstance.getItem('sentences', result).then(res => {
-      if(!result.value || result.value === 'error') {
+    storageInstance.getItem('sentences-'.concat(this.state.categoryName), result).then(res => {
+      if(result.value) {
         this.setState({
-            sentences: this.state.defaultSentences[categoryName] || [],
-            test: JSON.stringify(this.state.defaultSentences)
-
-          });
-          storageInstance.setItem('sentences', this.state.defaultSentences);
-        } else {
-            this.setState({
-                sentences: result.value[categoryName]|| [],
-                test: JSON.stringify(result.value)
-           });
+          sentences: result.value,
+        });
+      } else {
+        this.setState({
+          test: this.state.default === undefined ? 'undefined': 'ok',
+          sentences: this.state.defaultSentences
+        });
+        storageInstance.setItem('sentences-'.concat(this.state.categoryName), this.state.defaultSentences);
       }
-    });
+    })
   }
 
   initVoiceGender = ()  => {
@@ -190,11 +215,11 @@ export default class SentencesScreen extends React.Component {
   updateSentences = ()  => {
     const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    storageInstance.getItem('sentences', result).then(res => {
+    storageInstance.getItem('sentences-'.concat(this.state.categoryName), result).then(res => {
       if(result.value) {
         this.setState({
-          sentences: result.value[categoryName] || [],
-          test: 'update sentences'
+          sentences: result.value || [], // result.value[this.state.categoryName] 
+          // test: 'update sentences'
         });
       } 
     });
@@ -241,7 +266,7 @@ export default class SentencesScreen extends React.Component {
   removeSelectedSentences = ()  => {
     const storageInstance = Storage.getInstance(); 
     const unselectedSentences = this.state.sentences.filter(sentence => !sentence.selected);
-    storageInstance.setItem('sentences', unselectedSentences).then(res => {
+    storageInstance.setItem('sentences-'.concat(this.state.categoryName), unselectedSentences).then(res => {
         this.setState({
           sentences: unselectedSentences,
         });
