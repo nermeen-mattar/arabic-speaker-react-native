@@ -7,7 +7,7 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import SpeakingScreen from '../screens/SpeakingScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import NewCategoryScreen from '../screens/NewCategoryScreen'; 
-import SentencesScreen from '../screens/SentencesScreen'; 
+// import SentencesScreen from '../screens/SentencesScreen'; 
 import NewSentenceScreen from '../screens/NewSentenceScreen'; 
 import IconsLibrariesScreen from '../screens/IconsLibrariesScreen'; 
 import IconsScreen from '../screens/IconsScreen'; 
@@ -15,7 +15,7 @@ import IconsScreen from '../screens/IconsScreen';
 const CategoriesStack = createStackNavigator({
   CategoriesScreen: CategoriesScreen,
   NewCategoryScreen: NewCategoryScreen,
-  SentencesScreen: SentencesScreen,
+  // SentencesScreen: SentencesScreen,
   NewSentenceScreen: NewSentenceScreen,
   IconsLibrariesScreen: IconsLibrariesScreen,
   IconsScreen: IconsScreen

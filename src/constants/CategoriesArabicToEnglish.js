@@ -1,5 +1,5 @@
 export default
 {
-    'عام': 'general',
-    'تحياتي': 'greetings'
-  }
+  'المكتبات,عام': 'general',
+  'المكتبات,تحياتي': 'greetings'
+}

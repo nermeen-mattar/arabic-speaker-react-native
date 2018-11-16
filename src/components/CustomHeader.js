@@ -30,6 +30,13 @@ class CustomHeader extends Component {
             }
 
             {
+                this.props.onSecondNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSecondNewClicked}>
+            <Icon style={styles.addIcon}  name="plus-square" size={28}  color="white"/> 
+            {/* <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />      */}
+            </TouchableOpacity>   : null
+            }
+
+            {
                 this.props.onSelectClicked ? 
                 <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
                 <Icon style={styles.addIcon}  name="check-circle" size={28}  color="white"/>  

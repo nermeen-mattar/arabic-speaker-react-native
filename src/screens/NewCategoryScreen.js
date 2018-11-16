@@ -30,6 +30,7 @@ export default class NewCategoryScreen extends React.Component {
           cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
           inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد",
           categoryName: '',
+          categoryPath: props.navigation.getParam('categoryPath')
           // photos: []
         };
         props.navigation.addListener('willFocus', this.load)
@@ -120,7 +121,9 @@ ImagePicker.showImagePicker(options, (response) => {
      </ScrollView>
    </View> */}
 
-    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesScreen')}
+    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesScreen',  {
+      categoryPath: this.state.categoryPath
+    })}
       onSaveClicked = {this.addNewCategory}
     />
          <View  style={styles.inputsWrapper}> 
@@ -156,13 +159,14 @@ ImagePicker.showImagePicker(options, (response) => {
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
-    storageInstance.getItem('categories', result).then(() => {
-      storageInstance.setItem('categories', [...result.value, {label: this.state.categoryName, 
-      imgSrc: '../../assets/images/categories/chat.png', selectable: true}]).then(res => {
-        this.props.navigation.navigate('CategoriesScreen');
-      })
-      this.props.navigation.navigate('CategoriesScreen');
-    })
+    storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {    
+      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.categoryName, 
+        imgSrc: '../../assets/images/categories/chat.png', selectable: true, type: 'category'}]).then(res => {
+        this.props.navigation.navigate('CategoriesScreen',  {
+          categoryPath: this.state.categoryPath
+        });
+      });
+    });
 
   //   const newCategory  =  [
   //     { label: 'nerrro', imgSrc:  require('../../assets/images/categories/favourites.png')},

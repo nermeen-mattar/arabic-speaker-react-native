@@ -15,32 +15,42 @@ import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import { Storage } from '../classes/storage';
+import CategoriesSentences from '../constants/CategoriesSentences';
+import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
+import Genders from '../constants/Genders';
+import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
 
 export default class CategoriesScreen extends React.Component {
 
   constructor(props) {
     super();
-    // storageInstance = Storage.getInstance();
-    // storageInstance.removeItem('categories');
+    const categoryPath = props.navigation.getParam('categoryPath') || ['المكتبات'];
     this.state = {
-                title: "المكتبات",
+                title: categoryPath.join(), // test> test
+                categoryPath: categoryPath,
                 categories: [],
                 selectedCategories: [],
                 selectMode: false,
                 test: '',
-                defaultCategories: [
-                  { label: 'المفضلة', imgSrc:  require('../../assets/images/categories/favourites.png')},
-                  { label: 'تحياتي', imgSrc:  require('../../assets/images/categories/chat.png')},
-                  { label: 'عام', imgSrc:  require('../../assets/images/categories/info.png')},
-                  { label: 'السفر', imgSrc:  require('../../assets/images/categories/plane.png')},
-                  { label: 'السوق', imgSrc:  require('../../assets/images/categories/cart.png')},
-                  { label: 'العمل', imgSrc:  require('../../assets/images/categories/tools.png')},
-                  { label: 'المستشفى', imgSrc:  require('../../assets/images/categories/health.png')},
-                  { label: 'المطعم', imgSrc:  require('../../assets/images/categories/cake.png')},
-                  { label: 'المدرسة', imgSrc:  require('../../assets/images/categories/pencil.png')},
-                ]
+                defaultCategories: {
+                  المكتبات: [
+                    { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png')},
+                    { label: 'تحياتي' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png')},
+                    { label: 'عام' , type: 'category', imgSrc:  require('../../assets/images/categories/info.png')},
+                    { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png')},
+                    { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png')},
+                    { label: 'العمل' , type: 'category', imgSrc:  require('../../assets/images/categories/tools.png')},
+                    { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png')},
+                    { label: 'المطعم' , type: 'category', imgSrc:  require('../../assets/images/categories/cake.png')},
+                    { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png')},
+                  ],
+                  ...CategoriesSentences
+                }
               };
+              // storageInstance = Storage.getInstance();
+              // storageInstance.removeItem(this.state.categoryPath.join());
     this.initCategories();
+    this.initVoiceGender();
     // this.load();
     props.navigation.addListener('willFocus', this.load)
   }
@@ -49,16 +59,25 @@ export default class CategoriesScreen extends React.Component {
   };
   
   load = () => {
+    this.updateTitle();
     this.cancelSelectMode();
       // if(!this.state.selectMode) {
-        this.updateCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
+    this.initCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
         /* make it a class prop (part of state) */
       // }
 }
+
+  updateTitle = () => {
+    const categoryPath = this.props.navigation.getParam('categoryPath') || this.state.categoryPath || ['المكتبات'];
+    this.setState({
+      title: categoryPath.join('>')
+    })
+  }
   // componentDidMount() {
   // }
   render() {
   
+    const currentDefaultCategories = this.state.defaultCategories[this.state.categoryPath.join()];
     return (
       <View style={styles.container}>
         {/* <Header
@@ -67,9 +86,16 @@ export default class CategoriesScreen extends React.Component {
           centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader navigation= {this.props.navigation} title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewCategoryScreen')}
+         <CustomHeader navigation= {this.props.navigation} title={this.state.title} onNewClicked= 
+         {this.state.categoryPath.length < 4 ?  () => this.props.navigation.navigate('NewCategoryScreen', {
+          categoryPath: this.state.categoryPath
+        }): null }
+         onSecondNewClicked= 
+         {this.state.categoryPath.length > 1 ? () => this.props.navigation.navigate('NewSentenceScreen', {
+          categoryPath: this.state.categoryPath
+        }): null}
           onSelectClicked= {
-            this.state.categories.length > this.state.defaultCategories.length ? () =>
+            this.state.categories.length > (currentDefaultCategories && currentDefaultCategories.length) ? () =>
              this.setState({selectMode: true}) : null
           }
          />
@@ -156,42 +182,75 @@ export default class CategoriesScreen extends React.Component {
   initCategories = ()  => {
     const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
-    storageInstance.getItem('categories', result).then(res => {
+    storageInstance.getItem(this.state.categoryPath.join(), result).then(res => {
       if(result.value) {
         this.setState({
-          categories: result.value
+          categories: result.value,
+          test: JSON.stringify(result.value)
         });
-      } else {
+      } 
+      else { // if(this.state.defaultCategories[this.state.categoryPath.join()]) 
         this.setState({
-          categories: this.state.defaultCategories
+          categories: this.state.defaultCategories[this.state.categoryPath.join()] || [],
+          test: 'default categories'
         });
-        storageInstance.setItem('categories', this.state.defaultCategories);
+        storageInstance.setItem(this.state.categoryPath.join(), this.state.categories);
       }
     })
   }
 
-  updateCategories = ()  => {
-    const storageInstance = Storage.getInstance(); // temp 
+
+
+  // updateCategories = ()  => {
+  //   const storageInstance = Storage.getInstance(); // temp 
+  //   const result = {value: 'null'};
+  //   storageInstance.getItem(this.state.categoryPath.join(), result).then(res => {
+  //     // if(result.value) {
+  //       this.setState({
+  //         categories: result.value || []
+  //       });
+  //     // } 
+  //   })
+  // }
+
+  initVoiceGender = ()  => {
+    const storageInstance = Storage.getInstance();  
     const result = {value: 'null'};
-    storageInstance.getItem('categories', result).then(res => {
+    storageInstance.getItem('settingsValues', result).then(res => {
       if(result.value) {
         this.setState({
-          categories: result.value
+          voiceGender: result.value.voiceGender
         });
       } 
     })
   }
-
   categoryClicked(index) {
     if(this.state.selectMode) {
         this.categorySelectionToggled(index);
-    } else {
-      this.props.navigation.navigate('SentencesScreen', {
-        categoryName: this.state.categories[index].label
-      });
+    } else if(this.state.categories[index].type === 'category') {
+        this.state.categoryPath.push((this.state.categories[index].label));
+        this.load();
+      }
+      else {
+        // this.props.navigation.navigate('SentencesScreen', {
+        //   categoryName: this.state.categories[index].label,
+        //   categoryPath: this.state.categoryPath
+        // });
+        this.sentenceClicked(index);
+      }
     }
+  
+    sentenceClicked(sentenceIndex) {
+     
+      let soundPath = this.state.voiceGender === Genders.female ? "FemaleSounds/$categoryPath_f_$sentenceIndex":  "MaleSounds/$categoryPath_m_$sentenceIndex";
+  
+      soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
+      this.setState({
+        test: soundPath
+      })
+      PlaySound(soundPath);
   }
-
+  
   categorySelectionToggled(categoryIndex) {
     const categories = this.state.categories;
     categories[categoryIndex].selected = !categories[categoryIndex].selected;
@@ -226,11 +285,11 @@ export default class CategoriesScreen extends React.Component {
   removeSelectedCategories = ()  => {
     const storageInstance = new Storage();
     const unselectedCategories = this.state.categories.filter(category => !category.selected);
-    storageInstance.setItem('categories', unselectedCategories).then(res => {
+    storageInstance.setItem(this.state.categoryPath.join(), unselectedCategories).then(res => {
         this.setState({
           categories: unselectedCategories,
         });
-      // this.updateCategories();
+      // this.initCategories();
 
     });
   }

@@ -27,7 +27,9 @@ export default class NewSentenceScreen extends React.Component {
           cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
           sentence: '',
-          categoryName: props.navigation.getParam('categoryName')
+          // categoryName: props.navigation.getParam('categoryName'),
+          categoryPath: props.navigation.getParam('categoryPath')
+
         };
         props.navigation.addListener('willFocus', this.load)
       }
@@ -48,7 +50,10 @@ export default class NewSentenceScreen extends React.Component {
     return (
       <View>
 
-    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('SentencesScreen')}
+    <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesScreen', 
+    {
+      categoryPath: this.state.categoryPath
+    })}
       onSaveClicked = {this.addNewSentence}
     />
          <View  style={styles.inputsWrapper}> 
@@ -86,13 +91,15 @@ export default class NewSentenceScreen extends React.Component {
   addNewSentence = () => {
 
     const storageInstance = Storage.getInstance();
-    // storageInstance.setItem('storageInstance', 'nermeen');
+    // storageInstance.setItem('storageInstance', 'nermeen');categ
     const result = {value: 'null'};
-    storageInstance.getItem('sentences-'.concat(this.state.categoryName), result).then(() => {
+    storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
       result.value = result.value ? result.value : [];
-      storageInstance.setItem('sentences-'.concat(this.state.categoryName), [...result.value, {label: this.state.sentence, 
+      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.sentence, 
       imgSrc: '../../assets/images/sentences/chat.png', selectable: true}]).then(res => {
-        this.props.navigation.navigate('SentencesScreen');
+        this.props.navigation.navigate('CategoriesScreen',  {
+          categoryPath: this.state.categoryPath
+        });
       })
 
       // this.props.navigation.navigate('SentencesScreen');
@@ -101,7 +108,7 @@ export default class NewSentenceScreen extends React.Component {
   //   const newSentence  =  [
   //     { label: 'nerrro', imgSrc:  require('../../assets/images/sentences/favourites.png')},
   // ];
-  //   storageInstance.setItem('sentences-'.concat(this.state.categoryName), newSentence).then(res => {
+  //   storageInstance.setItem(this.state.categoryPath.join(), newSentence).then(res => {
   //     this.setState({
   //       title: 'yeees',
   //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/sentences/chat.png')},
