@@ -60,6 +60,7 @@
 		9B1173E92197B9250040FC18 /* general_f_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173E82197B9250040FC18 /* general_f_1.mp3 */; };
 		9B1173F02197BD190040FC18 /* MaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EE2197BD190040FC18 /* MaleSounds */; };
 		9B1173F12197BD190040FC18 /* FemaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EF2197BD190040FC18 /* FemaleSounds */; };
+		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		9D029B8F37E2430C96810015 /* libSpeechSynthesizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -514,13 +515,13 @@
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				337271B75D0440AB93B323EC /* libTextToSpeech.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				782F46A2C3B141FC98F4E076 /* libRNImagePicker.a in Frameworks */,
 				3770B451E137403796CDE574 /* libRNFS.a in Frameworks */,
 				3E061446E0A04F11A98EA211 /* libRCTImageResizer.a in Frameworks */,
 				9D029B8F37E2430C96810015 /* libSpeechSynthesizer.a in Frameworks */,
-				337271B75D0440AB93B323EC /* libTextToSpeech.a in Frameworks */,
 				0EEAE907D83348569885DD63 /* libRNVectorIcons.a in Frameworks */,
 				8B7A277B2C65422D89BD78AA /* libRNSoundRecorder.a in Frameworks */,
 				094D2572E5764095848757E1 /* libPlaySound.a in Frameworks */,
@@ -1465,6 +1466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1645,6 +1647,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = RNY3Q55X7F;
@@ -1661,6 +1664,10 @@
 				);
 				INFOPLIST_FILE = textApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1676,6 +1683,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RNY3Q55X7F;
 				HEADER_SEARCH_PATHS = (
@@ -1691,6 +1699,10 @@
 				);
 				INFOPLIST_FILE = textApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

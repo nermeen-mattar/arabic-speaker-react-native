@@ -18,6 +18,7 @@ import { Storage } from '../classes/storage';
 import CategoriesSentences from '../constants/CategoriesSentences';
 import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
+import Genders from '../constants/Genders';
 // import soundfile from'../../assets/sounds/FemaleSounds/general_f_1.mp3'
 
 export default class SentencesScreen extends React.Component {
@@ -26,6 +27,7 @@ export default class SentencesScreen extends React.Component {
     super();
     const categoryName = props.navigation.getParam('categoryName');
     this.state = {
+        voiceGender: Genders.female,
         title: "العبارات",
         sentences: CategoriesSentences[categoryName] || [],
         selectedSentences: [],
@@ -52,6 +54,7 @@ export default class SentencesScreen extends React.Component {
         this.updateSentences(); /* didn't work in constructor because comp doesn't get killed ! solve caching
         /* make it a class prop (part of state) */
       // }
+      this.initVoiceGender();
 }
   // componentDidMount() {
   // }
@@ -173,7 +176,17 @@ export default class SentencesScreen extends React.Component {
     });
   }
 
-
+  initVoiceGender = ()  => {
+    const storageInstance = Storage.getInstance();  
+    const result = {value: 'null'};
+    storageInstance.getItem('settingsValues', result).then(res => {
+      if(result.value) {
+        this.setState({
+          voiceGender: result.value.voiceGender
+        });
+      } 
+    })
+  }
   updateSentences = ()  => {
     const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
@@ -184,13 +197,14 @@ export default class SentencesScreen extends React.Component {
           test: 'update sentences'
         });
       } 
-    })
+    });
   }
 
 
   sentenceClicked(sentenceIndex) {
-      
-    PlaySound('MaleSounds/'.concat(CategoriesArabicToEnglish[this.state.categoryName].concat('_m_')).concat(sentenceIndex + 1));
+      let soundPath = this.state.voiceGender === Genders.female ? "FemaleSounds/$categoryName_f_$sentenceIndex":  "MaleSounds/$categoryName_m_$sentenceIndex";
+      soundPath = soundPath.replace('$categoryName', CategoriesArabicToEnglish[this.state.categoryName]).replace('$sentenceIndex', sentenceIndex + 1);
+      PlaySound(soundPath);
   }
 
   sentenceToggled(sentenceIndex) {
