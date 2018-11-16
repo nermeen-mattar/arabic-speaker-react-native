@@ -14,13 +14,14 @@ import { MonoText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomListStyle, { CustomListItemSyle } from "../styles/CustomListStyle";
 import { Storage } from '../classes/storage';
+import Genders from "../constants/Genders";
 
 class SettingsComponent extends Component {
     constructor (props) {
         super();
         this.state = {
             settingsValues: {
-              voiceGender: 'إمرأة',
+              voiceGender: Genders.female,
               useWithSiri: true, 
               helpImproveApp: true, 
             },
@@ -38,7 +39,7 @@ class SettingsComponent extends Component {
         left: {
           //   field: {
           type: 'radio',
-          options: ['إمرأة',  'رجل'],
+          options: [Genders.female,  Genders.male],
           variableName: 'voiceGender'
           //   }
         }
