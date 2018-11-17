@@ -57,9 +57,9 @@
 		8947E4946ACF45949A7BDFBA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4592F9581AB4B59AA7D66B9 /* FontAwesome5_Brands.ttf */; };
 		8B7A277B2C65422D89BD78AA /* libRNSoundRecorder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */; };
 		911346D5CD674F0BAADC013E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFB1F1D6BA5343829DB16778 /* SimpleLineIcons.ttf */; };
-		9B1173E92197B9250040FC18 /* general_f_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173E82197B9250040FC18 /* general_f_1.mp3 */; };
 		9B1173F02197BD190040FC18 /* MaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EE2197BD190040FC18 /* MaleSounds */; };
 		9B1173F12197BD190040FC18 /* FemaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EF2197BD190040FC18 /* FemaleSounds */; };
+		9B1453F921A090A300CB4265 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1453F821A090A300CB4265 /* alert.mp3 */; };
 		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		9D029B8F37E2430C96810015 /* libSpeechSynthesizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
@@ -467,9 +467,9 @@
 		8604EEF0D5F54880A48549A7 /* SpeechSynthesizer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SpeechSynthesizer.xcodeproj; path = "../node_modules/react-native-speech/SpeechSynthesizer.xcodeproj"; sourceTree = "<group>"; };
 		8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSpeechSynthesizer.a; sourceTree = "<group>"; };
 		8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSoundRecorder.a; sourceTree = "<group>"; };
-		9B1173E82197B9250040FC18 /* general_f_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = general_f_1.mp3; path = ../assets/sounds/FemaleSounds/general_f_1.mp3; sourceTree = "<group>"; };
 		9B1173EE2197BD190040FC18 /* MaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MaleSounds; path = ../assets/sounds/MaleSounds; sourceTree = "<group>"; };
 		9B1173EF2197BD190040FC18 /* FemaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FemaleSounds; path = ../assets/sounds/FemaleSounds; sourceTree = "<group>"; };
+		9B1453F821A090A300CB4265 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../../../../Downloads/alert.mp3; sourceTree = "<group>"; };
 		9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		ACE99AEA767842D8B5A4C513 /* PlaySound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = PlaySound.xcodeproj; path = "../node_modules/react-native-play-sound/PlaySound/PlaySound.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -854,9 +854,9 @@
 		BAA047DFEDCC45BB9C2BBD34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9B1453F821A090A300CB4265 /* alert.mp3 */,
 				9B1173EF2197BD190040FC18 /* FemaleSounds */,
 				9B1173EE2197BD190040FC18 /* MaleSounds */,
-				9B1173E82197B9250040FC18 /* general_f_1.mp3 */,
 				23B9B72D0ED34B7C80EF70F9 /* fontawesome-webfont.ttf */,
 				31DCD3E45EC141DAB06E7831 /* SF-UI-Text-Regular.otf */,
 				3D8C344AF2AD4F32B5EE588E /* Hacen Casablanca Light_0.ttf */,
@@ -1437,12 +1437,12 @@
 				83AEAEF69FEE485B9697CEC7 /* fontawesome-webfont.ttf in Resources */,
 				F03BA966CCEE42A08A2C0E84 /* Hacen Casablanca Light_0.ttf in Resources */,
 				EA341DBEA2DA49DDA8B55E94 /* SF-UI-Text-Regular.otf in Resources */,
-				9B1173E92197B9250040FC18 /* general_f_1.mp3 in Resources */,
 				19C94594CA8540C0859AB26D /* SpaceMono-Regular.ttf in Resources */,
 				D5B2C8A8DCC6478CB5D93D61 /* Tajawal-Bold.ttf in Resources */,
 				A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */,
 				28BAC1380CC142AB867C29B2 /* Tajawal-Regular.ttf in Resources */,
 				C53E24FE5C64477A8F3682A8 /* AntDesign.ttf in Resources */,
+				9B1453F921A090A300CB4265 /* alert.mp3 in Resources */,
 				CB63EF8984164832B4FA26E1 /* Entypo.ttf in Resources */,
 				E752859A3971440690810741 /* EvilIcons.ttf in Resources */,
 				F676591C25CF41B2878A3611 /* Feather.ttf in Resources */,

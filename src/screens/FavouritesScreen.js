@@ -6,13 +6,16 @@ import {
   ScrollView,
   StyleSheet,
   View,
+  TouchableOpacity
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import { Storage } from '../classes/storage';
+import { TextToSpeach } from '../classes/text-to-speach';
 
 export default class FavouritesScreen extends React.Component {
 
@@ -20,71 +23,84 @@ export default class FavouritesScreen extends React.Component {
     super();
     this.state = {
       title: "المفضلة",
-      favourites: []
+      favourites: [],
+      selectMode: false
     };
+    this.initFavourites(); 
+    props.navigation.addListener('willFocus', this.load)
+  }
+
+  load = () => {
+    this.cancelSelectMode();
+    this.initFavourites(); 
   }
   static navigationOptions = {
     header: null
   };
   
   render() {
-    this.initFavourites(); /* didn't work in constructor because comp doesn't get killed ! solve caching
-    /* make it a class prop (part of state) */
     return (
       <View style={styles.container}>
-        {/* <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent= {<CustomHeader navigation = {this.props.navigation} navigation = {this.props.navigation} navigation = {this.props.navigation} navigation = {this.props.navigation} title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-         /> */}
-         <CustomHeader navigation = {this.props.navigation} title={this.state.title} onNewClicked= {() => this.props.navigation.navigate('NewFavouriteScreen')}/>
+         <CustomHeader navigation = {this.props.navigation} title={this.state.title}
+               onSelectClicked= {
+                this.state.favourites.length ? () =>
+                 this.setState({selectMode: true}) : null
+              } 
+         />
+
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.cardsContainer}>
+         {
+                this.state.favourites.length ?  
+                <ScrollView >
+                <View style={styles.cardsContainer}>
+                {
+                  this.state.favourites.map((favourite, index) => {
+                    return(
+                  <TouchableOpacity    onPress={() => {
+                    this.favouriteClicked(index)
+                 }}>
+                    <Card key ={index} cardInfo = {favourite} selectMode= {this.state.selectMode}
+                      selected = {favourite.selected} 
+                    />
+                    </TouchableOpacity>
+                    );
+                  })
+                }
+                </View>
+              </ScrollView> : 
+
+                // empty state
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center' , flex: 1}}> 
+                 <View > 
+                 <Icon  style={{textAlign: 'center'}} name="star" size={86} color="#D6D6D6"/> 
+
+                 <MonoText style={{fontSize: 17 , color:"#9B9B9B", textAlign: 'center'}}>  لا يوجد مفضلات الآن</MonoText>
+                 </View>
+                  </View>
+
+         }
           {
-            this.state.favourites.map((favourite, index) => {
-              return(
-            //     <View key ={index}>
-            // <Text style={styles.getStartedText}>
-            //   {favourite.label}
-            // </Text>
-            //  </View>
-              <Card key ={index} cardInfo = {{label: favourite}}/>
-              // <MonoText> {favourite} </MonoText>
-              );
-            })
-          }
-          </View>
+         this.state.selectMode ? 
+         <View  style={styles.buttonsWrapper} >
+         <TouchableOpacity>
+           <MonoText onPress={() => {
+             this.cancelSelectMode();
+               }}>
+           الغاء
+             </MonoText>
+             
+         </TouchableOpacity>
+         <TouchableOpacity  onPress={() => {
+              this.removeSelectedFavourites()
+            }}>
+         <MonoText>
+           حذف
+             </MonoText>
 
-          {/* <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
+         </TouchableOpacity>
+         </View> : null
+       }
 
-            <MonoText style={styles.getStartedText}>Get started by nermeen</MonoText>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/FavouritesScreen.js</MonoText>
-            </View>
-
-            <MonoText style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </MonoText>
-          </View> */}
-
-          {/* <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <MonoText style={styles.helpLinkText}>Help, it didn’t automatically reload!</MonoText>
-            </TouchableOpacity>
-          </View> */}
-        </ScrollView>
-
-        {/* <View style={styles.tabBarInfoContainer}>
-          <MonoText style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</MonoText>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View> */}
       </View>
     );
   }
@@ -95,18 +111,53 @@ export default class FavouritesScreen extends React.Component {
     storageInstance.getItem('favourites', result).then(res => {
       if(result.value) {
         this.setState({
-          favourites: result.value
+          favourites: result.value.map(favourite => {return {label: favourite, selectable: true}})
         });
-      } else {
-        this.setState({
-          favourites: defaultFavourites
-        });
-        storageInstance.setItem('favourites', defaultFavourites);
       }
     })
   }
 
+  favouriteClicked(favouriteIndex) {
+    if(this.state.selectMode) {
+      this.favouriteSelectionToggled(favouriteIndex);
+   } 
+    else {
+      TextToSpeach.getInstance().speak(this.state.favourites[favouriteIndex].label);
+    }
+  }
+
+  favouriteSelectionToggled(favouriteIndex) {
+    const favourites = this.state.favourites;
+    favourites[favouriteIndex].selected = !favourites[favouriteIndex].selected;
+    this.setState({
+      favourites:  favourites
+    });
+  }
+
+
+  cancelSelectMode = () => {
+    const favourites = this.state.favourites;
+    favourites.map(favourite => favourite.selected = false);
+    this.setState({
+      selectMode: false,
+      favourites: favourites
+    });
+  }; 
+
+  removeSelectedFavourites = ()  => {
+    const storageInstance = new Storage();
+    const unselectedFavourites = this.state.favourites.filter(favourite => !favourite.selected).map(favourite => favourite.label);
+    storageInstance.setItem('favourites', unselectedFavourites).then(res => {
+        this.setState({
+          favourites: unselectedFavourites,
+        });
+        this.cancelSelectMode();
+    });
+  }
 }
+
+
+
 
 const styles = StyleSheet.create({
   container: {

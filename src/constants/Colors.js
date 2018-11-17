@@ -16,5 +16,6 @@ export default {
   primary: '#fff',
   textSecondary: '#C6C6C6',
   borderColor: '#B7B7B7',
-  iconsColor: '#AFAFAF'
+  iconsColor: '#AFAFAF',
+  grayFontColor: '#A1A1A1'
 };

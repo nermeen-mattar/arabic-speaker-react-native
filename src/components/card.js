@@ -10,6 +10,7 @@ import Spacings from '../constants/Spacings';
 import Colors from '../constants/Colors';
 import { MonoText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import commonStyles from '../styles/commonStyles';
 
 export class Card extends React.Component {
   constructor (props) {
@@ -31,7 +32,7 @@ export class Card extends React.Component {
   
     render() {
       return (
-        <View style={styles.container} >
+        <View style={[styles.container, commonStyles.shadow]} >
           {/* <CheckBox
           checked={this.state.checked}
         /> */}
@@ -66,7 +67,6 @@ export class Card extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
-      // flex: 1,
       display: 'flex',
       // flexDirection: 'column',
       alignItems: 'center',

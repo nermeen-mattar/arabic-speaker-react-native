@@ -65,7 +65,7 @@ export default class CategoriesScreen extends React.Component {
     this.initCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
         /* make it a class prop (part of state) */
       // }
-}
+    }
 
   updateTitle = () => {
     const categoryPath = this.props.navigation.getParam('categoryPath') || this.state.categoryPath || ['المكتبات'];
@@ -80,12 +80,6 @@ export default class CategoriesScreen extends React.Component {
     const currentDefaultCategories = this.state.defaultCategories[this.state.categoryPath.join()];
     return (
       <View style={styles.container}>
-        {/* <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent= {<CustomHeader title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-         /> */}
          <CustomHeader navigation= {this.props.navigation} title={this.state.title} onNewClicked= 
          {this.state.categoryPath.length < 4 ?  () => this.props.navigation.navigate('NewCategoryScreen', {
           categoryPath: this.state.categoryPath
@@ -100,7 +94,7 @@ export default class CategoriesScreen extends React.Component {
           }
          />
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView >
 
           <View style={styles.cardsContainer}>
           {
@@ -128,34 +122,7 @@ export default class CategoriesScreen extends React.Component {
           }
           </View>
 
-            <MonoText>{this.state.test}</MonoText>
-          {/* <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/CategoriesScreen.js</MonoText>
-            </View>
-
-            <MonoText style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </MonoText>
-          </View> */}
-
-          {/* <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <MonoText style={styles.helpLinkText}>Help, it didn’t automatically reload!</MonoText>
-            </TouchableOpacity>
-          </View> */}
         </ScrollView>
-
-        {/* <View style={styles.tabBarInfoContainer}>
-          <MonoText style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</MonoText>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View> */}
        {
          this.state.selectMode ? 
          <View  style={styles.buttonsWrapper} >
@@ -279,8 +246,7 @@ export default class CategoriesScreen extends React.Component {
         this.setState({
           categories: unselectedCategories,
         });
-      // this.initCategories();
-
+        this.cancelSelectMode();
     });
   }
 

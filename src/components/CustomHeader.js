@@ -91,17 +91,19 @@ export default CustomHeader;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.brand,
-        height: 116
+        // height: 116
     },
     title : {
+        height: 47,
         textAlign: 'right',
         color: Colors.primary,
         fontSize: 30,
         marginRight: 13
       },
 iconsWrapper: {
-      marginTop: 36,
-      marginBottom: 12,
+    height: 69,
+      paddingTop: 31,
+      paddingBottom: 12,
       marginRight: 17,
       flexDirection: 'row',
       justifyContent: 'space-between'
