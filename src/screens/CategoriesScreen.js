@@ -50,7 +50,7 @@ export default class CategoriesScreen extends React.Component {
               // storageInstance = Storage.getInstance();
               // storageInstance.removeItem(this.state.categoryPath.join());
     this.initCategories();
-    this.initVoiceGender();
+    // this.initVoiceGender();
     // this.load();
     props.navigation.addListener('willFocus', this.load)
   }
@@ -213,17 +213,7 @@ export default class CategoriesScreen extends React.Component {
   //   })
   // }
 
-  initVoiceGender = ()  => {
-    const storageInstance = Storage.getInstance();  
-    const result = {value: 'null'};
-    storageInstance.getItem('settingsValues', result).then(res => {
-      if(result.value) {
-        this.setState({
-          voiceGender: result.value.voiceGender
-        });
-      } 
-    })
-  }
+  
   categoryClicked(index) {
     if(this.state.selectMode) {
         this.categorySelectionToggled(index);
@@ -240,16 +230,16 @@ export default class CategoriesScreen extends React.Component {
       }
     }
   
-    sentenceClicked(sentenceIndex) {
-     
-      let soundPath = this.state.voiceGender === Genders.female ? "FemaleSounds/$categoryPath_f_$sentenceIndex":  "MaleSounds/$categoryPath_m_$sentenceIndex";
-  
-      soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
-      this.setState({
-        test: soundPath
-      })
-      PlaySound(soundPath);
-  }
+    sentenceClicked = (sentenceIndex)  => {
+      const storageInstance = Storage.getInstance();  
+      const result = {value: 'null'};
+      storageInstance.getItem('settingsValues', result).then(res => {
+          const voiceGender = result.value ? result.value.voiceGender : Genders.female;
+          let soundPath = voiceGender === Genders.female ? "FemaleSounds/$categoryPath_f_$sentenceIndex":  "MaleSounds/$categoryPath_m_$sentenceIndex";
+          soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
+          PlaySound(soundPath);
+      });
+    }
   
   categorySelectionToggled(categoryIndex) {
     const categories = this.state.categories;
