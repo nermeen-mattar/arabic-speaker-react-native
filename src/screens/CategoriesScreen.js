@@ -19,6 +19,7 @@ import CategoriesSentences from '../constants/CategoriesSentences';
 import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
 import Genders from '../constants/Genders';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
+import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 
 export default class CategoriesScreen extends React.Component {
 
@@ -143,6 +144,10 @@ export default class CategoriesScreen extends React.Component {
          </TouchableOpacity>
          </View> : null
        }
+<ConfirmDeleteDialog> </ConfirmDeleteDialog>  
+       {
+         this.state.showConfirmDialog ? <ConfirmDeleteDialog> </ConfirmDeleteDialog> : null
+       }
       </View>
     );
   }
@@ -241,6 +246,9 @@ export default class CategoriesScreen extends React.Component {
   }; 
 
   removeSelectedCategories = ()  => {
+    this.setState({
+      showConfirmDialog: true
+    });
     const storageInstance = new Storage();
     const unselectedCategories = this.state.categories.filter(category => !category.selected);
     storageInstance.setItem(this.state.categoryPath.join(), unselectedCategories).then(res => {

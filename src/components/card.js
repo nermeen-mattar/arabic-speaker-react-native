@@ -16,30 +16,28 @@ export class Card extends React.Component {
   constructor (props) {
     super();
     this.state = {
-        // age: props.initialAge,
-        // status: 0
+
         cardInfo: props.cardInfo
     };
   }
 
-  onMakeOlder() {
-    this.setState({
-        age: this.state.age + 3
-    });
-}
 
 
   
     render() {
+      const isCardSelectable = this.props.selectMode && this.props.cardInfo.selectable
+      const isCardSelected = isCardSelectable && this.props.cardInfo.selected;
       return (
-        <View style={[styles.container, commonStyles.shadow]} >
+        <View style={[styles.container, commonStyles.shadow, {backgroundColor: isCardSelected ? Colors.brand: Colors.primary} ]} >
           {/* <CheckBox
           checked={this.state.checked}
         /> */}
           {/* <View  style={styles.selectIconWrapper} > */}
           { 
-            this.props.selectMode && this.props.cardInfo.selectable ? <Icon
-                style={styles.selectIcon} name={this.props.cardInfo.selected ? "check-circle": "circle-thin"} size={30} /> : null
+            isCardSelectable ? 
+              (isCardSelected ? 
+              <Icon style={[styles.selectIcon, styles.topRightIcon]}name="check-circle" size={24} /> : 
+              <Icon style={[styles.unselectIcon, styles.topRightIcon]}  name="circle-thin" size={24} /> ) : null
           }
            {/* <Icon  style={styles.unSelectIcon} name="circle-thin" size={30} /> */}
 
@@ -54,13 +52,9 @@ export class Card extends React.Component {
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-          {/* <Text>{this.props.name}</Text> */}
-          <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
-          {/* <Button   onPress={() => {
-       this.setState({
-        age: this.state.age + 5 });
-        }}> Click me</Button> */}
-            </View>
+          <MonoText style={[styles.cardLabel, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
+  
+        </View>
 
         </View>
       );
@@ -76,16 +70,15 @@ export class Card extends React.Component {
       alignItems: 'center',
       width: Spacings.cardWidth,
       height: Spacings.cardHeight,
-      backgroundColor: Colors.primary,
+      // backgroundColor: Colors.primary,
       marginHorizontal: 4.5,
       marginVertical: 3.5,
       borderRadius: 10 /* **N** */
       // marginBottom: 4,
     },
-
     cardImg: {
       marginTop: 24,
-      marginBottom: 14 
+      marginBottom: 14
     },
     cardLabel: {
       fontWeight: 'bold',
@@ -96,14 +89,18 @@ export class Card extends React.Component {
     //   justifyContent: 'flex-end',
     //   textAlign: 'right',
     // },
+    topRightIcon: {
+      position:'absolute',
+      right:0,
+      top: 0
+    },
     selectIcon: {
       // width:16,
       // height: 16,
-      position:'absolute',
-      top: 0,
-      right:0,
-      fontSize: 25,
-      color: Colors.brand
+      color: Colors.primary
+    },
+    unselectIcon: {
+      color:'#D0D0D0'
     }
   });
   

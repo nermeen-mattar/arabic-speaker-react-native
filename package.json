@@ -10,6 +10,7 @@
     "crypto-js": "^3.1.9-1",
     "react": "16.5.0",
     "react-native": "0.57.1",
+    "react-native-dialog": "^5.4.0",
     "react-native-fontawesome": "^5.7.0",
     "react-native-fs": "^2.12.1",
     "react-native-image-picker": "^0.27.1",
