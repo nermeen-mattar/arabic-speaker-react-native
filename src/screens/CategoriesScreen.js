@@ -20,6 +20,7 @@ import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'rea
 import Genders from '../constants/Genders';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
+import DeleteAndCancel from '../components/DeleteAndCancel';
 
 export default class CategoriesScreen extends React.Component {
 
@@ -111,14 +112,11 @@ export default class CategoriesScreen extends React.Component {
             <TouchableOpacity    onPress={() => {
                   this.categoryClicked(index)
                }}>
-      
               <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
-                selected = {category.selected} // this.state.selectedCategories.includes(category)
-             
-                  // onCardToggeled= {() =>  this.categoryToggled(index)}
-                 
+                selected = {category.selected} // this.state.selectedCategories.includes(category) 
+                  // onCardToggeled= {() =>  this.categoryToggled(index)}     
               />
-                      </TouchableOpacity>
+             </TouchableOpacity>
               );
             })
           }
@@ -126,24 +124,10 @@ export default class CategoriesScreen extends React.Component {
 
         </ScrollView>
        {
-         this.state.selectMode ? 
-         <View  style={styles.buttonsWrapper} >
-         <TouchableOpacity>
-           <MonoText style={styles.button}  onPress={() => {
-             this.cancelSelectMode();
-               }}>
-           الغاء
-             </MonoText>
-         </TouchableOpacity>
-         <MonoText style={styles.verticalDivider}> </MonoText>
-         <TouchableOpacity  onPress={() => {
-              this.attempToRemoveSelectedCategories()
-            }}>
-         <MonoText style={styles.button} >
-           حذف
-             </MonoText>
-         </TouchableOpacity>
-         </View> : null
+         this.state.selectMode ?
+          <DeleteAndCancel 
+          onCancelClicked = {() => this.cancelSelectMode()}
+          onDeleteClicked = {() => this.attempToRemoveSelectedCategories()}> </DeleteAndCancel>  : null
        }
        {
          this.state.showConfirmDialog ? <ConfirmDeleteDialog  
@@ -155,7 +139,7 @@ export default class CategoriesScreen extends React.Component {
           this.cancelRemoveCategories();
         }}> </ConfirmDeleteDialog> : null
        }
-      </View>
+            </View>
     );
   }
 
@@ -324,25 +308,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
-  buttonsWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#FDA50F',
-    paddingVertical: 20
-  }, 
-  verticalDivider: {
-    width: 1,
-    height: 15,
-    backgroundColor:'#B17611',
 
-  },
-  button: {
-    textAlign: 'center',
-    color: 'white',
-    flex: 1
 
-  },
   // welcomeImage: {
   //   resizeMode: 'contain',
   // },
