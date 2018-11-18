@@ -24,7 +24,7 @@ export default class NewSentenceScreen extends React.Component {
         super();
         this.state = {
           title: "إضافة عبارة جديدة",
-          cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+          cardInfo: { label: 'ارفق صورة'},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
           sentence: '',
           // categoryName: props.navigation.getParam('categoryName'),
@@ -95,8 +95,7 @@ export default class NewSentenceScreen extends React.Component {
     const result = {value: 'null'};
     storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
       result.value = result.value ? result.value : [];
-      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.sentence, 
-      imgSrc: '../../assets/images/sentences/chat.png', selectable: true}]).then(res => {
+      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.sentence, selectable: true}]).then(res => {
         this.props.navigation.navigate('CategoriesScreen',  {
           categoryPath: this.state.categoryPath
         });
