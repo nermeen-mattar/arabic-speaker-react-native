@@ -29,8 +29,12 @@ class ConfirmDeleteDialog extends Component {
             <MonoText style={styles.itemToDelete}> {this.props.itemToDelete} </MonoText>
             </MonoText>
               </Dialog.Description >
-              <Dialog.Button  style={{ color:  '#A0A0A0'}}  label="الغاء" />
-              <Dialog.Button  style={{ color:  Colors.errorText}} label="حذف" />  
+              <Dialog.Button  style={{ color:  '#A0A0A0'}}  label="الغاء"
+               onPress = {this.props.onCancel}
+              />
+              <Dialog.Button  style={{ color:  Colors.errorText}} label="حذف"
+                    onPress = {this.props.onConfirm}
+              />  
             </Dialog.Container>
         );
     }

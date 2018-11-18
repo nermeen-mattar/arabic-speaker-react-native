@@ -33,6 +33,7 @@ export default class CategoriesScreen extends React.Component {
                 selectedCategories: [],
                 selectMode: false,
                 test: '',
+                showConfirmDialog: false,
                 defaultCategories: {
                   المكتبات: [
                     { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png')},
@@ -136,7 +137,7 @@ export default class CategoriesScreen extends React.Component {
          </TouchableOpacity>
          <MonoText style={styles.verticalDivider}> </MonoText>
          <TouchableOpacity  onPress={() => {
-              this.removeSelectedCategories()
+              this.attempToRemoveSelectedCategories()
             }}>
          <MonoText style={styles.button} >
            حذف
@@ -144,9 +145,15 @@ export default class CategoriesScreen extends React.Component {
          </TouchableOpacity>
          </View> : null
        }
-<ConfirmDeleteDialog> </ConfirmDeleteDialog>  
        {
-         this.state.showConfirmDialog ? <ConfirmDeleteDialog> </ConfirmDeleteDialog> : null
+         this.state.showConfirmDialog ? <ConfirmDeleteDialog  
+         onConfirm={() => {
+          this.cancelRemoveCategories();
+           this.removeSelectedCategories();
+         }}
+         onCancel={() => {
+          this.cancelRemoveCategories();
+        }}> </ConfirmDeleteDialog> : null
        }
       </View>
     );
@@ -245,10 +252,19 @@ export default class CategoriesScreen extends React.Component {
     });
   }; 
 
-  removeSelectedCategories = ()  => {
+  cancelRemoveCategories() {
+    this.setState({
+      showConfirmDialog: false
+    });
+  }
+
+  attempToRemoveSelectedCategories() {
     this.setState({
       showConfirmDialog: true
     });
+  }
+
+  removeSelectedCategories = ()  => {
     const storageInstance = new Storage();
     const unselectedCategories = this.state.categories.filter(category => !category.selected);
     storageInstance.setItem(this.state.categoryPath.join(), unselectedCategories).then(res => {
