@@ -49,7 +49,7 @@ class CustomHeader extends Component {
             </View>
             {
                 this.props.onBackClicked ? 
-                <TouchableOpacity  style={styles.backWrapper} onPress={() =>  this.props.navigation.goBack()} > 
+                <TouchableOpacity  style={styles.backWrapper} onPress={ this.props.onBackClicked} > 
                     <MonoText  style={styles.smallText}> للخلف </MonoText> 
                 <Icon name="chevron-right" size={28} color="white" />
                 </TouchableOpacity> :
@@ -70,14 +70,16 @@ class CustomHeader extends Component {
                   <View style={{flexDirection: 'row-reverse'}}>
                   {/* , alignItems: 'center' to fix arrow */}
                       <TouchableOpacity
-                  onPress={() =>  this.props.navigation.navigate( {
-                      routeName: 'CategoriesScreen',
-                      params: {
-                          categoryPath: this.props.title.slice(0, index + 1)
-                      },
-                      key: 'CategoriesScreen' + index
-
-                  })} >
+                      activeOpacity = {   this.props.onTitleSectionClicked ? 0.2 : 1}
+                  onPress={
+                    //   () =>  this.props.navigation.navigate( {
+                    //   routeName: 'CategoriesScreen',
+                    //   params: {
+                    //       categoryPath: this.props.title.slice(0, index + 1)
+                    //   },
+                    //   key: 'CategoriesScreen' + index })
+                        this.props.onTitleSectionClicked ? ()=> {this.props.onTitleSectionClicked(index)} : null
+                      } >
               <MonoText style={styles.title}>
                 {titleSection}
                 </MonoText>

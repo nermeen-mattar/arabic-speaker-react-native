@@ -90,14 +90,19 @@ export default class CategoriesScreen extends React.Component {
          {this.state.categoryPath.length > 1 ? () => this.props.navigation.navigate('NewSentenceScreen', {
           categoryPath: this.state.categoryPath
         }): null}
-        // onBackClicked = {this.state.categoryPath.length > 1 ? () => this.props.navigation.navigate(     
+        onTitleSectionClicked = {
+          this.state.categoryPath.length > 1 ? (sectionIndex) => this.moveToCategoryLevel(sectionIndex) : null
+        }
+        onBackClicked = {this.state.categoryPath.length > 1 ? () => this.moveToCategoryLevel(-2) : null}
+        //    this.props.navigation.navigate(     
         //   {
         //     routeName: 'CategoriesScreen',
         //     params: {
         //         categoryPath:  this.state.categoryPath.slice(0, -1)
         //     },
         //     key: 'CategoriesScreen'.concat(this.state.categoryPath.slice(0, -1).length)
-        // }): null}
+        // })
+
           onSelectClicked= {
             this.state.categories.length >  currentDefaultCategories.length ? () =>
              this.setState({selectMode: true}) : null
@@ -166,13 +171,13 @@ export default class CategoriesScreen extends React.Component {
       if(result.value) {
         this.setState({
           categories: result.value,
-          test: JSON.stringify(result.value)
+          // test: JSON.stringify(result.value)
         });
       } 
       else { // if(this.state.defaultCategories[this.state.categoryPath.join()]) 
         this.setState({
           categories: this.state.defaultCategories[this.state.categoryPath.join()] || [],
-          test: 'default categories'
+          // test: 'default categories'
         });
         storageInstance.setItem(this.state.categoryPath.join(), this.state.categories);
       }
@@ -193,6 +198,14 @@ export default class CategoriesScreen extends React.Component {
   //   })
   // }
 
+  moveToCategoryLevel(sectionIndex) {         
+    this.setState({categoryPath: this.state.categoryPath.slice(0, sectionIndex + 1)
+    });
+    setTimeout(() => {
+      this.load()
+    }, 5);
+  }
+
   
   categoryClicked(index) {
     if(this.state.selectMode) {
@@ -211,6 +224,7 @@ export default class CategoriesScreen extends React.Component {
     }
   
     sentenceClicked = (sentenceIndex)  => {
+      // StopSound();
       const storageInstance = Storage.getInstance();  
       const result = {value: 'null'};
       storageInstance.getItem('settingsValues', result).then(res => {

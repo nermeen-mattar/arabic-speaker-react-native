@@ -21,7 +21,7 @@ export default class IconsScreen extends React.Component {
     super();
     const libraryName = props.navigation.getParam('libraryName');
     this.state = {
-                title: libraryName,
+                title: [libraryName],
                 icons: LibrariesIcons[libraryName] || [{label: 'nerro'}],
                 enableBack: true
               };
