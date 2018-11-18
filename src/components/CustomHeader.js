@@ -51,7 +51,7 @@ class CustomHeader extends Component {
                 this.props.onBackClicked ? 
                 <TouchableOpacity  style={styles.backWrapper} onPress={ this.props.onBackClicked} > 
                     <MonoText  style={styles.smallText}> للخلف </MonoText> 
-                <Icon name="chevron-right" size={28} color="white" />
+                <Icon name="chevron-right" size={24} color="white" />
                 </TouchableOpacity> :
                 <Icon name="bars" size={28} color="white" onPress={() => this.props.navigation.openDrawer()} />  
             }
