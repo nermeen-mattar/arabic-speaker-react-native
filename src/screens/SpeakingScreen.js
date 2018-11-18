@@ -12,10 +12,10 @@ import { TextPredection } from '../classes/textPrediction';
 import commonStyles from '../styles/commonStyles';
 
 export default class TextToSpeachScreen extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      inputPlaceholder: "التحدث",
+      inputPlaceholder: "أكتب",
       text: '',
       predectedWords: [],
       toolsBar: [
@@ -47,7 +47,15 @@ export default class TextToSpeachScreen extends React.Component {
       ],
       activeToolName: '',
     };
+    props.navigation.addListener('willFocus', this.load)
   }
+
+  load = () => {
+    this.setState({
+      text: '',
+    predectedWords: []
+    });
+ }
 
   componentDidMount() {
     TextPredection.getInstance().initIndexedDefaultWords() 
@@ -64,6 +72,10 @@ export default class TextToSpeachScreen extends React.Component {
 
         <CustomHeader navigation = {this.props.navigation} />
 
+      <View style={commonStyles.center}>
+
+
+      <View style={styles.inputAndToolsWrapper}> 
         <TextInput value={this.state.text} style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true} />
      
@@ -85,15 +97,19 @@ export default class TextToSpeachScreen extends React.Component {
             style={[tool.customIcon, 
               {backgroundColor: this.state.activeToolName === 'مسافة' ?  Colors.brand : Colors.borderColor}]} > </MonoText>
         
-            : <Icon style={styles.addIcon}  name={tool.iconName} size={28}  color={ this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}/> 
+            : <Icon style={{textAlign: 'center'}}  name={tool.iconName} size={22}  color={ this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}/> 
           }
-            <MonoText style={{color: this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}}> {tool.title} </MonoText>
+            <MonoText style={{ textAlign: 'center',  color: this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}}> {tool.title} </MonoText>
           </View>
         </TouchableHighlight>
               )})
             }
         </View>
+        </View> 
 
+        </View>
+
+  
 
         <View style={styles.predectionsWrapper}>
         {
@@ -155,20 +171,31 @@ const styles = StyleSheet.create({
     flex: 1
     //     padding: 13,
   },
-  textInput: {
+  inputAndToolsWrapper: {
+    marginTop: 10,
+    paddingTop: 12,
+    height: 144,
     width: 350,
-    height: 84,
+    position: 'relative',
+    // marginHorizontal: 'auto',
     backgroundColor: Colors.primary,
-    fontSize: 21,
-  //   color: Colors.textSecondary,
-    textAlign: 'right',
-    padding: 8, // 11
-    paddingTop: 12, // 16
-    marginLeft: 'auto', // 10, // 12
-    marginRight: 'auto',
     borderRadius: 10 /* **N** */
+  },
+  textInput: {
+    // width: 350,
+    height:  84,
+    // backgroundColor: Colors.primary,
+    fontSize: 21,
+    //   color: Colors.textSecondary,
+    textAlign: 'right',
+    paddingHorizontal: 8, // 11
+    // paddingVertical: 12, // 16 // moved to wrapper
+    // marginLeft: 'auto', // 10, // 12
+    // marginRight: 'auto',
 },
 toolsbar: {
+  position: 'absolute',
+  top: 84,
   backgroundColor: '#F7F7F7', // temp
   flexDirection: 'row',
   justifyContent: 'center',
@@ -176,24 +203,27 @@ toolsbar: {
   // marginRight: 'auto',
   paddingTop: 10,
   paddingBottom: 6,
-  height: 59
+  // marginLeft: 'auto', // 10, // 12
+  // marginRight: 'auto',
+  height: 59,
+  borderRadius: 10 /* **N** */
+
 },
 tool: {
   // width: 60,
-  paddingHorizontal: 20,
+  paddingHorizontal: 16,
   textAlign: 'center'
 },
 space: {
   // width: 150,
-  paddingHorizontal: 14,
-
+  paddingHorizontal: 16,
   textAlign: 'center',
 },
 spaceIcon: {
-  width: 117,
+  width: 117, // 117
   height: 22,
   backgroundColor:  Colors.borderColor,
-  borderRadius: 4
+  borderRadius: 6
 }, 
 predectionsWrapper: {
   flexDirection: 'row',

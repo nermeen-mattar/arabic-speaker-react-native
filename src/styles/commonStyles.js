@@ -5,6 +5,7 @@ export default {
         shadowColor: '#000000',
         shadowOffset: {width: 1, height: 1},
         shadowOpacity: 0.06
-    }
+    },
+    center:  {justifyContent: 'center', flexDirection: 'row'}
 }
 
