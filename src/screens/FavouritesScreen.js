@@ -16,6 +16,8 @@ import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import { Storage } from '../classes/storage';
 import { TextToSpeach } from '../classes/text-to-speach';
+import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
+import DeleteAndCancel from '../components/DeleteAndCancel';
 
 export default class FavouritesScreen extends React.Component {
 
@@ -79,28 +81,31 @@ export default class FavouritesScreen extends React.Component {
                   </View>
 
          }
-          {
-         this.state.selectMode ? 
-         <View  style={styles.buttonsWrapper} >
-         <TouchableOpacity>
-           <MonoText onPress={() => {
-             this.cancelSelectMode();
-               }}>
-           الغاء
-             </MonoText>
-             
-         </TouchableOpacity>
-         <TouchableOpacity  onPress={() => {
-              this.removeSelectedFavourites()
-            }}>
-         <MonoText>
-           حذف
-             </MonoText>
-
-         </TouchableOpacity>
-         </View> : null
+    
+       {
+         this.state.selectMode ?
+          <DeleteAndCancel 
+          onCancelClicked = {() => this.cancelSelectMode()}
+          onDeleteClicked = {() => {
+            this.setState({
+              showConfirmDialog: true
+            });
+          }}> </DeleteAndCancel>  : null
        }
-
+       {
+         this.state.showConfirmDialog ? <ConfirmDeleteDialog  
+         onConfirm={() => {
+          this.setState({
+            showConfirmDialog: false
+          });
+           this.removeSelectedFavourites();
+         }}
+         onCancel={() => {
+          this.setState({
+            showConfirmDialog: false
+          });
+        }}> </ConfirmDeleteDialog> : null
+       }
       </View>
     );
   }

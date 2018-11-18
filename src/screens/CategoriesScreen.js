@@ -127,16 +127,25 @@ export default class CategoriesScreen extends React.Component {
          this.state.selectMode ?
           <DeleteAndCancel 
           onCancelClicked = {() => this.cancelSelectMode()}
-          onDeleteClicked = {() => this.attempToRemoveSelectedCategories()}> </DeleteAndCancel>  : null
+          onDeleteClicked = {() => {
+            this.setState({
+              showConfirmDialog: true
+            });
+          }}> </DeleteAndCancel>  : null
        }
        {
          this.state.showConfirmDialog ? <ConfirmDeleteDialog  
          onConfirm={() => {
-          this.cancelRemoveCategories();
+        
+          this.setState({
+            showConfirmDialog: false
+          });
            this.removeSelectedCategories();
          }}
          onCancel={() => {
-          this.cancelRemoveCategories();
+          this.setState({
+            showConfirmDialog: false
+          });
         }}> </ConfirmDeleteDialog> : null
        }
             </View>
@@ -242,11 +251,6 @@ export default class CategoriesScreen extends React.Component {
     });
   }
 
-  attempToRemoveSelectedCategories() {
-    this.setState({
-      showConfirmDialog: true
-    });
-  }
 
   removeSelectedCategories = ()  => {
     const storageInstance = new Storage();
