@@ -14,8 +14,8 @@ class DeleteAndCancel extends Component {
     render() {
         return (
             <View  style={styles.buttonsWrapper} >
-            <TouchableOpacity  style={{flex: 1}}>
-              <MonoText style={styles.button}  onPress={this.props.onCancelClicked}>
+            <TouchableOpacity  style={{flex: 1}}  onPress={this.props.onCancelClicked}>
+              <MonoText style={styles.button} >
               الغاء
                 </MonoText>
             </TouchableOpacity>

@@ -79,7 +79,7 @@ export default class CategoriesScreen extends React.Component {
  
   render() {
   
-    const currentDefaultCategories = this.state.defaultCategories[this.state.categoryPath.join()];
+    const currentDefaultCategories = this.state.defaultCategories[this.state.categoryPath.join()] || [];
     return (
       <View style={styles.container}>
          <CustomHeader navigation= {this.props.navigation} title={this.state.categoryPath} onNewClicked= 
@@ -99,7 +99,7 @@ export default class CategoriesScreen extends React.Component {
         //     key: 'CategoriesScreen'.concat(this.state.categoryPath.slice(0, -1).length)
         // }): null}
           onSelectClicked= {
-            this.state.categories.length > (currentDefaultCategories && currentDefaultCategories.length) ? () =>
+            this.state.categories.length >  currentDefaultCategories.length ? () =>
              this.setState({selectMode: true}) : null
           }
          />
