@@ -55,6 +55,7 @@ export default class TextToSpeachScreen extends React.Component {
       text: '',
     predectedWords: []
     });
+    this.onTextChanged('');
  }
 
   componentDidMount() {
