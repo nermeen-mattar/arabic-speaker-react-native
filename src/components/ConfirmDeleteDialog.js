@@ -25,7 +25,8 @@ class ConfirmDeleteDialog extends Component {
               <Dialog.Description  style={styles.description} >
 
             <MonoText style={styles.text}> 
-            هل تريد حذف هذه العبارة ؟ 
+            {/* هل تريد حذف هذه العبارة ؟  */}
+            هل أنت متأكيد أنك تريد الحذف؟
             <MonoText style={styles.itemToDelete}> {this.props.itemToDelete} </MonoText>
             </MonoText>
               </Dialog.Description >

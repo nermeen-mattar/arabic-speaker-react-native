@@ -24,7 +24,7 @@ export default class FavouritesScreen extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      title: "المفضلة",
+      title: ["المفضلة"],
       favourites: [],
       selectMode: false
     };
@@ -98,7 +98,7 @@ export default class FavouritesScreen extends React.Component {
           this.setState({
             showConfirmDialog: false
           });
-           this.removeSelectedFavourites();
+           this.deleteSelectedFavourites();
          }}
          onCancel={() => {
           this.setState({
@@ -149,7 +149,7 @@ export default class FavouritesScreen extends React.Component {
     });
   }; 
 
-  removeSelectedFavourites = ()  => {
+  deleteSelectedFavourites = ()  => {
     const storageInstance = new Storage();
     const unselectedFavourites = this.state.favourites.filter(favourite => !favourite.selected).map(favourite => favourite.label);
     storageInstance.setItem('favourites', unselectedFavourites).then(res => {

@@ -20,7 +20,7 @@ export default class IconsLibrariesScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-                title: "مكتبة الأيقونات",
+                title:["مكتبة الأيقونات"] ,
                 iconsLibraries:     [
                     'أيقونات الناس',
                     'أيقونات الحيوانات',

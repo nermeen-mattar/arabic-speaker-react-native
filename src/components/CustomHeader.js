@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 class CustomHeader extends Component {
     constructor (props) {
         super();
+
       }
     
     render() {
@@ -24,22 +25,22 @@ class CustomHeader extends Component {
           
             {
                 this.props.onNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
-            <Icon style={styles.addIcon}  name="plus-circle" size={28}  color="white"/> 
-            {/* <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />      */}
+            <Icon style={styles.icon}  name="plus-circle" size={28}  color="white"/> 
+            {/* <Image style={styles.icon} source={require( '../../assets/images/icons/plus.png')} />      */}
             </TouchableOpacity>   : null
             }
 
             {
                 this.props.onSecondNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSecondNewClicked}>
-            <Icon style={styles.addIcon}  name="plus-square" size={28}  color="white"/> 
-            {/* <Image style={styles.addIcon} source={require( '../../assets/images/icons/plus.png')} />      */}
+            <Icon style={styles.icon}  name="plus-square" size={28}  color="white"/> 
+            {/* <Image style={styles.icon} source={require( '../../assets/images/icons/plus.png')} />      */}
             </TouchableOpacity>   : null
             }
 
             {
                 this.props.onSelectClicked ? 
                 <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
-                <Icon style={styles.addIcon}  name="check-circle" size={28}  color="white"/>  
+                <Icon style={styles.icon}  name="check-circle" size={28}  color="white"/>  
                 {/* <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} /> */}
                 </TouchableOpacity>: null
             }
@@ -60,7 +61,36 @@ class CustomHeader extends Component {
             </View>
             <View  />
 
-                 { this.props.title ?  <MonoText  style={styles.title}>{this.props.title}</MonoText> : null}
+                 { this.props.title ? 
+                 
+          <View style={styles.titleSectionsWrapper}>
+          {
+            this.props.title.map((titleSection, index) => {
+              return(
+                  <View style={{flexDirection: 'row-reverse'}}>
+                  {/* , alignItems: 'center' to fix arrow */}
+                      <TouchableOpacity
+                  onPress={() =>  this.props.navigation.navigate( {
+                      routeName: 'CategoriesScreen',
+                      params: {
+                          categoryPath: this.props.title.slice(0, index + 1)
+                      },
+                      key: 'CategoriesScreen' + index
+
+                  })} >
+              <MonoText style={styles.title}>
+                {titleSection}
+                </MonoText>
+                </TouchableOpacity>
+                {this.props.title[ index + 1 ] ? <Icon  name="angle-left" style = {styles.titleArrow}/> 
+
+                : null}
+
+             </View>
+               )})}
+            </View>
+            
+            : null}
 
             {/* style={{ flex: 0.5}} */}
           </View>
@@ -93,26 +123,35 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.brand,
         // height: 116
     },
+    titleSectionsWrapper: {
+        flexDirection: 'row-reverse',
+         justifyContent: 'flex-start',
+        //  marginRight: 13
+        marginLeft: 13 // everything is the opposite
+    },
     title : {
         height: 47,
-        textAlign: 'right',
+        // textAlign: 'right', replaces with row-reverse and flex-start
         color: Colors.primary,
-        fontSize: 30,
-        marginRight: 13
+        fontSize: 30
+      },
+      titleArrow: {
+        color: 'white',
+        fontSize: 24,
+        margin: 6
       },
 iconsWrapper: {
     height: 69,
       paddingTop: 31,
       paddingBottom: 12,
-      marginRight: 17,
+        marginHorizontal: 18,
       flexDirection: 'row',
       justifyContent: 'space-between'
     },
     tools: {
         flexDirection: 'row',  
     },
-    addIcon: {
-        marginLeft: 18,
+    icon: {
         marginRight: 30
     },
     backWrapper: {

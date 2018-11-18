@@ -28,7 +28,7 @@ export default class CategoriesScreen extends React.Component {
     super();
     const categoryPath = props.navigation.getParam('categoryPath') || ['المكتبات'];
     this.state = {
-                title: categoryPath.join(), // test> test
+                // title: categoryPath.join(), // test> test
                 categoryPath: categoryPath,
                 categories: [],
                 selectedCategories: [],
@@ -51,7 +51,7 @@ export default class CategoriesScreen extends React.Component {
                 }
               };
               // storageInstance = Storage.getInstance();
-              // storageInstance.removeItem(this.state.categoryPath.join());
+              // storageInstance.deleteItem(this.state.categoryPath.join());
     this.initCategories();
     // this.initVoiceGender();
     // this.load();
@@ -62,7 +62,7 @@ export default class CategoriesScreen extends React.Component {
   };
   
   load = () => {
-    this.updateTitle();
+    // this.updateTitle();
     this.cancelSelectMode();
       // if(!this.state.selectMode) {
     this.initCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
@@ -70,20 +70,19 @@ export default class CategoriesScreen extends React.Component {
       // }
     }
 
-  updateTitle = () => {
-    const categoryPath = this.props.navigation.getParam('categoryPath') || this.state.categoryPath || ['المكتبات'];
-    this.setState({
-      title: categoryPath.join('>')
-    })
-  }
-  // componentDidMount() {
+  // updateTitle = () => {
+  //   const categoryPath = this.props.navigation.getParam('categoryPath') || this.state.categoryPath || ['المكتبات'];
+  //   this.setState({
+  //     title: categoryPath.join('>')
+  //   })
   // }
+ 
   render() {
   
     const currentDefaultCategories = this.state.defaultCategories[this.state.categoryPath.join()];
     return (
       <View style={styles.container}>
-         <CustomHeader navigation= {this.props.navigation} title={this.state.title} onNewClicked= 
+         <CustomHeader navigation= {this.props.navigation} title={this.state.categoryPath} onNewClicked= 
          {this.state.categoryPath.length < 4 ?  () => this.props.navigation.navigate('NewCategoryScreen', {
           categoryPath: this.state.categoryPath
         }): null }
@@ -91,12 +90,19 @@ export default class CategoriesScreen extends React.Component {
          {this.state.categoryPath.length > 1 ? () => this.props.navigation.navigate('NewSentenceScreen', {
           categoryPath: this.state.categoryPath
         }): null}
+        // onBackClicked = {this.state.categoryPath.length > 1 ? () => this.props.navigation.navigate(     
+        //   {
+        //     routeName: 'CategoriesScreen',
+        //     params: {
+        //         categoryPath:  this.state.categoryPath.slice(0, -1)
+        //     },
+        //     key: 'CategoriesScreen'.concat(this.state.categoryPath.slice(0, -1).length)
+        // }): null}
           onSelectClicked= {
             this.state.categories.length > (currentDefaultCategories && currentDefaultCategories.length) ? () =>
              this.setState({selectMode: true}) : null
           }
          />
-         {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         <ScrollView >
 
           <View style={styles.cardsContainer}>
@@ -109,7 +115,7 @@ export default class CategoriesScreen extends React.Component {
           //   <TouchableOpacity   onPress={() => {
           //     this.categoryToggled(index)
           //  }}>
-            <TouchableOpacity    onPress={() => {
+            <TouchableOpacity  onPress={() => { // adding key prevents warning
                   this.categoryClicked(index)
                }}>
               <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
@@ -135,12 +141,13 @@ export default class CategoriesScreen extends React.Component {
        }
        {
          this.state.showConfirmDialog ? <ConfirmDeleteDialog  
+        //  confirmMessage ={}
          onConfirm={() => {
         
           this.setState({
             showConfirmDialog: false
           });
-           this.removeSelectedCategories();
+           this.deleteSelectedCategories();
          }}
          onCancel={() => {
           this.setState({
@@ -245,14 +252,14 @@ export default class CategoriesScreen extends React.Component {
     });
   }; 
 
-  cancelRemoveCategories() {
+  cancelDeleteCategories() {
     this.setState({
       showConfirmDialog: false
     });
   }
 
 
-  removeSelectedCategories = ()  => {
+  deleteSelectedCategories = ()  => {
     const storageInstance = new Storage();
     const unselectedCategories = this.state.categories.filter(category => !category.selected);
     storageInstance.setItem(this.state.categoryPath.join(), unselectedCategories).then(res => {

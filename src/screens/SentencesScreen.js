@@ -149,7 +149,7 @@ export default class SentencesScreen extends React.Component {
              </MonoText>
          </TouchableOpacity>
          <TouchableOpacity  onPress={() => {
-              this.removeSelectedSentences()
+              this.deleteSelectedSentences()
             }}>
          <MonoText>
            حذف
@@ -263,7 +263,7 @@ export default class SentencesScreen extends React.Component {
     });
   }; 
 
-  removeSelectedSentences = ()  => {
+  deleteSelectedSentences = ()  => {
     const storageInstance = Storage.getInstance(); 
     const unselectedSentences = this.state.sentences.filter(sentence => !sentence.selected);
     storageInstance.setItem('sentences-'.concat(this.state.categoryName), unselectedSentences).then(res => {

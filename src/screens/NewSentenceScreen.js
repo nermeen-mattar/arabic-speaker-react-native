@@ -23,7 +23,7 @@ export default class NewSentenceScreen extends React.Component {
     constructor(props) {
         super();
         this.state = {
-          title: "إضافة عبارة جديدة",
+          title:[ "إضافة عبارة جديدة"],
           cardInfo: { label: 'ارفق صورة'},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
           sentence: '',
