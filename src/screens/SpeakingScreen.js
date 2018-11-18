@@ -133,6 +133,7 @@ export default class TextToSpeachScreen extends React.Component {
   }
 
   speak() {
+    TextPredection.getInstance().addToUserWordsIfNew(this.state.text); 
     TextToSpeach.getInstance().speak(this.state.text);
   }
 
@@ -205,7 +206,7 @@ toolsbar: {
   paddingBottom: 6,
   // marginLeft: 'auto', // 10, // 12
   // marginRight: 'auto',
-  height: 59,
+  height: 60,
   borderRadius: 10 /* **N** */
 
 },
@@ -220,7 +221,7 @@ space: {
   textAlign: 'center',
 },
 spaceIcon: {
-  width: 117, // 117
+  width: 116, // 117
   height: 22,
   backgroundColor:  Colors.borderColor,
   borderRadius: 6

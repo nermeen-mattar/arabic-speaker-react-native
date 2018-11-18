@@ -160,8 +160,7 @@ ImagePicker.showImagePicker(options, (response) => {
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
     storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {    
-      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.categoryName, 
-        imgSrc: '../../assets/images/categories/chat.png', selectable: true, type: 'category'}]).then(res => {
+      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.categoryName, selectable: true, type: 'category'}]).then(res => {
         this.props.navigation.navigate('CategoriesScreen',  {
           categoryPath: this.state.categoryPath
         });

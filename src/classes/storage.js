@@ -3,10 +3,10 @@ export class Storage {
       static instance;
 
       static getInstance() {
-        if(!this.instance) {
-            this.instance = new Storage();    
+        if(!Storage.instance) {
+          Storage.instance = new Storage();    
         }
-        return this.instance;
+        return Storage.instance;
       }
 
       getItem = async (key, result) => {

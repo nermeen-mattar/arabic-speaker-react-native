@@ -45,6 +45,8 @@ export class Card extends React.Component {
 
            {/* or check-square-o */}
             {/* </View> */}
+            <View> 
+
 
           {
            this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> : null
@@ -58,6 +60,8 @@ export class Card extends React.Component {
        this.setState({
         age: this.state.age + 5 });
         }}> Click me</Button> */}
+            </View>
+
         </View>
       );
     }
@@ -67,8 +71,8 @@ export class Card extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
-      display: 'flex',
-      // flexDirection: 'column',
+      flexDirection: 'row',
+      justifyContent: 'center',
       alignItems: 'center',
       width: Spacings.cardWidth,
       height: Spacings.cardHeight,
@@ -78,12 +82,14 @@ export class Card extends React.Component {
       borderRadius: 10 /* **N** */
       // marginBottom: 4,
     },
+
     cardImg: {
-      marginTop: 24
+      marginTop: 24,
+      marginBottom: 14 
     },
     cardLabel: {
-      marginTop: 14,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      textAlign: 'center'
     },
     // selectIconWrapper: {
     //   display: 'flex',
@@ -94,6 +100,7 @@ export class Card extends React.Component {
       // width:16,
       // height: 16,
       position:'absolute',
+      top: 0,
       right:0,
       fontSize: 25,
       color: Colors.brand

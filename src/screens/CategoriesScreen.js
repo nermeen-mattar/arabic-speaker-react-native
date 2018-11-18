@@ -127,16 +127,17 @@ export default class CategoriesScreen extends React.Component {
          this.state.selectMode ? 
          <View  style={styles.buttonsWrapper} >
          <TouchableOpacity>
-           <MonoText onPress={() => {
+           <MonoText style={styles.button}  onPress={() => {
              this.cancelSelectMode();
                }}>
            الغاء
              </MonoText>
          </TouchableOpacity>
+         <MonoText style={styles.verticalDivider}> </MonoText>
          <TouchableOpacity  onPress={() => {
               this.removeSelectedCategories()
             }}>
-         <MonoText>
+         <MonoText style={styles.button} >
            حذف
              </MonoText>
          </TouchableOpacity>
@@ -301,8 +302,23 @@ const styles = StyleSheet.create({
   },
   buttonsWrapper: {
     display: 'flex',
-    flexDirection: 'row'
-  }
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#FDA50F',
+    paddingVertical: 20
+  }, 
+  verticalDivider: {
+    width: 1,
+    height: 15,
+    backgroundColor:'#B17611',
+
+  },
+  button: {
+    textAlign: 'center',
+    color: 'white',
+    flex: 1
+
+  },
   // welcomeImage: {
   //   resizeMode: 'contain',
   // },
