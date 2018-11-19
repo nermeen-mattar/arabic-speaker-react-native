@@ -127,6 +127,8 @@ ImagePicker.showImagePicker(options, (response) => {
       onSaveClicked = {this.addNewCategory}
     />
          <View  style={styles.inputsWrapper}> 
+         <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
+        placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.categoryName}/>
         <View style={styles.card} >
         {/* <Icon.Ionicons name="md-camera" size={32} style={styles.cardIcon} />   */}
         <PhotoUpload
@@ -139,9 +141,7 @@ ImagePicker.showImagePicker(options, (response) => {
           </PhotoUpload>
           <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
-
-            <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
-        placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.categoryName}/>
+  
         </View>
            
       </View>
@@ -217,51 +217,38 @@ ImagePicker.showImagePicker(options, (response) => {
 
 const styles = StyleSheet.create({
   inputsWrapper: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-    // display: 'flex',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
   textInput: {
-      width: 260,
-      height: 78,
-      backgroundColor: Colors.primary,
-      fontSize: 21,
+    width: 260,
+    height: 78,
+    backgroundColor: Colors.primary,
+    fontSize: 21,
     //   color: Colors.textSecondary,
-      textAlign: 'right',
-      padding: 8,
-      paddingTop: 12, // 20 didn't work
-      marginLeft: 10,
-      borderRadius: 10 /* **N** */
+    textAlign: 'right',
+    padding: 8,
+    paddingTop: 12, // 20 didn't work
+    marginTop: 11,
+    borderRadius: 10 /* **N** */
   },
   card: {
-            // flex: 1,
-            display: 'flex',
-            // flexDirection: 'column',
-            alignItems: 'center',
-            width: 81, 
-            height: 78,
-            backgroundColor: Colors.primary,
-            marginHorizontal: 4.5,
-            marginVertical: 3.5,
-            borderRadius: 10 /* **N** */
-            // marginBottom: 4,
+    width: 81,
+    height: 78,
+    backgroundColor: Colors.primary,
+    margin: 11,
+    borderRadius: 10 /* **N** */
   },
   cardIcon: {
-    // color: Colors.textSecondary,
-    // fontSize: 38,
     marginTop: 17
-  } ,
+  },
   cardLabel: {
-      color: Colors.textSecondary,
-      fontSize: 11,
-      marginTop: 8 //  14 didn't work 
+    color: Colors.textSecondary,
+    textAlign: 'center',
+    fontSize: 11,
+    marginTop: 8 //  14 didn't work 
   }
 
 });
-
-
