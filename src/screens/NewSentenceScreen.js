@@ -60,12 +60,12 @@ export default class NewSentenceScreen extends React.Component {
         <View style={styles.card} >
         {/* <Icon.Ionicons name="md-camera" size={32} style={styles.cardIcon} />   */}
         <PhotoUpload
-   onPhotoSelect={avatar => {
-     if (avatar) {
-       console.log('Image base64 string: ', avatar)
-     }
-   }}>
+        onPhotoSelect={photo => {
+          this.setState({sentence: JSON.stringify(photo)})
+        }}>
           <Image style={styles.cardIcon} source={require( '../../assets/images/icons/camera_icon.png')} />
+          <Image style={{width: 300, height: 150, borderWidth: 1, borderColor: 'red'}} source={{uri: this.state.sentence}}/>
+
           </PhotoUpload>
           <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
