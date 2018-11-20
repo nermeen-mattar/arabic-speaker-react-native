@@ -29,7 +29,7 @@ export default class NewSentenceScreen extends React.Component {
           cardInfo: { label: 'ارفق صورة'},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
           sentence: '',
-          imgSrc: null, 
+          imgSrc: props.navigation.getParam('imgSrc'), 
           // categoryName: props.navigation.getParam('categoryName'),
           categoryPath: props.navigation.getParam('categoryPath')
 
@@ -41,7 +41,8 @@ export default class NewSentenceScreen extends React.Component {
       load = () => {
           this.setState({
             sentence: '',
-            imgSrc: null
+            // imgSrc: null,
+            // categoryPath: ''
           });
        }
       static navigationOptions = {
@@ -106,7 +107,7 @@ export default class NewSentenceScreen extends React.Component {
 
         {/* <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen')}> 
           <MonoText> افتح مكتبة الأيقونات</MonoText>
-        </TouchableOpacity> */}
+        </TouchableOpacity>  */}
         </View>
            
       </View>
@@ -172,7 +173,7 @@ ImagePicker.showImagePicker(options, (response) => {
     storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
       result.value = result.value ? result.value : [];
       storageInstance.setItem(this.state.categoryPath.join(), [...result.value, 
-        {label: this.state.sentence, selectable: true, imgSrc:
+        {label: this.state.sentence, imgSrc:
          this.state.imgSrc}]).then(res => {
         this.props.navigation.navigate('CategoriesScreen',  {
           categoryPath: this.state.categoryPath

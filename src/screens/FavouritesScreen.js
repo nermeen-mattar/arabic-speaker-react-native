@@ -116,7 +116,7 @@ export default class FavouritesScreen extends React.Component {
     storageInstance.getItem('favourites', result).then(res => {
       if(result.value) {
         this.setState({
-          favourites: result.value.map(favourite => {return {label: favourite, selectable: true}})
+          favourites: result.value.map(favourite => {return {label: favourite}})
         });
       }
     })

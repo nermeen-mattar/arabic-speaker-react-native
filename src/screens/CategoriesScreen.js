@@ -21,6 +21,7 @@ import Genders from '../constants/Genders';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 import DeleteAndCancel from '../components/DeleteAndCancel';
+import { TextToSpeach } from '../classes/text-to-speach';
 
 export default class CategoriesScreen extends React.Component {
 
@@ -37,15 +38,15 @@ export default class CategoriesScreen extends React.Component {
                 showConfirmDialog: false,
                 defaultCategories: {
                   المكتبات: [
-                    { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png')},
-                    { label: 'تحياتي' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png')},
-                    { label: 'عام' , type: 'category', imgSrc:  require('../../assets/images/categories/info.png')},
-                    { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png')},
-                    { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png')},
-                    { label: 'العمل' , type: 'category', imgSrc:  require('../../assets/images/categories/tools.png')},
-                    { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png')},
-                    { label: 'المطعم' , type: 'category', imgSrc:  require('../../assets/images/categories/cake.png')},
-                    { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png')},
+                    { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
+                    { label: 'تحياتي' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png'),  default: true},
+                    { label: 'عام' , type: 'category', imgSrc:  require('../../assets/images/categories/info.png'),  default: true},
+                    { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png'),  default: true},
+                    { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png'),  default: true},
+                    { label: 'العمل' , type: 'category', imgSrc:  require('../../assets/images/categories/tools.png'),  default: true},
+                    { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png'),  default: true},
+                    { label: 'المطعم' , type: 'category', imgSrc:  require('../../assets/images/categories/cake.png'),  default: true},
+                    { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png'),  default: true}
                   ],
                   ...CategoriesSentences
                 }
@@ -225,6 +226,14 @@ export default class CategoriesScreen extends React.Component {
   
     sentenceClicked = (sentenceIndex)  => {
       // StopSound();
+      if(this.state.categories[sentenceIndex].default) {
+        this.playExistingSound(sentenceIndex);
+      } else {
+         TextToSpeach.getInstance().speak(this.state.categories[sentenceIndex].label);
+      }
+    }
+
+    playExistingSound(sentenceIndex) {
       const storageInstance = Storage.getInstance();  
       const result = {value: 'null'};
       storageInstance.getItem('settingsValues', result).then(res => {

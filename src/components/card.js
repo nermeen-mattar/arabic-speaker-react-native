@@ -25,7 +25,7 @@ export class Card extends React.Component {
 
   
     render() {
-      const isCardSelectable = this.props.selectMode && this.props.cardInfo.selectable
+      const isCardSelectable = this.props.selectMode && !this.props.cardInfo.default
       const isCardSelected = isCardSelectable && this.props.cardInfo.selected;
       return (
         <View style={[styles.container, commonStyles.shadow, {backgroundColor: isCardSelected ? Colors.brand: Colors.primary} ]} >
@@ -35,7 +35,7 @@ export class Card extends React.Component {
           {/* <View  style={styles.selectIconWrapper} > */}
           { 
             isCardSelectable ? 
-              (isCardSelected ? 
+            (isCardSelected ? 
               <Icon style={[styles.selectIcon, styles.topRightIcon]}name="check-circle" size={24} /> : 
               <Icon style={[styles.unselectIcon, styles.topRightIcon]}  name="circle-thin" size={24} /> ) : null
           }
@@ -47,7 +47,7 @@ export class Card extends React.Component {
 
 
           {
-           this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {width: 60, height: 60 }]} source={ this.props.cardInfo.imgSrc} /> : null
+           this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {maxWidth: 60, maxHeight: 60 }]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}

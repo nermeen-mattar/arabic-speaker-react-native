@@ -60,11 +60,9 @@ export default class IconsScreen extends React.Component {
   }
 
   iconClicked(index) {
-    // naviagte to new setence and pass selected icon 
-
-      // this.props.navigation.navigate('icon', {
-      //   iconName: this.state.icons[index]
-      // });
+      this.props.navigation.navigate('NewSentenceScreen', {
+        imgSrc: this.state.icons[index].imgSrc
+      });
   }
 
 }
