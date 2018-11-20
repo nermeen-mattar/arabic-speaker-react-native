@@ -13,13 +13,13 @@ import {
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
 import Colors from '../constants/Colors';
-import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextToSpeach } from '../classes/text-to-speach';
 
-import PhotoUpload from 'react-native-photo-upload'
+// import PhotoUpload from 'react-native-photo-upload'
 import { Storage } from '../classes/storage';
 import { TextPredection } from '../classes/textPrediction';
+import { ImagePickerHelper } from '../classes/image-picker-helper';
 
 export default class NewSentenceScreen extends React.Component {
     constructor(props) {
@@ -31,8 +31,8 @@ export default class NewSentenceScreen extends React.Component {
           sentence: '',
           imgSrc: props.navigation.getParam('imgSrc'), 
           // categoryName: props.navigation.getParam('categoryName'),
-          categoryPath: props.navigation.getParam('categoryPath')
-
+          categoryPath: props.navigation.getParam('categoryPath'),
+          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen', {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
         };
         props.navigation.addListener('willFocus', this.load)
       }
@@ -41,7 +41,9 @@ export default class NewSentenceScreen extends React.Component {
       load = () => {
           this.setState({
             sentence: '',
-            // imgSrc: null,
+            imgSrc: this.props.navigation.getParam('imgSrc'),
+            imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
+
             // categoryPath: ''
           });
        }
@@ -81,15 +83,19 @@ export default class NewSentenceScreen extends React.Component {
           this.setState({imgSrc: photo})
         }}
         > */}
-          <TouchableOpacity onPress={ () => this.displayImagePickerMenu()} >
+       <TouchableOpacity onPress={ () => this.state.imagePickerInstance.displayImagePickerMenu()} >
           { this.state.imgSrc ?   <Image  style={{width: 108, height: 104}} source={this.state.imgSrc} />
-        :  <Icon  name="camera" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>}
+        :  <View> 
+
+          <Icon  name="camera" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
+                  <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
+        </View>}
+
             </TouchableOpacity>
 
           {/* style={[styles.cardIcon, {width: 100, height: 100}]}  */}
           {/* <Image source={ this.state.imgSrc ?  {uri: this.state.imgSrc} : require( '../../assets/images/icons/camera_icon.png')} /> */}
           {/* </PhotoUpload> */}
-          <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
 
      <TouchableOpacity style={styles.card} onPress={ () => this.speak()}  >
@@ -105,53 +111,15 @@ export default class NewSentenceScreen extends React.Component {
         </View>
 
 
-        {/* <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen')}> 
+         <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
           <MonoText> افتح مكتبة الأيقونات</MonoText>
-        </TouchableOpacity>  */}
+        </TouchableOpacity> 
         </View>
            
       </View>
     );
   }
 
-
-  displayImagePickerMenu() {
-// More info on all the options is below in the API Reference... just some common use cases shown here
-const options = {
-  title: '', // أختر صورة
-  customButtons: [{ name: 'iconsLib', title: 'اختر من مكتبة الأيقونات' }],
-  storageOptions: {
-    skipBackup: true,
-    path: 'images',
-  },
-};
- 
-/**
- * The first arg is the options object for customization (it can also be null or omitted for default options),
- * The second arg is the callback which sends object: response (more info in the API Reference)
- */
-ImagePicker.showImagePicker(options, (response) => {
-  // console.log('Response = ', response);
- 
-  if (response.didCancel) {
-    // console.log('User cancelled image picker');
-  } else if (response.error) {
-    // console.log('ImagePicker Error: ', response.error);
-  } else if (response.customButton) {
-    // console.log('User tapped custom button: ', response.customButton);
-    this.props.navigation.navigate('IconsLibrariesScreen');
-  } else {
-    const source = { uri: response.uri };
- 
-    // You can also display the image using data:
-    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
- 
-    this.setState({
-      imgSrc: source, // source.uri, //  { uri: 'data:image/jpeg;base64,' + response.data }
-    });
-  }
-});
-  }
 
   onTextChanged(text) {
     this.setState({

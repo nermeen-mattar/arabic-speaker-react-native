@@ -47,7 +47,8 @@ export class Card extends React.Component {
 
 
           {
-           this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {maxWidth: 60, maxHeight: 60 }]} source={ this.props.cardInfo.imgSrc} /> : null
+            // {width: 77, height: 55 }
+           this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {width: 50, height: 50 }]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}

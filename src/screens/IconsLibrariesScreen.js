@@ -17,7 +17,7 @@ import CustomListStyle, { CustomListItemSyle } from '../styles/CustomListStyle';
 
 export default class IconsLibrariesScreen extends React.Component {
 
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
                 title:["مكتبة الأيقونات"] ,
@@ -26,7 +26,10 @@ export default class IconsLibrariesScreen extends React.Component {
                     'أيقونات الحيوانات',
                     'أيقونات المدارس'
                 ],
-                enableBack: true
+                enableBack: true,
+                categoryPath: props.navigation.getParam('categoryPath'),
+                srcScreen: props.navigation.getParam('srcScreen'),
+
               };
   }
   static navigationOptions = {
@@ -51,7 +54,10 @@ export default class IconsLibrariesScreen extends React.Component {
           renderItem={({ item, index }) => 
           <TouchableOpacity key={index}
           style={styles.library} onPress= { () => this.props.navigation.navigate('IconsScreen', {
-            libraryName: item
+            libraryName: item,
+            categoryPath: this.state.categoryPath,
+            srcScreen: this.state.srcScreen
+
           })}
           >
           <Icon style={styles.itemArrowIcon}  name="chevron-left" /> 
@@ -68,11 +74,11 @@ export default class IconsLibrariesScreen extends React.Component {
     );
   }
 
-  iconsLibraryClicked(index) {
-      this.props.navigation.navigate('iconsLibrary', {
-        iconsLibraryName: this.state.iconsLibraries[index]
-      });
-  }
+  // iconsLibraryClicked(index) {
+  //     this.props.navigation.navigate('iconsLibrary', {
+  //       iconsLibraryName: this.state.iconsLibraries[index]
+  //     });
+  // }
 
 }
 

@@ -52,7 +52,10 @@ export default class CategoriesScreen extends React.Component {
                 }
               };
               // storageInstance = Storage.getInstance();
-              // storageInstance.removeItem(this.state.categoryPath.join());
+              // storageInstance.removeItem('المكتبات');
+              // storageInstance.removeItem( 'المكتبات,تحياتي');
+
+              
     this.initCategories();
     // this.initVoiceGender();
     // this.load();

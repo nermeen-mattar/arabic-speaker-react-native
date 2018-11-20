@@ -13,12 +13,12 @@ import {
   // ScrollView,
   // Button
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
 import Colors from '../constants/Colors';
-import ImagePicker from 'react-native-image-picker';
-
+import { ImagePickerHelper } from '../classes/image-picker-helper';
 import PhotoUpload from 'react-native-photo-upload'
 import { Storage } from '../classes/storage';
 
@@ -28,10 +28,12 @@ export default class NewCategoryScreen extends React.Component {
         this.state = {
           title: ["إضافة تصنيف جديد"],
           cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
+          imgSrc: null,
           inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد",
           categoryName: '',
-          categoryPath: props.navigation.getParam('categoryPath')
+          categoryPath: props.navigation.getParam('categoryPath'),
           // photos: []
+          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen', {srcScreen: 'NewCategoryScreen'}), img => this.setState({imgSrc: img }))
         };
         props.navigation.addListener('willFocus', this.load)
         // thi._handleButtonPress()
@@ -90,7 +92,10 @@ ImagePicker.showImagePicker(options, (response) => {
 
       load = () => {
           this.setState({
-            categoryName: ''
+            categoryName: '',
+            imgSrc: this.props.navigation.getParam('imgSrc'),
+            imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewCategoryScreen'}), img => this.setState({imgSrc: img }))
+
           });
        }
       static navigationOptions = {
@@ -129,9 +134,8 @@ ImagePicker.showImagePicker(options, (response) => {
          <View  style={styles.inputsWrapper}> 
          <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.categoryName}/>
-        <View style={styles.card} >
-        {/* <Icon.Ionicons name="md-camera" size={32} style={styles.cardIcon} />   */}
-        <PhotoUpload
+         <View style={styles.card} >
+        {/*<PhotoUpload
    onPhotoSelect={avatar => {
      if (avatar) {
        console.log('Image base64 string: ', avatar)
@@ -140,10 +144,22 @@ ImagePicker.showImagePicker(options, (response) => {
           <Image style={styles.cardIcon} source={require( '../../assets/images/icons/camera_icon.png')} />
           </PhotoUpload>
           <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
+        </View> */}
+
+
+       <TouchableOpacity onPress={ () => this.state.imagePickerInstance.displayImagePickerMenu()} >
+          { this.state.imgSrc ?   <Image  style={{width: 108, height: 104}} source={this.state.imgSrc} />
+        :  <View> 
+          
+          <Icon  name="camera" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
+                  <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
+        </View>}
+
+            </TouchableOpacity>
         </View>
   
         </View>
-           
+      
       </View>
     );
   }
@@ -160,7 +176,7 @@ ImagePicker.showImagePicker(options, (response) => {
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
     storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {    
-      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.categoryName, type: 'category'}]).then(res => {
+      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.categoryName, imgSrc: this.state.imgSrc, type: 'category'}]).then(res => {
         this.props.navigation.navigate('CategoriesScreen',  {
           categoryPath: this.state.categoryPath
         });

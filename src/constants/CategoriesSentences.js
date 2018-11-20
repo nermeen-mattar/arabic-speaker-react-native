@@ -16,6 +16,6 @@ export default
     { label: 'السلام عليكم ورحمة الله وبركاته', default: true },
     { label: 'كيف الحال؟' , default: true },
     { label: 'مرحباً', default: true },
-    { label: 'أهلاً وسهلاً'}
+    { label: 'أهلاً وسهلاً', default: true }
     ] 
   }

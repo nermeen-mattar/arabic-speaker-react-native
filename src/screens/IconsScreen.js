@@ -22,8 +22,10 @@ export default class IconsScreen extends React.Component {
     const libraryName = props.navigation.getParam('libraryName');
     this.state = {
                 title: [libraryName],
-                icons: LibrariesIcons[libraryName] || [{label: 'nerro'}],
-                enableBack: true
+                icons: LibrariesIcons[libraryName] || [],
+                enableBack: true,
+                categoryPath: props.navigation.getParam('categoryPath'),
+                srcScreen: props.navigation.getParam('srcScreen')
               };
   }
   static navigationOptions = {
@@ -60,8 +62,11 @@ export default class IconsScreen extends React.Component {
   }
 
   iconClicked(index) {
-      this.props.navigation.navigate('NewSentenceScreen', {
-        imgSrc: this.state.icons[index].imgSrc
+      this.props.navigation.navigate( 'NewSentenceScreen'
+        // this.state.srcScreen ? this.state.srcScreen: 'NewSentenceScreen'
+      , {
+        imgSrc: this.state.icons[index].imgSrc,
+        categoryPath: this.state.categoryPath
       });
   }
 
@@ -78,7 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     // display: 'flex',
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
