@@ -47,7 +47,7 @@ export class Card extends React.Component {
 
 
           {
-           this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> : null
+           this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {width: 60, height: 60 }]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}

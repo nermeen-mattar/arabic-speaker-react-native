@@ -51,7 +51,7 @@ export default class CategoriesScreen extends React.Component {
                 }
               };
               // storageInstance = Storage.getInstance();
-              // storageInstance.deleteItem(this.state.categoryPath.join());
+              // storageInstance.removeItem(this.state.categoryPath.join());
     this.initCategories();
     // this.initVoiceGender();
     // this.load();

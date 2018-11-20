@@ -60,40 +60,46 @@ export default class NewSentenceScreen extends React.Component {
     })}
       onSaveClicked = {this.addNewSentence}
     />
-         <View  style={styles.inputsWrapper}> 
 
-            <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
+    <View style={{flexDirection: 'row', justifyContent: 'center',}}> 
+    <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.sentence}/>
-
+    </View>
+   <View  style={styles.inputsWrapper}> 
       <View style={styles.card} >
-        <PhotoUpload
+        {/* <PhotoUpload
         maxHeight= "100"
         maxWidth = "100"
         onResizedImageUri = {photo => {
           this.setState({imgSrc: photo.uri})
+          this.setState({sentence: photo.uri})
+
         }}
-        // onPhotoSelect={photo => {
-        //   this.setState({imgSrc: photo})
-        // }}
-        >
-        { this.state.imgSrc ?   <Image  style={[styles.cardIcon, {width: 100, height: 100}]} source={{uri: this.state.imgSrc}} />
-        :  <Icon  name="camera" size={32}  color={Colors.borderColor}/>}
+        imagePickerProps = {{label: 'herllo nerro '}}
+        onPhotoSelect={photo => {
+          this.setState({imgSrc: photo})
+        }}
+        > */}
+          <TouchableOpacity onPress={ () => this.displayImagePickerMenu()} >
+          { this.state.imgSrc ?   <Image  style={{width: 108, height: 104}} source={this.state.imgSrc} />
+        :  <Icon  name="camera" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>}
+            </TouchableOpacity>
 
           {/* style={[styles.cardIcon, {width: 100, height: 100}]}  */}
           {/* <Image source={ this.state.imgSrc ?  {uri: this.state.imgSrc} : require( '../../assets/images/icons/camera_icon.png')} /> */}
-          </PhotoUpload>
+          {/* </PhotoUpload> */}
           <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
         </View>
 
      <TouchableOpacity style={styles.card} onPress={ () => this.speak()}  >
            <View>
-           <Icon  name="volume-up" size={32}  color={Colors.borderColor}/>
+           <Icon  name="volume-up" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
              </View>
           <MonoText style={styles.cardLabel}>صرت آلي</MonoText>
         </TouchableOpacity>
 
     <View style={styles.card} >
-                <Icon  name="microphone" size={32}  color={Colors.borderColor}/>
+                <Icon  name="microphone" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
           <MonoText style={styles.cardLabel}>تسجيل صوتي</MonoText>
         </View>
 
@@ -105,6 +111,45 @@ export default class NewSentenceScreen extends React.Component {
            
       </View>
     );
+  }
+
+
+  displayImagePickerMenu() {
+// More info on all the options is below in the API Reference... just some common use cases shown here
+const options = {
+  title: '', // أختر صورة
+  customButtons: [{ name: 'iconsLib', title: 'اختر من مكتبة الأيقونات' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
+ 
+/**
+ * The first arg is the options object for customization (it can also be null or omitted for default options),
+ * The second arg is the callback which sends object: response (more info in the API Reference)
+ */
+ImagePicker.showImagePicker(options, (response) => {
+  // console.log('Response = ', response);
+ 
+  if (response.didCancel) {
+    // console.log('User cancelled image picker');
+  } else if (response.error) {
+    // console.log('ImagePicker Error: ', response.error);
+  } else if (response.customButton) {
+    // console.log('User tapped custom button: ', response.customButton);
+    this.props.navigation.navigate('IconsLibrariesScreen');
+  } else {
+    const source = { uri: response.uri };
+ 
+    // You can also display the image using data:
+    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+ 
+    this.setState({
+      imgSrc: source, // source.uri, //  { uri: 'data:image/jpeg;base64,' + response.data }
+    });
+  }
+});
   }
 
   onTextChanged(text) {
@@ -126,7 +171,9 @@ export default class NewSentenceScreen extends React.Component {
     const result = {value: 'null'};
     storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
       result.value = result.value ? result.value : [];
-      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, {label: this.state.sentence, selectable: true, imgSrc: this.state.imgSrc}]).then(res => {
+      storageInstance.setItem(this.state.categoryPath.join(), [...result.value, 
+        {label: this.state.sentence, selectable: true, imgSrc:
+         this.state.imgSrc}]).then(res => {
         this.props.navigation.navigate('CategoriesScreen',  {
           categoryPath: this.state.categoryPath
         });
@@ -181,17 +228,22 @@ const styles = StyleSheet.create({
     width: 108,
     height: 104,
     backgroundColor: Colors.primary,
-    margin: 11,
-    borderRadius: 10 /* **N** */
+    marginVertical: 11,
+    marginHorizontal: 5,
+    borderRadius: 10
     // marginBottom: 4,
+    // position: 'relative'
   },
   cardIcon: {
-    marginTop: 17
+    marginVertical: 24,
+    textAlign: 'center'
+
   },
   cardLabel: {
     color: Colors.textSecondary,
     fontSize: 11,
-    marginTop: 8, //  14 didn't work 
+    // marginTop: 24, 
+    // bottom: 0,
     textAlign: 'center'
   }
 });
