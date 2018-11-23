@@ -5,7 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
-
+		
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -405,7 +405,14 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNSoundRecorder;
 		};
-		9B134FE2219A215F00D8BEEF /* PBXContainerItemProxy */ = {
+		9B4FEB6021A45FA8001AFE4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B4FEB5B21A45FA8001AFE4E /* SpeechSynthesizer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = SpeechSynthesizer;
+		};
+		9BE1764121A8269700BD09C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ACE99AEA767842D8B5A4C513 /* PlaySound.xcodeproj */;
 			proxyType = 2;
@@ -470,6 +477,7 @@
 		9B1173EE2197BD190040FC18 /* MaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MaleSounds; path = ../assets/sounds/MaleSounds; sourceTree = "<group>"; };
 		9B1173EF2197BD190040FC18 /* FemaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FemaleSounds; path = ../assets/sounds/FemaleSounds; sourceTree = "<group>"; };
 		9B1453F821A090A300CB4265 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../../../../Downloads/alert.mp3; sourceTree = "<group>"; };
+		9B4FEB5B21A45FA8001AFE4E /* SpeechSynthesizer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SpeechSynthesizer.xcodeproj; path = "../node_modules/react-native-speech/SpeechSynthesizer.xcodeproj"; sourceTree = "<group>"; };
 		9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		ACE99AEA767842D8B5A4C513 /* PlaySound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = PlaySound.xcodeproj; path = "../node_modules/react-native-play-sound/PlaySound/PlaySound.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -700,6 +708,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				9B4FEB5B21A45FA8001AFE4E /* SpeechSynthesizer.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -834,10 +843,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9B134FDF219A215E00D8BEEF /* Products */ = {
+		9B4FEB5C21A45FA8001AFE4E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B134FE3219A215F00D8BEEF /* libPlaySound.a */,
+				9B4FEB6121A45FA8001AFE4E /* libSpeechSynthesizer.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9BE1763E21A8269700BD09C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9BE1764221A8269700BD09C5 /* libPlaySound.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -998,7 +1015,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 9B134FDF219A215E00D8BEEF /* Products */;
+					ProductGroup = 9BE1763E21A8269700BD09C5 /* Products */;
 					ProjectRef = ACE99AEA767842D8B5A4C513 /* PlaySound.xcodeproj */;
 				},
 				{
@@ -1072,6 +1089,10 @@
 				{
 					ProductGroup = 9B1173A02197B7F50040FC18 /* Products */;
 					ProjectRef = 8604EEF0D5F54880A48549A7 /* SpeechSynthesizer.xcodeproj */;
+				},
+				{
+					ProductGroup = 9B4FEB5C21A45FA8001AFE4E /* Products */;
+					ProjectRef = 9B4FEB5B21A45FA8001AFE4E /* SpeechSynthesizer.xcodeproj */;
 				},
 				{
 					ProductGroup = 9B1173D62197B7F50040FC18 /* Products */;
@@ -1404,11 +1425,18 @@
 			remoteRef = 9B134F9D219A1FD000D8BEEF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		9B134FE3219A215F00D8BEEF /* libPlaySound.a */ = {
+		9B4FEB6121A45FA8001AFE4E /* libSpeechSynthesizer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSpeechSynthesizer.a;
+			remoteRef = 9B4FEB6021A45FA8001AFE4E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9BE1764221A8269700BD09C5 /* libPlaySound.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libPlaySound.a;
-			remoteRef = 9B134FE2219A215F00D8BEEF /* PBXContainerItemProxy */;
+			remoteRef = 9BE1764121A8269700BD09C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
