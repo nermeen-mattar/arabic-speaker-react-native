@@ -42,10 +42,10 @@ import ImagePicker from 'react-native-image-picker';
         // console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
         // console.log('User tapped custom button: ', response.customButton);
+        ImagePickerHelper.customCallback();
         
       } else {
         const source = { uri: response.uri };
-        ImagePickerHelper.customCallback();
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
      

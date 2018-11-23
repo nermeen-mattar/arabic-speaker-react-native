@@ -111,9 +111,9 @@ export default class NewSentenceScreen extends React.Component {
         </View>
 
 
-         <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
+         {/* <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
           <MonoText> افتح مكتبة الأيقونات</MonoText>
-        </TouchableOpacity> 
+        </TouchableOpacity>  */}
         </View>
            
       </View>

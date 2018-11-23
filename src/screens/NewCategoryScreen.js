@@ -148,7 +148,7 @@ ImagePicker.showImagePicker(options, (response) => {
 
 
        <TouchableOpacity onPress={ () => this.state.imagePickerInstance.displayImagePickerMenu()} >
-          { this.state.imgSrc ?   <Image  style={{width: 108, height: 104}} source={this.state.imgSrc} />
+          { this.state.imgSrc ?   <Image  style={{width: 81, height: 78}} source={this.state.imgSrc} />
         :  <View> 
           
           <Icon  name="camera" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
@@ -258,7 +258,8 @@ const styles = StyleSheet.create({
     borderRadius: 10 /* **N** */
   },
   cardIcon: {
-    marginTop: 17
+    marginTop: 17,
+    textAlign: 'center'
   },
   cardLabel: {
     color: Colors.textSecondary,
@@ -268,3 +269,4 @@ const styles = StyleSheet.create({
   }
 
 });
+

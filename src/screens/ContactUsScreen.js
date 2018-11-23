@@ -1,0 +1,126 @@
+
+
+
+import React from 'react';
+import {
+  StyleSheet,
+  Image,
+  View,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
+
+import { MonoText } from '../components/StyledText';
+import Colors from '../constants/Colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { TextToSpeach } from '../classes/text-to-speach';
+
+
+export default class ContactUsScreen extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+          title:[ "تواصل معنا"],
+          formFields: {
+              name: {
+                  label: 'الإسم',
+                  type: 'text'
+              },
+              email: {
+                label: 'البريد الإلكتروني',
+                type: 'text'
+
+            },
+            subject: {
+                label: 'عنوان الرسالة',
+                type: 'text'
+
+            },
+            body: {
+                label: 'نص السالة',
+                type: 'text',
+                multiline: true
+
+            }
+          }
+        };
+        props.navigation.addListener('willFocus', this.load)
+      }
+
+
+      load = () => {
+          this.setState({
+          });
+       }
+      static navigationOptions = {
+        header: null
+      };
+      
+
+      
+      render() {
+    return (
+      <View>
+
+     <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+
+
+    <View style={{flexDirection: 'row', justifyContent: 'center'}}> 
+    {
+            this.state.formFields.map((field, index) => {
+              return(
+                <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text, index)}
+                placeholder= {field.label}  multiline = {field.multiline}  />
+                // value={field.value}
+              )
+              
+              })}
+
+    </View>
+   <View  style={styles.inputsWrapper}> 
+{/*   
+     <TouchableOpacity style={styles.card} onPress={ () => this.speak()}  >
+           <View>
+           <Icon  name="volume-up" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
+             </View>
+          <MonoText style={styles.cardLabel}>صرت آلي</MonoText>
+        </TouchableOpacity> */}
+
+
+        </View>
+           
+      </View>
+    );
+  }
+
+
+  onTextChanged(text, fieldIndex) {
+    const formFields = this.state.formFields;
+    formFields[fieldIndex].value = text;
+    this.setState({
+        formFields: formFields
+    });
+  }
+}
+
+
+const styles = StyleSheet.create({
+  inputsWrapper: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  textInput: {
+    width: 315,
+    height: 41,
+    backgroundColor: Colors.primary,
+    fontSize: 21,
+    textAlign: 'right',
+    padding: 8,
+    paddingTop: 12, // 20 didn't work
+    marginTop: 11,
+    borderRadius: 10 /* **N** */
+  },
+
+});
