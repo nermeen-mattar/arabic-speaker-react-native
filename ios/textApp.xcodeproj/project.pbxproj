@@ -1641,7 +1641,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AppsBunches.arabicSpeaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppsBunches.arabicSpeak;
 				PRODUCT_NAME = textApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1679,7 +1679,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AppsBunches.arabicSpeaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AppsBunches.arabicSpeak;
 				PRODUCT_NAME = textApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
