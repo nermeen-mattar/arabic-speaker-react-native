@@ -3,14 +3,12 @@
 
 import React from 'react';
 import {
-  StyleSheet,
-  View,
+  View
 } from 'react-native';
 import { NavigationActions } from 'react-navigation'
 import { PlaySound } from 'react-native-play-sound';
 
 
-import Colors from '../constants/Colors';
 
 export default class AlertScreen extends React.Component {
 
