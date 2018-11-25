@@ -11,6 +11,7 @@ import Colors from '../constants/Colors';
 import { MonoText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import commonStyles from '../styles/commonStyles';
+import fonts from '../constants/fonts';
 
 export class Card extends React.Component {
   constructor (props) {
@@ -53,7 +54,7 @@ export class Card extends React.Component {
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-          <MonoText style={[styles.cardLabel, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
+          <MonoText fontFamily={fonts.tajawal} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
   
         </View>
 

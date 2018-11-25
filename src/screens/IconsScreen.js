@@ -48,7 +48,7 @@ export default class IconsScreen extends React.Component {
                   this.iconClicked(index)
                }}>
       
-              <Card key ={icon.label} cardInfo = {icon}/>
+              <Card key ={icon.label} cardInfo = {icon} fontSize = "12" />
               </TouchableOpacity>
                    );
                   })

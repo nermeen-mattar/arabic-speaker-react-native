@@ -40,7 +40,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Arabic speaker app uses the camera to enable the user to use use the taken photo in the app</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Arabic speaker app uses the microphone to record the user's speech so that the user can listen to it when needed</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -69,6 +69,7 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Hacen Casablanca Light.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -56,6 +55,7 @@
 		8947E4946ACF45949A7BDFBA /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C4592F9581AB4B59AA7D66B9 /* FontAwesome5_Brands.ttf */; };
 		8B7A277B2C65422D89BD78AA /* libRNSoundRecorder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */; };
 		911346D5CD674F0BAADC013E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFB1F1D6BA5343829DB16778 /* SimpleLineIcons.ttf */; };
+		9B0B087821AB0ED200E6080D /* libPlaySound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9457BA21AA1262005BACA1 /* libPlaySound.a */; };
 		9B1173F02197BD190040FC18 /* MaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EE2197BD190040FC18 /* MaleSounds */; };
 		9B1173F12197BD190040FC18 /* FemaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EF2197BD190040FC18 /* FemaleSounds */; };
 		9B1453F921A090A300CB4265 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1453F821A090A300CB4265 /* alert.mp3 */; };
@@ -71,6 +71,7 @@
 		EC172D32E8004170B9F6E085 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 171B8BE303EA4DFFA8B67CAE /* Ionicons.ttf */; };
 		F03BA966CCEE42A08A2C0E84 /* Hacen Casablanca Light_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C344AF2AD4F32B5EE588E /* Hacen Casablanca Light_0.ttf */; };
 		F676591C25CF41B2878A3611 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4C23D1469CA4C7D9776910F /* Feather.ttf */; };
+		E9CD730BF78C414DABE508A5 /* Hacen Casablanca Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -480,6 +481,7 @@
 		EC51A77611C94C01ABFF0852 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		F02BBB827379405F924979A9 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TextToSpeech.xcodeproj; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; };
 		F4C23D1469CA4C7D9776910F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */ = {isa = PBXFileReference; name = "Hacen Casablanca Light.ttf"; path = "../assets/fonts/Hacen Casablanca Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -495,6 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0B087821AB0ED200E6080D /* libPlaySound.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -858,6 +861,7 @@
 				B9EFB1DFAA8046A79BA336DB /* Octicons.ttf */,
 				CFB1F1D6BA5343829DB16778 /* SimpleLineIcons.ttf */,
 				9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */,
+				EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -948,7 +952,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = XZQ9L9H6Q4;
+						DevelopmentTeam = 62KL86T2BC;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -1429,6 +1433,7 @@
 				7D908E39A1D54EAEAEAD5E59 /* Octicons.ttf in Resources */,
 				911346D5CD674F0BAADC013E /* SimpleLineIcons.ttf in Resources */,
 				4074B2AF0544417ABE0EE591 /* Zocial.ttf in Resources */,
+				E9CD730BF78C414DABE508A5 /* Hacen Casablanca Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1548,7 +1553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = XZQ9L9H6Q4;
+				DEVELOPMENT_TEAM = 62KL86T2BC;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1583,7 +1588,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = XZQ9L9H6Q4;
+				DEVELOPMENT_TEAM = 62KL86T2BC;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",

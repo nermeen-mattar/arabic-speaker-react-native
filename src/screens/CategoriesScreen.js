@@ -128,6 +128,7 @@ export default class CategoriesScreen extends React.Component {
                   this.categoryClicked(index)
                }}>
               <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
+              fontSize = {this.state.categoryPath.length > 1 ? 12 : 15}
                 selected = {category.selected} // this.state.selectedCategories.includes(category) 
                   // onCardToggeled= {() =>  this.categoryToggled(index)}     
               />

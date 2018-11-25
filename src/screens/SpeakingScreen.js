@@ -39,7 +39,7 @@ export default class TextToSpeachScreen extends React.Component {
           style: styles.space
         },
         {
-          title: 'تحدث',
+          title: 'نطق',
           iconName: 'volume-up',
           onPress: () => this.speak(),
            style: styles.tool
