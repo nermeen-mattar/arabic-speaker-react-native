@@ -98,14 +98,14 @@ class SettingsComponent extends Component {
         return (
         <View  style={styles.container}>
         <View >
-        <View style={styles.drawerHeader} > 
+        {/* <View style={styles.drawerHeader} >  */}
             <TouchableOpacity  style={styles.closeDrawerIcon} onPress={ () => {
               this.props.navigation.closeDrawer();
             }}> 
              <Icon name="arrow-right" size={26} color="#9d9d9d"/> 
              </TouchableOpacity>
              <MonoText style={styles.drawerTitle}> {this.state.title}</MonoText>
-        </View>
+        {/* </View> */}
         <ScrollView> 
         <SectionList
           sections={[{ data: items}]}
@@ -216,10 +216,11 @@ const styles = StyleSheet.create({
         height: 32,
         backgroundColor: '#f2f2f2', 
         borderRadius: 16,
-        marginTop: 20,
+        marginTop: 34,
         marginBottom: 14,
-        marginLeft: 18,
-        display: 'flex',
+        marginRight: 18,
+        marginLeft: 'auto',
+        display: 'flex',  
         justifyContent: 'center',
         alignItems: 'center'
     },

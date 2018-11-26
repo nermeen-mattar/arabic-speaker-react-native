@@ -93,8 +93,8 @@ export class Card extends React.Component {
     // },
     topRightIcon: {
       position:'absolute',
-      right:0,
-      top: 0
+      left:7, // was right before ar
+      top: 7
     },
     selectIcon: {
       // width:16,
