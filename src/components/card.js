@@ -49,7 +49,7 @@ export class Card extends React.Component {
 
           {
             // {width: 77, height: 55 }
-           this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {width: 50, height: 50 }]} source={ this.props.cardInfo.imgSrc} /> : null
+            this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {maxWidth: 50, maxHeight: 50 }]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
@@ -67,8 +67,7 @@ export class Card extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
-      flexDirection: 'row',
-      justifyContent: 'center',
+      ...commonStyles.center,
       alignItems: 'center',
       width: Spacings.cardWidth,
       height: Spacings.cardHeight,

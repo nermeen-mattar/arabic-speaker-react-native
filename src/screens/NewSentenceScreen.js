@@ -7,8 +7,9 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity
-} from 'react-native';
+  TouchableOpacity} from 'react-native';
+import { PlaySound } from 'react-native-play-sound';
+import SoundRecorder from 'react-native-sound-recorder';
 
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
@@ -32,6 +33,8 @@ export default class NewSentenceScreen extends React.Component {
           imgSrc: props.navigation.getParam('imgSrc'), 
           // categoryName: props.navigation.getParam('categoryName'),
           categoryPath: props.navigation.getParam('categoryPath'),
+          recordingState: null,
+          soundPath: null,
           imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen', {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
         };
         props.navigation.addListener('willFocus', this.load)
@@ -41,6 +44,8 @@ export default class NewSentenceScreen extends React.Component {
       load = () => {
           this.setState({
             sentence: '',
+            soundPath: null,
+            recordingState: null,
             imgSrc: this.props.navigation.getParam('imgSrc'),
             imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
 
@@ -66,7 +71,8 @@ export default class NewSentenceScreen extends React.Component {
 
     <View style={{flexDirection: 'row', justifyContent: 'center'}}> 
     <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
-        placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.sentence}/>
+        placeholder= {this.state.inputPlaceholder}  multiline = {true} />
+         {/* value={this.state.sentence} */}
     </View>
    <View  style={styles.inputsWrapper}> 
       <View style={styles.card} >
@@ -98,33 +104,62 @@ export default class NewSentenceScreen extends React.Component {
           {/* </PhotoUpload> */}
         </View>
 
-     <TouchableOpacity style={styles.card} onPress={ () => this.speak()}  >
+     <TouchableOpacity style={[styles.card, {backgroundColor: !this.state.recordingState ?  Colors.brand: Colors.primary}]} onPress={ () => this.speak()}  >
            <View>
            <Icon  name="volume-up" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
              </View>
           <MonoText style={styles.cardLabel}>صرت آلي</MonoText>
         </TouchableOpacity>
 
-    <View style={styles.card} >
-                <Icon  name="microphone" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
-          <MonoText style={styles.cardLabel}>تسجيل صوتي</MonoText>
-        </View>
+          
+
+    {/* <TouchableOpacity style={styles.card}  onPress = {() => this.startRecording()} > */}
+    <TouchableOpacity style={[styles.card, {backgroundColor: this.state.recordingState === 'recording' ? Colors.brand: Colors.primary}]}
+            // underlayColor = "transparent"
+            // onPress={tool.onPress} 
+            onPress={() => this.startStopRecording()}>   
+            <Icon  name="microphone" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
+            <MonoText style={styles.cardLabel}>تسجيل صوتي</MonoText>
+        </TouchableOpacity>
 
 
-         {/* <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
-          <MonoText> افتح مكتبة الأيقونات</MonoText>
-        </TouchableOpacity>  */}
+          {/* <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
+          <MonoText>icons </MonoText>
+        </TouchableOpacity>   */}
         </View>
            
       </View>
     );
   }
 
+  startStopRecording() {
+    if(this.state.recordingState === 'recording') {
+      this.setState({recordingState: 'recorded'});
+      SoundRecorder.stop()
+    .then((result) => {
+      PlaySound('alert');
+      // this.setState({text: JSON.stringify(result)})
+      // if(callBack) {
+      //   callBack();
+      // }
+    });
+    } else {
+      const pathAndFile = SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp3';
+      this.setState({
+        recordingState: 'recording',
+        soundPath: pathAndFile
+       });
+      SoundRecorder.start(pathAndFile)
+      .then(()=> {
+      });
+    }
+ 
+  }
 
+ 
   onTextChanged(text) {
     this.setState({
-      // title: 'okokok',
-      sentence: text,
+      sentence: text
     });
   }
 
@@ -134,7 +169,10 @@ export default class NewSentenceScreen extends React.Component {
   }
 
   addNewSentence = () => {
-
+    if(this.state.recordingState === 'recording') {
+      this.startStopRecording(); // this.addNewSentence
+      // return;
+    }
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');categ
     const result = {value: 'null'};
@@ -142,7 +180,7 @@ export default class NewSentenceScreen extends React.Component {
       result.value = result.value ? result.value : [];
       storageInstance.setItem(this.state.categoryPath.join(), [...result.value, 
         {label: this.state.sentence, imgSrc:
-         this.state.imgSrc}]).then(res => {
+         this.state.imgSrc, soundPath: this.state.soundPath}]).then(res => {
         this.props.navigation.navigate('CategoriesScreen',  {
           categoryPath: this.state.categoryPath
         });
