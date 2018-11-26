@@ -112,7 +112,7 @@ class SettingsComponent extends Component {
           renderItem={({ item, index }) => {
            return item.platform !== undefined && (item.platform !== Platform.OS) ? null : 
           <View key={index} style={styles.list}>
-            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}> 
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1}}> 
                <Image source = {item.right.imgSrc} style={styles.itemIcon}/>
                <MonoText style={[ styles.itemLabel, styles.smallFontSize]} > {item.right.label}</MonoText>      
             </View>
@@ -143,8 +143,7 @@ class SettingsComponent extends Component {
             {color: Colors.brand } : //  borderWidth: 1, borderColor: Colors.brand
             { color: 'white'} //  borderWidth: 1, borderColor: Colors.borderColor 
             }/> 
-                          <MonoText style={styles.smallFontSize}> {option} </MonoText>
-
+              <MonoText style={styles.smallFontSize}> {option} </MonoText>
               </TouchableOpacity> 
               )
             })
