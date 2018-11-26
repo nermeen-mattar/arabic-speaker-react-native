@@ -22,6 +22,9 @@ import ImagePicker from 'react-native-image-picker';
     // More info on all the options is below in the API Reference... just some common use cases shown here
     const options = {
       title: '', // أختر صورة
+      cancelButtonTitle: 'إلغاء', 
+      takePhotoButtonTitle: 'الكاميرا',
+      chooseFromLibraryButtonTitle: 'رفع صورة من الاستديو',
       customButtons: [{ name: 'iconsLib', title: 'اختر من مكتبة الأيقونات' }],
       storageOptions: {
         skipBackup: true,
