@@ -113,7 +113,7 @@ export default class CategoriesScreen extends React.Component {
           }
          />
         <ScrollView >
-          {/* <MonoText> {this.state.test}</MonoText> */}
+          <MonoText> {this.state.test}</MonoText>
           <View style={styles.cardsContainer}>
           {
             this.state.categories.map((category, index) => {
@@ -236,7 +236,10 @@ export default class CategoriesScreen extends React.Component {
         this.setState({
           test: this.state.categories[sentenceIndex].soundPath
         })
-        PlaySound(this.state.categories[sentenceIndex].soundPath); // .mp3
+        this.setState({
+          test: this.state.categories[sentenceIndex].soundPath
+        })
+        PlaySound(this.state.categories[sentenceIndex].soundPath.replace('.mp4', '')); // .mp3
       } else {
         TextToSpeach.getInstance().speak(this.state.categories[sentenceIndex].label);
       }

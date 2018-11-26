@@ -71,7 +71,9 @@ export default class NewSentenceScreen extends React.Component {
 
     <View style={{flexDirection: 'row', justifyContent: 'center'}}> 
     <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
-        placeholder= {this.state.inputPlaceholder}  multiline = {true} />
+        placeholder= {this.state.inputPlaceholder}  multiline = {true} 
+        value={this.state.soundPath}
+        />
          {/* value={this.state.sentence} */}
     </View>
    <View  style={styles.inputsWrapper}> 
@@ -144,7 +146,8 @@ export default class NewSentenceScreen extends React.Component {
       // }
     });
     } else {
-      const pathAndFile = SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp3';
+      const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';
+      // SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp4';
       this.setState({
         recordingState: 'recording',
         soundPath: pathAndFile
