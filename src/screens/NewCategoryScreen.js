@@ -234,7 +234,7 @@ ImagePicker.showImagePicker(options, (response) => {
 const styles = StyleSheet.create({
   inputsWrapper: {
     display: 'flex',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },

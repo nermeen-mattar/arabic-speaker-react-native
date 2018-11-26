@@ -38,15 +38,15 @@ export default class CategoriesScreen extends React.Component {
                 showConfirmDialog: false,
                 defaultCategories: {
                   المكتبات: [
-                    { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
-                    { label: 'تحياتي' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png'),  default: true},
                     { label: 'عام' , type: 'category', imgSrc:  require('../../assets/images/categories/info.png'),  default: true},
-                    { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png'),  default: true},
-                    { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png'),  default: true},
+                    { label: 'تحياتي' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png'),  default: true},
+                    { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
                     { label: 'العمل' , type: 'category', imgSrc:  require('../../assets/images/categories/tools.png'),  default: true},
-                    { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png'),  default: true},
+                    { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png'),  default: true},
+                    { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png'),  default: true},
+                    { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png'),  default: true},
                     { label: 'المطعم' , type: 'category', imgSrc:  require('../../assets/images/categories/cake.png'),  default: true},
-                    { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png'),  default: true}
+                    { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png'),  default: true}
                   ],
                   ...CategoriesSentences
                 }
@@ -208,7 +208,7 @@ export default class CategoriesScreen extends React.Component {
     });
     setTimeout(() => {
       this.load()
-    }, 5);
+    }, 2);
   }
 
   

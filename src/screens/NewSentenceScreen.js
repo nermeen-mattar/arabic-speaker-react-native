@@ -64,7 +64,7 @@ export default class NewSentenceScreen extends React.Component {
       onSaveClicked = {this.addNewSentence}
     />
 
-    <View style={{flexDirection: 'row', justifyContent: 'center',}}> 
+    <View style={{flexDirection: 'row', justifyContent: 'center'}}> 
     <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true}  value={this.state.sentence}/>
     </View>
@@ -177,7 +177,7 @@ export default class NewSentenceScreen extends React.Component {
 const styles = StyleSheet.create({
   inputsWrapper: {
     display: 'flex',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },

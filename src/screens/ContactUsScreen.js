@@ -77,22 +77,18 @@ export default class ContactUsScreen extends React.Component {
               })}
 
     </View>
-   <View  style={styles.inputsWrapper}> 
-{/*   
-     <TouchableOpacity style={styles.card} onPress={ () => this.speak()}  >
-           <View>
-           <Icon  name="volume-up" size={32}  color={Colors.borderColor} style={styles.cardIcon}/>
-             </View>
-          <MonoText style={styles.cardLabel}>صرت آلي</MonoText>
-        </TouchableOpacity> */}
-
-
-        </View>
-           
+  
+     <TouchableOpacity style={styles.card} onPress={ () => this.sendMessage()}  >
+          <MonoText style={styles.cardLabel}>إرسال الرسالة</MonoText>
+        </TouchableOpacity>
+                   
       </View>
     );
   }
 
+  sendMessage() {
+
+  }
 
   onTextChanged(text, fieldIndex) {
     const formFields = this.state.formFields;
@@ -107,7 +103,7 @@ export default class ContactUsScreen extends React.Component {
 const styles = StyleSheet.create({
   inputsWrapper: {
     display: 'flex',
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
@@ -115,7 +111,8 @@ const styles = StyleSheet.create({
     width: 315,
     height: 41,
     backgroundColor: Colors.primary,
-    fontSize: 21,
+    fontFamily: 'Tajawal',
+    fontSize: 17,
     textAlign: 'right',
     padding: 8,
     paddingTop: 12, // 20 didn't work

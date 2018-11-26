@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     // display: 'flex',
     flex: 1,
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },

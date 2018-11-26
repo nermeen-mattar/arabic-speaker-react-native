@@ -20,16 +20,10 @@ export default class TextToSpeachScreen extends React.Component {
       predectedWords: [],
       toolsBar: [
         {
-          title: 'مسح',
-          iconName: 'trash',
-          onPress: () => this.clear(),
-          style: styles.tool
-        },
-        {
-          title: 'المفضلة',
-          iconName: 'star',
-          onPress: () => this.addToFavourites(),
-          style: styles.tool
+          title: 'نطق',
+          iconName: 'volume-up',
+          onPress: () => this.speak(),
+           style: styles.tool
         },
         {
           title: 'مسافة',
@@ -39,10 +33,16 @@ export default class TextToSpeachScreen extends React.Component {
           style: styles.space
         },
         {
-          title: 'نطق',
-          iconName: 'volume-up',
-          onPress: () => this.speak(),
-           style: styles.tool
+          title: 'المفضلة',
+          iconName: 'star',
+          onPress: () => this.addToFavourites(),
+          style: styles.tool
+        },
+        {
+          title: 'مسح',
+          iconName: 'trash',
+          onPress: () => this.clear(),
+          style: styles.tool
         }
       ],
       activeToolName: '',
@@ -218,7 +218,7 @@ tool: {
 },
 space: {
   // width: 150,
-  paddingHorizontal: 16,
+  paddingHorizontal: 18,
   textAlign: 'center',
 },
 spaceIcon: {

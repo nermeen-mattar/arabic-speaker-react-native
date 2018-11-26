@@ -19,24 +19,19 @@ class CustomHeader extends Component {
         return (
             <View style={styles.container}> 
             <View style={styles.iconsWrapper}>
-            
+            {
+                this.props.onBackClicked ? 
+                <TouchableOpacity  style={styles.backWrapper} onPress={ this.props.onBackClicked} > 
+                <Icon name="chevron-right" size={24} color="white" />
+                    <MonoText  style={styles.smallText}> للخلف </MonoText> 
+                </TouchableOpacity> :
+                <Icon name="bars" size={28} color="white" onPress={() => this.props.navigation.openDrawer()} />  
+            }
+            {/* <Image source= {require( '../../assets/images/icons/menu.png')}/> */}
+    
             <View style={styles.tools}>
             {/* didn't work <Icon.Ionicons name="circle-with-plus" size={28}  style={{ textAlign: 'right' }} color="white" />   */}
           
-            {
-                this.props.onNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
-            <Icon style={styles.icon}  name="plus-circle" size={28}  color="white"/> 
-            {/* <Image style={styles.icon} source={require( '../../assets/images/icons/plus.png')} />      */}
-            </TouchableOpacity>   : null
-            }
-
-            {
-                this.props.onSecondNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSecondNewClicked}>
-            <Icon style={styles.icon}  name="plus-square" size={28}  color="white"/> 
-            {/* <Image style={styles.icon} source={require( '../../assets/images/icons/plus.png')} />      */}
-            </TouchableOpacity>   : null
-            }
-
             {
                 this.props.onSelectClicked ? 
                 <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSelectClicked}>
@@ -44,19 +39,21 @@ class CustomHeader extends Component {
                 {/* <Image  source={require( '../../assets/images/icons/checkmark-circle.png')} /> */}
                 </TouchableOpacity>: null
             }
-         
+            {
+                this.props.onSecondNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSecondNewClicked}>
+            <Icon style={styles.icon}  name="plus-square" size={28}  color="white"/> 
+            {/* <Image style={styles.icon} source={require( '../../assets/images/icons/plus.png')} />      */}
+            </TouchableOpacity>   : null
+            }
+            {
+                this.props.onNewClicked ?  <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onNewClicked}>
+            <Icon style={styles.icon}  name="plus-circle" size={28}  color="white"/> 
+            {/* <Image style={styles.icon} source={require( '../../assets/images/icons/plus.png')} />      */}
+            </TouchableOpacity>   : null
+            }
 
             </View>
-            {
-                this.props.onBackClicked ? 
-                <TouchableOpacity  style={styles.backWrapper} onPress={ this.props.onBackClicked} > 
-                    <MonoText  style={styles.smallText}> للخلف </MonoText> 
-                <Icon name="chevron-right" size={24} color="white" />
-                </TouchableOpacity> :
-                <Icon name="bars" size={28} color="white" onPress={() => this.props.navigation.openDrawer()} />  
-            }
-            {/* <Image source= {require( '../../assets/images/icons/menu.png')}/> */}
-    
+     
 
             </View>
             <View  />
@@ -67,7 +64,7 @@ class CustomHeader extends Component {
           {
             this.props.title.map((titleSection, index) => {
               return(
-                  <View style={{flexDirection: 'row-reverse'}}>
+                  <View style={{flexDirection: 'row'}}>
                   {/* , alignItems: 'center' to fix arrow */}
                       <TouchableOpacity
                       activeOpacity = {   this.props.onTitleSectionClicked ? 0.2 : 1}
@@ -126,14 +123,13 @@ const styles = StyleSheet.create({
         // height: 116
     },
     titleSectionsWrapper: {
-        flexDirection: 'row-reverse',
-         justifyContent: 'flex-start',
+        flexDirection: 'row',
+        //  justifyContent: 'flex-start',
         //  marginRight: 13
         marginLeft: 13 // everything is the opposite
     },
     title : {
         height: 47,
-        // textAlign: 'right', replaces with row-reverse and flex-start
         color: Colors.primary,
         fontSize: 30
       },
@@ -154,7 +150,7 @@ iconsWrapper: {
         flexDirection: 'row',  
     },
     icon: {
-        marginRight: 30
+        marginLeft: 30 /* weird */
     },
     backWrapper: {
         display: 'flex',

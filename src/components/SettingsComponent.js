@@ -39,7 +39,7 @@ class SettingsComponent extends Component {
         left: {
           //   field: {
           type: 'radio',
-          options: [Genders.female,  Genders.male],
+          options: [Genders.male, Genders.female],
           variableName: 'voiceGender'
           //   }
         }
@@ -112,6 +112,10 @@ class SettingsComponent extends Component {
           renderItem={({ item, index }) => {
            return item.platform !== undefined && (item.platform !== Platform.OS) ? null : 
           <View key={index} style={styles.list}>
+            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}> 
+               <Image source = {item.right.imgSrc} style={styles.itemIcon}/>
+               <MonoText style={[ styles.itemLabel, styles.smallFontSize]} > {item.right.label}</MonoText>      
+            </View>
           { 
             item.left  ? 
             (item.left.type === 'switch' ? <Switch style={styles.switch} 
@@ -132,7 +136,6 @@ class SettingsComponent extends Component {
                 // this.setState({[item.left.variableName]: option});
                 this.updateSettings(item.left.variableName, option);
               }}>
-              <MonoText style={styles.smallFontSize}> {option} </MonoText>
             <Icon name={this.state.settingsValues[item.left.variableName] === option ? 'dot-circle-o' : 'circle'} 
             size={28}
             style={ //  [{ borderRadius: 14, fontSize: 28, height: 28, width:28 },
@@ -140,6 +143,8 @@ class SettingsComponent extends Component {
             {color: Colors.brand } : //  borderWidth: 1, borderColor: Colors.brand
             { color: 'white'} //  borderWidth: 1, borderColor: Colors.borderColor 
             }/> 
+                          <MonoText style={styles.smallFontSize}> {option} </MonoText>
+
               </TouchableOpacity> 
               )
             })
@@ -149,11 +154,6 @@ class SettingsComponent extends Component {
             <Icon style={styles.itemArrowIcon}  name="chevron-left" />
           }
           <MonoText style={styles.smallFontSize}>{this.state.value} </MonoText>
-
-        <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}> 
-        <MonoText style={[ styles.itemLabel, styles.smallFontSize]} > {item.right.label}</MonoText>      
-          <Image source = {item.right.imgSrc} style={styles.itemIcon}/>
-        </View>
           </View>}            
           }
         />
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     drawerTitle : {
-        textAlign: 'right',
+        // textAlign: 'right',
         fontSize: 30,
         marginRight: 13,
         marginBottom: 18
@@ -237,10 +237,10 @@ const styles = StyleSheet.create({
         },
     ...CustomListItemSyle,
     itemIcon: {
-      marginLeft: 18
+      marginRight: 18
     },
     switch: {
-      transform:  [{ rotate: '180deg'}],
+      // transform:  [{ rotate: '180deg'}],
       // backgroundColor: Colors.brand,
       borderRadius: 17
     },

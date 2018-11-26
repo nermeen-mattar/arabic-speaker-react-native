@@ -14,15 +14,15 @@ class DeleteAndCancel extends Component {
     render() {
         return (
             <View  style={styles.buttonsWrapper} >
-            <TouchableOpacity  style={{flex: 1}}  onPress={this.props.onCancelClicked}>
-              <MonoText style={styles.button} >
-              الغاء
-                </MonoText>
-            </TouchableOpacity>
-            <MonoText style={styles.verticalDivider}> </MonoText>
             <TouchableOpacity  onPress={this.props.onDeleteClicked}  style={{flex: 1}}>
             <MonoText style={styles.button} >
               حذف
+                </MonoText>
+            </TouchableOpacity>
+            <MonoText style={styles.verticalDivider}> </MonoText>
+            <TouchableOpacity  style={{flex: 1}}  onPress={this.props.onCancelClicked}>
+              <MonoText style={styles.button} >
+              الغاء
                 </MonoText>
             </TouchableOpacity>
             </View> 

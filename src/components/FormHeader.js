@@ -16,15 +16,14 @@ class FormHeader extends Component {
     render() {
         return (
         <View style={styles.container}> 
-            <View style={styles.actionsWrapper}>
-            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onCancelClicked}>
-            <MonoText style={styles.action}>إلغاء</MonoText>      
-            </TouchableOpacity>      
+            <View style={styles.actionsWrapper}>   
             <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onSaveClicked}>
             <MonoText style={styles.action}>حفظ</MonoText>
             </TouchableOpacity>
+            <TouchableOpacity activeOpacity = { .5 }  onPress = {this.props.onCancelClicked}>
+            <MonoText style={styles.action}>إلغاء</MonoText>      
+            </TouchableOpacity>   
             </View>
-            <View  />
             <MonoText  style={styles.title}>{this.props.title}</MonoText>
          </View>
         );
@@ -38,7 +37,6 @@ const styles = StyleSheet.create({
         height: 116
     },
     title : {
-        textAlign: 'right',
         color: Colors.primary,
         fontSize: 30,
         marginRight: 13

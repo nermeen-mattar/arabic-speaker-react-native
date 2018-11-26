@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -67,11 +68,11 @@
 		CB63EF8984164832B4FA26E1 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BDDC8EC736F4B3FAA2E08CA /* Entypo.ttf */; };
 		D5B2C8A8DCC6478CB5D93D61 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2804230E3D4E44A54A1F3D /* Tajawal-Bold.ttf */; };
 		E752859A3971440690810741 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C0E6D128BA428D9A9B175F /* EvilIcons.ttf */; };
+		E9CD730BF78C414DABE508A5 /* Hacen Casablanca Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */; };
 		EA341DBEA2DA49DDA8B55E94 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31DCD3E45EC141DAB06E7831 /* SF-UI-Text-Regular.otf */; };
 		EC172D32E8004170B9F6E085 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 171B8BE303EA4DFFA8B67CAE /* Ionicons.ttf */; };
 		F03BA966CCEE42A08A2C0E84 /* Hacen Casablanca Light_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C344AF2AD4F32B5EE588E /* Hacen Casablanca Light_0.ttf */; };
 		F676591C25CF41B2878A3611 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4C23D1469CA4C7D9776910F /* Feather.ttf */; };
-		E9CD730BF78C414DABE508A5 /* Hacen Casablanca Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -459,6 +460,7 @@
 		85EE28AF22F1468290976171 /* RNSoundRecorder.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSoundRecorder.xcodeproj; path = "../node_modules/react-native-sound-recorder/ios/RNSoundRecorder.xcodeproj"; sourceTree = "<group>"; };
 		8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSpeechSynthesizer.a; sourceTree = "<group>"; };
 		8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSoundRecorder.a; sourceTree = "<group>"; };
+		9B0B092221AB6D8500E6080D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B1173EE2197BD190040FC18 /* MaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MaleSounds; path = ../assets/sounds/MaleSounds; sourceTree = "<group>"; };
 		9B1173EF2197BD190040FC18 /* FemaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FemaleSounds; path = ../assets/sounds/FemaleSounds; sourceTree = "<group>"; };
 		9B1453F821A090A300CB4265 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../../../../Downloads/alert.mp3; sourceTree = "<group>"; };
@@ -478,10 +480,10 @@
 		E8B91062B8074FA2BA7EC654 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		E9EBA0CEF7484B94A8387AEC /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		EB4AB9A6ED2E41D2B8FD0218 /* libRCTImageResizer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTImageResizer.a; sourceTree = "<group>"; };
+		EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Hacen Casablanca Light.ttf"; path = "../assets/fonts/Hacen Casablanca Light.ttf"; sourceTree = "<group>"; };
 		EC51A77611C94C01ABFF0852 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		F02BBB827379405F924979A9 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TextToSpeech.xcodeproj; path = "../node_modules/react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; };
 		F4C23D1469CA4C7D9776910F /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */ = {isa = PBXFileReference; name = "Hacen Casablanca Light.ttf"; path = "../assets/fonts/Hacen Casablanca Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -972,10 +974,9 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "textApp" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = Arabic;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
@@ -1541,6 +1542,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				13B07FB21A68108700A75B9A /* Base */,
+				9B0B092221AB6D8500E6080D /* ar */,
 			);
 			name = LaunchScreen.xib;
 			path = textApp;

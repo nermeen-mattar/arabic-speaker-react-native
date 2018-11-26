@@ -79,10 +79,10 @@ AlertStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  AlertStack,
-  FavourtiesStack,
+  SpeakingStack,
   CategoriesStack,
-  SpeakingStack
+  FavourtiesStack,
+  AlertStack
 }, {
   initialRouteName: 'SpeakingStack'
 });

@@ -60,9 +60,10 @@ export default class IconsLibrariesScreen extends React.Component {
 
           })}
           >
+          <MonoText  style={styles.itemLabel}> {item}           </MonoText>        
+
           <Icon style={styles.itemArrowIcon}  name="chevron-left" /> 
 
-          <MonoText  style={styles.itemLabel}> {item}           </MonoText>        
           </TouchableOpacity>}
           // renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section}</Text>}
           // keyExtractor={(library, index) => index}

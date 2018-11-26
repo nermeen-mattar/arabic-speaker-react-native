@@ -13,7 +13,7 @@ const SettingsDrawer = createDrawerNavigator({
 },
   {
     drawerWidth: 310,
-    drawerPosition: 'right',
+    // drawerPosition: 'right',
     contentComponent: SettingsComponent,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
