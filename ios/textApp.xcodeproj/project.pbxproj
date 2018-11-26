@@ -342,6 +342,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		9B0AAC0421AC118700233E89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 37E2464FFC294B6C8EBA3554 /* PlaySound.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E957A9321FE7A97E0009C115;
+			remoteInfo = PlaySound;
+		};
 		9B1173AB2197B7F50040FC18 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C3B645A698C476B9F24F960 /* RCTImageResizer.xcodeproj */;
@@ -901,6 +908,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9B0AAC0521AC118700233E89 /* PBXTargetDependency */,
 			);
 			name = textApp;
 			productName = "Hello World";
@@ -1469,7 +1477,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1534,6 +1542,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* textApp-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		9B0AAC0521AC118700233E89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PlaySound;
+			targetProxy = 9B0AAC0421AC118700233E89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
