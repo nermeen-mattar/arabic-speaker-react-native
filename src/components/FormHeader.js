@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     title : {
         color: Colors.primary,
         fontSize: 30,
-        marginRight: 13
+        marginLeft: 13
       },
     actionsWrapper: {
       marginTop: 36,

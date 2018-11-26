@@ -142,7 +142,7 @@ iconsWrapper: {
     height: 69,
       paddingTop: 31,
       paddingBottom: 12,
-        marginHorizontal: 18,
+        marginLeft: 13, // was horizantal
       flexDirection: 'row',
       justifyContent: 'space-between'
     },
@@ -150,7 +150,7 @@ iconsWrapper: {
         flexDirection: 'row',  
     },
     icon: {
-        marginLeft: 30 /* weird */
+        paddingHorizontal: 15 /* weird */
     },
     backWrapper: {
         display: 'flex',
