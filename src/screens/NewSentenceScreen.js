@@ -7,8 +7,7 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity, 
-  Platform
+  TouchableOpacity
 } from 'react-native';
 import { PlaySound } from 'react-native-play-sound';
 import SoundRecorder from 'react-native-sound-recorder';
@@ -23,13 +22,12 @@ import { TextToSpeach } from '../classes/text-to-speach';
 import { Storage } from '../classes/storage';
 import { TextPredection } from '../classes/textPrediction';
 import { ImagePickerHelper } from '../classes/image-picker-helper';
-import AudioRecorderPlayer from 'react-native-audio-recorder-player';
+import { ArabicRecorderAndPlayer } from '../classes/ArabicRecorderAndPlayer';
 
 export default class NewSentenceScreen extends React.Component {
     constructor(props) {
         super();
         this.state = {
-          audioRecorderPlayer : new AudioRecorderPlayer(),
           title:[ "إضافة عبارة جديدة"],
           cardInfo: { label: 'ارفق صورة'},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
@@ -149,13 +147,12 @@ export default class NewSentenceScreen extends React.Component {
     //   //   callBack();
     //   // }
     // });
-    this.onStopRecord();
-
-    this.setState({ recordingState: 'recorded' });
-
+    ArabicRecorderAndPlayer.getInstance().onStopRecord();
+      this.setState({ recordingState: 'recorded' });
     } else {
-      this.onStartRecord();
-      this.setState({recordingState: 'recording'});
+      const fileName = this.state.sentence;
+      ArabicRecorderAndPlayer.getInstance().onStartRecord(fileName);
+      this.setState({recordingState: 'recording', soundPath: fileName.concat('.m4a')}); // 
       // const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';
       // // SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp4';
       // SoundRecorder.start(pathAndFile)
@@ -163,25 +160,6 @@ export default class NewSentenceScreen extends React.Component {
       // });
     }
  
-  }
-
-  onStartRecord = async () => {
-    const path = Platform.select({
-      ios: this.state.sentence.concat('.m4a'),
-      android: 'sdcard/'.concat(this.state.sentence).concat('.mp4'), // should give extra dir name in android. Won't grant permission to the first level of dir.
-    });
-    this.setState({
-      soundPath: path
-    })
-    await this.state.audioRecorderPlayer.startRecorder(path);
-    this.state.audioRecorderPlayer.addRecordBackListener((e) => {
-      return;
-    });
-  }
-  
-  onStopRecord = async () => {
-    const result = await this.state.audioRecorderPlayer.stopRecorder();
-    this.state.audioRecorderPlayer.removeRecordBackListener();
   }
   
  
