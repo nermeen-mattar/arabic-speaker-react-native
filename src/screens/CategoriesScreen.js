@@ -61,13 +61,16 @@ export default class CategoriesScreen extends React.Component {
     this.initCategories();
     // this.initVoiceGender();
     // this.load();
-    props.navigation.addListener('willFocus', this.load)
+    props.navigation.addListener('willFocus', this.load);
+    // props.navigation.addListener('willBlur', this.load)
+    // props.navigation.addListener('didBlur', this.load)
   }
   static navigationOptions = {
     header: null
   };
   
   load = () => {
+    
     // this.updateTitle();
     this.cancelSelectMode();
       // if(!this.state.selectMode) {
@@ -235,6 +238,7 @@ export default class CategoriesScreen extends React.Component {
       if(this.state.categories[sentenceIndex].default) {
         this.playExistingSound(sentenceIndex);
       } else if (this.state.categories[sentenceIndex].soundPath){
+        this.onStopPlay();
         this.onStartPlay(this.state.categories[sentenceIndex].soundPath);
         // PlaySound(this.state.categories[sentenceIndex].soundPath.replace('.mp4', '')); // .mp3
       } else {
@@ -255,6 +259,15 @@ export default class CategoriesScreen extends React.Component {
           }
           return;
         });
+      }
+
+      onPausePlay = async () => {
+        await this.state.audioRecorderPlayer.pausePlayer();
+      }
+      
+      onStopPlay = async () => {
+        this.state.audioRecorderPlayer.stopPlayer();
+        this.state.audioRecorderPlayer.removePlayBackListener();
       }
 
     playExistingSound(sentenceIndex) {
