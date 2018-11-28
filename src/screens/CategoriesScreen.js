@@ -237,7 +237,6 @@ export default class CategoriesScreen extends React.Component {
       if(this.state.categories[sentenceIndex].default) {
         this.playExistingSound(sentenceIndex);
       } else if (this.state.categories[sentenceIndex].soundPath){
-        ArabicRecorderAndPlayer.getInstance().onStopPlay();
         ArabicRecorderAndPlayer.getInstance().onStartPlay(this.state.categories[sentenceIndex].soundPath)
         // this.onStartPlay(this.state.categories[sentenceIndex].soundPath);
         // PlaySound(this.state.categories[sentenceIndex].soundPath.replace('.mp4', '')); // .mp3
