@@ -22,6 +22,7 @@ import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 import DeleteAndCancel from '../components/DeleteAndCancel';
 import { TextToSpeach } from '../classes/text-to-speach';
+import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 
 export default class CategoriesScreen extends React.Component {
 
@@ -31,6 +32,7 @@ export default class CategoriesScreen extends React.Component {
     this.state = {
                 // title: categoryPath.join(), // test> test
                 categoryPath: categoryPath,
+                audioRecorderPlayer : new AudioRecorderPlayer(),
                 categories: [],
                 selectedCategories: [],
                 selectMode: false,
@@ -233,16 +235,26 @@ export default class CategoriesScreen extends React.Component {
       if(this.state.categories[sentenceIndex].default) {
         this.playExistingSound(sentenceIndex);
       } else if (this.state.categories[sentenceIndex].soundPath){
-        this.setState({
-          test: this.state.categories[sentenceIndex].soundPath
-        })
-        this.setState({
-          test: this.state.categories[sentenceIndex].soundPath
-        })
-        PlaySound(this.state.categories[sentenceIndex].soundPath.replace('.mp4', '')); // .mp3
+        this.onStartPlay(this.state.categories[sentenceIndex].soundPath);
+        // PlaySound(this.state.categories[sentenceIndex].soundPath.replace('.mp4', '')); // .mp3
       } else {
         TextToSpeach.getInstance().speak(this.state.categories[sentenceIndex].label);
       }
+      }
+
+
+      onStartPlay = async (path) => {
+        this.setState({
+          test: path
+        });
+        await this.state.audioRecorderPlayer.startPlayer(path); // this.state.text.concat('.m4a')
+        // console.log(msg);
+        this.state.audioRecorderPlayer.addPlayBackListener((e) => {
+          if (e.current_position === e.duration) {
+            this.state.audioRecorderPlayer.stopPlayer();
+          }
+          return;
+        });
       }
 
     playExistingSound(sentenceIndex) {

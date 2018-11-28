@@ -7,7 +7,9 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity} from 'react-native';
+  TouchableOpacity, 
+  Platform
+} from 'react-native';
 import { PlaySound } from 'react-native-play-sound';
 import SoundRecorder from 'react-native-sound-recorder';
 
@@ -21,11 +23,13 @@ import { TextToSpeach } from '../classes/text-to-speach';
 import { Storage } from '../classes/storage';
 import { TextPredection } from '../classes/textPrediction';
 import { ImagePickerHelper } from '../classes/image-picker-helper';
+import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 
 export default class NewSentenceScreen extends React.Component {
     constructor(props) {
         super();
         this.state = {
+          audioRecorderPlayer : new AudioRecorderPlayer(),
           title:[ "إضافة عبارة جديدة"],
           cardInfo: { label: 'ارفق صورة'},
           inputPlaceholder: "اكتب عبارة لا تتجاوز ست كلمات",
@@ -72,7 +76,7 @@ export default class NewSentenceScreen extends React.Component {
     <View style={{flexDirection: 'row', justifyContent: 'center'}}> 
     <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text)}
         placeholder= {this.state.inputPlaceholder}  multiline = {true} 
-        value={this.state.soundPath}
+        value={this.state.sentence}
         />
          {/* value={this.state.sentence} */}
     </View>
@@ -136,29 +140,50 @@ export default class NewSentenceScreen extends React.Component {
 
   startStopRecording() {
     if(this.state.recordingState === 'recording') {
-      this.setState({recordingState: 'recorded'});
-      SoundRecorder.stop()
-    .then((result) => {
-      PlaySound('alert');
-      // this.setState({text: JSON.stringify(result)})
-      // if(callBack) {
-      //   callBack();
-      // }
-    });
+   
+    //   SoundRecorder.stop()
+    // .then((result) => {
+    //   PlaySound('alert');
+    //   // this.setState({text: JSON.stringify(result)})
+    //   // if(callBack) {
+    //   //   callBack();
+    //   // }
+    // });
+    this.onStopRecord();
+
+    this.setState({ recordingState: 'recorded' });
+
     } else {
-      const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';
-      // SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp4';
-      this.setState({
-        recordingState: 'recording',
-        soundPath: pathAndFile
-       });
-      SoundRecorder.start(pathAndFile)
-      .then(()=> {
-      });
+      this.onStartRecord();
+      this.setState({recordingState: 'recording'});
+      // const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';
+      // // SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp4';
+      // SoundRecorder.start(pathAndFile)
+      // .then(()=> {
+      // });
     }
  
   }
 
+  onStartRecord = async () => {
+    const path = Platform.select({
+      ios: this.state.sentence.concat('.m4a'),
+      android: 'sdcard/'.concat(this.state.sentence).concat('.mp4'), // should give extra dir name in android. Won't grant permission to the first level of dir.
+    });
+    this.setState({
+      soundPath: path
+    })
+    await this.state.audioRecorderPlayer.startRecorder(path);
+    this.state.audioRecorderPlayer.addRecordBackListener((e) => {
+      return;
+    });
+  }
+  
+  onStopRecord = async () => {
+    const result = await this.state.audioRecorderPlayer.stopRecorder();
+    this.state.audioRecorderPlayer.removeRecordBackListener();
+  }
+  
  
   onTextChanged(text) {
     this.setState({

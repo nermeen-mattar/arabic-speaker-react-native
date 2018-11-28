@@ -3,6 +3,7 @@ package com.textapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dooboolab.RNAudioRecorderPlayerPackage;
 import com.soundapp.SoundModulePackage;
 import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNAudioRecorderPlayerPackage(),
             new SoundModulePackage(),
             new RNSoundRecorderPackage(),
             new VectorIconsPackage(),
