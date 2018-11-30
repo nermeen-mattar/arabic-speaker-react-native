@@ -1,7 +1,8 @@
 import Tts from 'react-native-tts';
 import {
     NetInfo,
-    Alert
+    Alert,
+    Platform
   } from 'react-native';
 import { ArabicRecorderAndPlayer } from './ArabicRecorderAndPlayer';
 import { Storage } from './storage';
@@ -24,9 +25,9 @@ export class TextToSpeach {
     }
 
      speak(text) {
-        NetInfo.isConnected.fetch().then(isConnected => {
-            if(isConnected) { // handle  Platform.OS === 'android'
-                TextToSpeach.instance.responsiveVoiceSpeak(text)
+         NetInfo.isConnected.fetch().then(isConnected => {
+             if(isConnected) { // handle  Platform.OS === 'android'
+             TextToSpeach.instance.responsiveVoiceSpeak(text)
             } else {
                 if(Platform.OS === 'android') {
                     this.displayAlertMessage();
@@ -51,10 +52,8 @@ export class TextToSpeach {
             'الاتصال بالانترنت',
             'يجب أن تكون متصل بالانترنت',
             [
-            //   {text: 'الغاء'},
-              {text: 'حسناً'}
+            {text: 'حسناً'}
             ]
-            // { cancelable: false }
-            )
+        )
     }
 }
