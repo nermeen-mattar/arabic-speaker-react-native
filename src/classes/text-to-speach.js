@@ -1,6 +1,7 @@
 import Tts from 'react-native-tts';
 import {
-    NetInfo  
+    NetInfo,
+    Alert
   } from 'react-native';
 import { ArabicRecorderAndPlayer } from './ArabicRecorderAndPlayer';
 import { Storage } from './storage';
@@ -27,7 +28,11 @@ export class TextToSpeach {
             if(isConnected) { // handle  Platform.OS === 'android'
                 TextToSpeach.instance.responsiveVoiceSpeak(text)
             } else {
-                Tts.speak(text);         
+                if(Platform.OS === 'android') {
+                    this.displayAlertMessage();
+                } else {
+                    Tts.speak(text); 
+                }
             }
           });
     }
@@ -40,5 +45,16 @@ export class TextToSpeach {
             const gender = settings.value && settings.value.voiceGender === Genders.female ? 'female' : 'male';
             ArabicRecorderAndPlayer.getInstance().onStartPlay(requestPath.replace('$text', encodeURI(text)).replace('$gender', gender));
         });
+    }
+    displayAlertMessage() {
+        Alert.alert(
+            'الاتصال بالانترنت',
+            'يجب أن تكون متصل بالانترنت',
+            [
+            //   {text: 'الغاء'},
+              {text: 'حسناً'}
+            ]
+            // { cancelable: false }
+            )
     }
 }
