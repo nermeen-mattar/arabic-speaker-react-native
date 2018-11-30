@@ -3,14 +3,14 @@ package com.textapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.dooboolab.RNAudioRecorderPlayerPackage;
-import com.soundapp.SoundModulePackage;
-import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import net.no_mad.tts.TextToSpeechPackage;
+import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage;
+import com.soundapp.SoundModulePackage;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
-import com.rnfs.RNFSPackage;
 import com.imagepicker.ImagePickerPackage;
+import com.rnfs.RNFSPackage;
+import com.dooboolab.RNAudioRecorderPlayerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,14 +31,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNAudioRecorderPlayerPackage(),
-            new SoundModulePackage(),
-            new RNSoundRecorderPackage(),
             new VectorIconsPackage(),
             new TextToSpeechPackage(),
+            new RNSoundRecorderPackage(),
+            new SoundModulePackage(),
             new ImageResizerPackage(),
+            new ImagePickerPackage(),
             new RNFSPackage(),
-            new ImagePickerPackage()
+            new RNAudioRecorderPlayerPackage()
       );
     }
 
