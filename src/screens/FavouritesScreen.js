@@ -14,8 +14,8 @@ import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
-import { Storage } from '../classes/storage';
-import { TextToSpeach } from '../classes/text-to-speach';
+import { Storage } from '../classes/Storage';
+import { TextToSpeach } from '../classes/TextToSpeach';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 import DeleteAndCancel from '../components/DeleteAndCancel';
 

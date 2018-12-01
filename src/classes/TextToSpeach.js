@@ -5,7 +5,7 @@ import {
     Platform
   } from 'react-native';
 import { ArabicRecorderAndPlayer } from './ArabicRecorderAndPlayer';
-import { Storage } from './storage';
+import { Storage } from './Storage';
 import Genders from '../constants/Genders';
 export class TextToSpeach {
     static instance;

@@ -5,10 +5,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Colors from '../constants/Colors';
 import CustomHeader from '../components/CustomHeader';
-import { TextToSpeach } from '../classes/text-to-speach';
+import { TextToSpeach } from '../classes/TextToSpeach';
 import { MonoText } from '../components/StyledText';
-import { Storage } from '../classes/storage';
-import { TextPredection } from '../classes/textPrediction';
+import { Storage } from '../classes/Storage';
+import { TextPredection } from '../classes/TextPrediction';
 import commonStyles from '../styles/commonStyles';
 
 export default class TextToSpeachScreen extends React.Component {

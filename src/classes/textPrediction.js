@@ -1,7 +1,7 @@
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from '../constants/default-words/trigramData';
 import quadgram from '../constants/default-words/quadgram';
-import { Storage } from '../classes/storage';
+import { Storage } from '../classes/Storage';
 import {
 Alert
 } from 'react-native';

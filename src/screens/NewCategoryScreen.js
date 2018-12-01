@@ -19,9 +19,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
 import Colors from '../constants/Colors';
-import { ImagePickerHelper } from '../classes/image-picker-helper';
+import { ImagePickerHelper } from '../classes/ImagePickerHelper';
 import PhotoUpload from 'react-native-photo-upload'
-import { Storage } from '../classes/storage';
+import { Storage } from '../classes/Storage';
 
 export default class NewCategoryScreen extends React.Component {
     constructor(props) {

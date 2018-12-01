@@ -13,7 +13,7 @@ import {
 import { MonoText } from '../components/StyledText';
 import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { TextToSpeach } from '../classes/text-to-speach';
+import { TextToSpeach } from '../classes/TextToSpeach';
 
 
 export default class ContactUsScreen extends React.Component {
