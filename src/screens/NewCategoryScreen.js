@@ -9,6 +9,7 @@ import {
   Image,
   View,
   AsyncStorage,
+  Keyboard
   // CameraRoll,
   // ScrollView,
   // Button
@@ -106,7 +107,11 @@ ImagePicker.showImagePicker(options, (response) => {
       
       render() {
     return (
-      <View>
+      <TouchableOpacity
+      activeOpacity = {1}
+      style={{flex: 1}}
+      onPress={Keyboard.dismiss} 
+    >
 
          {/* <View>
      <Button title="Load Images" onPress={this._handleButtonPress} />
@@ -160,7 +165,7 @@ ImagePicker.showImagePicker(options, (response) => {
   
         </View>
       
-      </View>
+      </TouchableOpacity>
     );
   }
 

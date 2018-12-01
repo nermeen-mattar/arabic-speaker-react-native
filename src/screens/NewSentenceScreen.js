@@ -7,10 +7,9 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Keyboard
 } from 'react-native';
-import { PlaySound } from 'react-native-play-sound';
-import SoundRecorder from 'react-native-sound-recorder';
 
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
@@ -62,7 +61,11 @@ export default class NewSentenceScreen extends React.Component {
       
       render() {
     return (
-      <View>
+      <TouchableOpacity
+      style={{flex : 1}}
+      activeOpacity = {1}
+      onPress={Keyboard.dismiss} 
+    >
 
     <FormHeader title= {this.state.title}  onCancelClicked= {() => this.props.navigation.navigate('CategoriesScreen', 
     {
@@ -132,7 +135,7 @@ export default class NewSentenceScreen extends React.Component {
         </TouchableOpacity>   */}
         </View>
            
-      </View>
+      </TouchableOpacity>
     );
   }
 

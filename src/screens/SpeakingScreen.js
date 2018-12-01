@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, TextInput, View, TouchableOpacity, TouchableHighlight, Image} from 'react-native';
+import { ScrollView, StyleSheet, TextInput, View, TouchableOpacity, TouchableHighlight, Image, Keyboard} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -69,8 +69,11 @@ export default class TextToSpeachScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-
+      <TouchableOpacity
+      style={styles.container}
+      activeOpacity = {1}
+      onPress={Keyboard.dismiss} 
+    >
         <CustomHeader navigation = {this.props.navigation} />
 
       <View style={commonStyles.center}>
@@ -123,7 +126,7 @@ export default class TextToSpeachScreen extends React.Component {
               )})
               }
           </View>
-      </View>
+      </TouchableOpacity>
     );
   }
   onTextChanged(text) {
