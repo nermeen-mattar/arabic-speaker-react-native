@@ -63,6 +63,7 @@ export class TextPredection {
       getPredectedWords(enteredWords) { // ماذا تريد أن
         let userPredectedWords, defaultPredectedWords;
         enteredWords = enteredWords.trim();
+        enteredWords = enteredWords.replace(/\s\s+/g, ' ');
           const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
           if(numberEnteredOfWords === 0 || numberEnteredOfWords > this.userWords.length) {
               return [];
@@ -89,6 +90,7 @@ export class TextPredection {
 
       addToUserWordsIfNew(enteredWords, gotUpdated) {
         enteredWords = enteredWords.trim();
+        enteredWords = enteredWords.replace(/\s\s+/g, ' ');
         const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
         if(numberEnteredOfWords === 1 ) {
             if(gotUpdated) {
