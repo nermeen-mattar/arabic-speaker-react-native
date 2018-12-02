@@ -60,9 +60,6 @@ export default class App extends React.Component {
 
   } */
   render() {
-
-    I18nManager.forceRTL(true);
-
    /* Tts.getInitStatus().then(() => {
       Tts.setDefaultLanguage('ar-SA');
       Tts.setDefaultRate(1.3);
