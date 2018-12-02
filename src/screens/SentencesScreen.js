@@ -14,7 +14,7 @@ import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
-import { Storage } from '../classes/storage';
+import { Storage } from '../classes/Storage';
 import CategoriesSentences from '../constants/CategoriesSentences';
 import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';

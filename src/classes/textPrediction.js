@@ -1,12 +1,10 @@
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from '../constants/default-words/trigramData';
 import quadgram from '../constants/default-words/quadgram';
-import { Storage } from '../classes/storage';
-import {
-Alert
-} from 'react-native';
+import { Storage } from '../classes/Storage';
+
 export class TextPredection {
-  staticWords = ['هل', 'في',  'من' ,'مستنقعات' ,'أنا' ,'قستنطينية' ,'أن' ,'إلي' ,'كيف']
+  staticWords = ['هل', 'في',  'من' ,'ماذا' ,'أنا' ,'قستنطينية' ,'أن' ,'إلي' ,'كيف' ,'علي' ,'السلام' ,'مستنقعات']
   userWords = [{}, {}, {}];
     defaultWords = [ bigramData, trigramData, quadgram]
     static instance;
@@ -65,8 +63,9 @@ export class TextPredection {
       getPredectedWords(enteredWords) { // ماذا تريد أن
         let userPredectedWords, defaultPredectedWords;
         enteredWords = enteredWords.trim();
+        enteredWords = enteredWords.replace(/\s\s+/g, ' ');
           const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
-          if(numberEnteredOfWords > this.userWords.length) {
+          if(numberEnteredOfWords === 0 || numberEnteredOfWords > this.userWords.length) {
               return [];
           }
         //   this.addToUserWordsIfNewWhileTyping(enteredWords, numberEnteredOfWords);
@@ -74,12 +73,24 @@ export class TextPredection {
         // if(predectedWords.length < 12) {
         defaultPredectedWords = this.defaultWords[numberEnteredOfWords - 1][enteredWords] || []
         // }
-        const combinedResults =  userPredectedWords.concat(defaultPredectedWords.slice(0, 12 - userPredectedWords.length));
-         return combinedResults.length ? combinedResults : this.staticWords;
+        let combinedResults =  userPredectedWords.concat(defaultPredectedWords.slice(0, 12 - userPredectedWords.length));
+        
+        /* commented cz I don't think this requirment is correct (replaced with the last line in this fucntion)*/
+        // if(combinedResults.length  === 0) {
+        //   combinedResults = this.staticWords;
+        // } 
+
+        if (combinedResults.length  < 12  && numberEnteredOfWords> 1) {    
+            const endOfFirstWord =  enteredWords.indexOf(' ') + 1;
+            const predectedWords = this.getPredectedWords(enteredWords.slice( endOfFirstWord, enteredWords.length));
+            combinedResults= combinedResults.concat(predectedWords.slice(0, 12 - combinedResults.length));
+          }
+          return combinedResults.concat(this.staticWords.slice(0, 12 - combinedResults.length));
       }
 
       addToUserWordsIfNew(enteredWords, gotUpdated) {
         enteredWords = enteredWords.trim();
+        enteredWords = enteredWords.replace(/\s\s+/g, ' ');
         const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
         if(numberEnteredOfWords === 1 ) {
             if(gotUpdated) {

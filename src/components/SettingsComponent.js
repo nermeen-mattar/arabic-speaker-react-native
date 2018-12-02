@@ -13,7 +13,7 @@ import Colors from "../constants/Colors";
 import { MonoText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomListStyle, { CustomListItemSyle } from "../styles/CustomListStyle";
-import { Storage } from '../classes/storage';
+import { Storage } from '../classes/Storage';
 import Genders from "../constants/Genders";
 
 class SettingsComponent extends Component {

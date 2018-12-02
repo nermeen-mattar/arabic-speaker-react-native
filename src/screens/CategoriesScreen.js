@@ -14,14 +14,14 @@ import { MonoText } from '../components/StyledText';
 import {Card} from '../components/card';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
-import { Storage } from '../classes/storage';
+import { Storage } from '../classes/Storage';
 import CategoriesSentences from '../constants/CategoriesSentences';
 import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
 import Genders from '../constants/Genders';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 import DeleteAndCancel from '../components/DeleteAndCancel';
-import { TextToSpeach } from '../classes/text-to-speach';
+import { TextToSpeach } from '../classes/TextToSpeach';
 import { ArabicRecorderAndPlayer } from '../classes/ArabicRecorderAndPlayer';
 
 export default class CategoriesScreen extends React.Component {

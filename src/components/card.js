@@ -44,12 +44,12 @@ export class Card extends React.Component {
 
            {/* or check-square-o */}
             {/* </View> */}
-            <View> 
+            <View  style={{flexDirection: 'column', alignItems: 'center'}} > 
 
 
           {
             // {width: 77, height: 55 }
-            this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg, {maxWidth: 50, maxHeight: 50 }]} source={ this.props.cardInfo.imgSrc} /> : null
+            this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
@@ -79,7 +79,9 @@ export class Card extends React.Component {
     },
     cardImg: {
       marginTop: 24,
-      marginBottom: 14
+      marginBottom: 14,
+      minWidth: 42, 
+      minHeight: 42 
     },
     cardLabel: {
       fontWeight: 'bold',

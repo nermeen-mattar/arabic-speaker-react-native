@@ -1,14 +1,14 @@
 import React from 'react';
-import { ScrollView, StyleSheet, TextInput, View, TouchableOpacity, TouchableHighlight, Image} from 'react-native';
+import { ScrollView, StyleSheet, TextInput, View, TouchableOpacity, TouchableHighlight, Image, Keyboard} from 'react-native';
 // import { ExpoLinksView } from '@expo/samples';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Colors from '../constants/Colors';
 import CustomHeader from '../components/CustomHeader';
-import { TextToSpeach } from '../classes/text-to-speach';
+import { TextToSpeach } from '../classes/TextToSpeach';
 import { MonoText } from '../components/StyledText';
-import { Storage } from '../classes/storage';
-import { TextPredection } from '../classes/textPrediction';
+import { Storage } from '../classes/Storage';
+import { TextPredection } from '../classes/TextPrediction';
 import commonStyles from '../styles/commonStyles';
 
 export default class TextToSpeachScreen extends React.Component {
@@ -69,8 +69,11 @@ export default class TextToSpeachScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-
+      <TouchableOpacity
+      style={styles.container}
+      activeOpacity = {1}
+      onPress={Keyboard.dismiss} 
+    >
         <CustomHeader navigation = {this.props.navigation} />
 
       <View style={commonStyles.center}>
@@ -123,7 +126,7 @@ export default class TextToSpeachScreen extends React.Component {
               )})
               }
           </View>
-      </View>
+      </TouchableOpacity>
     );
   }
   onTextChanged(text) {

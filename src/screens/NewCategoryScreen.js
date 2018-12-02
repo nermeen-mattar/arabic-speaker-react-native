@@ -9,6 +9,7 @@ import {
   Image,
   View,
   AsyncStorage,
+  Keyboard
   // CameraRoll,
   // ScrollView,
   // Button
@@ -18,9 +19,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { MonoText } from '../components/StyledText';
 import FormHeader from '../components/FormHeader';
 import Colors from '../constants/Colors';
-import { ImagePickerHelper } from '../classes/image-picker-helper';
+import { ImagePickerHelper } from '../classes/ImagePickerHelper';
 import PhotoUpload from 'react-native-photo-upload'
-import { Storage } from '../classes/storage';
+import { Storage } from '../classes/Storage';
 
 export default class NewCategoryScreen extends React.Component {
     constructor(props) {
@@ -106,7 +107,11 @@ ImagePicker.showImagePicker(options, (response) => {
       
       render() {
     return (
-      <View>
+      <TouchableOpacity
+      activeOpacity = {1}
+      style={{flex: 1}}
+      onPress={Keyboard.dismiss} 
+    >
 
          {/* <View>
      <Button title="Load Images" onPress={this._handleButtonPress} />
@@ -160,7 +165,7 @@ ImagePicker.showImagePicker(options, (response) => {
   
         </View>
       
-      </View>
+      </TouchableOpacity>
     );
   }
 
