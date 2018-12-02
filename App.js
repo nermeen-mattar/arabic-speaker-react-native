@@ -5,6 +5,8 @@ import { createDrawerNavigator} from 'react-navigation'
 import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
 import SettingsComponent from './src/components/SettingsComponent'
+import { I18nManager } from 'react-native';
+I18nManager.forceRTL(true) // for testing RTL
 
 const SettingsDrawer = createDrawerNavigator({
   AppNavigator: {
@@ -13,7 +15,7 @@ const SettingsDrawer = createDrawerNavigator({
 },
   {
     drawerWidth: 310,
-    // drawerPosition: 'right',
+    drawerPosition: 'right',
     contentComponent: SettingsComponent,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
@@ -59,6 +61,7 @@ export default class App extends React.Component {
   } */
   render() {
 
+    I18nManager.forceRTL(true);
 
    /* Tts.getInitStatus().then(() => {
       Tts.setDefaultLanguage('ar-SA');
