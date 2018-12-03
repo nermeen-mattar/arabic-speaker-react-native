@@ -149,43 +149,14 @@ export default
         }
     ],
     'أيقونات الملابس': [
-        // {
-        //     label: 'غاضب',
-        //     imgSrc: require('../../assets/images/libraries-icons/animals/cake.png')
-        // },
-        // {
-        //     label: 'غاضب',
-        //     imgSrc:  require('../../assets/images/libraries-icons/animals/pencil.png')
-        // }
+
     ],
     'أيقونات الأماكن': [
-        // {
-        //     label: 'غاضب',
-        //     imgSrc: require('../../assets/images/libraries-icons/animals/cake.png')
-        // },
-        // {
-        //     label: 'غاضب',
-        //     imgSrc:  require('../../assets/images/libraries-icons/animals/pencil.png')
-        // }
+ 
     ],
     'أيقونات النباتات': [
-    //     {
-    //         label: 'غاضب',
-    //         imgSrc: require('../../assets/images/libraries-icons/animals/cake.png')
-    //     },
-    //     {
-    //         label: 'غاضب',
-    //         imgSrc:  require('../../assets/images/libraries-icons/animals/pencil.png')
-    //     }
+
     ],
     'أيقونات الأطعمة والمشروبات': [
-    //     {
-    //         label: 'غاضب',
-    //         imgSrc: require('../../assets/images/libraries-icons/animals/cake.png')
-    //     },
-    //     {
-    //         label: 'غاضب',
-    //         imgSrc:  require('../../assets/images/libraries-icons/animals/pencil.png')
-    //     }
     ],
   }

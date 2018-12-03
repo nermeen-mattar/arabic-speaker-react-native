@@ -41,7 +41,8 @@ export default class IconsScreen extends React.Component {
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
     
-        <ScrollView contentContainerStyle={styles.cardsContainer}>
+        <ScrollView >
+          <View style={styles.cardsContainer}>
           {
             this.state.icons.map((icon, index) => {
               return(
@@ -54,9 +55,8 @@ export default class IconsScreen extends React.Component {
                    );
                   })
                 }
+                </View>
                 </ScrollView>
-            <MonoText>{this.state.test}</MonoText>
-
         {/* </ScrollView> */}
       </View>
     );
