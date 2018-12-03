@@ -81,7 +81,9 @@ export class Card extends React.Component {
       marginTop: 24,
       marginBottom: 14,
       minWidth: 42, 
-      minHeight: 42 
+      minHeight: 42,
+      maxWidth: 55,
+      maxHeight: 55
     },
     cardLabel: {
       fontWeight: 'bold',

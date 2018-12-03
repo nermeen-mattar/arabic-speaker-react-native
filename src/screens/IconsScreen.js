@@ -5,7 +5,8 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -40,7 +41,7 @@ export default class IconsScreen extends React.Component {
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
     
-        <View style={styles.cardsContainer}>
+        <ScrollView contentContainerStyle={styles.cardsContainer}>
           {
             this.state.icons.map((icon, index) => {
               return(
@@ -53,7 +54,7 @@ export default class IconsScreen extends React.Component {
                    );
                   })
                 }
-                </View>
+                </ScrollView>
             <MonoText>{this.state.test}</MonoText>
 
         {/* </ScrollView> */}

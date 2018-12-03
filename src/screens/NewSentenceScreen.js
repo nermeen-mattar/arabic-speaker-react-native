@@ -153,7 +153,7 @@ export default class NewSentenceScreen extends React.Component {
     ArabicRecorderAndPlayer.getInstance().onStopRecord();
       this.setState({ recordingState: 'recorded' });
     } else {
-      const fileName = this.state.sentence;
+      const fileName = this.state.sentence || (Math.random() * 1000).toString(); // need to find a better solution than random
       ArabicRecorderAndPlayer.getInstance().onStartRecord(fileName);
       this.setState({recordingState: 'recording', soundPath: fileName.concat('.m4a')}); // 
       // const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';

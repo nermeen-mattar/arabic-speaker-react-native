@@ -43,9 +43,6 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
     }
 
     onStartRecord = async (fileName) => {
-      if(!fileName) {
-        fileName = Math.random()*100;
-      }
       if(Platform.OS === 'android') {   
         if(requestPermission('RECORD_AUDIO') && requestPermission('WRITE_EXTERNAL_STORAGE')) {
           await ArabicRecorderAndPlayer.instance.startRecorder('sdcard/'.concat(fileName).concat('.mp4'));

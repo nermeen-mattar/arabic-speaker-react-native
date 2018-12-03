@@ -54,7 +54,7 @@ export default class CategoriesScreen extends React.Component {
               };
               // storageInstance = Storage.getInstance();
               // storageInstance.removeItem('المكتبات');
-              // storageInstance.removeItem( 'المكتبات,تحياتي');
+              // storageInstance.removeItem( 'المكتبات,المستشفى');
 
               
     this.initCategories();
