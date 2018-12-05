@@ -22,30 +22,31 @@ export default class TextToSpeachScreen extends React.Component {
         {
           title: 'نطق',
           iconName: 'volume-up',
+          iconSize: 28,
           onPress: () => this.speak(),
-           style: styles.tool
+           styles: [styles.tool, styles.primaryTool]
         },
         {
           title: 'مسافة',
           customIcon: styles.spaceIcon,
           onPress: () => this.addSpace(),
           // style={styles.space}
-          style: styles.space
+          styles: [styles.space]
         },
         {
           title: 'المفضلة',
           iconName: 'star',
           onPress: () => this.addToFavourites(),
-          style: styles.tool
+          styles: [styles.tool]
         },
         {
           title: 'مسح',
           iconName: 'trash',
           onPress: () => this.clear(),
-          style: styles.tool
+          styles: [styles.tool]
         }
       ],
-      activeToolName: '',
+      activeToolName: 'نطق',
     };
     props.navigation.addListener('willFocus', this.load)
   }
@@ -53,6 +54,7 @@ export default class TextToSpeachScreen extends React.Component {
   load = () => {
     this.setState({
       text: '',
+      activeToolName: 'نطق',
     predectedWords: []
     });
     this.onTextChanged('');
@@ -89,7 +91,7 @@ export default class TextToSpeachScreen extends React.Component {
         {
             this.state.toolsBar.map(tool => {
               return(
-            <TouchableHighlight style={tool.style}
+            <TouchableHighlight style={tool.styles}
             underlayColor = "transparent"
             onPress={tool.onPress} 
             onShowUnderlay={()=>this.setState({activeToolName:tool.title})}
@@ -101,7 +103,7 @@ export default class TextToSpeachScreen extends React.Component {
             style={[tool.customIcon, 
               {backgroundColor: this.state.activeToolName === 'مسافة' ?  Colors.brand : Colors.borderColor}]} > </MonoText>
         
-            : <Icon style={{textAlign: 'center'}}  name={tool.iconName} size={22}  color={ this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}/> 
+            : <Icon style={{textAlign: 'center'}}  name={tool.iconName} size={tool.iconSize || 24}  color={ this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}/> 
           }
             <MonoText style={{ textAlign: 'center',  color: this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}}> {tool.title} </MonoText>
           </View>
@@ -121,7 +123,7 @@ export default class TextToSpeachScreen extends React.Component {
               return(
         <TouchableOpacity  style={[styles.predectedWord, commonStyles.shadow ]} onPress={() =>
           this.onTextChanged(this.state.text.concat(' ').concat(word))}>
-            <MonoText> {word} </MonoText>
+            <MonoText style={styles.predectedWordText}> {word} </MonoText>
     </TouchableOpacity>
               )})
               }
@@ -228,7 +230,8 @@ spaceIcon: {
   width: 116, // 117
   height: 22,
   backgroundColor:  Colors.borderColor,
-  borderRadius: 6
+  borderRadius: 10,
+  marginBottom: 4
 }, 
 predectionsWrapper: {
   flexDirection: 'row',
@@ -240,11 +243,16 @@ predectionsWrapper: {
 predectedWord: {
   marginHorizontal: 10,
   backgroundColor: 'white',
-  fontSize: 21,
   borderRadius: 10,
   paddingHorizontal: 24,
   paddingVertical: 10,
   marginBottom: 10
+},
+predectedWordText: {
+  fontSize: 18
+},
+primaryTool: {
+  color: Colors.brand
 }
 });
 

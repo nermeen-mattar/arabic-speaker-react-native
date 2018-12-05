@@ -9,7 +9,8 @@ import {
   Image,
   View,
   AsyncStorage,
-  Keyboard
+  Keyboard,
+  Alert
   // CameraRoll,
   // ScrollView,
   // Button
@@ -177,6 +178,10 @@ ImagePicker.showImagePicker(options, (response) => {
   }
 
   addNewCategory = () => {
+    if(!this.state.categoryName) {
+      this.displayAlertMessage();
+      return;
+    }
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = {value: 'null'};
@@ -209,6 +214,17 @@ ImagePicker.showImagePicker(options, (response) => {
     //   });
     // });    
   };
+
+
+  displayAlertMessage() {
+    Alert.alert(
+        'فشل الحفظ',
+        'لا يمكن حفظ عبارة فارغة',
+        [
+        {text: 'حسناً'}
+        ]
+    )
+}
 
   getItem = async (key) => {
     value = 'initial';

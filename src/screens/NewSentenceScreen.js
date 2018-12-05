@@ -8,7 +8,8 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Keyboard
+  Keyboard,
+  Alert
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -164,7 +165,16 @@ export default class NewSentenceScreen extends React.Component {
     }
  
   }
-  
+
+  displayAlertMessage() {
+    Alert.alert(
+        'فشل الحفظ',
+        'لا يمكن حفظ عبارة فارغة',
+        [
+        {text: 'حسناً'}
+        ]
+    )
+}
  
   onTextChanged(text) {
     this.setState({
@@ -178,6 +188,10 @@ export default class NewSentenceScreen extends React.Component {
   }
 
   addNewSentence = () => {
+    if(!this.state.text) {
+      this.displayAlertMessage();
+      return
+    }
     if(this.state.recordingState === 'recording') {
       this.startStopRecording(); // this.addNewSentence
       // return;
