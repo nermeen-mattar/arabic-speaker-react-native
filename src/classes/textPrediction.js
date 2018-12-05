@@ -59,15 +59,18 @@ export class TextPredection {
         });
         this.defaultWords = indexedDefaultWords;
       }
-    
+  
+
       getPredectedWords(enteredWords) { // ماذا تريد أن
         let userPredectedWords, defaultPredectedWords;
         enteredWords = enteredWords.trim();
         enteredWords = enteredWords.replace(/\s\s+/g, ' ');
           const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
-          if(numberEnteredOfWords === 0 || numberEnteredOfWords > this.userWords.length) {
+          if(numberEnteredOfWords === 0) {
               return [];
-          }
+          } else if ( numberEnteredOfWords > this.defaultWords.length) {
+              return this.getPredectedWords(this.getLastWords(enteredWords));
+          } 
         //   this.addToUserWordsIfNewWhileTyping(enteredWords, numberEnteredOfWords);
         userPredectedWords = this.userWords[numberEnteredOfWords - 1][enteredWords] || [];
         // if(predectedWords.length < 12) {
@@ -86,6 +89,11 @@ export class TextPredection {
             combinedResults= combinedResults.concat(predectedWords.slice(0, 12 - combinedResults.length));
           }
           return combinedResults.concat(this.staticWords.slice(0, 12 - combinedResults.length));
+      }
+
+      getLastWords(sentence) {
+        var wordsArray = sentence.split(' ');
+        return  wordsArray.slice(wordsArray.length - (this.defaultWords.length - 1), wordsArray.length).join(' ');
       }
 
       addToUserWordsIfNew(enteredWords, gotUpdated) {
