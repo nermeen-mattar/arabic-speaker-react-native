@@ -188,7 +188,7 @@ export default class NewSentenceScreen extends React.Component {
   }
 
   addNewSentence = () => {
-    if(!this.state.text) {
+    if(!this.state.sentence) {
       this.displayAlertMessage();
       return
     }

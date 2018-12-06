@@ -219,7 +219,7 @@ ImagePicker.showImagePicker(options, (response) => {
   displayAlertMessage() {
     Alert.alert(
         'فشل الحفظ',
-        'لا يمكن حفظ عبارة فارغة',
+        'لا يمكن حفظ تصنيف فارغة',
         [
         {text: 'حسناً'}
         ]

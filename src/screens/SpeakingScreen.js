@@ -36,7 +36,7 @@ export default class TextToSpeachScreen extends React.Component {
         {
           title: 'المفضلة',
           iconName: 'star',
-          onPress: () => this.addToFavourites(),
+          onPress: () => this.toggleFavourites(),
           styles: [styles.tool]
         },
         {
@@ -46,15 +46,29 @@ export default class TextToSpeachScreen extends React.Component {
           styles: [styles.tool]
         }
       ],
-      activeToolName: 'نطق',
+      toolsColors: {
+        'نطق': Colors.brand,
+        'المفضلة': Colors.borderColor,
+        'مسح': Colors.borderColor,
+        'مسافة': Colors.borderColor
+      },
+      activeToolName: '' // 'نطق',
     };
+    this.initFavourites();
     props.navigation.addListener('willFocus', this.load)
   }
 
   load = () => {
+    this.initFavourites();
     this.setState({
       text: '',
-      activeToolName: 'نطق',
+      // activeToolName: 'نطق',
+      toolsColors: {
+        'نطق': Colors.brand,
+        'المفضلة': Colors.borderColor,
+        'مسح': Colors.borderColor,
+        'مسح': Colors.borderColor
+      },
     predectedWords: []
     });
     this.onTextChanged('');
@@ -101,11 +115,14 @@ export default class TextToSpeachScreen extends React.Component {
             tool.customIcon ?
             <MonoText     
             style={[tool.customIcon, 
-              {backgroundColor: this.state.activeToolName === 'مسافة' ?  Colors.brand : Colors.borderColor}]} > </MonoText>
+              {backgroundColor:  this.state.toolsColors[tool.title]}]} > </MonoText>
+              // this.state.activeToolName === 'مسافة' ?  Colors.brand : Colors.borderColor}
         
-            : <Icon style={{textAlign: 'center'}}  name={tool.iconName} size={tool.iconSize || 24}  color={ this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}/> 
+            : <Icon style={{textAlign: 'center'}}  name={tool.iconName} size={tool.iconSize || 24} color={this.state.toolsColors[tool.title]}/> 
+            // color={ this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}
           }
-            <MonoText style={{ textAlign: 'center',  color: this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor}}> {tool.title} </MonoText>
+            <MonoText style={{ textAlign: 'center',  color: this.state.toolsColors[tool.title]}}> {tool.title} </MonoText>
+            {/* color: this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor */}
           </View>
         </TouchableHighlight>
               )})
@@ -132,8 +149,11 @@ export default class TextToSpeachScreen extends React.Component {
     );
   }
   onTextChanged(text) {
+    const toolsColors = this.state.toolsColors;
+    toolsColors['المفضلة'] = this.state.favourites.includes(text) ? Colors.brand : Colors.borderColor;
     this.setState({
       text: text,
+      toolsColors: toolsColors,
       predectedWords: TextPredection.getInstance().getPredectedWords(text).slice(0, 12)
     });
   }
@@ -155,20 +175,43 @@ export default class TextToSpeachScreen extends React.Component {
     });
   }
 
-  addToFavourites() {
+  initFavourites() {
     const storageInstance = Storage.getInstance();
-    // storageInstance.setItem('storageInstance', 'nermeen');
-    const result = {value: 'null'};
+    const result = {value: null};
     storageInstance.getItem('favourites', result).then(res => {
       const currFavourites = result.value ? result.value : []; 
-      if(this.state.text.trim().length && !currFavourites.includes(this.state.text)) {
-        storageInstance.setItem('favourites', [...currFavourites,  this.state.text]).then(res => {
-          // this.props.navigation.navigate('FavouritesStack');
-          // add success msg
-        })
-      }
-      // this.props.navigation.navigate('FavouritesStack');
+      this.setState({
+        favourites: currFavourites
+      });
     });
+  }
+
+  toggleFavourites() {
+    if(!this.state.text.trim().length) {
+      return;
+    }
+    const storageInstance = Storage.getInstance();
+    const toolsColors = this.state.toolsColors;
+    let currFavourites = this.state.favourites;
+    if(toolsColors['المفضلة']  == Colors.brand) {
+      toolsColors['المفضلة'] = Colors.borderColor;
+      if(currFavourites.includes(this.state.text)) {
+        currFavourites = currFavourites.filter(favourite => favourite !== this.state.text))
+        storageInstance.setItem('favourites', currFavourites).then(res => {
+        });
+      }
+    } else {
+      toolsColors['المفضلة'] = Colors.brand;
+      if(!currFavourites.includes(this.state.text)) {
+        currFavourites = [...currFavourites,  this.state.text];
+        storageInstance.setItem('favourites', currFavourites).then(res => {
+        });
+      }
+    }
+    this.setState({
+      favourites: currFavourites,
+      toolsColors: toolsColors
+    }); 
   }
 
 }
