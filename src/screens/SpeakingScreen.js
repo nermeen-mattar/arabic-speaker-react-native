@@ -10,6 +10,7 @@ import { MonoText } from '../components/StyledText';
 import { Storage } from '../classes/Storage';
 import { TextPredection } from '../classes/TextPrediction';
 import commonStyles from '../styles/commonStyles';
+import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 
 export default class TextToSpeachScreen extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class TextToSpeachScreen extends React.Component {
           iconName: 'volume-up',
           iconSize: 28,
           onPress: () => this.speak(),
-           styles: [styles.tool, styles.primaryTool]
+           styles: [styles.tool]
         },
         {
           title: 'مسافة',
@@ -67,7 +68,7 @@ export default class TextToSpeachScreen extends React.Component {
         'نطق': Colors.brand,
         'المفضلة': Colors.borderColor,
         'مسح': Colors.borderColor,
-        'مسح': Colors.borderColor
+        'مسافة': Colors.borderColor
       },
     predectedWords: []
     });
@@ -145,6 +146,24 @@ export default class TextToSpeachScreen extends React.Component {
               )})
               }
           </View>
+
+        {
+         this.state.showConfirmDialog ? <ConfirmDeleteDialog
+        customizedText = {"هل أنت متأكد أنك تربد حذف" 
+        + " '" +  this.state.text + " '" + 
+        "من المفضلات"}  
+         onConfirm={() => {
+          this.setState({
+            showConfirmDialog: false
+          });
+           this.deleteFavourite();
+         }}
+         onCancel={() => {
+          this.setState({
+            showConfirmDialog: false
+          });
+        }}> </ConfirmDeleteDialog> : null
+       }
       </TouchableOpacity>
     );
   }
@@ -186,6 +205,25 @@ export default class TextToSpeachScreen extends React.Component {
     });
   }
 
+
+
+  deleteFavourite() {
+    let currFavourites = this.state.favourites;
+    const storageInstance = Storage.getInstance();
+    const toolsColors = this.state.toolsColors;
+    toolsColors['المفضلة'] = Colors.borderColor;
+    if(currFavourites.includes(this.state.text)) {
+      currFavourites = currFavourites.filter(favourite => favourite !== this.state.text);
+      storageInstance.setItem('favourites', currFavourites).then(res => {
+      }); 
+    }
+
+    this.setState({
+      favourites: currFavourites,
+      toolsColors: toolsColors
+    }); 
+  }
+
   toggleFavourites() {
     if(!this.state.text.trim().length) {
       return;
@@ -194,12 +232,7 @@ export default class TextToSpeachScreen extends React.Component {
     const toolsColors = this.state.toolsColors;
     let currFavourites = this.state.favourites;
     if(toolsColors['المفضلة']  == Colors.brand) {
-      toolsColors['المفضلة'] = Colors.borderColor;
-      if(currFavourites.includes(this.state.text)) {
-        currFavourites = currFavourites.filter(favourite => favourite !== this.state.text))
-        storageInstance.setItem('favourites', currFavourites).then(res => {
-        });
-      }
+      this.setState({showConfirmDialog: true});   
     } else {
       toolsColors['المفضلة'] = Colors.brand;
       if(!currFavourites.includes(this.state.text)) {
@@ -293,9 +326,6 @@ predectedWord: {
 },
 predectedWordText: {
   fontSize: 18
-},
-primaryTool: {
-  color: Colors.brand
 }
 });
 
