@@ -12,8 +12,8 @@ export class TextToSpeach {
     constructor() {
         Tts.getInitStatus().then(() => {
             Tts.setDefaultLanguage('ar-SA');
-            Tts.setDefaultRate(1.3);
-            Tts.setDefaultPitch(1.3);
+            Tts.setDefaultRate(0.5);
+            Tts.setDefaultPitch(0.70);
         })
     }
 
