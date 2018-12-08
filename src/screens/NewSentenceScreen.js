@@ -44,15 +44,18 @@ export default class NewSentenceScreen extends React.Component {
 
 
       load = () => {
-          this.setState({
-            sentence: '',
-            soundPath: null,
-            recordingState: null,
-            imgSrc: this.props.navigation.getParam('imgSrc'),
-            imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
+        const newState = {
+          soundPath: null,
+          recordingState: null,
+          imgSrc: this.props.navigation.getParam('imgSrc'),
+          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
 
-            // categoryPath: ''
-          });
+          // categoryPath: ''
+        };
+        if(!this.props.navigation.getParam('imgSrc')) {
+          newState.sentence = '';
+        } 
+        this.setState(newState);
        }
       static navigationOptions = {
         header: null
@@ -131,9 +134,9 @@ export default class NewSentenceScreen extends React.Component {
         </TouchableOpacity>
 
 
-          {/* <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
+        <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
           <MonoText>icons </MonoText>
-        </TouchableOpacity>   */}
+        </TouchableOpacity>  
         </View>
            
       </TouchableOpacity>
