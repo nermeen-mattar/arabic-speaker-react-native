@@ -93,13 +93,16 @@ ImagePicker.showImagePicker(options, (response) => {
 
 
       load = () => {
-          this.setState({
-            categoryName: '',
-            imgSrc: this.props.navigation.getParam('imgSrc'),
-            imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewCategoryScreen'}), img => this.setState({imgSrc: img }))
-
-          });
+        const newState = {
+          imgSrc: this.props.navigation.getParam('imgSrc'),
+          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewCategoryScreen'}), img => this.setState({imgSrc: img }))
+        };
+        if(!this.props.navigation.getParam('imgSrc')) {
+          newState.categoryName = '';
+        } 
+        this.setState(newState);
        }
+
       static navigationOptions = {
         header: null
       };

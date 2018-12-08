@@ -37,7 +37,7 @@ export default class NewSentenceScreen extends React.Component {
           categoryPath: props.navigation.getParam('categoryPath'),
           recordingState: null,
           soundPath: null,
-          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen', {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
+          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen', {srcScreen: 'NewSentenceScreen'}), img => this.setState({imgSrc: img }))
         };
         props.navigation.addListener('willFocus', this.load)
       }
@@ -48,7 +48,7 @@ export default class NewSentenceScreen extends React.Component {
           soundPath: null,
           recordingState: null,
           imgSrc: this.props.navigation.getParam('imgSrc'),
-          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'}), img => this.setState({imgSrc: img }))
+          imagePickerInstance: ImagePickerHelper.getInstance(() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSentenceScreen'}), img => this.setState({imgSrc: img }))
 
           // categoryPath: ''
         };
@@ -134,9 +134,6 @@ export default class NewSentenceScreen extends React.Component {
         </TouchableOpacity>
 
 
-        <TouchableOpacity onPress= {() => this.props.navigation.navigate('IconsLibrariesScreen',  {srcScreen: 'NewSenetenceScreen'})}> 
-          <MonoText>icons </MonoText>
-        </TouchableOpacity>  
         </View>
            
       </TouchableOpacity>

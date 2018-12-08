@@ -63,8 +63,7 @@ export default class IconsScreen extends React.Component {
   }
 
   iconClicked(index) {
-      this.props.navigation.navigate( 'NewSentenceScreen'
-        // this.state.srcScreen ? this.state.srcScreen: 'NewSentenceScreen'
+      this.props.navigation.navigate( this.state.srcScreen
       , {
         imgSrc: this.state.icons[index].imgSrc,
         categoryPath: this.state.categoryPath
