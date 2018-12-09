@@ -60,7 +60,7 @@
 		9B0B087821AB0ED200E6080D /* libPlaySound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9457BA21AA1262005BACA1 /* libPlaySound.a */; };
 		9B1173F02197BD190040FC18 /* MaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EE2197BD190040FC18 /* MaleSounds */; };
 		9B1173F12197BD190040FC18 /* FemaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EF2197BD190040FC18 /* FemaleSounds */; };
-		9B1453F921A090A300CB4265 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B1453F821A090A300CB4265 /* alert.mp3 */; };
+		9B12876E21BDB83F001D8BF4 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B12876D21BDB83F001D8BF4 /* alert.mp3 */; };
 		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -479,7 +479,7 @@
 		9B0B092221AB6D8500E6080D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B1173EE2197BD190040FC18 /* MaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MaleSounds; path = ../assets/sounds/MaleSounds; sourceTree = "<group>"; };
 		9B1173EF2197BD190040FC18 /* FemaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FemaleSounds; path = ../assets/sounds/FemaleSounds; sourceTree = "<group>"; };
-		9B1453F821A090A300CB4265 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../../../../Downloads/alert.mp3; sourceTree = "<group>"; };
+		9B12876D21BDB83F001D8BF4 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../../../../Downloads/alert.mp3; sourceTree = "<group>"; };
 		9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		A2A2177212D740C59FEED629 /* RNAudioRecorderPlayer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAudioRecorderPlayer.xcodeproj; path = "../node_modules/react-native-audio-recorder-player/ios/RNAudioRecorderPlayer.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -866,7 +866,7 @@
 		BAA047DFEDCC45BB9C2BBD34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9B1453F821A090A300CB4265 /* alert.mp3 */,
+				9B12876D21BDB83F001D8BF4 /* alert.mp3 */,
 				9B1173EF2197BD190040FC18 /* FemaleSounds */,
 				9B1173EE2197BD190040FC18 /* MaleSounds */,
 				23B9B72D0ED34B7C80EF70F9 /* fontawesome-webfont.ttf */,
@@ -1457,8 +1457,8 @@
 				A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */,
 				28BAC1380CC142AB867C29B2 /* Tajawal-Regular.ttf in Resources */,
 				C53E24FE5C64477A8F3682A8 /* AntDesign.ttf in Resources */,
-				9B1453F921A090A300CB4265 /* alert.mp3 in Resources */,
 				CB63EF8984164832B4FA26E1 /* Entypo.ttf in Resources */,
+				9B12876E21BDB83F001D8BF4 /* alert.mp3 in Resources */,
 				E752859A3971440690810741 /* EvilIcons.ttf in Resources */,
 				F676591C25CF41B2878A3611 /* Feather.ttf in Resources */,
 				15EA4EBD641A4890844CB7DD /* FontAwesome.ttf in Resources */,
