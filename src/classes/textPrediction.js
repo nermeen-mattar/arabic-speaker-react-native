@@ -8,12 +8,6 @@ export class TextPredection {
   userWords = [{}, {}, {}];
     defaultWords = [ bigramData, trigramData, quadgram]
     static instance;
-    // defaultWords = [
-    //     ["من", "في", "و", "ان", "'الله'", "على", "ما", "يا", "لا", "كل", "انا", "لو", "يوم", "الى", "بس", "اللي", "عن", "ولا", "هل", "كم", "مش", "مع", "اللهم"],
-    //     ["من هناك"]
-    // ];
-    // let predictions = [];
-    // let staticPredictions = ['test1', 'test2'];
     constructor() {
         const storageInstance = Storage.getInstance();
         // storageInstance.deleteItem('userWords');
@@ -66,9 +60,10 @@ export class TextPredection {
         enteredWords = enteredWords.trim();
         enteredWords = enteredWords.replace(/\s\s+/g, ' ');
           const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
-          if(numberEnteredOfWords === 0) {
-              return [];
-          } else if ( numberEnteredOfWords > this.defaultWords.length) {
+          if(enteredWords === '') {
+              return this.staticWords;
+          } 
+          if ( numberEnteredOfWords > this.defaultWords.length) {
               return this.getPredectedWords(this.getLastWords(enteredWords));
           } 
         //   this.addToUserWordsIfNewWhileTyping(enteredWords, numberEnteredOfWords);

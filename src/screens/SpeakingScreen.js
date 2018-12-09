@@ -173,7 +173,7 @@ export default class TextToSpeachScreen extends React.Component {
     this.setState({
       text: text,
       toolsColors: toolsColors,
-      predectedWords: TextPredection.getInstance().getPredectedWords(text).slice(0, 12)
+      predectedWords: TextPredection.getInstance().getPredectedWords(text) // .slice(0, 12)
     });
   }
 
