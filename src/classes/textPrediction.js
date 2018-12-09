@@ -4,7 +4,7 @@ import quadgram from '../constants/default-words/quadgram';
 import { Storage } from '../classes/Storage';
 
 export class TextPredection {
-  staticWords = ['هل', 'في',  'من' ,'ماذا' ,'أنا' ,'قستنطينية' ,'أن' ,'إلي' ,'كيف' ,'علي' ,'السلام' ,'مستنقعات']
+  staticWords = ['هل', 'متى',  'أين' ,'كيف' ,'بكم' ,'افتح' ,'ممكن' ,'طيب' ,'السلام' ,'عطني' ,'أنا' ,'لماذا']
   userWords = [{}, {}, {}];
     defaultWords = [ bigramData, trigramData, quadgram]
     static instance;
