@@ -85,7 +85,8 @@ export class TextPredection {
 
         if (combinedResults.length  < 12  && numberEnteredOfWords> 1) {    
             const endOfFirstWord =  enteredWords.indexOf(' ') + 1;
-            const predectedWords = this.getPredectedWords(enteredWords.slice( endOfFirstWord, enteredWords.length));
+            let predectedWords = this.getPredectedWords(enteredWords.slice( endOfFirstWord, enteredWords.length));
+            predectedWords = predectedWords.filter(word => !combinedResults.includes(word))
             combinedResults= combinedResults.concat(predectedWords.slice(0, 12 - combinedResults.length));
           }
           return combinedResults.concat(this.staticWords.slice(0, 12 - combinedResults.length));
