@@ -8,7 +8,7 @@ import CustomHeader from '../components/CustomHeader';
 import { TextToSpeach } from '../classes/TextToSpeach';
 import { MonoText } from '../components/StyledText';
 import { Storage } from '../classes/Storage';
-import { TextPredection } from '../classes/TextPrediction';
+import { TextPrediction } from '../classes/TextPrediction';
 import commonStyles from '../styles/commonStyles';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
 
@@ -76,7 +76,7 @@ export default class TextToSpeachScreen extends React.Component {
  }
 
   componentDidMount() {
-    TextPredection.getInstance().initIndexedDefaultWords() 
+    TextPrediction.getInstance().initIndexedDefaultWords() 
   }
  
   static navigationOptions = {
@@ -173,12 +173,12 @@ export default class TextToSpeachScreen extends React.Component {
     this.setState({
       text: text,
       toolsColors: toolsColors,
-      predectedWords: TextPredection.getInstance().getPredectedWords(text) // .slice(0, 12)
+      predectedWords: TextPrediction.getInstance().getPredectedWords(text) // .slice(0, 12)
     });
   }
 
   speak() {
-    TextPredection.getInstance().addToUserWordsIfNew(this.state.text); 
+    TextPrediction.getInstance().addToUserWordsIfNew(this.state.text); 
     TextToSpeach.getInstance().speak(this.state.text);
   }
 

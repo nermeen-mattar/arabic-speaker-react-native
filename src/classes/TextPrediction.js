@@ -3,7 +3,7 @@ import trigramData from '../constants/default-words/trigramData';
 import quadgram from '../constants/default-words/quadgram';
 import { Storage } from '../classes/Storage';
 
-export class TextPredection {
+export class TextPrediction {
   staticWords = ['هل', 'متى',  'أين' ,'كيف' ,'بكم' ,'افتح' ,'ممكن' ,'طيب' ,'السلام' ,'عطني' ,'أنا' ,'لماذا']
   userWords = [{}, {}, {}];
     defaultWords = [ bigramData, trigramData, quadgram]
@@ -33,9 +33,9 @@ export class TextPredection {
     
     static getInstance() {
         if(!this.instance) {
-            this.instance = new TextPredection();    
+            this.instance = new TextPrediction();    
         }
-        return TextPredection.instance;
+        return TextPrediction.instance;
     }
 
     initIndexedDefaultWords() {
@@ -159,25 +159,25 @@ export class TextPredection {
 */
 
 
-function getPredectedWords(enteredWords) { // ماذا تريد أن
-    enteredWords = enteredWords.trim();
-      const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
-      if(numberEnteredOfWords > this.userWords.length) {
-          return [];
-      }
-      this.addToUserWordsIfNew(enteredWords, numberEnteredOfWords);
-     return this.userWords[numberEnteredOfWords - 1][enteredWords] || [];
+// function getPredectedWords(enteredWords) { // ماذا تريد أن
+//     enteredWords = enteredWords.trim();
+//       const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
+//       if(numberEnteredOfWords > this.userWords.length) {
+//           return [];
+//       }
+//       this.addToUserWordsIfNew(enteredWords, numberEnteredOfWords);
+//      return this.userWords[numberEnteredOfWords - 1][enteredWords] || [];
 
-  }
+//   }
 
-  function addToUserWordsIfNew(enteredWords, numberEnteredOfWords) {
-    const indexOfLastWord = enteredWords.lastIndexOf(' ');
-    if( numberEnteredOfWords > 1 && 
-      !this.getPredectedWords(enteredWords.slice(0, indexOfLastWord)).includes(enteredWords.slice(indexOfLastWord + 1)) ) {      
-      if(this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)]) {
-        this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)].push(enteredWords.slice(indexOfLastWord + 1));
-      } else {
-        this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)] = [enteredWords.slice(indexOfLastWord + 1)];
-      }
-    }
-  }
+  // function addToUserWordsIfNew(enteredWords, numberEnteredOfWords) {
+  //   const indexOfLastWord = enteredWords.lastIndexOf(' ');
+  //   if( numberEnteredOfWords > 1 && 
+  //     !this.getPredectedWords(enteredWords.slice(0, indexOfLastWord)).includes(enteredWords.slice(indexOfLastWord + 1)) ) {      
+  //     if(this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)]) {
+  //       this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)].push(enteredWords.slice(indexOfLastWord + 1));
+  //     } else {
+  //       this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)] = [enteredWords.slice(indexOfLastWord + 1)];
+  //     }
+  //   }
+  // }

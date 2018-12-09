@@ -15,7 +15,7 @@ const SettingsDrawer = createDrawerNavigator({
 },
   {
     drawerWidth: 310,
-    drawerPosition: 'right',
+    drawerPosition: 'left',
     contentComponent: SettingsComponent,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',

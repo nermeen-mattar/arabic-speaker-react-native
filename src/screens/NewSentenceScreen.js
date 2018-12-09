@@ -20,7 +20,7 @@ import { TextToSpeach } from '../classes/TextToSpeach';
 
 // import PhotoUpload from 'react-native-photo-upload'
 import { Storage } from '../classes/Storage';
-import { TextPredection } from '../classes/TextPrediction';
+import { TextPrediction } from '../classes/TextPrediction';
 import { ImagePickerHelper } from '../classes/ImagePickerHelper';
 import { ArabicRecorderAndPlayer } from '../classes/ArabicRecorderAndPlayer';
 
@@ -183,7 +183,7 @@ export default class NewSentenceScreen extends React.Component {
   }
 
   speak() {
-    TextPredection.getInstance().addToUserWordsIfNew(this.state.sentence); 
+    TextPrediction.getInstance().addToUserWordsIfNew(this.state.sentence); 
     TextToSpeach.getInstance().speak(this.state.sentence);
   }
 
