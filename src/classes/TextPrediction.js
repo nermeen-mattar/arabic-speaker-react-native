@@ -59,6 +59,8 @@ export class TextPrediction {
         let userPredectedWords, defaultPredectedWords;
         enteredWords = enteredWords.trim();
         enteredWords = enteredWords.replace(/\s\s+/g, ' ');
+        enteredWords = enteredWords.replace(/^أ/g, 'ا');
+        enteredWords = enteredWords.replace(/\sأ/g, ' ا');
           const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
           if(enteredWords === '') {
               return this.staticWords;
@@ -95,6 +97,8 @@ export class TextPrediction {
       addToUserWordsIfNew(enteredWords, gotUpdated) {
         enteredWords = enteredWords.trim();
         enteredWords = enteredWords.replace(/\s\s+/g, ' ');
+        enteredWords = enteredWords.replace(/^أ/g, 'ا');
+        enteredWords = enteredWords.replace(/\sأ/g, ' ا');
         const numberEnteredOfWords = enteredWords.split(' ').length; //  enteredWords.split(/.+ .+/g);
         if(numberEnteredOfWords === 1 ) {
             if(gotUpdated) {

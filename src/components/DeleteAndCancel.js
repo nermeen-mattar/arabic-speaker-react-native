@@ -22,7 +22,7 @@ class DeleteAndCancel extends Component {
             <MonoText style={styles.verticalDivider}> </MonoText>
             <TouchableOpacity  style={{flex: 1}}  onPress={this.props.onCancelClicked}>
               <MonoText style={styles.button} >
-              الغاء
+              إلغاء
                 </MonoText>
             </TouchableOpacity>
             </View> 
