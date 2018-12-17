@@ -122,22 +122,24 @@ export default class CategoriesScreen extends React.Component {
           {
             this.state.categories.map((category, index) => {
               return(
-            //     <View key ={index}>
-                
-            //  </View>
-          //   <TouchableOpacity   onPress={() => {
-          //     this.categoryToggled(index)
-          //  }}>
-            <TouchableOpacity  onPress={() => { // adding key prevents warning
-                  this.categoryClicked(index)
-               }}>
+          category.type === 'category' ?
+            <TouchableOpacity  onPress={() => { this.categoryClicked(index)}}>
               <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
               fontSize = {this.state.categoryPath.length > 1 ? 12 : 15}
-                selected = {category.selected} // this.state.selectedCategories.includes(category) 
-                  // onCardToggeled= {() =>  this.categoryToggled(index)}     
-              />
-             </TouchableOpacity>
+                selected = {category.selected}   />
+             </TouchableOpacity> : null
               );
+            })
+          }
+          
+          {
+            this.state.categories.map((category, index) => {
+              return(
+            category.type !== 'category' ?
+            <TouchableOpacity  onPress={() => { this.sentenceClicked(index)}}>
+              <Card key ={category.label} cardInfo = {category} selectMode= {this.state.selectMode}
+              fontSize = {this.state.categoryPath.length > 1 ? 12 : 15} selected = {category.selected} />
+             </TouchableOpacity> : null );
             })
           }
           </View>
@@ -193,20 +195,6 @@ export default class CategoriesScreen extends React.Component {
     })
   }
 
-
-
-  // updateCategories = ()  => {
-  //   const storageInstance = Storage.getInstance(); // temp 
-  //   const result = {value: 'null'};
-  //   storageInstance.getItem(this.state.categoryPath.join(), result).then(res => {
-  //     // if(result.value) {
-  //       this.setState({
-  //         categories: result.value || []
-  //       });
-  //     // } 
-  //   })
-  // }
-
   moveToCategoryLevel(sectionIndex) {         
     this.setState({categoryPath: this.state.categoryPath.slice(0, sectionIndex + 1)
     });
@@ -219,17 +207,13 @@ export default class CategoriesScreen extends React.Component {
   categoryClicked(index) {
     if(this.state.selectMode) {
         this.categorySelectionToggled(index);
-    } else if(this.state.categories[index].type === 'category') {
+    } else { //  if(this.state.categories[index].type === 'category')
         this.state.categoryPath.push((this.state.categories[index].label));
         this.load();
       }
-      else {
-        // this.props.navigation.navigate('SentencesScreen', {
-        //   categoryName: this.state.categories[index].label,
-        //   categoryPath: this.state.categoryPath
-        // });
-        this.sentenceClicked(index);
-      }
+      // else {
+      //   this.sentenceClicked(index);
+      // }
     }
   
     sentenceClicked = (sentenceIndex)  => {
@@ -262,20 +246,8 @@ export default class CategoriesScreen extends React.Component {
     this.setState({
       categories: categories
     });
-    // const selectedCategories = this.state.selectedCategories;
-    // const categories = this.state.categories;
-
-    // if(categories[categoryIndex].selected && !selectedCategories.includes(categoryIndex) ) {
-    //   selectedCategories.push(categoryIndex)
-    // } else if( !categories[categoryIndex].selected && selectedCategories.includes(categoryIndex) ) {
-    //   selectedCategories.splice(categoryIndex, 1);
-    // }
-    // categories[categoryIndex].selected =  !categories[categoryIndex].selected;
-    // this.setState({ categories: categories, selectedCategories: selectedCategories});
-    
-    
-    // this.state.categories[categoryIndex].setState({ selected: !this.state.categories[categoryIndex].selected});
-  }
+  
+ }
 
 
   cancelSelectMode = () => {
