@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
       button: {
         textAlign: 'center',
         color: 'white',
-        fontSize: 15,
+        fontSize: 18,
         fontWeight: 'bold'
       },
     verticalDivider: {
