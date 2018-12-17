@@ -1,6 +1,7 @@
 import React from 'react';
 import {Platform, StyleSheet, StatusBar, View, ActivityIndicator} from 'react-native';
 import { createDrawerNavigator} from 'react-navigation'
+import SplashScreen from 'react-native-splash-screen'
 
 import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
@@ -43,6 +44,9 @@ export default class App extends React.Component {
       // https://facebook.github.io/react-native/docs/activityindicator
     // );
   // } else {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000   )
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
