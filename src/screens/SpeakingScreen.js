@@ -320,12 +320,16 @@ predectedWord: {
   marginHorizontal: 10,
   backgroundColor: 'white',
   borderRadius: 10,
-  paddingHorizontal: 24,
+  // paddingHorizontal: 24,
   paddingVertical: 10,
-  marginBottom: 10
+  marginBottom: 10,
+  // commented paddingHorizantl and added static width instead
+  width: 100,
+
 },
 predectedWordText: {
-  fontSize: 18
+  fontSize: 18,
+  textAlign: 'center'
 }
 });
 
