@@ -324,7 +324,7 @@ predectedWord: {
   paddingVertical: 10,
   marginBottom: 10,
   // commented paddingHorizantl and added static width instead
-  width: 100,
+  width: 95,
 
 },
 predectedWordText: {
