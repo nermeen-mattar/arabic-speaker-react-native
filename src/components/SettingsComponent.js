@@ -70,6 +70,7 @@ class SettingsComponent extends Component {
         }
       },         
       {
+        onPress:  () =>  this.props.navigation.navigate( {routeName: 'ContactUsScreen'}),
         right: {
           imgSrc: require('../../assets/images/settings/about-app.png'),
           label: 'حول التطبيق'
@@ -111,49 +112,45 @@ class SettingsComponent extends Component {
           sections={[{ data: items}]}
           renderItem={({ item, index }) => {
            return item.platform !== undefined && (item.platform !== Platform.OS) ? null : 
-          <View key={index} style={styles.list}>
+          <TouchableOpacity activeOpacity= {item.onPress ? 0.5 : 1} onPress = {item.onPress ? ()=> {item.onPress()} : null }  key={index} style={styles.list}>
             <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1}}> 
                <Image source = {item.right.imgSrc} style={styles.itemIcon}/>
                <MonoText style={[ styles.itemLabel, styles.smallFontSize]} > {item.right.label}</MonoText>      
             </View>
-          { 
-            item.left  ? 
-            (item.left.type === 'switch' ? <Switch style={styles.switch} 
-            onTintColor = {Colors.brand}
-            value={this.state.settingsValues[item.left.variableName]}
-            onValueChange= {(value) => {
-              this.updateSettings(item.left.variableName, value);
-            }}
-            //  thumbColor= {Colors.brand}
-             /> : 
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-               {
-            item.left.options.map((option, index) => {
-              return(
-              <TouchableOpacity style={{display: 'flex', flexDirection: 'row', alignItems: 'center',
-                marginLeft: index !== 0 ? 20: 0
-            }} onPress= {() => {
-                // this.setState({[item.left.variableName]: option});
-                this.updateSettings(item.left.variableName, option);
-              }}>
-            <Icon name={this.state.settingsValues[item.left.variableName] === option ? 'dot-circle-o' : 'circle'} 
-            size={28}
-            style={ //  [{ borderRadius: 14, fontSize: 28, height: 28, width:28 },
-            (this.state.settingsValues[item.left.variableName] === option) ? 
-            {color: Colors.brand } : //  borderWidth: 1, borderColor: Colors.brand
-            { color: 'white'} //  borderWidth: 1, borderColor: Colors.borderColor 
-            }/> 
-              <MonoText style={styles.smallFontSize}> {option} </MonoText>
-              </TouchableOpacity> 
-              )
-            })
-              }
-               </View>
-            ) :
-            <Icon style={styles.itemArrowIcon}  name="chevron-left" />
-          }
+              { 
+              item.left  ?
+              (item.left.type === 'switch' ? 
+              <Switch style={styles.switch} onTintColor = {Colors.brand}
+              value={this.state.settingsValues[item.left.variableName]}
+              onValueChange= {(value) => { this.updateSettings(item.left.variableName, value);}} /> 
+              : <View style={{display: 'flex', flexDirection: 'row'}}>
+                {
+              item.left.options.map((option, index) => {
+                return(
+                <TouchableOpacity style={{display: 'flex', flexDirection: 'row', alignItems: 'center',
+                  marginLeft: index !== 0 ? 20: 0
+              }} onPress= {() => {
+                  // this.setState({[item.left.variableName]: option});
+                  this.updateSettings(item.left.variableName, option);
+                }}>
+              <Icon name={this.state.settingsValues[item.left.variableName] === option ? 'dot-circle-o' : 'circle'} 
+              size={28}
+              style={ //  [{ borderRadius: 14, fontSize: 28, height: 28, width:28 },
+              (this.state.settingsValues[item.left.variableName] === option) ? 
+              {color: Colors.brand } : //  borderWidth: 1, borderColor: Colors.brand
+              { color: 'white'} //  borderWidth: 1, borderColor: Colors.borderColor 
+              }/> 
+                <MonoText style={styles.smallFontSize}> {option} </MonoText>
+                </TouchableOpacity> 
+                )
+              })
+                }
+                </View>
+              ) :
+              <Icon style={styles.itemArrowIcon}  name="chevron-left" />
+            }
           <MonoText style={styles.smallFontSize}>{this.state.value} </MonoText>
-          </View>}            
+          </TouchableOpacity>}            
           }
         />
          </ScrollView>

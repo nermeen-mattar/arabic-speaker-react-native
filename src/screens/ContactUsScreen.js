@@ -14,6 +14,7 @@ import { MonoText } from '../components/StyledText';
 import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextToSpeach } from '../classes/TextToSpeach';
+import CustomHeader from '../components/CustomHeader';
 
 
 export default class ContactUsScreen extends React.Component {
@@ -21,28 +22,50 @@ export default class ContactUsScreen extends React.Component {
         super();
         this.state = {
           title:[ "تواصل معنا"],
-          formFields: {
-              name: {
-                  label: 'الإسم',
-                  type: 'text'
-              },
-              email: {
-                label: 'البريد الإلكتروني',
-                type: 'text'
+          // formFields: {
+          //     name: {
+          //         label: 'الإسم',
+          //         type: 'text'
+          //     },
+          //     email: {
+          //       label: 'البريد الإلكتروني',
+          //       type: 'text'
 
-            },
-            subject: {
-                label: 'عنوان الرسالة',
-                type: 'text'
+          //   },
+          //   subject: {
+          //       label: 'عنوان الرسالة',
+          //       type: 'text'
 
-            },
-            body: {
-                label: 'نص السالة',
-                type: 'text',
-                multiline: true
+          //   },
+          //   body: {
+          //       label: 'نص السالة',
+          //       type: 'text',
+          //       multiline: true
 
-            }
-          }
+          //   }
+          // }
+          formFields: [
+            {
+              name: 'name',
+              label: 'الإسم',
+              type: 'text'
+          },
+          {
+            label: 'البريد الإلكتروني',
+            type: 'text',
+            name: 'email'
+
+        },
+        {
+          label: 'عنوان الرسالة',
+          type: 'text',
+          name: 'subject'
+        }, {
+          name: 'body',
+          label: 'نص السالة',
+          type: 'text',
+          multiline: true
+        }]
         };
         props.navigation.addListener('willFocus', this.load)
       }
@@ -65,7 +88,8 @@ export default class ContactUsScreen extends React.Component {
      <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
 
 
-    <View style={{flexDirection: 'row', justifyContent: 'center'}}> 
+    <View > 
+    {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
     {
             this.state.formFields.map((field, index) => {
               return(
