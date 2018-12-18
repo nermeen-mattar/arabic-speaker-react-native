@@ -70,13 +70,14 @@ class SettingsComponent extends Component {
         }
       },         
       {
-        onPress:  () =>  this.props.navigation.navigate( {routeName: 'ContactUsScreen'}),
+        onPress:  () =>  this.props.navigation.navigate( {routeName: 'AboutUsScreen'}),
         right: {
           imgSrc: require('../../assets/images/settings/about-app.png'),
           label: 'حول التطبيق'
         }
       },
       {
+        onPress:  () =>  this.props.navigation.navigate( {routeName: 'ContactUsScreen'}),
         right: {
           imgSrc: require('../../assets/images/settings/contact-us.png'),
           label: 'تواصل معنا'
