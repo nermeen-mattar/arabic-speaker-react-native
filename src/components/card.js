@@ -67,7 +67,7 @@ export class Card extends React.Component {
 
   const styles = StyleSheet.create({
     container: {
-      ...commonStyles.center,
+      ...commonStyles.flexCenter,
       alignItems: 'center',
       width: Spacings.cardWidth,
       height: Spacings.cardHeight,

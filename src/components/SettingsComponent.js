@@ -15,11 +15,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomListStyle, { CustomListItemSyle } from "../styles/CustomListStyle";
 import { Storage } from '../classes/Storage';
 import Genders from "../constants/Genders";
+import AboutUsScreen from "../screens/AboutUsScreen";
+import ContactUsScreen from "../screens/ContactUsScreen";
 
 class SettingsComponent extends Component {
     constructor (props) {
         super();
         this.state = {
+          displayedPage: null, 
             settingsValues: {
               voiceGender: Genders.female,
               useWithSiri: true, 
@@ -70,19 +73,34 @@ class SettingsComponent extends Component {
         }
       },         
       {
-        onPress:  () =>  this.props.navigation.navigate( {routeName: 'AboutUsScreen'}),
+        
+        navigateTo:{
+          componentHtml:   <AboutUsScreen onBackClicked={ () => {
+            this.setState({
+              displayedPage: null, 
+            }) 
+          }}> </AboutUsScreen>,
+          componentName: 'about'
+        } ,
         right: {
           imgSrc: require('../../assets/images/settings/about-app.png'),
           label: 'حول التطبيق'
         }
       },
       {
-        onPress:  () =>  this.props.navigation.navigate( {routeName: 'ContactUsScreen'}),
+        navigateTo:{
+          componentHtml:   <ContactUsScreen onBackClicked={ () => {
+            this.setState({
+              displayedPage: null, 
+            }) 
+          }}> </ContactUsScreen>,
+          componentName: 'contact'
+        } ,
         right: {
           imgSrc: require('../../assets/images/settings/contact-us.png'),
           label: 'تواصل معنا'
         }
-      },
+      },   // may i say something without taking it the wrong way? with all my respect I dont think its appropiot to send things like this. from my side i'll forget it anything said before and I hope you do the same way.
       {
         platform: 'ios',
         right: {
@@ -99,7 +117,7 @@ class SettingsComponent extends Component {
     ]
         return (
         <View  style={styles.container}>
-        <View >
+        <View >   
         {/* <View style={styles.drawerHeader} >  */}
             <TouchableOpacity  style={styles.closeDrawerIcon} onPress={ () => {
               this.props.navigation.closeDrawer();
@@ -113,11 +131,14 @@ class SettingsComponent extends Component {
           sections={[{ data: items}]}
           renderItem={({ item, index }) => {
            return item.platform !== undefined && (item.platform !== Platform.OS) ? null : 
-          <TouchableOpacity activeOpacity= {item.onPress ? 0.5 : 1} onPress = {item.onPress ? ()=> {item.onPress()} : null }  key={index} style={styles.list}>
+          <TouchableOpacity activeOpacity= {item.onPress ? 0.5 : 1} 
+          onPress = {item.navigateTo ? ()=> {this.setState({displayedPage: item.navigateTo.componentName})} : null }
+          key={index} style={styles.list}>
             <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1}}> 
                <Image source = {item.right.imgSrc} style={styles.itemIcon}/>
                <MonoText style={[ styles.itemLabel, styles.smallFontSize]} > {item.right.label}</MonoText>      
             </View>
+            { (item.navigateTo && this.state.displayedPage === item.navigateTo.componentName) ? item.navigateTo.componentHtml : null}
               { 
               item.left  ?
               (item.left.type === 'switch' ? 
