@@ -6,44 +6,52 @@ import {
   StyleSheet,
   Image,
   View,
-  TextInput,
-  TouchableOpacity
+  ScrollView,
+  Modal
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
 import Colors from '../constants/Colors';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { TextToSpeach } from '../classes/TextToSpeach';
 import CustomHeader from '../components/CustomHeader';
+import commonStyles from '../styles/commonStyles';
 
 
 export default class AboutUsScreen extends React.Component {
     constructor(props) {
         super();
         this.state = {
+          circlesSection: [
+            {
+              img: require('../../assets/images/about-us/ear.png'),
+              text: 'سمعي'
+            }, 
+            {
+              img: require('../../assets/images/about-us/eye.png'),
+              text: 'بصري'
+            },
+            {
+              img: require('../../assets/images/about-us/wheelchair.png'),
+              text: 'حركي'
+            }, 
+            {
+              img: require('../../assets/images/about-us/couple.png'),
+              text: 'كبار السن'
+            },
+            {
+              img: require('../../assets/images/about-us/baby.png'),
+              text: 'أطفال'
+            },
+            {
+              img: require('../../assets/images/about-us/reading.png'),
+              text: 'تعليمي'
+            }, 
+            {
+              img: require('../../assets/images/about-us/care.png'),
+              text: 'E-health'
+            },
+          ],
+          isVisible: true,
           title:[ "حول التطبيق"],
-          // formFields: {
-          //     name: {
-          //         label: 'الإسم',
-          //         type: 'text'
-          //     },
-          //     email: {
-          //       label: 'البريد الإلكتروني',
-          //       type: 'text'
-
-          //   },
-          //   subject: {
-          //       label: 'عنوان الرسالة',
-          //       type: 'text'
-
-          //   },
-          //   body: {
-          //       label: 'نص السالة',
-          //       type: 'text',
-          //       multiline: true
-
-          //   }
-          // }
           formFields: [
             {
               name: 'name',
@@ -67,46 +75,109 @@ export default class AboutUsScreen extends React.Component {
           multiline: true
         }]
         };
-        props.navigation.addListener('willFocus', this.load)
       }
-
-
-      load = () => {
-          this.setState({
-          });
-       }
-      static navigationOptions = {
-        header: null
-      };
-      
 
       
       render() {
     return (
-      <View>
+      <Modal animationType="slide" transparent={false} visible={this.state.isVisible}>
+      
+     <CustomHeader  title={this.state.title}  onBackClicked= {() => {this.props.onBackClicked()}}/>
 
-     <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.navigate( {routeName: 'Main'})}/>
+
+    <ScrollView style={styles.container}> 
+    {/* first section */}
+      <View style={styles.logoAndName}>
+      <View style={[commonStyles.flexCenter, {position: 'relative', top: 14} ]} >
+           <Image   source = {require('../../assets/images/about-us/logo.png')}/>
+         </View>
+      <MonoText  style={[styles.appNameArabic,  commonStyles.textCenter]}>
+          المتحدث العربي
+          </MonoText>
+
+     <MonoText style={[styles.appNameEnglish, commonStyles.textCenter]}>
+         Smart Arabic Speaker
+          </MonoText>
+        </View>
 
 
-    <View > 
-    {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
-    {
-            this.state.formFields.map((field, index) => {
-              return(
-                <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text, index)}
-                placeholder= {field.label}  multiline = {field.multiline}  />
-                // value={field.value}
-              )
-              
-              })}
+    {/* second section */}
+     <View style ={[styles.secondSection, styles.paddingVertical18]}>
+           <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
+         أحدث تطبيق للتحدث والتواصل باللغة العربية
+         لذوي صعوبات النطق وكبار السن
+          </MonoText>              
+         {/* <MonoText style={ commonStyles.textCenter}>
+      لذوي صعوبات النطق وكبار السن
+          </MonoText>  */}
+          <MonoText style={[ commonStyles.textCenter, styles.primaryText, styles.paddingVertical18, {color : Colors.borderColor}]}>
+            V1 - 2018
+          </MonoText> 
+          <View
+          style={styles.divider}
+        />
+             <MonoText style={[ commonStyles.textCenter, styles.paddingVertical18, {fontSize: 38}]}>
+            إنتاج 
+          </MonoText>     
 
-    </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'center'}} >
+           <Image   source = {require('../../assets/images/about-us/logo_anas.png')}/>
+         </View>
+       <MonoText style={[styles.primaryText, commonStyles.textCenter] }>
+         مركز أنس للتقنيات المساعدة لذوي الاحتياجات
+          </MonoText> 
+
+         </View>
+
+
+          <View style={[commonStyles.flexCenter, {paddingTop: 22, backgroundColor: '#f7f7f7'}]}>
+            {
+              this.state.circlesSection.map(circleObj => {
+                return( 
+              <View style = {styles.circleAndText}> 
+                 <View style={styles.whiteCircle}> 
+                    <Image source = {circleObj.img}/>
+                  </View>
+                  <MonoText style={[commonStyles.textCenter, styles.primaryText]}> {circleObj.text} </MonoText>
+              </View>
+                )
+              })
+            }
+            </View>
+
+            <MonoText style={[commonStyles.textCenter, styles.primaryText,  {padding: 14}]}>  إشراف - د. أمل السيف </MonoText>
+
+
+            <View style={[styles.contactDetails]}> 
+            <View style={[styles.flexSpaceAround, {paddingVertical: 28}]}> 
+
+              <View>
+              <Image style={{marginLeft: 'auto', marginRight: 'auto'}} source = {require('../../assets/images/about-us/twitter.png')}/>
+              <MonoText style={[commonStyles.textCenter, styles.primaryText]}> @AnasCenterAt </MonoText>
+
+
+                </View>
+              <View>
+              <Image  style={{marginLeft: 'auto', marginRight: 'auto', marginVertical: 4.5}} source = {require('../../assets/images/about-us/mail.png')}/>
+              <MonoText style={[commonStyles.textCenter, styles.primaryText]}> AnasCenterAT@Gmail.com </MonoText>
+
+                </View>
+              </View>
+      
+            <View style={styles.divider}/>
+            <MonoText style={[styles.primaryText, commonStyles.textCenter, {paddingTop: 34}] }>
+              شركاء النجاح
+          </MonoText> 
+            <View style={[styles.flexSpaceAround,  {paddingVertical: 42}]}> 
+            <Image source = {require('../../assets/images/about-us/CCIS_Logo_2_Big.png')}/>
+            <Image source = {require('../../assets/images/about-us/شعار_مدينة_سلطان.png')}/>
+            <Image source = {require('../../assets/images/about-us/IT_LOGO.png')}/>
+            </View>
+            </View>
+    </ScrollView>
   
-     <TouchableOpacity style={styles.card} onPress={ () => this.sendMessage()}  >
-          <MonoText style={styles.cardLabel}>إرسال الرسالة</MonoText>
-        </TouchableOpacity>
                    
-      </View>
+      </Modal>
     );
   }
 
@@ -125,23 +196,64 @@ export default class AboutUsScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
-  inputsWrapper: {
-    display: 'flex',
+  container: {
+    flex: 1,
+    backgroundColor: Colors.appBackground,
+  },
+  logoAndName: {
+    backgroundColor: Colors.brand,
+    // height: 274
+  },
+  appNameArabic: {
+    color:'white',
+    fontSize: 31,
+    // textAlign: 'center'
+  },
+  appNameEnglish: {
+    color:'white',
+    fontSize: 21,
+    marginBottom: 30
+    // textAlign: 'center'
+  },
+  divider: {
+    borderBottomColor: '#f2f2f2',
+    width: 176,
+    borderBottomWidth: 4,
+    marginLeft:'auto',
+    marginRight:'auto',
+  },
+  primaryText: {
+    fontSize: 18,
+  },
+  secondSection: {
+    backgroundColor: 'white',
+    paddingHorizontal: 30,
+  },
+  paddingVertical18: {
+    paddingVertical: 18
+  },
+  flexSpaceAround: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'space-around'
   },
-  textInput: {
-    width: 315,
-    height: 41,
-    backgroundColor: Colors.primary,
-    fontFamily: 'Tajawal',
-    fontSize: 17,
-    textAlign: 'right',
-    padding: 8,
-    paddingTop: 12, // 20 didn't work
-    marginTop: 11,
-    borderRadius: 10 /* **N** */
+  // circlesSection: {
+  //   padding
+  // },
+  contactDetails: {
+    backgroundColor: 'white',
   },
-
+  whiteCircle: {
+    backgroundColor: 'white',
+    borderRadius: 36,
+    // padding: 20
+    width: 72,
+    height: 72,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  circleAndText: {
+    marginHorizontal: 5,
+    marginBottom: 22,   
+  }
 });

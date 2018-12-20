@@ -4,10 +4,10 @@
 import React from 'react';
 import {
   StyleSheet,
-  Image,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Modal
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -15,6 +15,7 @@ import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TextToSpeach } from '../classes/TextToSpeach';
 import CustomHeader from '../components/CustomHeader';
+import commonStyles from '../styles/commonStyles';
 
 
 export default class ContactUsScreen extends React.Component {
@@ -22,28 +23,7 @@ export default class ContactUsScreen extends React.Component {
         super();
         this.state = {
           title:[ "تواصل معنا"],
-          // formFields: {
-          //     name: {
-          //         label: 'الإسم',
-          //         type: 'text'
-          //     },
-          //     email: {
-          //       label: 'البريد الإلكتروني',
-          //       type: 'text'
 
-          //   },
-          //   subject: {
-          //       label: 'عنوان الرسالة',
-          //       type: 'text'
-
-          //   },
-          //   body: {
-          //       label: 'نص السالة',
-          //       type: 'text',
-          //       multiline: true
-
-          //   }
-          // }
           formFields: [
             {
               name: 'name',
@@ -64,10 +44,10 @@ export default class ContactUsScreen extends React.Component {
           name: 'body',
           label: 'نص السالة',
           type: 'text',
-          multiline: true
+          multiline: true,
+          style: {height: 121}
         }]
         };
-        props.navigation.addListener('willFocus', this.load)
       }
 
 
@@ -83,30 +63,31 @@ export default class ContactUsScreen extends React.Component {
       
       render() {
     return (
-      <View>
 
-     <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+      <Modal animationType="slide" transparent={false} visible={this.state.isVisible}>
+
+     <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= {() => {this.props.onBackClicked()}}/>
 
 
-    <View > 
+    <View style= {[styles.container, commonStyles.flexCenter]} > 
     {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
     {
             this.state.formFields.map((field, index) => {
               return(
-                <TextInput  style={styles.textInput} onChangeText={(text) => this.onTextChanged(text, index)}
+                <TextInput  style={[styles.textInput, styles.inputStyle, field.style || {}]} onChangeText={(text) => this.onTextChanged(text, index)}
                 placeholder= {field.label}  multiline = {field.multiline}  />
                 // value={field.value}
               )
               
               })}
+  
+     <TouchableOpacity style={[styles.button, styles.inputStyle]} onPress={ () => this.sendMessage()}  >
+          <MonoText style={styles.buttonText} >إرسال الرسالة</MonoText>
+        </TouchableOpacity>
 
     </View>
-  
-     <TouchableOpacity style={styles.card} onPress={ () => this.sendMessage()}  >
-          <MonoText style={styles.cardLabel}>إرسال الرسالة</MonoText>
-        </TouchableOpacity>
                    
-      </View>
+      </Modal>
     );
   }
 
@@ -125,6 +106,10 @@ export default class ContactUsScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.appBackground,
+  },
   inputsWrapper: {
     display: 'flex',
     flexDirection: 'row',
@@ -143,5 +128,19 @@ const styles = StyleSheet.create({
     marginTop: 11,
     borderRadius: 10 /* **N** */
   },
+  button: {
+    backgroundColor: Colors.brand,
+    padding:10,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 17
+  },
+  inputStyle: {
+    width: 315,
+    marginTop: 11,
+    borderRadius: 10 /* **N** */
+  }
 
 });

@@ -6,6 +6,9 @@ export default {
         shadowOffset: {width: 1, height: 1},
         shadowOpacity: 0.06
     },
-    center:  {justifyContent: 'center', flexDirection: 'row'}
+    flexCenter:  {justifyContent: 'center', flexDirection: 'row',  flexWrap: 'wrap',},
+    textCenter: {
+        textAlign: 'center'
+    }
 }
 

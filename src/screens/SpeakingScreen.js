@@ -93,7 +93,7 @@ export default class TextToSpeachScreen extends React.Component {
     >
         <CustomHeader navigation = {this.props.navigation} />
 
-      <View style={commonStyles.center}>
+      <View style={commonStyles.flexCenter}>
 
 
       <View style={styles.inputAndToolsWrapper}> 
