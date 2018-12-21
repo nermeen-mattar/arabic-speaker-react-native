@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform , Image} from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -29,9 +29,15 @@ CategoriesStack.navigationOptions = {
     <MonoText style={{color: focused ? Colors.brand: Colors.grayFontColor}}> المكتبات </MonoText>  
   ),
 
-  tabBarIcon:  ({ focused }) => (
-    <Icon name="table" size={24} color={focused ? Colors.brand: Colors.grayFontColor}   />  
-  ),
+  // tabBarIcon:  ({ focused }) => (
+  //   <Icon name="table" size={24} color={focused ? Colors.brand: Colors.grayFontColor}   />  
+  // ),
+  tabBarIcon: ({ focused }) => (
+      <Image source={ 
+        focused ? require('../../assets/images/tabs-bar/categories-active.png') : 
+        require('../../assets/images/tabs-bar/categories-inactive.png')
+    } />
+  )
 };
 
 const SpeakingStack = createStackNavigator({
