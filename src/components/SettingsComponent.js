@@ -7,7 +7,8 @@ import {
     ScrollView,
     Switch,
     Image,
-    Platform
+    Platform,
+    Linking
 } from "react-native";
 import Colors from "../constants/Colors";
 import { MonoText } from '../components/StyledText';
@@ -177,9 +178,9 @@ class SettingsComponent extends Component {
         />
          </ScrollView>
          </View>
-         <View style={styles.logo}> 
+         <TouchableOpacity style={styles.logo}   onPress={() => Linking.openURL('http://appsbunches.com')}> 
            <Image source = {require('../../assets/images/3na8ed_logo.png')}/>
-         </View>
+         </TouchableOpacity>
 
          </View>
         );
