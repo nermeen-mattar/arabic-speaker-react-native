@@ -49,7 +49,9 @@ export class Card extends React.Component {
 
           {
             // {width: 77, height: 55 }
-            this.props.cardInfo.imgSrc ?   <Image style={styles.cardImg} source={ this.props.cardInfo.imgSrc} /> : null
+            this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg,
+              this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 50, minHeight: 50}
+            ]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
@@ -80,8 +82,6 @@ export class Card extends React.Component {
     cardImg: {
       marginTop: 24,
       marginBottom: 14,
-      minWidth: 42, 
-      minHeight: 42,
       maxWidth: 55,
       maxHeight: 55
     },
