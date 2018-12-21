@@ -178,7 +178,7 @@ class SettingsComponent extends Component {
          </ScrollView>
          </View>
          <View style={styles.logo}> 
-           <Image source = {require('../../assets/images/logo.png')}/>
+           <Image source = {require('../../assets/images/3na8ed_logo.png')}/>
          </View>
 
          </View>
