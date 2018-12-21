@@ -206,7 +206,7 @@ export default class CategoriesScreen extends React.Component {
   
   categoryClicked(index) {
     if(this.state.selectMode) {
-        this.categorySelectionToggled(index);
+        this.selectionToggeled(index);
     } else { //  if(this.state.categories[index].type === 'category')
         this.state.categoryPath.push((this.state.categories[index].label));
         this.load();
@@ -218,7 +218,9 @@ export default class CategoriesScreen extends React.Component {
   
     sentenceClicked = (sentenceIndex)  => {
       // StopSound();
-      if(this.state.categories[sentenceIndex].default) {
+      if(this.state.selectMode) {
+        this.selectionToggeled(sentenceIndex);
+      } else if(this.state.categories[sentenceIndex].default) {
         this.playExistingSound(sentenceIndex);
       } else if (this.state.categories[sentenceIndex].soundPath){
         ArabicRecorderAndPlayer.getInstance().onStartPlay(this.state.categories[sentenceIndex].soundPath)
@@ -240,7 +242,7 @@ export default class CategoriesScreen extends React.Component {
       });
     }
   
-  categorySelectionToggled(categoryIndex) {
+  selectionToggeled(categoryIndex) {
     const categories = this.state.categories;
     categories[categoryIndex].selected = !categories[categoryIndex].selected;
     this.setState({
