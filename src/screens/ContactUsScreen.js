@@ -109,12 +109,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.appBackground,
-  },
-  inputsWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+    paddingTop: 10
   },
   textInput: {
     width: 315,
