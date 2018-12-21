@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
   textInput: {
-    width: 315,
     height: 41,
     backgroundColor: Colors.primary,
     fontFamily: 'Tajawal',
@@ -120,8 +119,6 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     padding: 8,
     paddingTop: 12, // 20 didn't work
-    marginTop: 11,
-    borderRadius: 10 /* **N** */
   },
   button: {
     backgroundColor: Colors.brand,

@@ -21,11 +21,16 @@ export default class IconsLibrariesScreen extends React.Component {
     super();
     this.state = {
                 title:["مكتبة الأيقونات"] ,
-                iconsLibraries:     [
-                    'أيقونات الناس',
-                    'أيقونات الحيوانات',
-                    'أيقونات المدارس'
-                ],
+                iconsLibraries:    [
+                  'أيقونات الناس',
+                  'أيقونات الحيوانات',
+                  'أيقونات المدارس'
+              ],
+                librariesToDisplay:   [
+                  'أيقونات الناس',
+                  'أيقونات الحيوانات',
+                  'أيقونات المدارس'
+              ],
                 enableBack: true,
                 categoryPath: props.navigation.getParam('categoryPath'),
                 srcScreen: props.navigation.getParam('srcScreen'),
@@ -46,11 +51,13 @@ export default class IconsLibrariesScreen extends React.Component {
           centerComponent= {<CustomHeader navigation = {this.props.navigation} title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
           rightComponent={{ icon: 'home', color: '#fff' }}
          /> */}
-         <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+         <CustomHeader isSearchable={true}
+          filterContent= { searchText => this.filterContent(searchText) }
+         navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
         <SectionList
-          sections={[{ data: this.state.iconsLibraries}]}
+          sections={[{ data: this.state.librariesToDisplay}]}
           renderItem={({ item, index }) => 
           <TouchableOpacity key={index}
           style={styles.library} onPress= { () => this.props.navigation.navigate('IconsScreen', {
@@ -81,6 +88,13 @@ export default class IconsLibrariesScreen extends React.Component {
   //     });
   // }
 
+  filterContent(searchText) {
+    // const librariesToDisplay = Object.assign([], this.state.iconsLibraries);
+    this.setState({
+      librariesToDisplay: 
+      this.state.iconsLibraries.filter(iconsLibrary => iconsLibrary.includes(searchText.trim()))
+    })
+  }
 }
 
 const styles = StyleSheet.create({

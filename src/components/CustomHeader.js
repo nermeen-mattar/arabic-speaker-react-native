@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import {
     View,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    TextInput
 } from "react-native";
 // import { Icon } from 'expo';
 import Colors from "../constants/Colors";
@@ -91,6 +92,23 @@ class CustomHeader extends Component {
             
             : null}
 
+
+            {/* search */}
+
+              {
+                   this.props.isSearchable ?
+               
+               <View style={styles.searchContainer}>
+                               <Icon style={[styles.icon, styles.searchIcon]}  name="search" size={17}  color="white"/>  
+
+                       <TextInput
+                       placeholderTextColor= {'white'}
+                       style={styles.searchInput} onChangeText={(text) => this.props.filterContent(text)}
+                   placeholder= { 'بحث' } /> 
+               </View>
+                   : null
+
+              }
             {/* style={{ flex: 0.5}} */}
           </View>
             // <Header style={styles.header}
@@ -160,6 +178,33 @@ iconsWrapper: {
     smallText: {
         fontSize: 17,
         color: 'white'
-    }
+    },
+    searchContainer: {
+        backgroundColor:  'rgba(0, 0, 0, 0.18)',
+        width: 342,
+        marginBottom: 11,
+        // flexDirection: 'row',
+        // justifyContent: 'center',
+        borderRadius: 10 /* **N** */,
+        paddingLeft: 40,
+        marginRight: 'auto',
+        marginLeft: 'auto'
+    },
+    searchInput: {
+        height: 36,
+        backgroundColor: 'transparent',
+        color: 'white',
+        fontFamily: 'Tajawal',
+        fontSize: 17,
+        textAlign: 'right',
+   
+        // padding: 8,
+        // paddingTop: 12, // 20 didn't work
+      },
+      searchIcon: {
+          position: 'absolute',
+        // left: 4,
+        top: 6
+      }
 });
   

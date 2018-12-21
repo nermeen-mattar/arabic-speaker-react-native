@@ -8,9 +8,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { MonoText } from '../components/StyledText';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import LibrariesIcons from '../constants/LibrariesIcons';
@@ -23,6 +21,7 @@ export default class IconsScreen extends React.Component {
     const libraryName = props.navigation.getParam('libraryName');
     this.state = {
                 title: [libraryName],
+                iconsToDisplay: LibrariesIcons[libraryName] || [],
                 icons: LibrariesIcons[libraryName] || [],
                 enableBack: true,
                 categoryPath: props.navigation.getParam('categoryPath'),
@@ -37,14 +36,18 @@ export default class IconsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-         <CustomHeader navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
+         <CustomHeader 
+          isSearchable = {true}
+          filterContent= { searchText => this.filterContent(searchText) }
+
+navigation = {this.props.navigation} title={this.state.title} onBackClicked= { () => this.props.navigation.goBack()}/>
          {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
         {/* <ScrollView style={styles.container} > */}
     
         <ScrollView >
           <View style={styles.cardsContainer}>
           {
-            this.state.icons.map((icon, index) => {
+            this.state.iconsToDisplay.map((icon, index) => {
               return(
             <TouchableOpacity    onPress={() => {
                   this.iconClicked(index)
@@ -68,6 +71,14 @@ export default class IconsScreen extends React.Component {
         imgSrc: this.state.icons[index].imgSrc,
         categoryPath: this.state.categoryPath
       });
+  }
+
+  filterContent(searchText) {
+    // const iconsToDisplay = Object.assign([], this.state.icons);
+    this.setState({
+      iconsToDisplay: 
+      this.state.icons.filter(icon => icon.label.includes(searchText.trim()))
+    })
   }
 
 }
