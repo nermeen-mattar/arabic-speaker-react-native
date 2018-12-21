@@ -27,7 +27,21 @@ export class TextToSpeach {
      speak(text) {
          NetInfo.isConnected.fetch().then(isConnected => {
              if(isConnected) { // handle  Platform.OS === 'android'
-             TextToSpeach.instance.responsiveVoiceSpeak(text)
+             TextToSpeach.instance.responsiveVoiceSpeak(text);
+            //  fetch('http://18.224.240.0:8082/api/process?text='.concat(text), {
+            //     method: 'GET'
+            // }).then((response) => {
+            // this.displayAlertMessage(JSON.stringify(response)) // JSON.stringify(response)
+            //         response.json()
+            //     })
+            //     .then((responseJson) => {
+            //         this.displayAlertMessage('2') 
+            //         return responseJson;
+            //     })
+            //     .catch((error) => {
+            //         this.displayAlertMessage('error')
+            //     console.error(error);
+            //     });
             } else {
                 if(Platform.OS === 'android') {
                     this.displayAlertMessage();
@@ -42,9 +56,33 @@ export class TextToSpeach {
         const storageInstance =  Storage.getInstance();  
         const settings = {value: 'null'};
         storageInstance.getItem('settingsValues', settings).then(res => {
-            const requestPath = 'https://code.responsivevoice.org/getvoice.php?t=$text&tl=ar&gender=$gender';
+            let requestPath = 'https://code.responsivevoice.org/getvoice.php?t=$text&tl=ar&gender=$gender';
             const gender = settings.value && settings.value.voiceGender === Genders.female ? 'female' : 'male';
-            ArabicRecorderAndPlayer.getInstance().onStartPlay(requestPath.replace('$text', encodeURI(text)).replace('$gender', gender));
+            requestPath = requestPath.replace('$text', encodeURI(text)).replace('$gender', gender);
+            
+        //     fetch('https://cors-anywhere.herokuapp.com/'.concat(requestPath), 
+        //     {
+        //         method: 'GET',
+        //         headers: {
+        //           Accept: 'audio/mpeg',
+        //           'Content-Type': 'audio/mpeg'
+        //         }
+        //       }
+        // ).then((response) => {
+        //         this.displayAlertMessage(JSON.stringify(Object.keys(response.body.getReader()))) // JSON.stringify(response)
+
+        //         response.json()
+        //     })
+        //     .then((responseJson) => {
+        //         this.displayAlertMessage('2') 
+        //         return responseJson;
+        //     })
+        //     .catch((error) => {
+        //         this.displayAlertMessage('error')
+        //       console.error(error);
+        //     });
+            
+            ArabicRecorderAndPlayer.getInstance().onStartPlay(requestPath);
         });
     }
     displayAlertMessage() {
