@@ -6,7 +6,7 @@ import { Storage } from '../classes/Storage';
 export class TextPrediction {
   staticWords = ['هل', 'متى',  'أين' ,'كيف' ,'بكم' ,'افتح' ,'ممكن' ,'طيب' ,'السلام' ,'عطني' ,'أنا' ,'لماذا']
   userWords = [{}, {}, {}];
-    defaultWords = [ bigramData, trigramData, quadgram]
+    defaultWords = [ bigramData, trigramData, quadgram];
     static instance;
     constructor() {
         const storageInstance = Storage.getInstance();
@@ -30,7 +30,7 @@ export class TextPrediction {
       });
         
     }
-    
+ 
     static getInstance() {
         if(!this.instance) {
             this.instance = new TextPrediction();    
@@ -110,7 +110,10 @@ export class TextPrediction {
             // return;
         // }
         const indexOfLastWord = enteredWords.lastIndexOf(' ');
-        if( !this.getPredectedWords(enteredWords.slice(0, indexOfLastWord)).includes(enteredWords.slice(indexOfLastWord + 1)) ) {  
+        if( !this.getPredectedWords(enteredWords.slice(0, indexOfLastWord)).includes(enteredWords.slice(indexOfLastWord + 1)) ) {
+          if(!gotUpdated) {
+            this.sendSentenceToBackend(enteredWords);
+          }  
            gotUpdated = true;    
           if(this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)]) {
             this.userWords[numberEnteredOfWords - 2][enteredWords.slice(0, indexOfLastWord)].push(enteredWords.slice(indexOfLastWord + 1));
@@ -127,6 +130,23 @@ export class TextPrediction {
         storageInstance.setItem('userWords', this.userWords ).then(res => {
         });
      }
+
+     sendSentenceToBackend(sentence) {
+      const storageInstance = Storage.getInstance(); // temp 
+      const settings = {value: 'null'};
+      storageInstance.getItem('settingsValues', settings).then(res => {
+        if(settings.value) {
+          if(settings.value.helpImproveApp) {
+            fetch('http://18.224.240.0:8080/addWord?word='.concat(sentence), 
+            { method: 'GET' }).then((response) => {
+                response.json()
+                this.displayAlertMessage();
+           });
+          }
+        } 
+      }); 
+    }
+
 
      findWords(currentWords) {
 
