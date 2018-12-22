@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
   TextInput,
+  ScrollView,
   TouchableOpacity,
   Modal
 } from 'react-native';
@@ -70,7 +71,8 @@ export default class ContactUsScreen extends React.Component {
 
 
     <View style= {[styles.container, commonStyles.flexCenter]} > 
-    {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
+      <View>
+            {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
     {
             this.state.formFields.map((field, index) => {
               return(
@@ -84,6 +86,7 @@ export default class ContactUsScreen extends React.Component {
      <TouchableOpacity style={[styles.button, styles.inputStyle]} onPress={ () => this.sendMessage()}  >
           <MonoText style={styles.buttonText} >إرسال الرسالة</MonoText>
         </TouchableOpacity>
+        </View>
 
     </View>
                    
@@ -131,6 +134,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     width: 315,
+    minWidth: '60%',
     marginTop: 11,
     borderRadius: 10 /* **N** */
   }
