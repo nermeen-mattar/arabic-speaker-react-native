@@ -22,6 +22,8 @@ const CategoriesStack = createStackNavigator({
   NewSentenceScreen: NewSentenceScreen,
   IconsLibrariesScreen: IconsLibrariesScreen,
   IconsScreen: IconsScreen
+},  {
+  initialRouteName: 'IconsLibrariesScreen'
 });
 
 CategoriesStack.navigationOptions = {
@@ -90,5 +92,5 @@ export default createBottomTabNavigator({
   FavourtiesStack,
   AlertStack
 }, {
-  initialRouteName: 'SpeakingStack'
+  initialRouteName: 'CategoriesStack'
 });
