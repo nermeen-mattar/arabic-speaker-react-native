@@ -27,7 +27,6 @@ export class TextToSpeach {
      speak(text) {
          NetInfo.isConnected.fetch().then(isConnected => {
              if(isConnected) { // handle  Platform.OS === 'android'
-             TextToSpeach.instance.responsiveVoiceSpeak(text);
              fetch('http://18.224.240.0:8082/api/process?text='.concat(text), {
                 method: 'GET'
             }).then((response) => {

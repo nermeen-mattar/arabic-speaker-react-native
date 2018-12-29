@@ -22,9 +22,11 @@ const CategoriesStack = createStackNavigator({
   NewSentenceScreen: NewSentenceScreen,
   IconsLibrariesScreen: IconsLibrariesScreen,
   IconsScreen: IconsScreen
-},  {
-  initialRouteName: 'IconsLibrariesScreen'
-});
+},  
+// {
+//   initialRouteName: 'IconsLibrariesScreen'
+// }
+);
 
 CategoriesStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
@@ -92,5 +94,6 @@ export default createBottomTabNavigator({
   FavourtiesStack,
   AlertStack
 }, {
-  initialRouteName: 'CategoriesStack'
+  initialRouteName: 'SpeakingStack'
+  // 'CategoriesStack'
 });
