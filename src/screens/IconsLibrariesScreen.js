@@ -24,12 +24,16 @@ export default class IconsLibrariesScreen extends React.Component {
                 iconsLibraries:    [
                   'أيقونات الناس',
                   'أيقونات الحيوانات',
-                  'أيقونات المدارس'
+                  'أيقونات المدارس',
+                  'أيقونات الملابس',
+                  'أيقونات الأماكن'
               ],
                 librariesToDisplay:   [
                   'أيقونات الناس',
                   'أيقونات الحيوانات',
-                  'أيقونات المدارس'
+                  'أيقونات المدارس',
+                  'أيقونات الملابس',
+                  'أيقونات الأماكن'
               ],
                 enableBack: true,
                 categoryPath: props.navigation.getParam('categoryPath'),
