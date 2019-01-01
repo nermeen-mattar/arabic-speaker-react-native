@@ -1,50 +1,129 @@
-
-
-
-export default
-{
-    'أيقونات الناس':[
+export default {
+    'أيقونات الناس': [
         {
-            label: 'غاضب',
+            label: 'بكاء',
+            imgSrc: require('../../assets/images/libraries-icons/people/cry.jpg')
+        },
+        {
+            label: 'طفش',
+            imgSrc: require('../../assets/images/libraries-icons/people/bored.gif')
+        },
+        {
+            label: 'ضحك',
+            imgSrc: require('../../assets/images/libraries-icons/people/laugh.gif')
+        },
+        {
+            label: 'غضب',
             imgSrc: require('../../assets/images/libraries-icons/people/angry.gif')
         },
         {
-            label: 'ملل',
-            imgSrc:  require('../../assets/images/libraries-icons/people/arm.gif')
+            label: 'الم',
+            imgSrc: require('../../assets/images/libraries-icons/people/pain.gif')
         },
         {
-            label: 'طفل',
-            imgSrc:  require('../../assets/images/libraries-icons/people/baby.gif')
-        },
-        {
-            label: 'يبكي',
-            imgSrc:  require('../../assets/images/libraries-icons/people/cry.jpg')
-        },
-        {
-            label: 'يتصل',
-            imgSrc:  require('../../assets/images/libraries-icons/people/call.gif')
+            label: 'حر',
+            imgSrc: require('../../assets/images/libraries-icons/people/hot.gif')
         },
         {
             label: 'نائم',
-            imgSrc:  require('../../assets/images/libraries-icons/people/sleep.gif')
+            imgSrc: require('../../assets/images/libraries-icons/people/sleep.gif')
+        },
+        {
+            label: 'مستيقظ',
+            imgSrc: require('../../assets/images/libraries-icons/people/awake.gif')
+        },
+        {
+            label: 'طفل',
+            imgSrc: require('../../assets/images/libraries-icons/people/baby.gif')
+        },
+        {
+            label: 'اخت',
+            imgSrc: require('../../assets/images/libraries-icons/people/sister.gif')
+        },
+        {
+            label: 'ام',
+            imgSrc: require('../../assets/images/libraries-icons/people/mother.gif')
+        },
+        {
+            label: 'اخ',
+            imgSrc: require('../../assets/images/libraries-icons/people/brother.gif')
+        },
+        {
+            label: 'اب',
+            imgSrc: require('../../assets/images/libraries-icons/people/father.gif')
+        },
+        {
+            label: 'حواس',
+            imgSrc: require('../../assets/images/libraries-icons/people/senses.gif')
+        },
+        {
+            label: 'اتصال',
+            imgSrc: require('../../assets/images/libraries-icons/people/call.gif')
+        },
+        {
+            label: 'قوي',
+            imgSrc: require('../../assets/images/libraries-icons/people/strong.gif')
+        },
+        {
+            label: 'شعر',
+            imgSrc: require('../../assets/images/libraries-icons/people/hair.gif')
+        },
+        {
+            label: 'اسمي',
+            imgSrc: require('../../assets/images/libraries-icons/people/my-name-is.gif')
+        },
+        {
+            label: 'جرح',
+            imgSrc: require('../../assets/images/libraries-icons/people/blood.gif')
+        },
+        {
+            label: 'قدم',
+            imgSrc: require('../../assets/images/libraries-icons/people/foot.gif')
+        },
+        {
+            label: 'ضراع',
+            imgSrc: require('../../assets/images/libraries-icons/people/arm.gif')
+        },
+        {
+            label: 'يد',
+            imgSrc: require('../../assets/images/libraries-icons/people/hand.gif')
+        },
+        {
+            label: 'برد',
+            imgSrc: require('../../assets/images/libraries-icons/people/cold.gif')
+        },
+        {
+            label: 'عين',
+            imgSrc: require('../../assets/images/libraries-icons/people/eye.gif')
+        },
+        {
+            label: 'اذن',
+            imgSrc: require('../../assets/images/libraries-icons/people/ear.gif')
+        },
+        {
+            label: 'لسان',
+            imgSrc: require('../../assets/images/libraries-icons/people/tongue.gif')
+        },
+        {
+            label: 'طوارئ',
+            imgSrc: require('../../assets/images/libraries-icons/people/emergency.gif')
         }
     ],
-    'أيقونات الحيوانات':[
-        {
+    'أيقونات الحيوانات': [{
             label: 'قطة',
             imgSrc: require('../../assets/images/libraries-icons/animals/kitten.gif')
         },
         {
             label: 'سلحفاة',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/turtle.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/turtle.gif')
         },
         {
             label: 'كلب',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/dog.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/dog.gif')
         },
         {
             label: 'خروف',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/cheep.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/cheep.gif')
         },
         // {
         //     label: 'ذبابة',
@@ -56,7 +135,7 @@ export default
         // },
         {
             label: 'صرصور',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/cockroach.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/cockroach.gif')
         },
         // {
         //     label: 'فراشة',
@@ -64,15 +143,15 @@ export default
         // },
         {
             label: 'جمل',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/camel.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/camel.gif')
         },
         {
             label: 'دب صغير',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/baby-bear.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/baby-bear.gif')
         },
         {
             label: 'سمكة',
-            imgSrc:  require('../../assets/images/libraries-icons/animals/fish.gif')
+            imgSrc: require('../../assets/images/libraries-icons/animals/fish.gif')
         },
         // {
         //     label: 'فقس بيضة',
@@ -86,77 +165,75 @@ export default
         //     label: 'رائحة نتنة',
         //     imgSrc:  require('../../assets/images/libraries-icons/animals/pencil.png')
         // }  
-       
+
     ],
-    'أيقونات المدارس': [
-        {
+    'أيقونات المدارس': [{
             label: 'حاسبة',
             imgSrc: require('../../assets/images/libraries-icons/school/calculator.gif')
         },
         {
             label: 'ناقص',
-            imgSrc:  require('../../assets/images/libraries-icons/school/minus.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/minus.gif')
         },
         {
             label: 'زائد',
-            imgSrc:  require('../../assets/images/libraries-icons/school/plus.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/plus.gif')
         },
         {
             label: 'ضرب',
-            imgSrc:  require('../../assets/images/libraries-icons/school/multiply.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/multiply.gif')
         },
         {
             label: 'قسمة',
-            imgSrc:  require('../../assets/images/libraries-icons/school/divide.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/divide.gif')
         },
         {
             label: 'يساوي',
-            imgSrc:  require('../../assets/images/libraries-icons/school/equal.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/equal.gif')
         },
         // algebra formula
         {
             label: 'نصف',
-            imgSrc:  require('../../assets/images/libraries-icons/school/half.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/half.gif')
         },
         {
             label: 'ربع',
-            imgSrc:  require('../../assets/images/libraries-icons/school/quarter.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/quarter.gif')
         },
         {
             label: 'رتب',
-            imgSrc:  require('../../assets/images/libraries-icons/school/sort.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/sort.gif')
         },
         {
             label: 'فواصل',
-            imgSrc:  require('../../assets/images/libraries-icons/school/decimal.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/decimal.gif')
         },
         {
             label: 'رقم',
-            imgSrc:  require('../../assets/images/libraries-icons/school/number.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/number.gif')
         },
         // art & crafts
         {
             label: 'الوان',
-            imgSrc:  require('../../assets/images/libraries-icons/school/colours.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/colours.gif')
         },
         {
             label: 'ازرق',
-            imgSrc:  require('../../assets/images/libraries-icons/school/blue.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/blue.gif')
         },
         {
             label: 'احمر',
-            imgSrc:  require('../../assets/images/libraries-icons/school/red.gif')
+            imgSrc: require('../../assets/images/libraries-icons/school/red.gif')
         }
     ],
     'أيقونات الملابس': [
 
     ],
     'أيقونات الأماكن': [
- 
+
     ],
     'أيقونات النباتات': [
 
     ],
-    'أيقونات الأطعمة والمشروبات': [
-    ],
-  }
+    'أيقونات الأطعمة والمشروبات': [],
+}
