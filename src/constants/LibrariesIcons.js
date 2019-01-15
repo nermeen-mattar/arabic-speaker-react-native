@@ -5,7 +5,7 @@ export default {
         },
         {
             label: 'طفش',
-            imgSrc: require('../../assets/images/libraries-icons/people/bored.gif')
+            imgSrc: require('../../assets/images/libraries-icons/people/bored.jpg')
         },
         {
             label: 'ضحك',
@@ -130,11 +130,11 @@ export default {
         },
         {
             label: 'ذبابة',
-            imgSrc: require('../../assets/images/libraries-icons/animals/wasp.png')
+            imgSrc: require('../../assets/images/libraries-icons/animals/wasp.gif')
         },
         {
             label: 'دبور',
-            imgSrc: require('../../assets/images/libraries-icons/animals/mosquito.png')
+            imgSrc: require('../../assets/images/libraries-icons/animals/mosquito.gif')
         },
         {
             label: 'صرصور',
@@ -158,15 +158,15 @@ export default {
         },
         {
             label: 'فقس بيضة',
-            imgSrc: require('../../assets/images/libraries-icons/animals/hatch.png')
+            imgSrc: require('../../assets/images/libraries-icons/animals/hatch.gif')
         },
         {
             label: 'رائحة',
-            imgSrc: require('../../assets/images/libraries-icons/animals/smell.png')
+            imgSrc: require('../../assets/images/libraries-icons/animals/smell.gif')
         },
         {
             label: 'رائحة نتنة',
-            imgSrc: require('../../assets/images/libraries-icons/animals/stinky.png')
+            imgSrc: require('../../assets/images/libraries-icons/animals/stinky.gif')
         }
     ],
     'أيقونات المدارس': [{
@@ -322,10 +322,10 @@ export default {
             label: 'منزل',
             imgSrc: require('../../assets/images/libraries-icons/places/home.gif')
         },
-        {
-            label: 'مسجد',
-            imgSrc: require('../../assets/images/libraries-icons/places/mosque.gif')
-        },
+        // {
+        //     label: 'مسجد',
+        //     imgSrc: require('../../assets/images/libraries-icons/places/mosquito.gif')
+        // },
         {
             label: 'مستشفى',
             imgSrc: require('../../assets/images/libraries-icons/places/hospital.gif')
