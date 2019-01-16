@@ -18,7 +18,7 @@ export default class TextToSpeachScreen extends React.Component {
     this.state = {
       inputPlaceholder: "أكتب",
       text: '',
-      predectedWords: [],
+      predectedWords: TextPrediction.getInstance().getPredectedWords(''),
       toolsBar: [
         {
           title: 'نطق',
@@ -62,17 +62,18 @@ export default class TextToSpeachScreen extends React.Component {
   load = () => {
     this.initFavourites();
     this.setState({
-      text: '',
       // activeToolName: 'نطق',
+      // text: JSON.stringify(this.props.navigation.getParam('prevRoute') !== AlertScreen.name),
       toolsColors: {
         'نطق': Colors.brand,
         'المفضلة': Colors.borderColor,
         'مسح': Colors.borderColor,
         'مسافة': Colors.borderColor
       },
-    predectedWords: []
     });
-    this.onTextChanged('');
+    // if(this.props.navigation.getParam('prevRoute') !== AlertScreen.name) {
+    //   this.onTextChanged('');
+    // } 
  }
 
   componentDidMount() {
@@ -189,9 +190,7 @@ export default class TextToSpeachScreen extends React.Component {
   }
 
   clear() {
-    this.setState({
-      text: '',
-    });
+    this.onTextChanged('')
   }
 
   initFavourites() {
