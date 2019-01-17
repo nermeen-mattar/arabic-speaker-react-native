@@ -29,7 +29,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo (1)" translatesAutoresizingMaskIntoConstraints="NO" id="wtA-jM-hpg">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="wtA-jM-hpg" userLabel="logo">
                     <rect key="frame" x="116" y="75" width="199" height="148"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
@@ -53,6 +53,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo (1)" width="177" height="180"/>
+        <image name="LunchImage" width="177" height="180"/>
     </resources>
 </document>
