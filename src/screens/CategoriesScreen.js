@@ -236,9 +236,20 @@ export default class CategoriesScreen extends React.Component {
       const result = {value: 'null'};
       storageInstance.getItem('settingsValues', result).then(res => {
           const voiceGender = result.value ? result.value.voiceGender : Genders.female;
-          let soundPath = voiceGender === Genders.female ? "FemaleSounds/$categoryPath_f_$sentenceIndex":  "MaleSounds/$categoryPath_m_$sentenceIndex";
+          let soundPath = '';
+          if(voiceGender === Genders.female) {
+            if(  Platform.OS === 'ios' ) {
+              soundPath = "FemaleSounds/";
+            } 
+            soundPath += "$categoryPath_f_$sentenceIndex";
+          } else {
+            if(  Platform.OS === 'ios' ) {
+              soundPath = "MaleSounds/";
+            } 
+            soundPath += "$categoryPath_m_$sentenceIndex";
+          }
           soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
-          PlaySound(soundPath);
+          PlaySound(soundPath.toLowerCase());
       });
     }
   
