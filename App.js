@@ -7,7 +7,8 @@ import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
 import SettingsComponent from './src/components/SettingsComponent'
 import { I18nManager } from 'react-native';
-I18nManager.forceRTL(true) // for testing RTL
+// I18nManager.forceRTL(true) // for testing RTL
+
 
 const SettingsDrawer = createDrawerNavigator({
   AppNavigator: {
@@ -16,7 +17,7 @@ const SettingsDrawer = createDrawerNavigator({
 },
   {
     drawerWidth: 310,
-    drawerPosition: 'left',
+    drawerPosition:  Platform.OS === 'android' ? 'right' : 'left',
     contentComponent: SettingsComponent,
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
