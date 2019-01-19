@@ -251,7 +251,7 @@ export default class CategoriesScreen extends React.Component {
         soundPath += "$categoryPath_m_$sentenceIndex";
       }
       soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
-      PlaySound(soundPath.toLowerCase());
+      PlaySound(soundPath);
     }
   
   selectionToggeled(categoryIndex) {
