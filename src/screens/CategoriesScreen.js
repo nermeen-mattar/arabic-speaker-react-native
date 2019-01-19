@@ -6,8 +6,8 @@ import {
   ScrollView,
   StyleSheet,
   View,
-  TouchableOpacity
-
+  TouchableOpacity,
+  Platform
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -16,7 +16,7 @@ import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import { Storage } from '../classes/Storage';
 import CategoriesSentences from '../constants/CategoriesSentences';
-import { PlaySound, StopSound, PlaySoundRepeat, PlaySoundMusicVolume } from 'react-native-play-sound';
+import { PlaySound } from 'react-native-play-sound';
 import Genders from '../constants/Genders';
 import CategoriesArabicToEnglish from '../constants/CategoriesArabicToEnglish';
 import ConfirmDeleteDialog from '../components/ConfirmDeleteDialog';
@@ -73,9 +73,8 @@ export default class CategoriesScreen extends React.Component {
     // this.updateTitle();
     this.cancelSelectMode();
       // if(!this.state.selectMode) {
-    this.initCategories(); /* didn't work in constructor because comp doesn't get killed ! solve caching
-        /* make it a class prop (part of state) */
-      // }
+        this.updateGender();
+        this.initCategories();
     }
 
   // updateTitle = () => {
@@ -230,27 +229,29 @@ export default class CategoriesScreen extends React.Component {
         TextToSpeach.getInstance().speak(this.state.categories[sentenceIndex].label);
       }
     }
-
-    playExistingSound(sentenceIndex) {
+    updateGender() {
       const storageInstance = Storage.getInstance();  
       const result = {value: 'null'};
       storageInstance.getItem('settingsValues', result).then(res => {
-          const voiceGender = result.value ? result.value.voiceGender : Genders.female;
-          let soundPath = '';
-          if(voiceGender === Genders.female) {
-            if(  Platform.OS === 'ios' ) {
-              soundPath = "FemaleSounds/";
-            } 
-            soundPath += "$categoryPath_f_$sentenceIndex";
-          } else {
-            if(  Platform.OS === 'ios' ) {
-              soundPath = "MaleSounds/";
-            } 
-            soundPath += "$categoryPath_m_$sentenceIndex";
-          }
-          soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
-          PlaySound(soundPath.toLowerCase());
-      });
+        this.setState({voiceGender: result.value ? result.value.voiceGender : Genders.female});
+        });
+    }
+
+    playExistingSound(sentenceIndex) {
+      let soundPath = '';
+      if(this.state.voiceGender === Genders.female) {
+        if(  Platform.OS === 'ios' ) {
+          soundPath = "FemaleSounds/";
+        } 
+        soundPath += "$categoryPath_f_$sentenceIndex";
+      } else {
+        if(  Platform.OS === 'ios' ) {
+          soundPath = "MaleSounds/";
+        } 
+        soundPath += "$categoryPath_m_$sentenceIndex";
+      }
+      soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
+      PlaySound(soundPath.toLowerCase());
     }
   
   selectionToggeled(categoryIndex) {
