@@ -8,7 +8,6 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import net.no_mad.tts.TextToSpeechPackage;
 import com.kevinresol.react_native_sound_recorder.RNSoundRecorderPackage;
 import com.soundapp.SoundModulePackage;
-import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
 import com.dooboolab.RNAudioRecorderPlayerPackage;
@@ -37,7 +36,6 @@ public class MainApplication extends Application implements ReactApplication {
             new TextToSpeechPackage(),
             new RNSoundRecorderPackage(),
             new SoundModulePackage(),
-            new ImageResizerPackage(),
             new ImagePickerPackage(),
             new RNFSPackage(),
             new RNAudioRecorderPlayerPackage()
