@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -58,7 +59,7 @@
 		9B0B087821AB0ED200E6080D /* libPlaySound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9457BA21AA1262005BACA1 /* libPlaySound.a */; };
 		9B1173F02197BD190040FC18 /* MaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EE2197BD190040FC18 /* MaleSounds */; };
 		9B1173F12197BD190040FC18 /* FemaleSounds in Resources */ = {isa = PBXBuildFile; fileRef = 9B1173EF2197BD190040FC18 /* FemaleSounds */; };
-		9B12876E21BDB83F001D8BF4 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B12876D21BDB83F001D8BF4 /* alert.mp3 */; };
+		9B2B87FA21F8A3A900F366D2 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B2B87F921F8A3A900F366D2 /* alert.mp3 */; };
 		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -478,7 +479,7 @@
 		9B0B092221AB6D8500E6080D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9B1173EE2197BD190040FC18 /* MaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MaleSounds; path = ../assets/sounds/MaleSounds; sourceTree = "<group>"; };
 		9B1173EF2197BD190040FC18 /* FemaleSounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FemaleSounds; path = ../assets/sounds/FemaleSounds; sourceTree = "<group>"; };
-		9B12876D21BDB83F001D8BF4 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../../../../Downloads/alert.mp3; sourceTree = "<group>"; };
+		9B2B87F921F8A3A900F366D2 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../assets/sounds/alert.mp3; sourceTree = "<group>"; };
 		9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		A2A2177212D740C59FEED629 /* RNAudioRecorderPlayer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAudioRecorderPlayer.xcodeproj; path = "../node_modules/react-native-audio-recorder-player/ios/RNAudioRecorderPlayer.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -783,7 +784,6 @@
 			children = (
 				559081BCC0454D9387E576F6 /* libRNImagePicker.a */,
 				C96DE11DE80E42528814EDC4 /* libRNFS.a */,
-				EB4AB9A6ED2E41D2B8FD0218 /* libRCTImageResizer.a */,
 				8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */,
 				36E957B6B0F44D28A87F73FF /* libTextToSpeech.a */,
 				E8B91062B8074FA2BA7EC654 /* libRNVectorIcons.a */,
@@ -866,7 +866,7 @@
 		BAA047DFEDCC45BB9C2BBD34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9B12876D21BDB83F001D8BF4 /* alert.mp3 */,
+				9B2B87F921F8A3A900F366D2 /* alert.mp3 */,
 				9B1173EF2197BD190040FC18 /* FemaleSounds */,
 				9B1173EE2197BD190040FC18 /* MaleSounds */,
 				23B9B72D0ED34B7C80EF70F9 /* fontawesome-webfont.ttf */,
@@ -1458,11 +1458,11 @@
 				28BAC1380CC142AB867C29B2 /* Tajawal-Regular.ttf in Resources */,
 				C53E24FE5C64477A8F3682A8 /* AntDesign.ttf in Resources */,
 				CB63EF8984164832B4FA26E1 /* Entypo.ttf in Resources */,
-				9B12876E21BDB83F001D8BF4 /* alert.mp3 in Resources */,
 				E752859A3971440690810741 /* EvilIcons.ttf in Resources */,
 				F676591C25CF41B2878A3611 /* Feather.ttf in Resources */,
 				15EA4EBD641A4890844CB7DD /* FontAwesome.ttf in Resources */,
 				8947E4946ACF45949A7BDFBA /* FontAwesome5_Brands.ttf in Resources */,
+				9B2B87FA21F8A3A900F366D2 /* alert.mp3 in Resources */,
 				65F48D7B7DCB4AE39C45804B /* FontAwesome5_Regular.ttf in Resources */,
 				9B1173F12197BD190040FC18 /* FemaleSounds in Resources */,
 				517D00B483D5463FAB64D7C6 /* FontAwesome5_Solid.ttf in Resources */,
@@ -1620,9 +1620,7 @@
 				INFOPLIST_FILE = textAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1654,9 +1652,7 @@
 				INFOPLIST_FILE = textAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1774,9 +1770,7 @@
 				);
 				INFOPLIST_FILE = "textApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1815,9 +1809,7 @@
 				);
 				INFOPLIST_FILE = "textApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1855,9 +1847,7 @@
 				);
 				INFOPLIST_FILE = "textApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1895,9 +1885,7 @@
 				);
 				INFOPLIST_FILE = "textApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
