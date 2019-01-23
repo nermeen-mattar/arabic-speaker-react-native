@@ -25,7 +25,7 @@ export class TextToSpeach {
     }
 
      speak(text) {
-         NetInfo.isConnected.fetch().then(isConnected => {
+        NetInfo.isConnected.fetch().then(isConnected => {
              if(isConnected) { // handle  Platform.OS === 'android'
              fetch('http://18.224.240.0:8082/api/process?text='.concat(text), {
                 method: 'GET'
@@ -34,6 +34,8 @@ export class TextToSpeach {
                    text = response._bodyInit;
                 }
                 TextToSpeach.instance.responsiveVoiceSpeak(text);
+                }).catch((err) => {
+                    TextToSpeach.instance.responsiveVoiceSpeak(text);
                 });
             } else {
                 if(Platform.OS === 'android') {
@@ -78,9 +80,8 @@ export class TextToSpeach {
             ArabicRecorderAndPlayer.getInstance().onStartPlay(requestPath);
         });
     }
-    displayAlertMessage(test) {
+    displayAlertMessage() {
         Alert.alert(
-            test,
             'يجب أن تكون متصل بالانترنت',
             [
             {text: 'حسناً'}
