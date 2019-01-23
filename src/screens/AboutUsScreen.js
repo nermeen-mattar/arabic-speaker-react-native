@@ -49,6 +49,10 @@ export default class AboutUsScreen extends React.Component {
               img: require('../../assets/images/about-us/care.png'),
               text: 'E-health'
             },
+            {
+              img: require('../../assets/images/about-us/communication.png'),
+              text: 'الخطاب والتواصل'
+            },
           ],
           isVisible: true,
           title:[ "حول التطبيق"],
@@ -88,8 +92,8 @@ export default class AboutUsScreen extends React.Component {
     <ScrollView style={styles.container}> 
     {/* first section */}
       <View style={styles.logoAndName}>
-      <View style={[commonStyles.flexCenter, {position: 'relative', top: 14} ]} >
-           <Image   source = {require('../../assets/images/about-us/logo.png')}/>
+      <View style={[commonStyles.flexCenter,{ maxHeight: 115}]} >
+           <Image  source = {require('../../assets/images/about-us/logo.png')}/>
          </View>
       <MonoText  style={[styles.appNameArabic,  commonStyles.textCenter]}>
           المتحدث العربي
@@ -102,21 +106,60 @@ export default class AboutUsScreen extends React.Component {
 
 
     {/* second section */}
-     <View style ={[styles.secondSection, styles.paddingVertical18]}>
+     <View style ={[styles.whiteSection, styles.paddingVertical10]}>
            <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
-         أحدث تطبيق للتحدث والتواصل باللغة العربية
-         لذوي صعوبات النطق وكبار السن
+           أحدث تطبيق للتحدث و التواصل باللغة العربية لذوي صعوبات النطق الأطفال و البالغين و كبار السن
+          </MonoText> 
+          <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
+          The advanced application for communication on Arabic for young and adult people with speech difficulties 
+
           </MonoText>              
          {/* <MonoText style={ commonStyles.textCenter}>
       لذوي صعوبات النطق وكبار السن
           </MonoText>  */}
-          <MonoText style={[ commonStyles.textCenter, styles.primaryText, styles.paddingVertical18, {color : Colors.borderColor}]}>
-            V1 - 2018
+          <MonoText style={[ commonStyles.textCenter, styles.primaryText, {color : Colors.borderColor}]}>
+            V1 - 2019
+          </MonoText>
+
+               </View> 
+          <MonoText style={[commonStyles.textCenter, styles.primaryText,  {padding: 14}]}> فكرة وتنفيذ د. أمل السيف</MonoText>
+
+     <View style ={[styles.whiteSection, styles.paddingVertical10]}>
+          
+         <MonoText style={[styles.primaryText, commonStyles.textCenter, {paddingTop: 8}] }>
+              شركاء النجاح
           </MonoText> 
+          <View style={[styles.flexSpaceAround,  {flexWrap: 'wrap' }]}> 
+
+            <Image style={{maxHeight: 100, maxWidth: 100, margin: 8, marginBottom: 16}} source = {require('../../assets/images/about-us/CCIS_Logo_2_Big.png')}/>
+            <Image style={{maxHeight: 100, maxWidth: 100, margin: 8,marginBottom: 16}} source = {require('../../assets/images/about-us/IT_LOGO.png')}/>
+           
+            <View style = {{margin: 8}}> 
+              <View  style={styles.whiteCircle}>
+                 <Image style={{height: 40, maxWidth: 100}} source = {require('../../assets/images/about-us/qcri_logo.png')}/>
+              </View>
+              <MonoText style={[commonStyles.textCenter, styles.secondaryText, {maxWidth: 100}]}> Arabic Language Technologies</MonoText>
+            </View>
+            <View style = {{margin: 8}}> 
+              <View  style={styles.whiteCircle}>
+              <Image style={{maxHeight: 100, maxWidth: 100}} source = {require('../../assets/images/about-us/شعار_مدينة_سلطان.png')}/>
+              </View>
+              <MonoText style={[commonStyles.textCenter, styles.secondaryText, {maxWidth: 100}]}> مدينة سلطان للخدمات الأنسانية </MonoText>
+            </View> 
+        
+            <Image style={{maxHeight: 120, maxWidth: 96, margin: 8, marginBottom: 16}} source = {require('../../assets/images/about-us/Nojod.jpg')}/>
+        
+            <View style = {{margin: 8}}> 
+              <View  style={styles.whiteCircle}>
+              <Image style={{maxHeight: 80, maxWidth: 100}} source = {require('../../assets/images/about-us/icon_ResponsiveVoice2.png')}/>
+              </View>
+              <MonoText style={[commonStyles.textCenter, styles.secondaryText, {maxWidth: 100, marginTop: 14}]}> Responsive Voice </MonoText>
+            </View> 
+            </View>
           <View
           style={styles.divider}
         />
-             <MonoText style={[ commonStyles.textCenter, styles.paddingVertical18, {fontSize: 38}]}>
+             <MonoText style={[ commonStyles.textCenter, styles.paddingVertical10, {fontSize: 38}]}>
             إنتاج 
           </MonoText>     
 
@@ -127,10 +170,10 @@ export default class AboutUsScreen extends React.Component {
          مركز أنس للتقنيات المساعدة لذوي الاحتياجات
           </MonoText> 
 
-         </View>
+    </View>
 
 
-          <View style={[commonStyles.flexCenter, {paddingTop: 22, backgroundColor: '#f7f7f7'}]}>
+          <View style={[commonStyles.flexCenter, { backgroundColor: '#f7f7f7'}]}>
             {
               this.state.circlesSection.map(circleObj => {
                 return( 
@@ -138,14 +181,12 @@ export default class AboutUsScreen extends React.Component {
                  <View style={styles.whiteCircle}> 
                     <Image source = {circleObj.img}/>
                   </View>
-                  <MonoText style={[commonStyles.textCenter, styles.primaryText]}> {circleObj.text} </MonoText>
+                  <MonoText style={[commonStyles.textCenter, styles.primaryText, {width: 72}]}> {circleObj.text} </MonoText>
               </View>
                 )
               })
             }
             </View>
-
-            <MonoText style={[commonStyles.textCenter, styles.primaryText,  {padding: 14}]}>  إشراف - د. أمل السيف </MonoText>
 
 
             <View style={[styles.contactDetails]}> 
@@ -164,15 +205,8 @@ export default class AboutUsScreen extends React.Component {
                 </View>
               </View>
       
-            <View style={styles.divider}/>
-            <MonoText style={[styles.primaryText, commonStyles.textCenter, {paddingTop: 34}] }>
-              شركاء النجاح
-          </MonoText> 
-            <View style={[styles.flexSpaceAround,  {paddingVertical: 42}]}> 
-            <Image source = {require('../../assets/images/about-us/CCIS_Logo_2_Big.png')}/>
-            <Image source = {require('../../assets/images/about-us/شعار_مدينة_سلطان.png')}/>
-            <Image source = {require('../../assets/images/about-us/IT_LOGO.png')}/>
-            </View>
+            {/* <View style={styles.divider}/> */}
+           
             </View>
     </ScrollView>
   
@@ -202,7 +236,6 @@ const styles = StyleSheet.create({
   },
   logoAndName: {
     backgroundColor: Colors.brand,
-    // height: 274
   },
   appNameArabic: {
     color:'white',
@@ -212,7 +245,6 @@ const styles = StyleSheet.create({
   appNameEnglish: {
     color:'white',
     fontSize: 21,
-    marginBottom: 30
     // textAlign: 'center'
   },
   divider: {
@@ -223,14 +255,17 @@ const styles = StyleSheet.create({
     marginRight:'auto',
   },
   primaryText: {
-    fontSize: 18,
+    fontSize: 16,
   },
-  secondSection: {
+  secondaryText: {
+    fontSize: 12
+  },
+  whiteSection: {
     backgroundColor: 'white',
     paddingHorizontal: 30,
   },
-  paddingVertical18: {
-    paddingVertical: 18
+  paddingVertical10: {
+    paddingVertical: 10
   },
   flexSpaceAround: {
     flexDirection: 'row',
