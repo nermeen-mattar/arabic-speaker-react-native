@@ -107,17 +107,18 @@ export default class AboutUsScreen extends React.Component {
 
     {/* second section */}
      <View style ={[styles.whiteSection, styles.paddingVertical10]}>
-           <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
+           <MonoText style={[commonStyles.textCenter, styles.primaryText,  styles.paddingVertical10]}>
            أحدث تطبيق للتحدث و التواصل باللغة العربية لذوي صعوبات النطق الأطفال و البالغين و كبار السن
           </MonoText> 
           <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
           The advanced application for communication on Arabic for young and adult people with speech difficulties 
 
-          </MonoText>              
+          </MonoText> 
+                       
          {/* <MonoText style={ commonStyles.textCenter}>
       لذوي صعوبات النطق وكبار السن
           </MonoText>  */}
-          <MonoText style={[ commonStyles.textCenter, styles.primaryText, {color : Colors.borderColor}]}>
+          <MonoText style={[ commonStyles.textCenter, styles.primaryText, styles.paddingVertical10 , {color : Colors.borderColor}]}>
             V1 - 2019
           </MonoText>
 
@@ -173,7 +174,7 @@ export default class AboutUsScreen extends React.Component {
     </View>
 
 
-          <View style={[commonStyles.flexCenter, { backgroundColor: '#f7f7f7'}]}>
+          <View style={[commonStyles.flexCenter, {alignItems: 'center', backgroundColor: '#f7f7f7'}]}>
             {
               this.state.circlesSection.map(circleObj => {
                 return( 
