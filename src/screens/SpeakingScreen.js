@@ -23,7 +23,7 @@ export default class TextToSpeachScreen extends React.Component {
         {
           title: 'نطق',
           iconName: 'volume-up',
-          iconSize: 28,
+          iconSize: 34,
           onPress: () => this.speak(),
            styles: [styles.tool]
         },
@@ -179,8 +179,16 @@ export default class TextToSpeachScreen extends React.Component {
   }
 
   speak() {
+    let toolsBar = [...this.state.toolsBar];
+    toolsBar[0].styles = [styles.tool, styles.speakActive];
+    this.setState({toolsBar: toolsBar});
     TextPrediction.getInstance().addToUserWordsIfNew(this.state.text); 
     TextToSpeach.getInstance().speak(this.state.text);
+    setTimeout(() => {
+      toolsBar[0].styles = [styles.tool];
+      this.setState({toolsBar: toolsBar});
+
+    }, this.state.text.length/10.5 * 1000);
   }
 
   addSpace() {
@@ -247,62 +255,64 @@ export default class TextToSpeachScreen extends React.Component {
   }
 
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-    //     padding: 13,
-  },
-  inputAndToolsWrapper: {
-    marginTop: 10,
-    paddingTop: 12,
-    height: 144,
-    width: 350,
-    position: 'relative',
-    // marginHorizontal: 'auto',
-    backgroundColor: Colors.primary,
-    borderRadius: 10 /* **N** */
-  },
-  textInput: {
-    // width: 350,
-    height:  84,
-    // backgroundColor: Colors.primary,
-    fontSize: 21,
-    //   color: Colors.textSecondary,
-    textAlign: 'right',
-    paddingHorizontal: 8, // 11
-    // paddingVertical: 12, // 16 // moved to wrapper
-    // marginLeft: 'auto', // 10, // 12
-    // marginRight: 'auto',
+container: {
+  flex: 1
+  //     padding: 13,
 },
-toolsbar: {
-  position: 'absolute',
-  top: 84,
-  backgroundColor: '#F7F7F7', // temp
-  flexDirection: 'row',
-  justifyContent: 'center',
-  // marginLeft: 'auto',
-  // marginRight: 'auto',
-  paddingTop: 10,
-  paddingBottom: 6,
+inputAndToolsWrapper: {
+  marginTop: 10,
+  paddingTop: 12,
+  height: 144,
+  width: 350,
+  position: 'relative',
+  // marginHorizontal: 'auto',
+  backgroundColor: Colors.primary,
+  borderRadius: 10 /* **N** */
+},
+textInput: {
+  // width: 350,
+  height:  60,
+  // backgroundColor: Colors.primary,
+  fontSize: 21,
+  //   color: Colors.textSecondary,
+  textAlign: 'right',
+  paddingHorizontal: 8, // 11
+  // paddingVertical: 12, // 16 // moved to wrapper
   // marginLeft: 'auto', // 10, // 12
   // marginRight: 'auto',
-  height: 60,
-  borderRadius: 10 /* **N** */
+},
+toolsbar: {
+position: 'absolute',
+top: 84,
+backgroundColor: '#F7F7F7', // temp
+flexDirection: 'row',
+justifyContent: 'center',
+// marginLeft: 'auto',
+// marginRight: 'auto',
+// marginLeft: 'auto', // 10, // 12
+// marginRight: 'auto',
+height: 60,
+borderRadius: 10 /* **N** */
 
 },
 tool: {
+  paddingVertical: 5,
   // width: 60,
   paddingHorizontal: 16,
   textAlign: 'center'
 },
+speakActive: {
+  backgroundColor: '#F9913A', // f9812A
+  borderRadius: 10 
+},
 space: {
-  // width: 150,
-  paddingHorizontal: 18,
+  paddingVertical: 10,
+  paddingHorizontal: 16,
   textAlign: 'center',
 },
 spaceIcon: {
-  width: 116, // 117
+  width: 116,
   height: 22,
   backgroundColor:  Colors.borderColor,
   borderRadius: 10,
@@ -320,7 +330,7 @@ predectedWord: {
   backgroundColor: 'white',
   borderRadius: 10,
   // paddingHorizontal: 24,
-  paddingVertical: 10,
+  paddingVertical: 6, // was 10
   marginBottom: 10,
   // commented paddingHorizantl and added static width instead
   width: 95,

@@ -14,7 +14,7 @@ export class TextToSpeach {
             Tts.setDefaultLanguage('ar-SA');
             Tts.setDefaultRate(0.5);
             Tts.setDefaultPitch(0.70);
-        })
+        });
     }
 
     static getInstance() {
@@ -41,7 +41,7 @@ export class TextToSpeach {
                 if(Platform.OS === 'android') {
                     this.displayAlertMessage();
                 } else {
-                    Tts.speak(text); 
+                    Tts.speak(text);
                 }
             }
           });
@@ -81,11 +81,6 @@ export class TextToSpeach {
         });
     }
     displayAlertMessage() {
-        Alert.alert(
-            'يجب أن تكون متصل بالانترنت',
-            [
-            {text: 'حسناً'}
-            ]
-        )
+        Alert.alert('يجب أن تكون متصل بالانترنت',)
     }
 }

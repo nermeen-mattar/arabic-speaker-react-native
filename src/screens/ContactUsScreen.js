@@ -116,12 +116,12 @@ export default class ContactUsScreen extends React.Component {
       this.displayAlertMessage();
       return;
     } else {
-      body = 'اسم المرسل: '.concat(this.state.formFields.name.value).concat(' \n ');
+      body = 'إسم المرسل: '.concat(this.state.formFields.name.value).concat(' \n ');
       body = body.concat('البريد الإلكتروني: ').concat(this.state.formFields.email.value).concat(' \n ');
-      body = body.concat(this.state.formFields.body.value);
+      body = body.concat('نص الرسالة: \n').concat(this.state.formFields.body.value);
       Linking.openURL(
         // AnasCenterAT@Gmail.com
-        "mailto:nermeenmattar5d@gmail.com?subject="
+        "mailto:AnasCenterAT@Gmail.com?subject="
           .concat(this.state.formFields.subject.value)
           .concat("&body=")
           .concat(body)
@@ -162,12 +162,12 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
   textInput: {
-    height: 41,
+    height: 44,
     backgroundColor: Colors.primary,
     fontFamily: "Tajawal",
     fontSize: 17,
     textAlign: "right",
-    padding: 8,
+    padding: 6,
     paddingTop: 12 // 20 didn't work
   },
   button: {
