@@ -48,31 +48,29 @@ class SettingsComponent extends Component {
           //   }
         }
       },
-      {
-        platform: 'ios',
-        right: {
-          imgSrc: require('../../assets/images/settings/seri.png'),
-          label: 'إستخدام التطبيق مع سيري'            
-        },
-        left: {
-          type: 'switch',
-          variableName: 'useWithSiri'
-        }
-      },
+      // {
+      //   platform: 'ios',
+      //   right: {
+      //     imgSrc: require('../../assets/images/settings/seri.png'),
+      //     label: 'إستخدام التطبيق مع سيري'            
+      //   },
+      //   left: {
+      //     type: 'switch',
+      //     variableName: 'useWithSiri'
+      //   }
+      // },
     
     
-      {
-        right: {
-          imgSrc: require('../../assets/images/settings/allow-copy.png'),
-          label: 'مساهمة نسخ معلومات التطبيق'
-        },
-        left: {
-          //   field: {
-          type: 'switch',
-          variableName: 'helpImproveApp'
-          //   }
-        }
-      },         
+      // {
+      //   right: {
+      //     imgSrc: require('../../assets/images/settings/allow-copy.png'),
+      //     label: 'مساهمة نسخ معلومات التطبيق'
+      //   },
+      //   left: {
+      //     type: 'switch',
+      //     variableName: 'helpImproveApp'
+      //   }
+      // },         
       {
         
         navigateTo:{
@@ -102,13 +100,13 @@ class SettingsComponent extends Component {
           label: 'تواصل معنا'
         }
       },   // may i say something without taking it the wrong way? with all my respect I dont think its appropiot to send things like this. from my side i'll forget it anything said before and I hope you do the same way.
-      {
-        platform: 'ios',
-        right: {
-          imgSrc: require('../../assets/images/settings/mic.png'),
-          label: 'شرح تفعيل سيري'
-        }
-      },
+      // {
+      //   platform: 'ios',
+      //   right: {
+      //     imgSrc: require('../../assets/images/settings/mic.png'),
+      //     label: 'شرح تفعيل سيري'
+      //   }
+      // },
       {
         right: {
           imgSrc: require('../../assets/images/settings/demo.png'),
