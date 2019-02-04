@@ -175,7 +175,7 @@ export default class CategoriesScreen extends React.Component {
     const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
     storageInstance.getItem(this.state.categoryPath.join(), result).then(res => {
-      if(result.value) {
+      if(result.value) { //  && esult.value[1].label !== "تحياتي"
         this.setState({
           categories: result.value,
           // test: JSON.stringify(result.value)
@@ -189,6 +189,9 @@ export default class CategoriesScreen extends React.Component {
         storageInstance.setItem(this.state.categoryPath.join(), this.state.categories);
       }
     })
+  }
+
+
   }
 
   deleteClicked = () => {
