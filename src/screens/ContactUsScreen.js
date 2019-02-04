@@ -39,11 +39,9 @@ export default class ContactUsScreen extends React.Component {
         },
         rating: {
           label: "تقييم التطبيق",
-          type: "custom",
-          element:  
-          <View> 
-                <Icon name="chevron-right" size={30} color={Colors.brand} />
-          </View>
+          type: "stars",
+          // elements: this.getStarsElements,
+          value: 5
         },
         body: {
           label: "نص السالة",
@@ -53,11 +51,38 @@ export default class ContactUsScreen extends React.Component {
         }
       }
     };
+
+    // this.state.formFields.rating.elements = this.getStarsElements;
+
   }
 
   static navigationOptions = {
     header: null
   };
+
+
+  getStarsElements() {
+    return <View style={[{flexDirection: 'row',  justifyContent: 'space-between'}, styles.inputStyle]}>  
+    {/* , alignItems: 'center' */}
+    <MonoText style={styles.ratingLabel}> تقييم التطبيق </MonoText>
+    <View style={{display: 'flex', flexDirection: 'row'}}>     
+    {/* onPress = { this.state.formFields.rating.value }   */}
+    {        
+      [1,2,3,4,5].map(index => {
+        return (
+         <Icon style={[styles.star, this.state.formFields.rating.value >= index ? styles.starOn : styles.starOff ]} 
+          name= {this.state.formFields.rating.value >= index ? "star": "star-o"} size={26} 
+          onPress = {() => {
+             this.onTextChanged(index, 'rating');
+           }}
+          />
+        )
+      }
+       )
+       }
+      </View>
+    </View>
+  }
 
   render() {
     return (
@@ -79,8 +104,9 @@ export default class ContactUsScreen extends React.Component {
             {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
             {Object.keys(this.state.formFields).map(fieldName => {
               return (
-                this.state.formFields[fieldName].type === 'custom' ? 
-                this.state.formFields[fieldName].element : 
+                this.state.formFields[fieldName].type === 'stars' ? // custom
+                // this.state.formFields[fieldName].elements()
+                this.getStarsElements() : 
                 <TextInput
                 style={[
                   styles.textInput,
@@ -129,6 +155,7 @@ export default class ContactUsScreen extends React.Component {
     } else {
       body = 'إسم المرسل: '.concat(this.state.formFields.name.value).concat(' \n ');
       body = body.concat('البريد الإلكتروني: ').concat(this.state.formFields.email.value).concat(' \n ');
+      body = body.concat('تقييم التطبيق: ').concat(this.state.formFields.rating.value).concat('/5 \n ');
       body = body.concat('نص الرسالة: \n').concat(this.state.formFields.body.value);
       Linking.openURL(
         // AnasCenterAT@Gmail.com
@@ -181,6 +208,19 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingTop: 12 // 20 didn't work
   },
+  ratingLabel: {
+    color: Colors.grayFontColor,
+    fontSize: 17,
+  },
+  star: {
+    marginRight: 6  
+  },
+  starOn: {
+    color: Colors.brand
+  },  
+  starOff: {
+    color: Colors.grayFontColor,
+  },  
   button: {
     backgroundColor: Colors.brand,
     padding: 10
