@@ -134,10 +134,6 @@ export default class NewSentenceScreen extends React.Component {
                 </View>
               )}
             </TouchableOpacity>
-
-            {/* style={[styles.cardIcon, {width: 100, height: 100}]}  */}
-            {/* <Image source={ this.state.imgSrc ?  {uri: this.state.imgSrc} : require( '../../assets/images/icons/camera_icon.png')} /> */}
-            {/* </PhotoUpload> */}
           </View>
 
           <TouchableOpacity
@@ -191,7 +187,7 @@ export default class NewSentenceScreen extends React.Component {
   }
 
   startStopRecording() {
-    if (this.state.recordingState === "recording") {
+    if (this.state.recordingState === "recording") { /* already recording */
       //   SoundRecorder.stop()
       // .then((result) => {
       //   PlaySound('alert');
@@ -202,7 +198,7 @@ export default class NewSentenceScreen extends React.Component {
       // });
       ArabicRecorderAndPlayer.getInstance().onStopRecord();
       this.setState({ recordingState: "recorded" });
-    } else {
+    } else { /* start recording */
       const fileName = "user-audios-".concat(
         this.state.sentence || (Math.random() * 1000).toString()
       ); // need to find a better solution than random
@@ -227,25 +223,26 @@ export default class NewSentenceScreen extends React.Component {
 
   autoSoundClicked() {
     // Alert.alert('هل أنت متأكد أنك تريد التحويل الي الصوت الآلي سوف يتم حذف التسجيل الصوتي', );
-
-    if(this.state.recordingState) {   
+    if(this.state.recordingState === null) {   
+      this.playAutoSound();
+      return;
+    }
       Alert.alert("تنبيه", "يتم حذف التسجيل الصوتي عند اختيار الصوت الآلي", [
         {
           text: "تأكيد",
           style: "destructive",
           onPress: () => {
+            ArabicRecorderAndPlayer.getInstance().onStopRecord();
             this.playAutoSound();
           }
         },
         { text: "الغاء" }
       ]);
-    } else {
-      this.playAutoSound();
-    }
+    
   }
 
   playAutoSound = () => {
-    this.setState({ recordingState: null });
+    this.setState({ recordingState: null, soundPath: null });
     TextPrediction.getInstance().addToUserWordsIfNew(this.state.sentence);
     TextToSpeach.getInstance().speak(this.state.sentence);
   }
