@@ -7,7 +7,8 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  Platform
+  Platform,
+  Alert
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -147,12 +148,8 @@ export default class CategoriesScreen extends React.Component {
        {
          this.state.selectMode ?
           <DeleteAndCancel 
-          onCancelClicked = {() => this.cancelSelectMode()}
-          onDeleteClicked = {() => {
-            this.setState({
-              showConfirmDialog: true
-            });
-          }}> </DeleteAndCancel>  : null
+          onCancelClicked = {this.cancelSelectMode}
+          onDeleteClicked = {this.deleteClicked }> </DeleteAndCancel>  : null
        }
        {
          this.state.showConfirmDialog ? <ConfirmDeleteDialog  
@@ -192,6 +189,17 @@ export default class CategoriesScreen extends React.Component {
         storageInstance.setItem(this.state.categoryPath.join(), this.state.categories);
       }
     })
+  }
+
+  deleteClicked = () => {
+    const selectedCategories = this.state.categories.filter(category => category.selected);
+     if(selectedCategories.length === 0 ) {
+       Alert.alert('يجب أن تختار عبارة واحدة أو تصنيف واحد على الأقل');    
+    } else {
+       this.setState({
+         showConfirmDialog: true
+       });
+     }
   }
 
   moveToCategoryLevel(sectionIndex) {         

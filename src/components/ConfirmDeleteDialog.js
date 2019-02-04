@@ -3,7 +3,8 @@ import Dialog from "react-native-dialog";
 import React, { Component } from "react";
 import {
     Text,
-    StyleSheet
+    StyleSheet,
+    Alert
 } from "react-native";
 import Colors from "../constants/Colors";
 import { MonoText } from '../components/StyledText';
@@ -12,11 +13,48 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 class ConfirmDeleteDialog extends Component {
     constructor (props) {
         super();
+        this.state = {
+            isVisible: true
+        }
+        this.prepareMessage(props);
       }
-    
+
+      prepareMessage(props) {
+        let isVisible = true;
+        let message;
+          if(props.allItems) {             
+            message = ' هل أنت متأكد أنك تريد حذف ';
+              const itemsToBeDeleted = props.allItems.filter(item => item.selected).map(item => item.label);
+              switch(itemsToBeDeleted.length) {
+                  case 0: 
+                  props.onCancel();
+                  isVisible = false;
+                  this.displayAlertMessage();
+                  break;
+                  case 1: 
+                  message = message.concat(props.entityNames.single).concat(" '").concat(itemsToBeDeleted[0]).concat("'");
+                  break;
+                  case 2: 
+                  message = message.concat(props.entityNames.dual);
+                  break;
+                  default:
+                  message = message.concat(itemsToBeDeleted.length).concat(' ').concat(props.entityNames.plural);
+              }
+          } else {
+            message = props.customizedText || 'هل أنت متأكد أنك تريد الحذف';
+          }
+        this.state = {
+            isVisible: isVisible,
+            message: message
+        };
+      }
+      displayAlertMessage() {
+        Alert.alert('يجب أن تختار عبارة واحدة على الأقل');
+      }
+      
     render() {
         return (
-            <Dialog.Container visible={true}> 
+            <Dialog.Container visible={this.state.isVisible}> 
               <Dialog.Title  style={styles.title}>
                   <Text> 
                      <Icon name="trash" size={40}  color= { Colors.borderColor} /> 
@@ -27,7 +65,7 @@ class ConfirmDeleteDialog extends Component {
             <MonoText style={styles.text}> 
             {/* هل تريد حذف هذه العبارة ؟  */}
             {
-                this.props.customizedText ? this.props.customizedText : 'هل أنت متأكد أنك تريد الحذف'
+                    this.state && this.state.message
             }
             <MonoText style={styles.itemToDelete}> {this.props.itemToDelete} </MonoText>
             </MonoText>

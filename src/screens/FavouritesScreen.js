@@ -94,6 +94,8 @@ export default class FavouritesScreen extends React.Component {
        }
        {
          this.state.showConfirmDialog ? <ConfirmDeleteDialog  
+         entityNames = {{single: 'عبارة', dual: 'عبارتين' , plural: 'عبارات'}}
+          allItems = {this.state.favourites}
          onConfirm={() => {
           this.setState({
             showConfirmDialog: false
