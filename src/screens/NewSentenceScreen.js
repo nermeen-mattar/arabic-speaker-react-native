@@ -149,7 +149,7 @@ export default class NewSentenceScreen extends React.Component {
                   : Colors.primary
               }
             ]}
-            onPress={() => this.speak()}
+            onPress={() => this.autoSoundClicked()}
           >
             <View>
               <Icon
@@ -225,20 +225,29 @@ export default class NewSentenceScreen extends React.Component {
     });
   }
 
-  speak() {
+  autoSoundClicked() {
     // Alert.alert('هل أنت متأكد أنك تريد التحويل الي الصوت الآلي سوف يتم حذف التسجيل الصوتي', );
-    Alert.alert("تنبيه", "يتم حذف التسجيل الصوتي عند اختيار الصوت الآلي", [
-      {
-        text: "تأكيد",
-        style: "destructive",
-        onPress: () => {
-          this.setState({ recordingState: null });
-          TextPrediction.getInstance().addToUserWordsIfNew(this.state.sentence);
-          TextToSpeach.getInstance().speak(this.state.sentence);
-        }
-      },
-      { text: "الغاء" }
-    ]);
+
+    if(this.state.recordingState) {   
+      Alert.alert("تنبيه", "يتم حذف التسجيل الصوتي عند اختيار الصوت الآلي", [
+        {
+          text: "تأكيد",
+          style: "destructive",
+          onPress: () => {
+            this.playAutoSound();
+          }
+        },
+        { text: "الغاء" }
+      ]);
+    } else {
+      this.playAutoSound();
+    }
+  }
+
+  playAutoSound = () => {
+    this.setState({ recordingState: null });
+    TextPrediction.getInstance().addToUserWordsIfNew(this.state.sentence);
+    TextToSpeach.getInstance().speak(this.state.sentence);
   }
 
   addNewSentence = () => {
