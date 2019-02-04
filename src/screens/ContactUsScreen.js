@@ -8,6 +8,7 @@ import {
   Modal,
   Linking
 } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { MonoText } from "../components/StyledText";
 import Colors from "../constants/Colors";
@@ -35,6 +36,14 @@ export default class ContactUsScreen extends React.Component {
         subject: {
           label: "عنوان الرسالة",
           type: "text"
+        },
+        rating: {
+          label: "تقييم التطبيق",
+          type: "custom",
+          element:  
+          <View> 
+                <Icon name="chevron-right" size={30} color={Colors.brand} />
+          </View>
         },
         body: {
           label: "نص السالة",
@@ -70,17 +79,19 @@ export default class ContactUsScreen extends React.Component {
             {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
             {Object.keys(this.state.formFields).map(fieldName => {
               return (
+                this.state.formFields[fieldName].type === 'custom' ? 
+                this.state.formFields[fieldName].element : 
                 <TextInput
-                  style={[
-                    styles.textInput,
-                    styles.inputStyle,
-                    this.state.formFields[fieldName].style || {}
-                  ]}
-                  onChangeText={text => this.onTextChanged(text, fieldName)}
-                  placeholder={this.state.formFields[fieldName].label}
-                  multiline={this.state.formFields[fieldName].multiline}
-                  value ={this.state.formFields[fieldName].value}
-                />
+                style={[
+                  styles.textInput,
+                  styles.inputStyle,
+                  this.state.formFields[fieldName].style || {}
+                ]}
+                onChangeText={text => this.onTextChanged(text, fieldName)}
+                placeholder={this.state.formFields[fieldName].label}
+                multiline={this.state.formFields[fieldName].multiline}
+                value ={this.state.formFields[fieldName].value}
+              />
               );
             })}
 
