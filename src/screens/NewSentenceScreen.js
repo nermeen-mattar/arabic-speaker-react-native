@@ -141,8 +141,8 @@ export default class NewSentenceScreen extends React.Component {
               styles.card,
               {
                 backgroundColor: !this.state.recordingState
-                  ? Colors.brand
-                  : Colors.primary
+                ? Colors.brand
+                : Colors.primary
               }
             ]}
             onPress={() => this.autoSoundClicked()}
@@ -165,8 +165,9 @@ export default class NewSentenceScreen extends React.Component {
               {
                 backgroundColor:
                   this.state.recordingState === "recording"
-                    ? Colors.brand
-                    : Colors.primary
+                    ? Colors.orange:
+                    ( this.state.recordingState === "recorded" ?  Colors.brand : Colors.primary)
+         
               }
             ]}
             // underlayColor = "transparent"

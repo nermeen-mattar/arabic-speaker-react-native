@@ -29,8 +29,7 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
           });
         }
       } else {
-        
-        ArabicRecorderAndPlayer.instance.stopPlay();
+        ArabicRecorderAndPlayer.instance.onStopPlay();
         await ArabicRecorderAndPlayer.instance.startPlayer(path); 
         // console.log(msg);
         ArabicRecorderAndPlayer.instance.addPlayBackListener((e) => {

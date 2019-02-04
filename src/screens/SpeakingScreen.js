@@ -303,7 +303,7 @@ tool: {
   textAlign: 'center'
 },
 speakActive: {
-  backgroundColor: '#F9913A', // f9812A
+  backgroundColor: Colors.orange, // f9812A
   borderRadius: 10 
 },
 space: {
