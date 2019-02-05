@@ -180,7 +180,14 @@ export default class NewSentenceScreen extends React.Component {
               color={Colors.borderColor}
               style={styles.cardIcon}
             />
-            <MonoText style={styles.cardLabel}>تسجيل صوتي</MonoText>
+            <MonoText style={styles.cardLabel}>
+            {
+                  this.state.recordingState === "recording"
+                    ? 'جاري التسجيل':
+                    ( this.state.recordingState === "recorded" ? 'تم تسجيل الصوت' : 'تسجيل صوتي')
+         
+              }
+            </MonoText>
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
@@ -336,10 +343,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   cardLabel: {
-    color: Colors.textSecondary,
+    // color: Colors.textSecondary,
     fontSize: 11,
-    // marginTop: 24,
-    // bottom: 0,
     textAlign: "center"
   }
 });

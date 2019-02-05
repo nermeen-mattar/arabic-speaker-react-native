@@ -5,6 +5,7 @@ import {
     TouchableOpacity
 } from "react-native";
 import { MonoText } from '../components/StyledText';
+import Colors from "../constants/Colors";
 
 class DeleteAndCancel extends Component {
     constructor (props) {
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     buttonsWrapper: {
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: '#FDA50F',
+        backgroundColor: Colors.orange,
         paddingVertical: 20,
         borderTopLeftRadius: 10, 
         borderTopRightRadius: 10 

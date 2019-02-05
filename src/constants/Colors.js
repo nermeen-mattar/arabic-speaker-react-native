@@ -18,5 +18,5 @@ export default {
   borderColor: '#B7B7B7',
   iconsColor: '#AFAFAF',
   grayFontColor: '#A1A1A1',
-  orange: '#F9913A'
+  orange: '#FDA50F'
 };
