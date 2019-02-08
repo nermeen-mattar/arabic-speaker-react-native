@@ -31,28 +31,29 @@ export default class CategoriesScreen extends React.Component {
     super();
     const categoryPath = props.navigation.getParam('categoryPath') || ['المكتبات'];
     this.state = {
-                // title: categoryPath.join(), // test> test
-                categoryPath: categoryPath,
-                categories: [],
-                selectedCategories: [],
-                selectMode: false,
-                test: '',
-                showConfirmDialog: false,
-                defaultCategories: {
-                  المكتبات: [
-                    { label: 'عام' , type: 'category', imgSrc:  require('../../assets/images/categories/info.png'),  default: true},
-                    { label: 'تحياتي' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png'),  default: true},
-                    { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
-                    { label: 'العمل' , type: 'category', imgSrc:  require('../../assets/images/categories/tools.png'),  default: true},
-                    { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png'),  default: true},
-                    { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png'),  default: true},
-                    { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png'),  default: true},
-                    { label: 'المطعم' , type: 'category', imgSrc:  require('../../assets/images/categories/cake.png'),  default: true},
-                    { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png'),  default: true}
-                  ],
-                  ...CategoriesSentences
-                }
-              };
+      // title: categoryPath.join(), // test> test
+      categoryPath: categoryPath,
+      categories: [],
+      selectedCategories: [],
+      selectMode: false,
+      test: '',
+      showConfirmDialog: false,
+      defaultCategories: {
+        المكتبات: [
+          { label: 'عام' , type: 'category', imgSrc:  require('../../assets/images/categories/info.png'),  default: true},
+          { label: 'التحيات' , type: 'category', imgSrc:  require('../../assets/images/categories/chat.png'),  default: true},
+          // { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
+          { label: 'العمل' , type: 'category', imgSrc:  require('../../assets/images/categories/tools.png'),  default: true},
+          { label: 'السوق' , type: 'category', imgSrc:  require('../../assets/images/categories/cart.png'),  default: true},
+          { label: 'السفر' , type: 'category', imgSrc:  require('../../assets/images/categories/plane.png'),  default: true},
+          { label: 'المدرسة' , type: 'category', imgSrc:  require('../../assets/images/categories/pencil.png'),  default: true},
+          { label: 'المطعم' , type: 'category', imgSrc:  require('../../assets/images/categories/cake.png'),  default: true},
+          { label: 'المستشفى' , type: 'category', imgSrc:  require('../../assets/images/categories/health.png'),  default: true},
+          { label: 'المسجد' , type: 'category', imgSrc:  require('../../assets/images/categories/mosque_Icon.png'), default: true}
+        ],
+        ...CategoriesSentences
+      }
+    };
               // storageInstance = Storage.getInstance();
               // storageInstance.removeItem('المكتبات');
               // storageInstance.removeItem( 'المكتبات,المستشفى');
@@ -175,13 +176,24 @@ export default class CategoriesScreen extends React.Component {
     const storageInstance = Storage.getInstance(); // temp 
     const result = {value: 'null'};
     storageInstance.getItem(this.state.categoryPath.join(), result).then(res => {
-      if(result.value) { //  && esult.value[1].label !== "تحياتي"
+      if(result.value && result.value[1].label !== "تحياتي") { //  
         this.setState({
           categories: result.value,
           // test: JSON.stringify(result.value)
         });
       } 
       else { // if(this.state.defaultCategories[this.state.categoryPath.join()]) 
+        if(result && result.value && result.value[1] && result.value[1].label === "تحياتي") {
+          storageInstance.removeItem( 'المكتبات,المستشفى');
+          storageInstance.removeItem( 'المكتبات,عام');
+          storageInstance.removeItem( 'المكتبات,التحيات');
+          storageInstance.removeItem( 'المكتبات,السوق');
+          storageInstance.removeItem( 'المكتبات,العمل');
+          storageInstance.removeItem( 'المكتبات,السفر');  
+          storageInstance.removeItem( 'المكتبات,المطعم');
+          storageInstance.removeItem( 'المكتبات,المدرسة');
+          storageInstance.removeItem( 'المكتبات,المسجد');
+        }
         this.setState({
           categories: this.state.defaultCategories[this.state.categoryPath.join()] || [],
           // test: 'default categories'
@@ -191,8 +203,6 @@ export default class CategoriesScreen extends React.Component {
     })
   }
 
-
-  }
 
   deleteClicked = () => {
     const selectedCategories = this.state.categories.filter(category => category.selected);
@@ -205,7 +215,7 @@ export default class CategoriesScreen extends React.Component {
      }
   }
 
-  moveToCategoryLevel(sectionIndex) {         
+  moveToCategoryLevel = (sectionIndex) => {         
     this.setState({categoryPath: this.state.categoryPath.slice(0, sectionIndex + 1)
     });
     setTimeout(() => {
@@ -214,7 +224,7 @@ export default class CategoriesScreen extends React.Component {
   }
 
   
-  categoryClicked(index) {
+  categoryClicked = (index) => {
     if(this.state.selectMode) {
         this.selectionToggeled(index);
     } else { //  if(this.state.categories[index].type === 'category')
@@ -240,7 +250,7 @@ export default class CategoriesScreen extends React.Component {
         TextToSpeach.getInstance().speak(this.state.categories[sentenceIndex].label);
       }
     }
-    updateGender() {
+    updateGender = () => {
       const storageInstance = Storage.getInstance();  
       const result = {value: 'null'};
       storageInstance.getItem('settingsValues', result).then(res => {
@@ -248,7 +258,7 @@ export default class CategoriesScreen extends React.Component {
         });
     }
 
-    playExistingSound(sentenceIndex) {
+    playExistingSoundDeprecated = (sentenceIndex) => {
       let soundPath = '';
       if(this.state.voiceGender === Genders.female) {
         if(  Platform.OS === 'ios' ) {
@@ -264,15 +274,28 @@ export default class CategoriesScreen extends React.Component {
       soundPath = soundPath.replace('$categoryPath', CategoriesArabicToEnglish[this.state.categoryPath.join()]).replace('$sentenceIndex', sentenceIndex + 1);
       PlaySound(soundPath);
     }
-  
-  selectionToggeled(categoryIndex) {
-    const categories = this.state.categories;
-    categories[categoryIndex].selected = !categories[categoryIndex].selected;
-    this.setState({
-      categories: categories
-    });
-  
- }
+
+    playExistingSound = (sentenceIndex) => {
+      const cleanedSentence = this.cleanSentence(this.state.categories[sentenceIndex]);
+      const gender = this.state.voiceGender === Genders.female ? 'ا' : 'ر';
+      let soundPath = this.state.categoryPath[1] + '-' + cleanedSentence + '-' + gender;
+      PlaySound(soundPath);
+    }
+
+    cleanSentence(sentence) {
+      tashkeelCharCodes = [ "\u064e", "\u064b", "\u064c", "\u064d" , "\u064f", "\u0650", "\u0651", "\u0652"]; 
+      questionMarkCharCode = "\u061f";
+      const cleanRegExp = new RegExp([questionMarkCharCode + "|" + tashkeelCharCodes.join("|")], 'g');
+      return sentence.label.replace(cleanRegExp, '').replace(/ /g, '_');
+    }
+
+    selectionToggeled = (categoryIndex) => {
+      const categories = this.state.categories;
+      categories[categoryIndex].selected = !categories[categoryIndex].selected;
+      this.setState({
+        categories: categories
+      });
+    }
 
 
   cancelSelectMode = () => {
@@ -284,7 +307,7 @@ export default class CategoriesScreen extends React.Component {
     });
   }; 
 
-  cancelDeleteCategories() {
+  cancelDeleteCategories = () => {
     this.setState({
       showConfirmDialog: false
     });
@@ -302,38 +325,6 @@ export default class CategoriesScreen extends React.Component {
     });
   }
 
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <MonoText onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </MonoText>
-      );
-
-      return (
-        <MonoText style={styles.developmentModeText}>
-          Nermeen mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
-        </MonoText>
-      );
-    } else {
-      return (
-        <MonoText style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </MonoText >
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({
