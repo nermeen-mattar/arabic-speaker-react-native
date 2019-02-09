@@ -1,3 +1,5 @@
+import { Alert } from 'react-native';
+
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
@@ -6,7 +8,7 @@ import { Storage } from "../classes/Storage";
 /**
  * @author Nermeen Mattar
  * Nice to have: push user words without checking if this.predict.. (but only checking if it exists in ur words).
- * Reason: giving higher priority for words the user has chosen.
+ * Reason: giving higher priority for default words which have been chosen by the user.
  * Need to be careful: if this got implemented it is better to filter out the words in default which exist in userWords (better memory and processing)
  */
 export class TextPrediction {
@@ -35,17 +37,6 @@ export class TextPrediction {
     storageInstance.getItem("userWords", result).then(res => {
       if (result.value) {
         this.userWords = result.value;
-        //  Alert.alert(
-        //   'Alert Title',
-        //   JSON.stringify(this.userWords),
-
-        //   [
-        //     {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-        //     {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        //     {text: 'OK', onPress: () => console.log('OK Pressed')},
-        //   ],
-        //   { cancelable: false }
-        // )
       }
     });
   }
@@ -78,7 +69,6 @@ export class TextPrediction {
   }
 
   getPredectedWords(enteredWords) {
-    // ماذا تريد أن
     let predectedWords;
     enteredWords = enteredWords.trim();
     enteredWords = enteredWords.replace(/\s\s+/g, " ");
@@ -152,24 +142,28 @@ export class TextPrediction {
       return;
     }
     const lastWord = enteredWords.slice(indexOfLastWord + 1);
-    enteredWords = enteredWords.slice(0, indexOfLastWord);
-    const enteredWordsLength = enteredWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
+    const wordsWithoutLast  = enteredWords.slice(0, indexOfLastWord);
+    const numOfWordsWithoutLast = wordsWithoutLast.split(" ").length; //  wordsWithoutLast.split(/.+ .+/g);
 
-    if (this.userWords.length < enteredWordsLength) {
-      this.getLastWords(enteredWords, this.defaultWords.length - 1);
+    if (this.userWords.length < numOfWordsWithoutLast) {
+      // this.addToUserWordsIfNew(this.getLastWords(enteredWords, 4)); // this.defaultWords.length - 1
+      for(let wordIndex = 0; wordIndex < numOfWordsWithoutLast; wordIndex++) {
+        const to = wordIndex + 4 < numOfWordsWithoutLast + 1? wordIndex + 4 :  numOfWordsWithoutLast + 1;
+        this.addToUserWordsIfNew(enteredWords.split(' ').slice(wordIndex, to).join(" "));
+      }
     } else {
-      if (!this.getPredectedWords(enteredWords).includes(lastWord)) {
+      if (!this.getPredectedWords(wordsWithoutLast).includes(lastWord)) {
         if (!gotUpdated) {
-          this.sendSentenceToBackend(enteredWords);
+          this.sendSentenceToBackend(enteredWords); // (wordsWithoutLast.concat(' ').concat(lastWord)
         }
         gotUpdated = true;
-        if (this.userWords[enteredWordsLength - 1][enteredWords]) {
-          this.userWords[enteredWordsLength - 1][enteredWords].push(lastWord);
+        if (this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast]) {
+          this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast].push(lastWord);
         } else {
-          this.userWords[enteredWordsLength - 1][enteredWords] = [lastWord];
+          this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] = [lastWord];
         }
       }
-      this.addToUserWordsIfNew(enteredWords, gotUpdated);
+      this.addToUserWordsIfNew(wordsWithoutLast, gotUpdated);
     }
   }
 
@@ -179,20 +173,19 @@ export class TextPrediction {
   }
 
   sendSentenceToBackend(sentence) {
-    const storageInstance = Storage.getInstance(); // temp
-    const settings = { value: "null" };
-    storageInstance.getItem("settingsValues", settings).then(res => {
-      if (settings.value) {
-        if (settings.value.helpImproveApp) {
+    // const storageInstance = Storage.getInstance(); // temp
+    // const settings = { value: "null" };
+    // storageInstance.getItem("settingsValues", settings).then(res => {
+    //   if (settings.value) {
+    //     if (settings.value.helpImproveApp) {
           fetch("http://18.224.240.0:8080/addWord?word=".concat(sentence), {
             method: "GET"
           }).then(response => {
             response.json();
-            this.displayAlertMessage();
           });
-        }
-      }
-    });
+    //     }
+    //   }
+    // });
   }
 
   findWords(currentWords) {
