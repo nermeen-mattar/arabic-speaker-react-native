@@ -1,5 +1,6 @@
 import { Alert } from "react-native";
 
+import unigramData from "../constants/default-words/unigramData";
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
@@ -69,19 +70,23 @@ export class TextPrediction {
   }
 
   singleWordPredections(enteredWords) {
-    const enteredWordsLength = enteredWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
     let predectedWords;
     predectedWords = this.filterIfNotIncludesPart(
       Object.keys(this.userWords[0]),
       enteredWords
     );
-    predectedWords = 
-      this.concatUniqueEntries(
-        predectedWords,
-        this.filterIfNotIncludesPart(
-        Object.keys(this.defaultWords[0]), enteredWords) 
-      );
-      
+    predectedWords = this.concatUniqueAndMatchedEntries(
+      predectedWords,
+      Object.keys(this.defaultWords[0]),
+      enteredWords
+    );
+
+    predectedWords = this.concatUniqueAndMatchedEntries(
+      predectedWords,
+      Object.keys(this.defaultWords[0]),
+      enteredWords
+    );
+
     return predectedWords;
   }
 
@@ -110,17 +115,11 @@ export class TextPrediction {
       this.userWords[completeWordsLength - 1][enteredWords] || [],
       incompleteWord
     );
-    predectedWords = 
-      this.concatUniqueEntries(
-        predectedWords,
-        this.filterIfNotIncludesPart( this.defaultWords[completeWordsLength - 1][completeWords], incompleteWord)
-      );
-    
-    // }
-    /* commented cz I don't think this requirment is correct (replaced with the last line in this fucntion)*/
-    // if(combinedResults.length  === 0) {
-    //   combinedResults = this.staticWords;
-    // }
+    predectedWords = this.concatUniqueAndMatchedEntries(
+      predectedWords,
+      this.defaultWords[completeWordsLength - 1][completeWords],
+      incompleteWord
+    );
 
     if (
       predectedWords.length < this.maxNumOfPredictions &&
@@ -130,16 +129,23 @@ export class TextPrediction {
       let nextPredectedWords = this.getPredectedWords(
         enteredWords.slice(endOfFirstWord, enteredWords.length)
       );
-      predectedWords = 
-        this.concatUniqueEntries(predectedWords, this.filterIfNotIncludesPart( nextPredectedWords, incompleteWord));
+      predectedWords = this.concatUniqueAndMatchedEntries(
+        predectedWords,
+        nextPredectedWords,
+        incompleteWord
+      );
     }
 
-    return 
-      this.concatUniqueEntries(predectedWords,this.filterIfNotIncludesPart( this.staticWords, incompleteWord));
-    }
+    return;
+    this.concatUniqueAndMatchedEntries(
+      predectedWords,
+      this.staticWords,
+      incompleteWord
+    );
+  }
 
   filterIfNotIncludesPart(entries, incompleteWord) {
-    if(entries){
+    if (entries) {
       return entries.filter(entry =>
         entry.match(new RegExp("^" + incompleteWord), "g")
       );
@@ -155,6 +161,29 @@ export class TextPrediction {
     return destinationArr.concat(
       entries.slice(0, this.maxNumOfPredictions - destinationArr.length)
     );
+  }
+
+  concatUniqueAndMatchedEntries(destinationArr, entries, incompleteWord) {
+    if (entries && entries.length) {
+      // entries = entries.filter(word => !destinationArr.includes(word));
+      const entriesLength = entries.length;
+      let isUnique, isMatched;
+      for (let entryIndex = 0; entryIndex < entriesLength; entryIndex++) {
+        isUnique = destinationArr.includes(entries[entryIndex]);
+        isMatched = entries[entryIndex].match(
+          new RegExp("^" + incompleteWord),
+          "g"
+        );
+        if (isUnique && isMatched) {
+          destinationArr.push(entries[entryIndex]);
+        }
+        if (this.maxNumOfPredictions <= destinationArr.length) {
+          // may add another preventive check
+          return destinationArr;
+        }
+      }
+    }
+    return destinationArr;
   }
 
   getLastWords(sentence, numberOfWords) {
