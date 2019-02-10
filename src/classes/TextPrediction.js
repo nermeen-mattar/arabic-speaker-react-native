@@ -72,16 +72,16 @@ export class TextPrediction {
     const enteredWordsLength = enteredWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
     let predectedWords;
     predectedWords = this.filterIfNotIncludesPart(
-      Object.keys(this.userWords[0]) || [],
+      Object.keys(this.userWords[0]),
       enteredWords
     );
-    predectedWords = this.filterIfNotIncludesPart(
+    predectedWords = 
       this.concatUniqueEntries(
         predectedWords,
-        Object.keys(this.defaultWords[0])
-      ),
-      enteredWords
-    );
+        this.filterIfNotIncludesPart(
+        Object.keys(this.defaultWords[0]), enteredWords) 
+      );
+      
     return predectedWords;
   }
 
@@ -110,13 +110,12 @@ export class TextPrediction {
       this.userWords[completeWordsLength - 1][enteredWords] || [],
       incompleteWord
     );
-    predectedWords = this.filterIfNotIncludesPart(
+    predectedWords = 
       this.concatUniqueEntries(
         predectedWords,
-        this.defaultWords[completeWordsLength - 1][completeWords]
-      ),
-      incompleteWord
-    );
+        this.filterIfNotIncludesPart( this.defaultWords[completeWordsLength - 1][completeWords], incompleteWord)
+      );
+    
     // }
     /* commented cz I don't think this requirment is correct (replaced with the last line in this fucntion)*/
     // if(combinedResults.length  === 0) {
@@ -131,22 +130,20 @@ export class TextPrediction {
       let nextPredectedWords = this.getPredectedWords(
         enteredWords.slice(endOfFirstWord, enteredWords.length)
       );
-      predectedWords = this.filterIfNotIncludesPart(
-        this.concatUniqueEntries(predectedWords, nextPredectedWords),
-        incompleteWord
-      );
+      predectedWords = 
+        this.concatUniqueEntries(predectedWords, this.filterIfNotIncludesPart( nextPredectedWords, incompleteWord));
     }
 
-    return this.filterIfNotIncludesPart(
-      this.concatUniqueEntries(predectedWords, this.staticWords),
-      incompleteWord
-    );
-  }
+    return 
+      this.concatUniqueEntries(predectedWords,this.filterIfNotIncludesPart( this.staticWords, incompleteWord));
+    }
 
   filterIfNotIncludesPart(entries, incompleteWord) {
-    return entries.filter(entry =>
-      entry.match(new RegExp("^" + incompleteWord), "g")
-    );
+    if(entries){
+      return entries.filter(entry =>
+        entry.match(new RegExp("^" + incompleteWord), "g")
+      );
+    }
   }
 
   concatUniqueEntries(destinationArr, entries) {
