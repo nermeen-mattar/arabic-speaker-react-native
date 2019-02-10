@@ -1,6 +1,5 @@
 import { Alert } from "react-native";
 
-import unigramData from "../constants/default-words/unigramData";
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
@@ -70,18 +69,19 @@ export class TextPrediction {
   }
 
   singleWordPredections(enteredWords) {
-    let predectedWords;
-    predectedWords = this.filterIfNotIncludesPart(
+    let predectedWords = [];
+     this.concatUniqueAndMatchedEntries(
+      predectedWords,
       Object.keys(this.userWords[0]),
       enteredWords
     );
-    predectedWords = this.concatUniqueAndMatchedEntries(
+     this.concatUniqueAndMatchedEntries(
       predectedWords,
       Object.keys(this.defaultWords[0]),
       enteredWords
     );
 
-    predectedWords = this.concatUniqueAndMatchedEntries(
+    this.concatUniqueAndMatchedEntries(
       predectedWords,
       Object.keys(this.defaultWords[0]),
       enteredWords
@@ -91,7 +91,7 @@ export class TextPrediction {
   }
 
   getPredectedWords(enteredWords) {
-    let predectedWords;
+    let predectedWords = [];
     enteredWords = enteredWords.replace(/\s\s+/g, " ");
     enteredWords = enteredWords.replace(/^أ/g, "ا");
     enteredWords = enteredWords.replace(/\sأ/g, " ا");
@@ -111,11 +111,12 @@ export class TextPrediction {
         this.getLastWords(enteredWords, this.defaultWords.length - 1)
       );
     }
-    predectedWords = this.filterIfNotIncludesPart(
+    this.concatUniqueAndMatchedEntries(
+      predectedWords,
       this.userWords[completeWordsLength - 1][enteredWords] || [],
       incompleteWord
     );
-    predectedWords = this.concatUniqueAndMatchedEntries(
+    this.concatUniqueAndMatchedEntries(
       predectedWords,
       this.defaultWords[completeWordsLength - 1][completeWords],
       incompleteWord
@@ -129,19 +130,18 @@ export class TextPrediction {
       let nextPredectedWords = this.getPredectedWords(
         enteredWords.slice(endOfFirstWord, enteredWords.length)
       );
-      predectedWords = this.concatUniqueAndMatchedEntries(
+      this.concatUniqueAndMatchedEntries(
         predectedWords,
         nextPredectedWords,
         incompleteWord
       );
     }
-
-    return;
     this.concatUniqueAndMatchedEntries(
       predectedWords,
       this.staticWords,
       incompleteWord
     );
+    return predectedWords;
   }
 
   filterIfNotIncludesPart(entries, incompleteWord) {
@@ -169,7 +169,7 @@ export class TextPrediction {
       const entriesLength = entries.length;
       let isUnique, isMatched;
       for (let entryIndex = 0; entryIndex < entriesLength; entryIndex++) {
-        isUnique = destinationArr.includes(entries[entryIndex]);
+        isUnique = !destinationArr.includes(entries[entryIndex]);
         isMatched = entries[entryIndex].match(
           new RegExp("^" + incompleteWord),
           "g"
@@ -179,11 +179,10 @@ export class TextPrediction {
         }
         if (this.maxNumOfPredictions <= destinationArr.length) {
           // may add another preventive check
-          return destinationArr;
+          return;
         }
       }
     }
-    return destinationArr;
   }
 
   getLastWords(sentence, numberOfWords) {
