@@ -1,5 +1,4 @@
-import { Alert } from "react-native";
-
+import unigramData from "../constants/default-words/unigramData";
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
@@ -70,12 +69,12 @@ export class TextPrediction {
 
   singleWordPredections(enteredWords) {
     let predectedWords = [];
-     this.concatUniqueAndMatchedEntries(
+    this.concatUniqueAndMatchedEntries(
       predectedWords,
       Object.keys(this.userWords[0]),
       enteredWords
     );
-     this.concatUniqueAndMatchedEntries(
+    this.concatUniqueAndMatchedEntries(
       predectedWords,
       Object.keys(this.defaultWords[0]),
       enteredWords
@@ -83,7 +82,7 @@ export class TextPrediction {
 
     this.concatUniqueAndMatchedEntries(
       predectedWords,
-      Object.keys(this.defaultWords[0]),
+      unigramData,
       enteredWords
     );
 
@@ -96,26 +95,29 @@ export class TextPrediction {
     enteredWords = enteredWords.replace(/^أ/g, "ا");
     enteredWords = enteredWords.replace(/\sأ/g, " ا");
     const indexOfLastWord = enteredWords.lastIndexOf(" ");
-    enteredWords = enteredWords.trim();
-    if (enteredWords === "") {
+    const trimmedEnteredWords = enteredWords.trim();
+    if (trimmedEnteredWords === "") {
       return this.staticWords;
     }
     if (indexOfLastWord === -1) {
-      return this.singleWordPredections(enteredWords);
+      return this.singleWordPredections(trimmedEnteredWords);
     }
-    const incompleteWord = enteredWords.slice(indexOfLastWord + 1);
-    completeWords = enteredWords.slice(0, indexOfLastWord);
+    const incompleteWord = trimmedEnteredWords.slice(indexOfLastWord + 1);
+    completeWords = trimmedEnteredWords.slice(0, indexOfLastWord);
     const completeWordsLength = completeWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
     if (completeWordsLength > this.defaultWords.length) {
       return this.getPredectedWords(
         this.getLastWords(enteredWords, this.defaultWords.length - 1)
       );
     }
+    // 1- User sentences
     this.concatUniqueAndMatchedEntries(
       predectedWords,
-      this.userWords[completeWordsLength - 1][enteredWords] || [],
+      this.userWords[completeWordsLength - 1][trimmedEnteredWords] || [],
       incompleteWord
     );
+
+    // 2- Default sentences
     this.concatUniqueAndMatchedEntries(
       predectedWords,
       this.defaultWords[completeWordsLength - 1][completeWords],
@@ -126,16 +128,26 @@ export class TextPrediction {
       predectedWords.length < this.maxNumOfPredictions &&
       completeWordsLength > 1
     ) {
-      const endOfFirstWord = enteredWords.indexOf(" ") + 1;
+      const endOfFirstWord = trimmedEnteredWords.indexOf(" ") + 1;
       let nextPredectedWords = this.getPredectedWords(
         enteredWords.slice(endOfFirstWord, enteredWords.length)
       );
+      // 3- Shorter sentences
       this.concatUniqueAndMatchedEntries(
         predectedWords,
         nextPredectedWords,
         incompleteWord
       );
     }
+    // 4- Single default words only for incomplete ( what about single user words -> should store it too)
+    if (incompleteWord) {
+      this.concatUniqueAndMatchedEntries(
+        predectedWords,
+        unigramData,
+        incompleteWord
+      );
+    }
+    // 5- static words only for not incomplete word
     this.concatUniqueAndMatchedEntries(
       predectedWords,
       this.staticWords,
@@ -186,10 +198,12 @@ export class TextPrediction {
   }
 
   getLastWords(sentence, numberOfWords) {
-    var wordsArray = sentence.split(" ");
-    return wordsArray
+    const lastChar = sentence[sentence.length - 1];
+    let wordsArray = sentence.trim().split(" ");
+    const lastWords = wordsArray
       .slice(wordsArray.length - numberOfWords, wordsArray.length)
       .join(" ");
+    return lastWords.concat(lastChar === " " ? " ": "");
   }
 
   addToUserWordsIfNew(enteredWords, gotUpdated) {
@@ -223,7 +237,9 @@ export class TextPrediction {
         );
       }
     } else {
-      if (!this.getPredectedWords(wordsWithoutLast).includes(lastWord)) {
+      if (
+        !this.getPredectedWords(wordsWithoutLast.concat(" ")).includes(lastWord)
+      ) {
         if (!gotUpdated) {
           this.sendSentenceToBackend(enteredWords); // (wordsWithoutLast.concat(' ').concat(lastWord)
         }
