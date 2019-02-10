@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   cardLabel: {
-    // color: Colors.textSecondary,
+    color: Colors.textSecondary,
     fontSize: 11,
     textAlign: "center"
   }
