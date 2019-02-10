@@ -141,7 +141,7 @@ export default class TextToSpeachScreen extends React.Component {
             this.state.predectedWords.map(word => {
               return(
         <TouchableOpacity  style={[styles.predectedWord, commonStyles.shadow ]} onPress={() =>
-          this.onTextChanged(this.state.text.concat(' ').concat(word))}>
+         this.selectPredectedWord(word)}>
             <MonoText style={styles.predectedWordText}> {word} </MonoText>
     </TouchableOpacity>
               )})
@@ -168,6 +168,20 @@ export default class TextToSpeachScreen extends React.Component {
       </TouchableOpacity>
     );
   }
+
+
+  selectPredectedWord(word) {
+    let inputText = this.state.text;
+    const indexOfLastWord = inputText.lastIndexOf(" ");
+    if(indexOfLastWord === -1) {  // writing the first word
+      inputText = '';
+    }
+    if (indexOfLastWord !== inputText.length - 1) {
+      inputText = inputText.slice(0, indexOfLastWord).concat(' ');
+    }
+    this.onTextChanged(inputText.concat(word).concat(' '))
+  }
+  
   onTextChanged(text) {
     const toolsColors = this.state.toolsColors;
     toolsColors['المفضلة'] = this.state.favourites.includes(text) ? Colors.brand : Colors.borderColor;

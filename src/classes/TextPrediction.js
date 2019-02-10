@@ -1,4 +1,4 @@
-import { Alert } from 'react-native';
+import { Alert } from "react-native";
 
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
@@ -68,25 +68,54 @@ export class TextPrediction {
     this.defaultWords = indexedDefaultWords;
   }
 
+  singleWordPredections(enteredWords) {
+    const enteredWordsLength = enteredWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
+    let predectedWords;
+    predectedWords = this.filterIfNotIncludesPart(
+      Object.keys(this.userWords[0]) || [],
+      enteredWords
+    );
+    predectedWords = this.filterIfNotIncludesPart(
+      this.concatUniqueEntries(
+        predectedWords,
+        Object.keys(this.defaultWords[0])
+      ),
+      enteredWords
+    );
+    return predectedWords;
+  }
+
   getPredectedWords(enteredWords) {
     let predectedWords;
-    enteredWords = enteredWords.trim();
     enteredWords = enteredWords.replace(/\s\s+/g, " ");
     enteredWords = enteredWords.replace(/^أ/g, "ا");
     enteredWords = enteredWords.replace(/\sأ/g, " ا");
-    const enteredWordsLength = enteredWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
+    const indexOfLastWord = enteredWords.lastIndexOf(" ");
+    enteredWords = enteredWords.trim();
     if (enteredWords === "") {
       return this.staticWords;
     }
-    if (enteredWordsLength > this.defaultWords.length) {
+    if (indexOfLastWord === -1) {
+      return this.singleWordPredections(enteredWords);
+    }
+    const incompleteWord = enteredWords.slice(indexOfLastWord + 1);
+    completeWords = enteredWords.slice(0, indexOfLastWord);
+    const completeWordsLength = completeWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
+    if (completeWordsLength > this.defaultWords.length) {
       return this.getPredectedWords(
         this.getLastWords(enteredWords, this.defaultWords.length - 1)
       );
     }
-    predectedWords = this.userWords[enteredWordsLength - 1][enteredWords] || [];
-    predectedWords = this.concatUniqueEntries(
-      predectedWords,
-      this.defaultWords[enteredWordsLength - 1][enteredWords]
+    predectedWords = this.filterIfNotIncludesPart(
+      this.userWords[completeWordsLength - 1][enteredWords] || [],
+      incompleteWord
+    );
+    predectedWords = this.filterIfNotIncludesPart(
+      this.concatUniqueEntries(
+        predectedWords,
+        this.defaultWords[completeWordsLength - 1][completeWords]
+      ),
+      incompleteWord
     );
     // }
     /* commented cz I don't think this requirment is correct (replaced with the last line in this fucntion)*/
@@ -96,19 +125,28 @@ export class TextPrediction {
 
     if (
       predectedWords.length < this.maxNumOfPredictions &&
-      enteredWordsLength > 1
+      completeWordsLength > 1
     ) {
       const endOfFirstWord = enteredWords.indexOf(" ") + 1;
       let nextPredectedWords = this.getPredectedWords(
         enteredWords.slice(endOfFirstWord, enteredWords.length)
       );
-      predectedWords = this.concatUniqueEntries(
-        predectedWords,
-        nextPredectedWords
+      predectedWords = this.filterIfNotIncludesPart(
+        this.concatUniqueEntries(predectedWords, nextPredectedWords),
+        incompleteWord
       );
     }
 
-    return this.concatUniqueEntries(predectedWords, this.staticWords);
+    return this.filterIfNotIncludesPart(
+      this.concatUniqueEntries(predectedWords, this.staticWords),
+      incompleteWord
+    );
+  }
+
+  filterIfNotIncludesPart(entries, incompleteWord) {
+    return entries.filter(entry =>
+      entry.match(new RegExp("^" + incompleteWord), "g")
+    );
   }
 
   concatUniqueEntries(destinationArr, entries) {
@@ -142,14 +180,22 @@ export class TextPrediction {
       return;
     }
     const lastWord = enteredWords.slice(indexOfLastWord + 1);
-    const wordsWithoutLast  = enteredWords.slice(0, indexOfLastWord);
+    const wordsWithoutLast = enteredWords.slice(0, indexOfLastWord);
     const numOfWordsWithoutLast = wordsWithoutLast.split(" ").length; //  wordsWithoutLast.split(/.+ .+/g);
 
     if (this.userWords.length < numOfWordsWithoutLast) {
       // this.addToUserWordsIfNew(this.getLastWords(enteredWords, 4)); // this.defaultWords.length - 1
-      for(let wordIndex = 0; wordIndex < numOfWordsWithoutLast; wordIndex++) {
-        const to = wordIndex + 4 < numOfWordsWithoutLast + 1? wordIndex + 4 :  numOfWordsWithoutLast + 1;
-        this.addToUserWordsIfNew(enteredWords.split(' ').slice(wordIndex, to).join(" "));
+      for (let wordIndex = 0; wordIndex < numOfWordsWithoutLast; wordIndex++) {
+        const to =
+          wordIndex + 4 < numOfWordsWithoutLast + 1
+            ? wordIndex + 4
+            : numOfWordsWithoutLast + 1;
+        this.addToUserWordsIfNew(
+          enteredWords
+            .split(" ")
+            .slice(wordIndex, to)
+            .join(" ")
+        );
       }
     } else {
       if (!this.getPredectedWords(wordsWithoutLast).includes(lastWord)) {
@@ -158,9 +204,13 @@ export class TextPrediction {
         }
         gotUpdated = true;
         if (this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast]) {
-          this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast].push(lastWord);
+          this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast].push(
+            lastWord
+          );
         } else {
-          this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] = [lastWord];
+          this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] = [
+            lastWord
+          ];
         }
       }
       this.addToUserWordsIfNew(wordsWithoutLast, gotUpdated);
@@ -178,11 +228,11 @@ export class TextPrediction {
     // storageInstance.getItem("settingsValues", settings).then(res => {
     //   if (settings.value) {
     //     if (settings.value.helpImproveApp) {
-          fetch("http://18.224.240.0:8080/addWord?word=".concat(sentence), {
-            method: "GET"
-          }).then(response => {
-            response.json();
-          });
+    fetch("http://18.224.240.0:8080/addWord?word=".concat(sentence), {
+      method: "GET"
+    }).then(response => {
+      response.json();
+    });
     //     }
     //   }
     // });
