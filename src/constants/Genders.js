@@ -1,4 +1,5 @@
 export default {
-    male: 'رجل',
-    female: 'إمرأة',
-}
+    male: "رجل",
+    female: "إمرأة"
+  };
+  
