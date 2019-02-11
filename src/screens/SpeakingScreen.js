@@ -304,7 +304,7 @@ export default class TextToSpeachScreen extends React.Component {
 
   onTextChanged = this.debounce((text) => {
     this.changeText(text);
-   }, 300);
+   }, 200);
 
   debounce(a, b, c) {
     let d, e;
