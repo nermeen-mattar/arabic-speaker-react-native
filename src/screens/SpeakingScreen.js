@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Keyboard,
+  ScrollView
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -175,7 +176,10 @@ export default class TextToSpeachScreen extends React.Component {
             );
           })}
         </View>
+          {/* <ScrollView>
+          <MonoText>{JSON.stringify(   TextPrediction.getInstance().debuggingText)}</MonoText>
 
+          </ScrollView> */}
         {this.state.showConfirmDialog ? (
           <ConfirmDeleteDialog
             customizedText={
@@ -233,7 +237,7 @@ export default class TextToSpeachScreen extends React.Component {
     let toolsBar = [...this.state.toolsBar];
     toolsBar[0].styles = [styles.tool, styles.speakActive];
     this.setState({ toolsBar: toolsBar });
-    TextPrediction.getInstance().addToUserWordsIfNew(this.state.text);
+    TextPrediction.getInstance().addSentenceToUserWords(this.state.text);
     TextToSpeach.getInstance().speak(this.state.text);
     setTimeout(() => {
       toolsBar[0].styles = [styles.tool];

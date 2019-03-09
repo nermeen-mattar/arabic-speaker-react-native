@@ -2,7 +2,9 @@ import unigramData from "../constants/default-words/unigramData";
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
-import { Storage } from "../classes/Storage";
+import {
+  Storage
+} from "../classes/Storage";
 
 /**
  * @author Nermeen Mattar
@@ -25,6 +27,7 @@ export class TextPrediction {
     "أنا",
     "لماذا"
   ];
+  debuggingText;
   userWords = [{}, {}, {}];
   maxNumOfPredictions = 12;
   defaultWords = [bigramData, trigramData, quadgram];
@@ -32,7 +35,9 @@ export class TextPrediction {
   constructor() {
     const storageInstance = Storage.getInstance();
     // storageInstance.deleteItem('userWords');
-    const result = { value: "null" };
+    const result = {
+      value: "null"
+    };
     storageInstance.getItem("userWords", result).then(res => {
       if (result.value) {
         this.userWords = result.value;
@@ -67,7 +72,7 @@ export class TextPrediction {
     this.defaultWords = indexedDefaultWords;
   }
 
-  singleWordPredections(enteredWords) {
+  getSingleWordPredections(enteredWords) {
     let predectedWords = [];
     this.concatUniqueAndMatchedEntries(
       predectedWords,
@@ -100,7 +105,7 @@ export class TextPrediction {
       return this.staticWords;
     }
     if (indexOfLastWord === -1) {
-      return this.singleWordPredections(trimmedEnteredWords);
+      return this.getSingleWordPredections(trimmedEnteredWords);
     }
     const incompleteWord = trimmedEnteredWords.slice(indexOfLastWord + 1);
     completeWords = trimmedEnteredWords.slice(0, indexOfLastWord);
@@ -140,10 +145,12 @@ export class TextPrediction {
       );
     }
     // 4- Single default words only for incomplete ( what about single user words -> should store it too)
+    this.debuggingText = 'incom' + incompleteWord;
     if (incompleteWord) {
       this.concatUniqueAndMatchedEntries(
         predectedWords,
-        unigramData,
+        // unigramData,
+        this.getSingleWordPredections(incompleteWord),
         incompleteWord
       );
     }
@@ -203,7 +210,76 @@ export class TextPrediction {
     const lastWords = wordsArray
       .slice(wordsArray.length - numberOfWords, wordsArray.length)
       .join(" ");
-    return lastWords.concat(lastChar === " " ? " ": "");
+    return lastWords.concat(lastChar === " " ? " " : "");
+  }
+
+  addSentenceToUserWords(enteredWords) {
+    enteredWords = enteredWords.trim();
+    if (!enteredWords) {
+      return;
+    }
+    enteredWords = enteredWords.replace(/\s\s+/g, " ");
+    enteredWords = enteredWords.replace(/^أ/g, "ا");
+    enteredWords = enteredWords.replace(/\sأ/g, " ا");
+    enteredWordsArray = enteredWords.split(" ");
+    numOfEnteredWords = enteredWordsArray.length;
+    let hasUpdated = false;
+    const endIndex = enteredWordsArray.length < this.userWords.length ? enteredWordsArray.length : this.userWords.length + 1;
+    for (let setIndex = 1; setIndex <= endIndex; setIndex++) {
+      for (let currWordIndex = 0; currWordIndex < numOfEnteredWords; currWordIndex++) {
+        if ((numOfEnteredWords - currWordIndex) < setIndex) {
+          break;
+        }
+        if (this.addWordsIfNew(enteredWordsArray.slice(currWordIndex, currWordIndex + setIndex).join(" "))) {
+          hasUpdated = true;
+        }
+      }
+    }
+    if (hasUpdated) {
+      this.sendSentenceToBackend(enteredWords); // (wordsWithoutLast.concat(' ').concat(lastWord)
+      this.updateUserWords();
+    }
+  }
+
+  addWordsIfNew(enteredWords) {
+    enteredWords = enteredWords.trim();
+
+    const indexOfLastWord = enteredWords.lastIndexOf(" ");
+    if (indexOfLastWord === -1) {
+      return this.addSingleWordIfNotExist(enteredWords);
+    }
+    let lastWord = enteredWords.slice(indexOfLastWord + 1);
+    let wordsWithoutLast = enteredWords.slice(0, indexOfLastWord);
+    const numOfWordsWithoutLast = wordsWithoutLast.split(" ").length; //  wordsWithoutLast.split(/.+ .+/g);
+    const userWordsForEnteredWords = this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] || [];
+    if (
+      !userWordsForEnteredWords.includes(lastWord)
+      // !this.getPredectedWords(wordsWithoutLast.concat(" ")).includes(lastWord)
+    ) {
+      gotUpdated = true;
+      if (this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast]) {
+        this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast].push(
+          lastWord
+        );
+      } else {
+        this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] = [
+          lastWord
+        ];
+      }
+      return true;
+    }
+    return false;
+  }
+
+  addSingleWordIfNotExist(word) {
+    if (
+      !this.userWords[0][word]
+      // !this.getPredectedWords(word.concat(" ")).length === 0 &&
+      ) {
+      this.userWords[0][word] = [];
+      return true;
+    }
+    return false;
   }
 
   addToUserWordsIfNew(enteredWords, gotUpdated) {

@@ -137,6 +137,10 @@ export default class ContactUsScreen extends React.Component {
       </Modal>
     );
   }
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 
   sendMessage() {
     // const errorFields = [];
@@ -146,12 +150,14 @@ export default class ContactUsScreen extends React.Component {
     //   }
     // });
     // errorFields.length
-    const hasError = Object.keys(this.state.formFields).some(
+    let requiredError = Object.keys(this.state.formFields).some(
       fieldName => !this.state.formFields[fieldName].value
     );
-    if (hasError) {
-      this.displayAlertMessage();
+    if (requiredError) {
+      this.displayAlertMessage( "الرجاء تعبئة جميع الخانات");
       return;
+    } else if(!this.validateEmail(this.state.formFields.email.value)) {
+      this.displayAlertMessage("الرجاء إدخال بريد الإلكتروني صحيح");
     } else {
       body = 'إسم المرسل: '.concat(this.state.formFields.name.value).concat(' \n ');
       body = body.concat('البريد الإلكتروني: ').concat(this.state.formFields.email.value).concat(' \n ');
@@ -180,8 +186,8 @@ export default class ContactUsScreen extends React.Component {
     this.setState({formFields: formFields});
   }
 
-  displayAlertMessage() {
-    Alert.alert('فشل الإرسال', "الرجاء تعبئة جميع الخانات");
+  displayAlertMessage(errMsg) {
+    Alert.alert('فشل الإرسال', errMsg);
   }
 
   onTextChanged(text, fieldName) {

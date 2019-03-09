@@ -261,7 +261,7 @@ export default class AboutUsScreen extends React.Component {
               />
             </View>
             <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
-              مركز أنس للتقنيات المساعدة لذوي الاحتياجات
+              مركز أنس للتقنيات المساعدة لذوي الاحتياجات الخاصة
             </MonoText>
           </View>
 

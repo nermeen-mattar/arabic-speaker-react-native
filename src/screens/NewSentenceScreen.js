@@ -252,7 +252,7 @@ export default class NewSentenceScreen extends React.Component {
 
   playAutoSound = () => {
     this.setState({ recordingState: null, soundPath: null });
-    TextPrediction.getInstance().addToUserWordsIfNew(this.state.sentence);
+    TextPrediction.getInstance().addSentenceToUserWords(this.state.sentence);
     TextToSpeach.getInstance().speak(this.state.sentence);
   };
 
