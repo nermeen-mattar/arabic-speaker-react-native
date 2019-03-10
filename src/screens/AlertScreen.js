@@ -20,7 +20,7 @@ export default class AlertScreen extends React.Component {
   load = () => {
     PlaySound('alert');
     // this.props.navigation.goBack();
-    this.props.navigation.dispatch(NavigationActions.back());   
+    // this.props.navigation.dispatch(NavigationActions.back());   
     // this.props.navigation.navigate('SpeakingScreen', {prevRoute: 'AlertScreen'});
   }
 
