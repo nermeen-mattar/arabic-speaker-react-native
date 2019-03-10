@@ -3,6 +3,7 @@ import {Platform, StyleSheet, StatusBar, View, ActivityIndicator} from 'react-na
 import { createDrawerNavigator} from 'react-navigation'
 import SplashScreen from 'react-native-splash-screen'
 
+import { NavigationActions } from 'react-navigation';
 import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
 import SettingsComponent from './src/components/SettingsComponent'
@@ -27,12 +28,25 @@ const SettingsDrawer = createDrawerNavigator({
     // }
   });
 
-
 export default class App extends React.Component {
+  navigatorRef;
   state = {
     isLoadingComplete: false,
   };
 
+  // gets the current screen from navigation state
+ getActiveRouteName(navigationState) {
+  if (!navigationState) {
+    return null;
+  }
+
+  const route = navigationState.routes[navigationState.index];
+  // dive into nested navigators
+  if (route.routes) {
+    return this.getActiveRouteName(route);
+  }
+  return route.routeName;
+}
   render() {
   //  if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) { 
     // return (
@@ -51,7 +65,24 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-      <SettingsDrawer/>
+      <SettingsDrawer 
+      
+      ref={navigatorRef => {
+        this.navigatorRef = navigatorRef;
+      }}
+
+      onNavigationStateChange = {(prevState, currentState, action) => {
+      
+        if(this.getActiveRouteName(currentState) == 'Alert') {
+          this.navigatorRef.dispatch(
+            NavigationActions.navigate({
+              routeName: this.getActiveRouteName(prevState) 
+            })
+          )
+          // SettingsDrawer.navigation.navigate(prevState) 
+        }
+        // this.props.navigation.dispatch(NavigationActions.back()); 
+    }}/>
         {/* <AppNavigator /> */}
       </View>
     );
