@@ -251,7 +251,7 @@ export default class AboutUsScreen extends React.Component {
                 { fontSize: 38 }
               ]}
             >
-              إنتاج
+              رعاية
             </MonoText>
 
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
@@ -263,6 +263,11 @@ export default class AboutUsScreen extends React.Component {
             <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
               مركز أنس للتقنيات المساعدة لذوي الاحتياجات الخاصة
             </MonoText>
+            <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
+            Anas Assistive Technology Center for people with disability 
+            Non-profit Organization             
+            </MonoText>
+
           </View>
 
           <View
