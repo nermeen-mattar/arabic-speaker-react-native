@@ -34,7 +34,7 @@ export default {
     { label: "أين مكتب العمل؟", default: true },
     { label: "أريد السكرتير", default: true },
     { label: "أنا أبحث عن عمل يناسبني", default: true },
-    { label: "يمكنني ان استخدم هذا التطبيق للتواصل مع العملاء", default: true },
+    { label: "يمكنني ان استخدم هذا التطبيق للتواصل و إضافة عبارات جديدة", default: true },
     { label: "هل انتهى الدوام؟", default: true },
     { label: "كيف أخدمك؟", default: true },
     { label: "ما هي البيانات المطلوبة؟", default: true }
