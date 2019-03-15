@@ -155,7 +155,7 @@ export default class NewSentenceScreen extends React.Component {
                 style={styles.cardIcon}
               />
             </View>
-            <MonoText style={styles.cardLabel}>صرت آلي</MonoText>
+            <MonoText style={styles.cardLabel}>صوت آلي</MonoText>
           </TouchableOpacity>
 
           {/* <TouchableOpacity style={styles.card}  onPress = {() => this.startRecording()} > */}

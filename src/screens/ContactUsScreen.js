@@ -170,7 +170,7 @@ export default class ContactUsScreen extends React.Component {
           .concat("&body=")
           .concat(body)
       ).then(res => {
-        Alert.alert('تم الارسال بنجاح');
+        Alert.alert('تم إرسال رسالتكم إلى مركز أنس للتقنيات المساعدة لذوي الإعاقة شكرا على تواصلكم');
         this.clearAllFields();
       }).catch(err => {
         Alert.alert( 'فشل الإرسال', 'الرجاء المحاولة مرةً أخرى');
