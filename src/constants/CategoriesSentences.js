@@ -34,7 +34,7 @@ export default {
     { label: "أين مكتب العمل؟", default: true },
     { label: "أريد السكرتير", default: true },
     { label: "أنا أبحث عن عمل يناسبني", default: true },
-    { label: "يمكنني ان استخدم هذا التطبيق للتواصل و إضافة عبارات جديدة", default: true },
+    { label: "يمكنني ان استخدم هذا التطبيق للتواصل مع العملاء", default: true },
     { label: "هل انتهى الدوام؟", default: true },
     { label: "كيف أخدمك؟", default: true },
     { label: "ما هي البيانات المطلوبة؟", default: true }
@@ -59,7 +59,7 @@ export default {
   "المكتبات,السفر": [
     { label: "الأجواء معتدلة وممتعة هنا", default: true },
     { label: "أريد أن احجز تذكرة", default: true },
-    { label: "أريد ان اسجل الحضور ", default: true },
+    { label: "أريد ان اسجل الحضور", default: true },
     { label: "أريد الحصول على تخفيض ذوي الاحتياجات الخاصة", default: true },
     { label: "كم تكلفة السفر", default: true },
     { label: "ابحث عن مساعد ليساعدني في إتمام سفري", default: true },
@@ -74,7 +74,7 @@ export default {
     { label: "لقد انتهيت", default: true },
     { label: "أريد الخروج من الفصل", default: true },
     { label: "كم درجة الاختبار", default: true },
-    { label: "متى ينتهي الدوام ", default: true },
+    { label: "متى ينتهي الدوام", default: true },
     {
       label: "أريد ان تساعدني في كتابة عبارات جديدة لاستخدامها في المدرسة",
       default: true
@@ -89,7 +89,7 @@ export default {
       label: "أنا استخدم التواصل عبر الجوال فارجو ان تتساعد معي",
       default: true
     },
-    { label: "الطعام لذيذ شكرا ", default: true },
+    { label: "الطعام لذيذ شكرا", default: true },
     { label: "هل لديكم شبكة للدفع؟", default: true },
     { label: "كم مجموع الطعام؟", default: true },
     { label: "أريد الباقي لو سمحت", default: true },
@@ -104,7 +104,7 @@ export default {
     { label: "أريد صرف الدواء من فضلك", default: true },
     { label: "كم جرعة الدواء و متى؟", default: true },
     { label: "شكرا لك و أنا ممنون لك", default: true },
-    { label: "اطلب الطبيب لي ", default: true },
+    { label: "اطلب الطبيب لي", default: true },
     {
       label:
         "هل يمكنك تسجيل عبارة جديدة لاستخدمها في التواصل مع الصيدلي أو الممرض",
