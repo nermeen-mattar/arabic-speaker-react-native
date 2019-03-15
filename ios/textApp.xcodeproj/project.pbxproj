@@ -57,6 +57,11 @@
 		8B7A277B2C65422D89BD78AA /* libRNSoundRecorder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */; };
 		911346D5CD674F0BAADC013E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFB1F1D6BA5343829DB16778 /* SimpleLineIcons.ttf */; };
 		9B0B087821AB0ED200E6080D /* libPlaySound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9457BA21AA1262005BACA1 /* libPlaySound.a */; };
+		9B175CAD223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B175CA8223BF27D001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ر.mp3 */; };
+		9B175CAE223BF27E001BFC91 /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B175CA9223BF27E001BFC91 /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 */; };
+		9B175CAF223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B175CAA223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */; };
+		9B175CB0223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B175CAB223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 */; };
+		9B175CB1223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B175CAC223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ا.mp3 */; };
 		9B2B87FA21F8A3A900F366D2 /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B2B87F921F8A3A900F366D2 /* alert.mp3 */; };
 		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		9B4DD143223B558B00A7D180 /* المستشفى-هل_يوجد_مستوصف_قريب_من_هنا_ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B4DD10A223B558400A7D180 /* المستشفى-هل_يوجد_مستوصف_قريب_من_هنا_ر.mp3 */; };
@@ -119,7 +124,6 @@
 		9B76EEF8223B40DB00F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEBD223B40C400F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ا.mp3 */; };
 		9B76EEFA223B40DB00F99A8B /* المطعم-كم_سعر_هذه_الوجبة-ا_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEBF223B40C500F99A8B /* المطعم-كم_سعر_هذه_الوجبة-ا_2.mp3 */; };
 		9B76EEFB223B40DB00F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEC0223B40C500F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ر.mp3 */; };
-		9B76EEFD223B40DB00F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEC2223B40C700F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3 */; };
 		9B76EEFE223B40DB00F99A8B /* المدرسة-أريد_ان_تساعدني_في_كتابة_عبارات_جديدة_لاستخدامها_في_المدرسة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEC3223B40C800F99A8B /* المدرسة-أريد_ان_تساعدني_في_كتابة_عبارات_جديدة_لاستخدامها_في_المدرسة-ا.mp3 */; };
 		9B76EF00223B40DB00F99A8B /* المطعم-الطعام_لذيذ_شكرا-ا_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEC5223B40C900F99A8B /* المطعم-الطعام_لذيذ_شكرا-ا_2.mp3 */; };
 		9B76EF01223B40DB00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEC6223B40C900F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 */; };
@@ -138,7 +142,6 @@
 		9B76EF12223B40DB00F99A8B /* المستشفى-أريد_أن-احجز_موعدا_قريبا-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EED7223B40D400F99A8B /* المستشفى-أريد_أن-احجز_موعدا_قريبا-ر.mp3 */; };
 		9B76EF14223B40DB00F99A8B /* المطعم-أنا_استخدم_التواصل_عبر_الجوال_فارجو_ان_تتساعد_معي-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EED9223B40D500F99A8B /* المطعم-أنا_استخدم_التواصل_عبر_الجوال_فارجو_ان_تتساعد_معي-ر.mp3 */; };
 		9B76EF15223B40DB00F99A8B /* المسجد-أريد_ان_اتوضأ_أين_المواضئ-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEDA223B40D500F99A8B /* المسجد-أريد_ان_اتوضأ_أين_المواضئ-ر.mp3 */; };
-		9B76EF16223B40DB00F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEDB223B40D600F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */; };
 		9B76EF17223B40DB00F99A8B /* المستشفى-أريد_أن_احجز_موعدا_قريبا-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEDC223B40D600F99A8B /* المستشفى-أريد_أن_احجز_موعدا_قريبا-ا.mp3 */; };
 		9B76EF18223B40DB00F99A8B /* العمل-هل_انتهى_وقت-العمل-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEDD223B40D700F99A8B /* العمل-هل_انتهى_وقت-العمل-ا.mp3 */; };
 		9B76EF19223B40DB00F99A8B /* المستشفى-اطلب-الطبيب_لي-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEDE223B40D700F99A8B /* المستشفى-اطلب-الطبيب_لي-ا.mp3 */; };
@@ -149,7 +152,6 @@
 		9B76EF20223B40DC00F99A8B /* المطعم-من_فضلك_اقرأ_قائمة_الطعام_لي-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EEE5223B40DB00F99A8B /* المطعم-من_فضلك_اقرأ_قائمة_الطعام_لي-ا.mp3 */; };
 		9B76EF23223B432D00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EF21223B432C00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 */; };
 		9B76EF24223B432D00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EF22223B432D00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3 */; };
-		9B76EF27223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EF25223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */; };
 		9B76EF28223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EF26223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */; };
 		9B76EF2A223B449500F99A8B /* عام-أريد_ان_أتوضأ_و_أصلي-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EF29223B449500F99A8B /* عام-أريد_ان_أتوضأ_و_أصلي-ا.mp3 */; };
 		9B76EF2D223B45E300F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B76EF2B223B45E200F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 */; };
@@ -221,7 +223,6 @@
 		9BBADCAA220E034D00423B3A /* المستشفى-شكرا_لك_و_أنا_ممنون_لك-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC0A220E033400423B3A /* المستشفى-شكرا_لك_و_أنا_ممنون_لك-ر.mp3 */; };
 		9BBADCAB220E034D00423B3A /* المستشفى-أريد_صرف_الدواء-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC0B220E033500423B3A /* المستشفى-أريد_صرف_الدواء-ر.mp3 */; };
 		9BBADCAC220E034D00423B3A /* السفر-أريد_أن_احجز_تذكرة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC0C220E033500423B3A /* السفر-أريد_أن_احجز_تذكرة-ر.mp3 */; };
-		9BBADCAD220E034D00423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC0D220E033500423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 */; };
 		9BBADCAE220E034D00423B3A /* المستشفى-اطلب_الطبيب_لي-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC0E220E033500423B3A /* المستشفى-اطلب_الطبيب_لي-ا.mp3 */; };
 		9BBADCAF220E034D00423B3A /* التحيات-وعليكم_السلام-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC0F220E033700423B3A /* التحيات-وعليكم_السلام-ر.mp3 */; };
 		9BBADCB0220E034D00423B3A /* السوق-هل_لديكم_تخفضيات-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC10220E033800423B3A /* السوق-هل_لديكم_تخفضيات-ا.mp3 */; };
@@ -258,7 +259,6 @@
 		9BBADCD1220E034D00423B3A /* المستشفى-هل_يوجد_مستوصف_قريب-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC31220E034000423B3A /* المستشفى-هل_يوجد_مستوصف_قريب-ا.mp3 */; };
 		9BBADCD2220E034D00423B3A /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC32220E034000423B3A /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3 */; };
 		9BBADCD3220E034D00423B3A /* المطعم-من_فضلك_اقرأ_قائمة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC33220E034000423B3A /* المطعم-من_فضلك_اقرأ_قائمة-ا.mp3 */; };
-		9BBADCD4220E034D00423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC34220E034100423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */; };
 		9BBADCD5220E034D00423B3A /* alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC35220E034100423B3A /* alert.mp3 */; };
 		9BBADCD6220E034D00423B3A /* المطعم-ابحث_عن_مطعم_شعبي-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC36220E034100423B3A /* المطعم-ابحث_عن_مطعم_شعبي-ا.mp3 */; };
 		9BBADCD7220E034D00423B3A /* السفر-كم_تكلفة_السفر-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC37220E034100423B3A /* السفر-كم_تكلفة_السفر-ا.mp3 */; };
@@ -278,7 +278,6 @@
 		9BBADCE5220E034D00423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC45220E034500423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */; };
 		9BBADCE6220E034D00423B3A /* التحيات-أنا_بخير_والحمد_لله-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC46220E034500423B3A /* التحيات-أنا_بخير_والحمد_لله-ا.mp3 */; };
 		9BBADCE7220E034D00423B3A /* التحيات-يا_أهلا_وسهلا-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC47220E034500423B3A /* التحيات-يا_أهلا_وسهلا-ا.mp3 */; };
-		9BBADCE8220E034D00423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC48220E034500423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 */; };
 		9BBADCE9220E034D00423B3A /* السوق-أريد_أن_ادفع_المبلغ_تفضل-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC49220E034500423B3A /* السوق-أريد_أن_ادفع_المبلغ_تفضل-ا.mp3 */; };
 		9BBADCEA220E034D00423B3A /* السوق-كم_سعر_هذا-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC4A220E034600423B3A /* السوق-كم_سعر_هذا-ر.mp3 */; };
 		9BBADCEB220E034D00423B3A /* عام-أغلق_النور_لو_سمحت-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BBADC4B220E034600423B3A /* عام-أغلق_النور_لو_سمحت-ر.mp3 */; };
@@ -396,7 +395,6 @@
 		9BEA38DC220DFB4F007FAC04 /* عام-نعم_أريده-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA383D220DFB25007FAC04 /* عام-نعم_أريده-ر.mp3 */; };
 		9BEA38DD220DFB4F007FAC04 /* عام-أغلق_النور_لو_سمحت-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA383E220DFB26007FAC04 /* عام-أغلق_النور_لو_سمحت-ر.mp3 */; };
 		9BEA38DE220DFB4F007FAC04 /* السوق-هل_لديكم_فرع_آخر-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA383F220DFB26007FAC04 /* السوق-هل_لديكم_فرع_آخر-ا.mp3 */; };
-		9BEA38DF220DFB4F007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3840220DFB27007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 */; };
 		9BEA38E1220DFB4F007FAC04 /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3842220DFB28007FAC04 /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3 */; };
 		9BEA38E3220DFB4F007FAC04 /* عام-أنا_مشغول_حاليا-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3844220DFB29007FAC04 /* عام-أنا_مشغول_حاليا-ر.mp3 */; };
 		9BEA38E4220DFB4F007FAC04 /* السوق-السعر_مرتفع_جدا-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3845220DFB2A007FAC04 /* السوق-السعر_مرتفع_جدا-ر.mp3 */; };
@@ -407,7 +405,6 @@
 		9BEA38EB220DFB4F007FAC04 /* المدرسة-أريد_ان_تساعدني_في_كتابة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA384C220DFB2C007FAC04 /* المدرسة-أريد_ان_تساعدني_في_كتابة-ا.mp3 */; };
 		9BEA38EC220DFB4F007FAC04 /* السفر-هل_بوابة_الرحلة_مفتوحة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA384D220DFB2C007FAC04 /* السفر-هل_بوابة_الرحلة_مفتوحة-ر.mp3 */; };
 		9BEA38EE220DFB4F007FAC04 /* التحيات-ايش_أخبارك-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA384F220DFB2D007FAC04 /* التحيات-ايش_أخبارك-ر.mp3 */; };
-		9BEA38EF220DFB4F007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3850220DFB2E007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 */; };
 		9BEA38F1220DFB4F007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ا.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3852220DFB2E007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ا.mp3 */; };
 		9BEA38F3220DFB4F007FAC04 /* المدرسة-أريد_أن_أحل_المسألة-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3854220DFB2F007FAC04 /* المدرسة-أريد_أن_أحل_المسألة-ر.mp3 */; };
 		9BEA38F4220DFB4F007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ر.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA3855220DFB2F007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ر.mp3 */; };
@@ -910,6 +907,11 @@
 		8F5E2F39A91F411B8B5A18E6 /* libRNSoundRecorder.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSoundRecorder.a; sourceTree = "<group>"; };
 		928763BA27DC494AA0196184 /* libRNAudioRecorderPlayer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAudioRecorderPlayer.a; sourceTree = "<group>"; };
 		9B0B092221AB6D8500E6080D /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9B175CA8223BF27D001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-الى_اللقاء_مع_السلامة-ر.mp3"; path = "../assets/sounds/المدرسة-الى_اللقاء_مع_السلامة-ر.mp3"; sourceTree = "<group>"; };
+		9B175CA9223BF27E001BFC91 /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3"; path = "../assets/sounds/السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3"; sourceTree = "<group>"; };
+		9B175CAA223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3"; path = "../assets/sounds/السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3"; sourceTree = "<group>"; };
+		9B175CAB223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3"; path = "../assets/sounds/السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3"; sourceTree = "<group>"; };
+		9B175CAC223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-الى_اللقاء_مع_السلامة-ا.mp3"; path = "../assets/sounds/المدرسة-الى_اللقاء_مع_السلامة-ا.mp3"; sourceTree = "<group>"; };
 		9B2B87F921F8A3A900F366D2 /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../assets/sounds/alert.mp3; sourceTree = "<group>"; };
 		9B4DD10A223B558400A7D180 /* المستشفى-هل_يوجد_مستوصف_قريب_من_هنا_ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-هل_يوجد_مستوصف_قريب_من_هنا_ر.mp3"; path = "../assets/sounds/المستشفى-هل_يوجد_مستوصف_قريب_من_هنا_ر.mp3"; sourceTree = "<group>"; };
 		9B4DD139223B558500A7D180 /* المسجد-أريد_ان_اتوضأ_أين_المواضئ-ا 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المسجد-أريد_ان_اتوضأ_أين_المواضئ-ا 2.mp3"; path = "../assets/sounds/المسجد-أريد_ان_اتوضأ_أين_المواضئ-ا 2.mp3"; sourceTree = "<group>"; };
@@ -971,7 +973,6 @@
 		9B76EEBD223B40C400F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ا.mp3"; path = "../assets/sounds/المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ا.mp3"; sourceTree = "<group>"; };
 		9B76EEBF223B40C500F99A8B /* المطعم-كم_سعر_هذه_الوجبة-ا_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-كم_سعر_هذه_الوجبة-ا_2.mp3"; path = "../assets/sounds/المطعم-كم_سعر_هذه_الوجبة-ا_2.mp3"; sourceTree = "<group>"; };
 		9B76EEC0223B40C500F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ر.mp3"; path = "../assets/sounds/المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ر.mp3"; sourceTree = "<group>"; };
-		9B76EEC2223B40C700F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3"; path = "../assets/sounds/السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3"; sourceTree = "<group>"; };
 		9B76EEC3223B40C800F99A8B /* المدرسة-أريد_ان_تساعدني_في_كتابة_عبارات_جديدة_لاستخدامها_في_المدرسة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-أريد_ان_تساعدني_في_كتابة_عبارات_جديدة_لاستخدامها_في_المدرسة-ا.mp3"; path = "../assets/sounds/المدرسة-أريد_ان_تساعدني_في_كتابة_عبارات_جديدة_لاستخدامها_في_المدرسة-ا.mp3"; sourceTree = "<group>"; };
 		9B76EEC5223B40C900F99A8B /* المطعم-الطعام_لذيذ_شكرا-ا_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-الطعام_لذيذ_شكرا-ا_2.mp3"; path = "../assets/sounds/المطعم-الطعام_لذيذ_شكرا-ا_2.mp3"; sourceTree = "<group>"; };
 		9B76EEC6223B40C900F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3"; path = "../assets/sounds/العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3"; sourceTree = "<group>"; };
@@ -990,7 +991,6 @@
 		9B76EED7223B40D400F99A8B /* المستشفى-أريد_أن-احجز_موعدا_قريبا-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-أريد_أن-احجز_موعدا_قريبا-ر.mp3"; path = "../assets/sounds/المستشفى-أريد_أن-احجز_موعدا_قريبا-ر.mp3"; sourceTree = "<group>"; };
 		9B76EED9223B40D500F99A8B /* المطعم-أنا_استخدم_التواصل_عبر_الجوال_فارجو_ان_تتساعد_معي-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-أنا_استخدم_التواصل_عبر_الجوال_فارجو_ان_تتساعد_معي-ر.mp3"; path = "../assets/sounds/المطعم-أنا_استخدم_التواصل_عبر_الجوال_فارجو_ان_تتساعد_معي-ر.mp3"; sourceTree = "<group>"; };
 		9B76EEDA223B40D500F99A8B /* المسجد-أريد_ان_اتوضأ_أين_المواضئ-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المسجد-أريد_ان_اتوضأ_أين_المواضئ-ر.mp3"; path = "../assets/sounds/المسجد-أريد_ان_اتوضأ_أين_المواضئ-ر.mp3"; sourceTree = "<group>"; };
-		9B76EEDB223B40D600F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3"; path = "../assets/sounds/السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3"; sourceTree = "<group>"; };
 		9B76EEDC223B40D600F99A8B /* المستشفى-أريد_أن_احجز_موعدا_قريبا-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-أريد_أن_احجز_موعدا_قريبا-ا.mp3"; path = "../assets/sounds/المستشفى-أريد_أن_احجز_موعدا_قريبا-ا.mp3"; sourceTree = "<group>"; };
 		9B76EEDD223B40D700F99A8B /* العمل-هل_انتهى_وقت-العمل-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "العمل-هل_انتهى_وقت-العمل-ا.mp3"; path = "../assets/sounds/العمل-هل_انتهى_وقت-العمل-ا.mp3"; sourceTree = "<group>"; };
 		9B76EEDE223B40D700F99A8B /* المستشفى-اطلب-الطبيب_لي-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-اطلب-الطبيب_لي-ا.mp3"; path = "../assets/sounds/المستشفى-اطلب-الطبيب_لي-ا.mp3"; sourceTree = "<group>"; };
@@ -1001,7 +1001,6 @@
 		9B76EEE5223B40DB00F99A8B /* المطعم-من_فضلك_اقرأ_قائمة_الطعام_لي-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-من_فضلك_اقرأ_قائمة_الطعام_لي-ا.mp3"; path = "../assets/sounds/المطعم-من_فضلك_اقرأ_قائمة_الطعام_لي-ا.mp3"; sourceTree = "<group>"; };
 		9B76EF21223B432C00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3"; path = "../assets/sounds/العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3"; sourceTree = "<group>"; };
 		9B76EF22223B432D00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3"; path = "../assets/sounds/العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3"; sourceTree = "<group>"; };
-		9B76EF25223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3"; path = "../assets/sounds/السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3"; sourceTree = "<group>"; };
 		9B76EF26223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3"; path = "../assets/sounds/السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3"; sourceTree = "<group>"; };
 		9B76EF29223B449500F99A8B /* عام-أريد_ان_أتوضأ_و_أصلي-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "عام-أريد_ان_أتوضأ_و_أصلي-ا.mp3"; path = "../assets/sounds/عام-أريد_ان_أتوضأ_و_أصلي-ا.mp3"; sourceTree = "<group>"; };
 		9B76EF2B223B45E200F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3"; path = "../assets/sounds/العمل-أنا_أبحث_عن_عمل_يناسبني-ر.mp3"; sourceTree = "<group>"; };
@@ -1073,7 +1072,6 @@
 		9BBADC0A220E033400423B3A /* المستشفى-شكرا_لك_و_أنا_ممنون_لك-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-شكرا_لك_و_أنا_ممنون_لك-ر.mp3"; path = "../assets/sounds/المستشفى-شكرا_لك_و_أنا_ممنون_لك-ر.mp3"; sourceTree = "<group>"; };
 		9BBADC0B220E033500423B3A /* المستشفى-أريد_صرف_الدواء-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-أريد_صرف_الدواء-ر.mp3"; path = "../assets/sounds/المستشفى-أريد_صرف_الدواء-ر.mp3"; sourceTree = "<group>"; };
 		9BBADC0C220E033500423B3A /* السفر-أريد_أن_احجز_تذكرة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-أريد_أن_احجز_تذكرة-ر.mp3"; path = "../assets/sounds/السفر-أريد_أن_احجز_تذكرة-ر.mp3"; sourceTree = "<group>"; };
-		9BBADC0D220E033500423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3"; path = "../assets/sounds/المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3"; sourceTree = "<group>"; };
 		9BBADC0E220E033500423B3A /* المستشفى-اطلب_الطبيب_لي-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-اطلب_الطبيب_لي-ا.mp3"; path = "../assets/sounds/المستشفى-اطلب_الطبيب_لي-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC0F220E033700423B3A /* التحيات-وعليكم_السلام-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "التحيات-وعليكم_السلام-ر.mp3"; path = "../assets/sounds/التحيات-وعليكم_السلام-ر.mp3"; sourceTree = "<group>"; };
 		9BBADC10220E033800423B3A /* السوق-هل_لديكم_تخفضيات-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-هل_لديكم_تخفضيات-ا.mp3"; path = "../assets/sounds/السوق-هل_لديكم_تخفضيات-ا.mp3"; sourceTree = "<group>"; };
@@ -1110,7 +1108,6 @@
 		9BBADC31220E034000423B3A /* المستشفى-هل_يوجد_مستوصف_قريب-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المستشفى-هل_يوجد_مستوصف_قريب-ا.mp3"; path = "../assets/sounds/المستشفى-هل_يوجد_مستوصف_قريب-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC32220E034000423B3A /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3"; path = "../assets/sounds/المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC33220E034000423B3A /* المطعم-من_فضلك_اقرأ_قائمة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-من_فضلك_اقرأ_قائمة-ا.mp3"; path = "../assets/sounds/المطعم-من_فضلك_اقرأ_قائمة-ا.mp3"; sourceTree = "<group>"; };
-		9BBADC34220E034100423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3"; path = "../assets/sounds/السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3"; sourceTree = "<group>"; };
 		9BBADC35220E034100423B3A /* alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alert.mp3; path = ../assets/sounds/alert.mp3; sourceTree = "<group>"; };
 		9BBADC36220E034100423B3A /* المطعم-ابحث_عن_مطعم_شعبي-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المطعم-ابحث_عن_مطعم_شعبي-ا.mp3"; path = "../assets/sounds/المطعم-ابحث_عن_مطعم_شعبي-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC37220E034100423B3A /* السفر-كم_تكلفة_السفر-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-كم_تكلفة_السفر-ا.mp3"; path = "../assets/sounds/السفر-كم_تكلفة_السفر-ا.mp3"; sourceTree = "<group>"; };
@@ -1130,7 +1127,6 @@
 		9BBADC45220E034500423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3"; path = "../assets/sounds/السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC46220E034500423B3A /* التحيات-أنا_بخير_والحمد_لله-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "التحيات-أنا_بخير_والحمد_لله-ا.mp3"; path = "../assets/sounds/التحيات-أنا_بخير_والحمد_لله-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC47220E034500423B3A /* التحيات-يا_أهلا_وسهلا-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "التحيات-يا_أهلا_وسهلا-ا.mp3"; path = "../assets/sounds/التحيات-يا_أهلا_وسهلا-ا.mp3"; sourceTree = "<group>"; };
-		9BBADC48220E034500423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3"; path = "../assets/sounds/المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC49220E034500423B3A /* السوق-أريد_أن_ادفع_المبلغ_تفضل-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-أريد_أن_ادفع_المبلغ_تفضل-ا.mp3"; path = "../assets/sounds/السوق-أريد_أن_ادفع_المبلغ_تفضل-ا.mp3"; sourceTree = "<group>"; };
 		9BBADC4A220E034600423B3A /* السوق-كم_سعر_هذا-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-كم_سعر_هذا-ر.mp3"; path = "../assets/sounds/السوق-كم_سعر_هذا-ر.mp3"; sourceTree = "<group>"; };
 		9BBADC4B220E034600423B3A /* عام-أغلق_النور_لو_سمحت-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "عام-أغلق_النور_لو_سمحت-ر.mp3"; path = "../assets/sounds/عام-أغلق_النور_لو_سمحت-ر.mp3"; sourceTree = "<group>"; };
@@ -1248,7 +1244,6 @@
 		9BEA383D220DFB25007FAC04 /* عام-نعم_أريده-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "عام-نعم_أريده-ر.mp3"; path = "../assets/sounds/عام-نعم_أريده-ر.mp3"; sourceTree = "<group>"; };
 		9BEA383E220DFB26007FAC04 /* عام-أغلق_النور_لو_سمحت-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "عام-أغلق_النور_لو_سمحت-ر.mp3"; path = "../assets/sounds/عام-أغلق_النور_لو_سمحت-ر.mp3"; sourceTree = "<group>"; };
 		9BEA383F220DFB26007FAC04 /* السوق-هل_لديكم_فرع_آخر-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-هل_لديكم_فرع_آخر-ا.mp3"; path = "../assets/sounds/السوق-هل_لديكم_فرع_آخر-ا.mp3"; sourceTree = "<group>"; };
-		9BEA3840220DFB27007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3"; path = "../assets/sounds/المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3"; sourceTree = "<group>"; };
 		9BEA3842220DFB28007FAC04 /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3"; path = "../assets/sounds/المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3"; sourceTree = "<group>"; };
 		9BEA3844220DFB29007FAC04 /* عام-أنا_مشغول_حاليا-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "عام-أنا_مشغول_حاليا-ر.mp3"; path = "../assets/sounds/عام-أنا_مشغول_حاليا-ر.mp3"; sourceTree = "<group>"; };
 		9BEA3845220DFB2A007FAC04 /* السوق-السعر_مرتفع_جدا-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السوق-السعر_مرتفع_جدا-ر.mp3"; path = "../assets/sounds/السوق-السعر_مرتفع_جدا-ر.mp3"; sourceTree = "<group>"; };
@@ -1259,7 +1254,6 @@
 		9BEA384C220DFB2C007FAC04 /* المدرسة-أريد_ان_تساعدني_في_كتابة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-أريد_ان_تساعدني_في_كتابة-ا.mp3"; path = "../assets/sounds/المدرسة-أريد_ان_تساعدني_في_كتابة-ا.mp3"; sourceTree = "<group>"; };
 		9BEA384D220DFB2C007FAC04 /* السفر-هل_بوابة_الرحلة_مفتوحة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-هل_بوابة_الرحلة_مفتوحة-ر.mp3"; path = "../assets/sounds/السفر-هل_بوابة_الرحلة_مفتوحة-ر.mp3"; sourceTree = "<group>"; };
 		9BEA384F220DFB2D007FAC04 /* التحيات-ايش_أخبارك-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "التحيات-ايش_أخبارك-ر.mp3"; path = "../assets/sounds/التحيات-ايش_أخبارك-ر.mp3"; sourceTree = "<group>"; };
-		9BEA3850220DFB2E007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3"; path = "../assets/sounds/المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3"; sourceTree = "<group>"; };
 		9BEA3852220DFB2E007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ا.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-شكرا_لك_و_انا_ممنون_لك-ا.mp3"; path = "../assets/sounds/السفر-شكرا_لك_و_انا_ممنون_لك-ا.mp3"; sourceTree = "<group>"; };
 		9BEA3854220DFB2F007FAC04 /* المدرسة-أريد_أن_أحل_المسألة-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "المدرسة-أريد_أن_أحل_المسألة-ر.mp3"; path = "../assets/sounds/المدرسة-أريد_أن_أحل_المسألة-ر.mp3"; sourceTree = "<group>"; };
 		9BEA3855220DFB2F007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ر.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "السفر-شكرا_لك_و_انا_ممنون_لك-ر.mp3"; path = "../assets/sounds/السفر-شكرا_لك_و_انا_ممنون_لك-ر.mp3"; sourceTree = "<group>"; };
@@ -1732,6 +1726,11 @@
 		BAA047DFEDCC45BB9C2BBD34 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9B175CA9223BF27E001BFC91 /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 */,
+				9B175CAA223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */,
+				9B175CAB223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 */,
+				9B175CAC223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ا.mp3 */,
+				9B175CA8223BF27D001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ر.mp3 */,
 				9B4DD1BA223BE19800A7D180 /* التحيات-السلام_عليكم_و_رحمة_الله_و_بركاته-ا.mp3 */,
 				9B4DD1BB223BE19800A7D180 /* التحيات-السلام_عليكم_و_رحمة_الله_و_بركاته-ر.mp3 */,
 				9B4DD1B7223BE19700A7D180 /* التحيات-الى_اللقاء_مع_السلامة-ا.mp3 */,
@@ -1778,8 +1777,6 @@
 				9B4DD140223B558900A7D180 /* المسجد-أريد_ان_اتوضأ_أين_المواضئ-ر 2.mp3 */,
 				9B76EEB2223B40BB00F99A8B /* السفر-هذه-امتعتي_أريدك-ان_تساعدني-ا.mp3 */,
 				9B76EECB223B40CD00F99A8B /* السفر-هذه-امتعتي_أريدك-ان_تساعدني-ر.mp3 */,
-				9B76EEC2223B40C700F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3 */,
-				9B76EEDB223B40D600F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */,
 				9B76EED6223B40D400F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3 */,
 				9B76EF22223B432D00F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3 */,
 				9B76EF2C223B45E200F99A8B /* العمل-أنا_أبحث_عن_عمل_يناسبني-ا.mp3 */,
@@ -1835,7 +1832,6 @@
 				9BEA3857220DFB30007FAC04 /* التحيات-السلام_عليكم_ورحمة_الله_وبركاته-ر.mp3 */,
 				9BEA387B220DFB3D007FAC04 /* التحيات-ايش_أخبارك-ا.mp3 */,
 				9B76EF26223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */,
-				9B76EF25223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */,
 				9BEA37CE220DF095007FAC04 /* التحيات-ايش_أخبارك-ر.mp3 */,
 				9BBADBDF220E032300423B3A /* التحيات-كيف_حالك-ر.mp3 */,
 				9BBADBEA220E032700423B3A /* التحيات-مرحبا_حياك_الله-ا.mp3 */,
@@ -1849,7 +1845,6 @@
 				9BEA38A0220DFB49007FAC04 /* السفر-أريد_ان_اسجل_الحضور-ر.mp3 */,
 				9BBADBD9220E032200423B3A /* السفر-أريد_ان_اسجل_الحضور-ر.mp3 */,
 				9BBADC45220E034500423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 */,
-				9BBADC34220E034100423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 */,
 				9BEA388C220DFB42007FAC04 /* السفر-ابحث_عن_مساعد_ليساعدني_في_إتمام_سفري-ا.mp3 */,
 				9BEA38AC220DFB4C007FAC04 /* السفر-ابحث_عن_مساعد_ليساعدني_في_إتمام_سفري-ر.mp3 */,
 				9BBADC2C220E033F00423B3A /* السفر-ابحث_عن_مساعد_ليساعدني_في_إتمام_سفري-ر.mp3 */,
@@ -2021,11 +2016,7 @@
 				9BEA3865220DFB36007FAC04 /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3 */,
 				9BBADC32220E034000423B3A /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ا.mp3 */,
 				9BEA3842220DFB28007FAC04 /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3 */,
-				9BEA3850220DFB2E007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 */,
-				9BBADC48220E034500423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 */,
-				9BEA3840220DFB27007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 */,
 				9BBADBF5220E032C00423B3A /* المدرسة-أستاذ_لا_أفهم_هذه_المسألة-ر.mp3 */,
-				9BBADC0D220E033500423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 */,
 				9BEA387C220DFB3E007FAC04 /* المدرسة-كم_درجة_الاختبار-ا.mp3 */,
 				9BEA3860220DFB34007FAC04 /* المدرسة-كم_درجة_الاختبار-ر.mp3 */,
 				9BBADBE5220E032400423B3A /* المدرسة-كم_درجة_الاختبار-ا.mp3 */,
@@ -2765,7 +2756,6 @@
 				9BEA37E7220DF09F007FAC04 /* التحيات-يا_أهلا_وسهلا-ا.mp3 in Resources */,
 				9BEA392E220DFB4F007FAC04 /* عام-أنا_سعيد_بحضورك-ر.mp3 in Resources */,
 				9BEA37FE220DF09F007FAC04 /* السفر-كم_تكلفة_السفر-ر.mp3 in Resources */,
-				9B76EF16223B40DB00F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 in Resources */,
 				9BBADCB5220E034D00423B3A /* التحيات-وعليكم_السلام-ا.mp3 in Resources */,
 				9B4DD167223B56BD00A7D180 /* المطعم_من_فضلك_اقرأ_قائمة_الطعام_لي-ا.mp3 in Resources */,
 				9BEA3800220DF09F007FAC04 /* التحيات-أنا_بخير_والحمد_لله-ر.mp3 in Resources */,
@@ -2786,7 +2776,6 @@
 				9B76EF08223B40DB00F99A8B /* المستشفى-هل_يمكنك_تسجيل_عبارة_جديدة_لاستخدمها_في-التواصل_مع-الصيدلي_أو-الممرض-ا.mp3 in Resources */,
 				9BEA38D5220DFB4F007FAC04 /* العمل-يمكنني_أن_استخدم_هذا_التطبيق-ا.mp3 in Resources */,
 				9BEA3938220DFB4F007FAC04 /* السوق-أريدك_أن_تساعدني_في_الحصول-ا.mp3 in Resources */,
-				9B76EF27223B43AC00F99A8B /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 in Resources */,
 				9BEA378E220DB409007FAC04 /* التحيات-كيف_حالك-ر.mp3 in Resources */,
 				9B76EF0F223B40DB00F99A8B /* المستشفى-لدي-الم_شديد_هنا-ا.mp3 in Resources */,
 				9BBADC91220E034D00423B3A /* السفر-هل_بوابة_الرحلة_مفتوحة-ا.mp3 in Resources */,
@@ -2802,7 +2791,6 @@
 				9BEA38C3220DFB4F007FAC04 /* المستشفى-شكرا_لك_و_أنا_ممنون_لك-ر.mp3 in Resources */,
 				9BEA37F0220DF09F007FAC04 /* السفر-أريد_ان_اسجل_الحضور-ا.mp3 in Resources */,
 				9BEA38F5220DFB4F007FAC04 /* السوق-هل_لديكم_فرع_آخر-ر.mp3 in Resources */,
-				9BBADCD4220E034D00423B3A /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ر.mp3 in Resources */,
 				19C94594CA8540C0859AB26D /* SpaceMono-Regular.ttf in Resources */,
 				9BEA3940220DFB4F007FAC04 /* المطعم-الطعام_لذيذ_شكرا-ا.mp3 in Resources */,
 				9BBADC7B220E034D00423B3A /* عام-أنا_سعيد_بحضورك-ر.mp3 in Resources */,
@@ -2816,6 +2804,7 @@
 				9BBADCD6220E034D00423B3A /* المطعم-ابحث_عن_مطعم_شعبي-ا.mp3 in Resources */,
 				9BBADCBF220E034D00423B3A /* عام-أغلق_النور_لو_سمحت-ا.mp3 in Resources */,
 				9B76EF0B223B40DB00F99A8B /* المدرسة-متى_ينتهي_العمل-ر.mp3 in Resources */,
+				9B175CB1223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ا.mp3 in Resources */,
 				9BEA394E220DFB4F007FAC04 /* السفر-أريد_أن_احجز_تذكرة-ا.mp3 in Resources */,
 				9B4DD169223B56BD00A7D180 /* المطعم_أنا_استخدم_التواصل_عبر_الجوال_فارجو_ان_تتساعد_معي-ا.mp3 in Resources */,
 				9BEA394D220DFB4F007FAC04 /* المستشفى-كم_جرعة_الدواء_و_متى-ا.mp3 in Resources */,
@@ -2824,7 +2813,6 @@
 				9BBADC88220E034D00423B3A /* المطعم-الطعام_لذيذ_شكرا-ر.mp3 in Resources */,
 				A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */,
 				9BBADCB1220E034D00423B3A /* المستشفى-هل_يمكنك_تسجيل_عبارة-ا.mp3 in Resources */,
-				9BBADCAD220E034D00423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 in Resources */,
 				9B4DD144223B558B00A7D180 /* المسجد-أريد_ان_اتوضأ_أين_المواضئ-ا 2.mp3 in Resources */,
 				9BEA3810220DF680007FAC04 /* السفر-شكرا_لك_و_انا_ممنون_لك-ر.mp3 in Resources */,
 				9B4DD1CC223BE19A00A7D180 /* المطعم-من_فضلك_اقرأ_قائمة_الطعام-لي-ا.mp3 in Resources */,
@@ -2882,7 +2870,9 @@
 				9BEA3949220DFB4F007FAC04 /* المدرسة-متى_ينتهي_الدوام-ا.mp3 in Resources */,
 				9BBADCA2220E034D00423B3A /* السوق-السعر_مرتفع_جدا-ر.mp3 in Resources */,
 				9BEA38D7220DFB4F007FAC04 /* عام-افتح_الباب_من_فضلك-ر.mp3 in Resources */,
+				9B175CAF223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ا.mp3 in Resources */,
 				9BBADCF3220E034D00423B3A /* السوق-أين_أجد_قسم_الملابس-ر.mp3 in Resources */,
+				9B175CB0223BF27E001BFC91 /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 in Resources */,
 				9BBADD03220E034D00423B3A /* التحيات-سعدت_بالحديث_معك_مع_السلامة-ا.mp3 in Resources */,
 				9BEA38BE220DFB4F007FAC04 /* السوق-أريد_خضروات_طازجة-ر.mp3 in Resources */,
 				9BBADC82220E034D00423B3A /* السوق-هل_لديكم_فرع_آخر-ر.mp3 in Resources */,
@@ -2958,7 +2948,6 @@
 				9BBADC7E220E034D00423B3A /* السفر-أريد_الحصول_على_تخفيض_ذوي_الاحتياجات_الخاصة-ا.mp3 in Resources */,
 				9BBADCBB220E034D00423B3A /* عام-افتح_الباب_من_فضلك-ر.mp3 in Resources */,
 				9BEA3931220DFB4F007FAC04 /* العمل-هل_انتهى_الدوام-ر.mp3 in Resources */,
-				9BBADCE8220E034D00423B3A /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 in Resources */,
 				9B76EEF8223B40DB00F99A8B /* المطعم-ابحث_عن_مطعم_شعبي_قريب_من_هنا-ا.mp3 in Resources */,
 				65F48D7B7DCB4AE39C45804B /* FontAwesome5_Regular.ttf in Resources */,
 				9BEA3914220DFB4F007FAC04 /* المدرسة-لقد_انتهيت-ر.mp3 in Resources */,
@@ -3104,7 +3093,6 @@
 				9BEA38BF220DFB4F007FAC04 /* السوق-هل_لديكم_تخفضيات-ر.mp3 in Resources */,
 				9B4DD146223B558B00A7D180 /* المستشفى-أريد_صرف_الدواء_من_فضلك_ر.mp3 in Resources */,
 				9BEA3948220DFB4F007FAC04 /* المطعم-من_فضلك_اقرأ_قائمة-ا.mp3 in Resources */,
-				9B76EEFD223B40DB00F99A8B /* السوق-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع-ا.mp3 in Resources */,
 				9BEA390A220DFB4F007FAC04 /* المسجد-هل_قامت_الصلاة-ا.mp3 in Resources */,
 				9BEA3790220DB409007FAC04 /* التحيات-يا_أهلا_وسهلا-ر.mp3 in Resources */,
 				9BBADCE2220E034D00423B3A /* المطعم-هل_لديكم_شبكة_للدفع-ر.mp3 in Resources */,
@@ -3120,6 +3108,7 @@
 				9B76EEE7223B40DB00F99A8B /* المطعم-من_فضلك_اقرأ_قائمة_الطعام_لي-ر.mp3 in Resources */,
 				911346D5CD674F0BAADC013E /* SimpleLineIcons.ttf in Resources */,
 				9BEA38C7220DFB4F007FAC04 /* العمل-ما_هي_البيانات_المطلوبة-ر.mp3 in Resources */,
+				9B175CAE223BF27E001BFC91 /* السفر-أريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرف_المرتفع-ر.mp3 in Resources */,
 				9BBADCD7220E034D00423B3A /* السفر-كم_تكلفة_السفر-ا.mp3 in Resources */,
 				9BEA3926220DFB4F007FAC04 /* عام-عذرا_أين_دورة_المياة-ر.mp3 in Resources */,
 				9BEA3909220DFB4F007FAC04 /* المطعم-أريد_الباقي_لو_سمحت-ر.mp3 in Resources */,
@@ -3145,6 +3134,7 @@
 				9BEA38B5220DFB4F007FAC04 /* التحيات-سعدت_بالحديث_معك_مع_السلامة-ا.mp3 in Resources */,
 				9BEA3936220DFB4F007FAC04 /* عام-أغلق_النور_لو_سمحت-ا.mp3 in Resources */,
 				9BEA391A220DFB4F007FAC04 /* التحيات-ايش_أخبارك-ا.mp3 in Resources */,
+				9B175CAD223BF27E001BFC91 /* المدرسة-الى_اللقاء_مع_السلامة-ر.mp3 in Resources */,
 				9BEA394F220DFB4F007FAC04 /* المطعم-كم_سعر_هذه_الوجبة-ر.mp3 in Resources */,
 				9BEA391B220DFB4F007FAC04 /* المدرسة-كم_درجة_الاختبار-ا.mp3 in Resources */,
 				9BEA38DC220DFB4F007FAC04 /* عام-نعم_أريده-ر.mp3 in Resources */,
@@ -3159,7 +3149,6 @@
 				9BEA3789220DB409007FAC04 /* التحيات-مرحبا_حياك_الله-ر.mp3 in Resources */,
 				9BBADCAE220E034D00423B3A /* المستشفى-اطلب_الطبيب_لي-ا.mp3 in Resources */,
 				9BEA38BC220DFB4F007FAC04 /* المستشفى-أريد_صرف_الدواء-ا.mp3 in Resources */,
-				9BEA38EF220DFB4F007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ا.mp3 in Resources */,
 				9BBADCD1220E034D00423B3A /* المستشفى-هل_يوجد_مستوصف_قريب-ا.mp3 in Resources */,
 				9B4DD15E223B56BC00A7D180 /* المطعم_كم_مجموع_الطعام-ا.mp3 in Resources */,
 				9B4DD1C1223BE19A00A7D180 /* المستشفى-هل_يمكنك_تسجيل_عبارة_جديدة_لاستخدمها_في_التواصل_مع_الصيدلي_أو_الممرض-ر.mp3 in Resources */,
@@ -3191,7 +3180,6 @@
 				9BBADC6D220E034D00423B3A /* المطعم-كم_مجموع_الطعام-ر.mp3 in Resources */,
 				9BEA393F220DFB4F007FAC04 /* السفر-أريد_ان_اسجل_الحضور-ر.mp3 in Resources */,
 				9B4DD164223B56BD00A7D180 /* المطعم_الطعام_لذيذ_شكرا-ر.mp3 in Resources */,
-				9BEA38DF220DFB4F007FAC04 /* المدرسة-إلى_اللقاء_مع_السلامة-ر.mp3 in Resources */,
 				9BBADCF8220E034D00423B3A /* عام-أنا_مشغول_حاليا-ر.mp3 in Resources */,
 				9BBADCA5220E034D00423B3A /* المستشفى-اطلب_الطبيب_لي-ر.mp3 in Resources */,
 				9BEA38B7220DFB4F007FAC04 /* المطعم-الطعام_لذيذ_شكرا-ر.mp3 in Resources */,
