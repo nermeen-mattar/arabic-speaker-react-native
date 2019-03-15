@@ -19,12 +19,20 @@ export class TextToSpeach {
     }
     return TextToSpeach.instance;
   }
+  fetchWithTimeout(url, options, timeout = 1000) {
+    return Promise.race([
+        fetch(url, options),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('timeout')), timeout)
+        )
+    ]);
+}
 
   speak(text) {
     NetInfo.isConnected.fetch().then(isConnected => {
       if (isConnected) {
         // handle  Platform.OS === 'android'
-        fetch("http://18.224.240.0:8082/api/process?text=".concat(text), {
+        TextToSpeach.instance.fetchWithTimeout("http://18.224.240.0:8082/api/process?text=".concat(text), {
           method: "GET"
         })
           .then(response => {
