@@ -256,6 +256,18 @@ export default class NewSentenceScreen extends React.Component {
     TextToSpeach.getInstance().speak(this.state.sentence);
   };
 
+
+  displayAlertMessage() {
+    Alert.alert(
+        'فشل الحفظ',
+        'لا يمكن حفظ عبارة فارغة',
+        [
+        {text: 'حسناً'}
+        ]
+    )
+}
+ 
+
   addNewSentence = () => {
     if (!this.state.sentence) {
       this.displayAlertMessage();

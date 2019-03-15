@@ -188,6 +188,10 @@ export class TextPrediction {
       const entriesLength = entries.length;
       let isUnique, isMatched;
       for (let entryIndex = 0; entryIndex < entriesLength; entryIndex++) {
+        if (this.maxNumOfPredictions <= destinationArr.length) {
+          // may add another preventive check
+          return;
+        }
         isUnique = !destinationArr.includes(entries[entryIndex]);
         isMatched = entries[entryIndex].match(
           new RegExp("^" + incompleteWord),
@@ -195,10 +199,6 @@ export class TextPrediction {
         );
         if (isUnique && isMatched) {
           destinationArr.push(entries[entryIndex]);
-        }
-        if (this.maxNumOfPredictions <= destinationArr.length) {
-          // may add another preventive check
-          return;
         }
       }
     }
