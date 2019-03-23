@@ -208,7 +208,7 @@ export default class CategoriesScreen extends React.Component {
                     key={category.label}
                     cardInfo={category}
                     selectMode={this.state.selectMode}
-                    fontSize={this.state.categoryPath.length > 1 ? 12 : 15}
+                    fontSize={this.state.categoryPath.length > 1 ? 14 : 17} /// was 12: 15
                     selected={category.selected}
                   />
                 </TouchableOpacity>

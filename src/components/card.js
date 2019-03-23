@@ -50,13 +50,13 @@ export class Card extends React.Component {
           {
             // {width: 77, height: 55 }
             this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg,
-              this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 58, minHeight: 58}
+              this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 90, minHeight: 58}
             ]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-          <MonoText fontFamily={fonts.tajawal} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
+          <MonoText fontFamily={fonts.tajawal} style={[styles.cardLabel, commonStyles.ellipsis, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
   
         </View>
 

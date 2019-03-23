@@ -9,6 +9,11 @@ export default {
     flexCenter:  {justifyContent: 'center', flexDirection: 'row',  flexWrap: 'wrap',},
     textCenter: {
         textAlign: 'center'
-    }
+    },
+    ellipsis: {
+        textOverflow: ellipsis,
+        whiteSpace: nowrap,
+        overflow: hidden
+      }
 }
 
