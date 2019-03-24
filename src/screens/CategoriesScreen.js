@@ -116,7 +116,7 @@ export default class CategoriesScreen extends React.Component {
     // this.updateTitle();
     this.cancelSelectMode();
     // if(!this.state.selectMode) {
-    this.updateGender();
+    // this.updateGender();
     this.initCategories();
   };
 
@@ -190,7 +190,7 @@ export default class CategoriesScreen extends React.Component {
                     key={category.label}
                     cardInfo={category}
                     selectMode={this.state.selectMode}
-                    fontSize={this.state.categoryPath.length > 1 ? 12 : 15}
+                    fontSize={this.state.categoryPath.length > 1 ? 15 : 18} // this.state.categoryPath.length > 1 ? 12 : 15
                     selected={category.selected}
                   />
                 </TouchableOpacity>
@@ -208,7 +208,7 @@ export default class CategoriesScreen extends React.Component {
                     key={category.label}
                     cardInfo={category}
                     selectMode={this.state.selectMode}
-                    fontSize={this.state.categoryPath.length > 1 ? 14 : 17} /// was 12: 15
+                    fontSize={this.state.categoryPath.length > 1 ? 15 : 18} /// was 12: 15
                     selected={category.selected}
                   />
                 </TouchableOpacity>
@@ -342,15 +342,16 @@ export default class CategoriesScreen extends React.Component {
       );
     }
   };
-  updateGender = () => {
-    const storageInstance = Storage.getInstance();
-    const result = { value: "null" };
-    storageInstance.getItem("settingsValues", result).then(res => {
-      this.setState({
-        voiceGender: result.value ? result.value.voiceGender : Genders.female
-      });
-    });
-  };
+
+  // updateGender = () => {
+  //   const storageInstance = Storage.getInstance();
+  //   const result = { value: "null" };
+  //   storageInstance.getItem("settingsValues", result).then(res => {
+  //     this.setState({
+  //       voiceGender: result.value ? result.value.voiceGender : Genders.female
+  //     });
+  //   });
+  // };
 
   playExistingSoundDeprecated = sentenceIndex => {
     let soundPath = "";
@@ -378,10 +379,16 @@ export default class CategoriesScreen extends React.Component {
     const cleanedSentence = this.cleanSentence(
       this.state.categories[sentenceIndex]
     );
-    const gender = this.state.voiceGender === Genders.female ? "ا" : "ر";
-    let soundPath =
-      this.state.categoryPath[1] + "-" + cleanedSentence + "-" + gender;
-    PlaySound(soundPath);
+    const storageInstance = Storage.getInstance();
+    const result = { value: "null" };
+    storageInstance.getItem("settingsValues", result).then(res => {
+      const voiceGender =  result.value ? result.value.voiceGender : Genders.female;
+      const gender = voiceGender === Genders.female ? "ا" : "ر";
+      let soundPath =
+        this.state.categoryPath[1] + "-" + cleanedSentence + "-" + gender;
+      PlaySound(soundPath);
+    });
+
   };
 
   cleanSentence(sentence) {

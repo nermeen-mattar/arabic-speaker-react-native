@@ -44,7 +44,7 @@ export class Card extends React.Component {
 
            {/* or check-square-o */}
             {/* </View> */}
-            <View  style={{flexDirection: 'column', alignItems: 'center'}} > 
+            <View  style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} > 
 
 
           {
@@ -56,7 +56,7 @@ export class Card extends React.Component {
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-          <MonoText fontFamily={fonts.tajawal} style={[styles.cardLabel, commonStyles.ellipsis, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
+          <MonoText fontFamily={fonts.tajawal} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
   
         </View>
 
@@ -87,7 +87,8 @@ export class Card extends React.Component {
     },
     cardLabel: {
       fontWeight: 'bold',
-      textAlign: 'center'
+      textAlign: 'center',
+      flex:1
     },
     // selectIconWrapper: {
     //   display: 'flex',
