@@ -5,7 +5,7 @@ export default {
       label: "يمكنني ان استخدم هذا التطبيق للتواصل و إضافة عبارات جديدة",
       default: true
     },
-    { label: "أغلق النور لو سمحت", default: true, imgSrc: require("../../assets/images/sentences/عام/عام_أغلق_النور_لو_سمحت.png") },
+    { label: "أغلق النور لو سمحت", default: true, imgSrc: require("../../assets/images/sentences/عام/عام_أغلق_النور_لو_سمحت.png") },
     { label: "إفتح النور لو سمحت", default: true },
     { label: "عذرا أين دورة المياة؟", default: true },
     { label: "أنا مشغول حاليا", default: true },
@@ -14,7 +14,7 @@ export default {
     { label: "أنا سعيد بحضورك", default: true },
     { label: "كل عام و أنتم بخير", default: true },
     { label: "أريد ان أتوضأ و أصلي", default: true },
-    { label: "أين المفتاح؟ أنا لا أجده", default: true, imgSrc: require("../../assets/images/sentences/عام/عام_أين_المفتاح_أنا_لا_أجده.png") },
+    { label: "أين المفتاح؟ أنا لا أجده", default: true, imgSrc: require("../../assets/images/sentences/عام/عام_أين_المفتاح_أنا_لا_أجده.png") },
     { label: "تفضل معي الى البيت", default: true },
     { label: "افتح الباب من فضلك", default: true }
   ],

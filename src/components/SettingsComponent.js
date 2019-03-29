@@ -177,7 +177,7 @@ class SettingsComponent extends Component {
          </ScrollView>
          </View>
          <TouchableOpacity style={styles.logo}   onPress={() => Linking.openURL('http://appsbunches.com')}> 
-           <Image source = {require('../../assets/images/3na8ed_logo.png')}/>
+           <Image style={{width: 200, height: 58}} source = {require('../../assets/images/3na8ed_logo.png')}/>
          </TouchableOpacity>
 
          </View>

@@ -5,8 +5,7 @@ import {
   View,
   TouchableOpacity,
   TouchableHighlight,
-  Keyboard,
-  ScrollView
+  Keyboard
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
