@@ -1,8 +1,9 @@
 import React from 'react';
-import {Platform, StyleSheet, StatusBar, View, ActivityIndicator} from 'react-native';
+import {Platform, StyleSheet, StatusBar, View, Image, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { createDrawerNavigator} from 'react-navigation'
 import SplashScreen from 'react-native-splash-screen'
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { NavigationActions } from 'react-navigation';
 import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
@@ -32,6 +33,23 @@ export default class App extends React.Component {
   navigatorRef;
   state = {
     isLoadingComplete: false,
+    illustrateImgs: [
+      require("./assets/images/illustrate/Home–13x.png"),
+      require("./assets/images/illustrate/Home–23x.png"),
+      require("./assets/images/illustrate/fav3x.png"),
+      require("./assets/images/illustrate/Home–33x.png"),
+      require("./assets/images/illustrate/Home–43x.png"),
+      require("./assets/images/illustrate/categories3x.png"),
+      require("./assets/images/illustrate/categorydetails3x.png"),
+      require("./assets/images/illustrate/addnew–cat3x.png"),
+      require("./assets/images/illustrate/addnew3x.png"),
+      require("./assets/images/illustrate/addnew–1-3x.png"),
+      require("./assets/images/illustrate/Library_icons3x.png"),
+      require("./assets/images/illustrate/Library_icons–13x.png"),
+      require("./assets/images/illustrate/settings–13x.png"),
+      require("./assets/images/illustrate/settings–23x.png"),
+    ],
+    index: 0
   };
 
   // gets the current screen from navigation state
@@ -65,6 +83,21 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <Image style={{width: '100%', height: '100%'}} source={this.state.illustrateImgs[this.state.index]} />
+          <TouchableOpacity style={{position: 'absolute', top: '50%'}}
+                  onPress={() => {
+                    this.addToIndex(1);
+                  }}
+                >
+          <Icon style={{ color: 'white'}} name="arrow-right" size={24} />
+          </TouchableOpacity>
+          <TouchableOpacity style={{position: 'absolute', top: '50%', right: '0%'}}
+                  onPress={() => {
+                    this.addToIndex(-1);
+                  }}
+                > 
+          <Icon style={{color: 'white'}} name="arrow-left" size={24} /> 
+                  </TouchableOpacity>
       <SettingsDrawer 
       
       ref={navigatorRef => {
@@ -87,6 +120,11 @@ export default class App extends React.Component {
       </View>
     );
   // }
+  }
+  addToIndex(amount) {
+    this.setState({
+      index: this.state.index + amount
+    })
   }
 
   _loadResourcesAsync = async () => {
