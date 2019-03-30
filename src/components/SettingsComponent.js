@@ -18,6 +18,7 @@ import { Storage } from '../classes/Storage';
 import Genders from "../constants/Genders";
 import AboutUsScreen from "../screens/AboutUsScreen";
 import ContactUsScreen from "../screens/ContactUsScreen";
+import IllustrationScreen from "../screens/IllustrationScreen";
 
 class SettingsComponent extends Component {
     constructor (props) {
@@ -108,6 +109,14 @@ class SettingsComponent extends Component {
       //   }
       // },
       {
+        navigateTo: {
+          componentHtml:   <IllustrationScreen onBackClicked={ () => {
+            this.setState({
+              displayedPage: null, 
+            }) 
+          }}> </IllustrationScreen>,
+          componentName: 'illustration'
+        } ,
         right: {
           imgSrc: require('../../assets/images/settings/demo.png'),
           label: 'شرح استخدام التطبيق'
