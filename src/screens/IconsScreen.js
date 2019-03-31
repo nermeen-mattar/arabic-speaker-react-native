@@ -53,7 +53,8 @@ navigation = {this.props.navigation} title={this.state.title} onBackClicked= { (
                   this.iconClicked(index)
                }}>
       
-              <Card key ={icon.label} cardInfo = {icon} fontSize = {12} />
+                {/* fontSize was 12 */}
+              <Card key ={icon.label} cardInfo = {icon} fontSize = {16} /> 
               </TouchableOpacity>
                    );
                   })

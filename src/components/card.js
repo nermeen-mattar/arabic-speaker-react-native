@@ -30,10 +30,6 @@ export class Card extends React.Component {
       const isCardSelected = isCardSelectable && this.props.cardInfo.selected;
       return (
         <View style={[styles.container, commonStyles.shadow, {backgroundColor: isCardSelected ? Colors.brand: Colors.primary} ]} >
-          {/* <CheckBox
-          checked={this.state.checked}
-        /> */}
-          {/* <View  style={styles.selectIconWrapper} > */}
           { 
             isCardSelectable ? 
             (isCardSelected ? 
@@ -43,20 +39,21 @@ export class Card extends React.Component {
            {/* <Icon  style={styles.unSelectIcon} name="circle-thin" size={30} /> */}
 
            {/* or check-square-o */}
-            {/* </View> */}
-            <View  style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} > 
+
+                          {/*  was justify-content-center and there was no height 100%*/}
+            <View  style={{  height: '100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}} > 
 
 
           {
             // {width: 77, height: 55 }
             this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg,
-              this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 90, minHeight: 58}
+              // this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 90, minHeight: 58}
             ]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-          <MonoText fontFamily={fonts.tajawal} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
+          <MonoText fontFamily={fonts.tajawal}  numberOfLines={this.props.cardInfo.imgSrc ? 1 : 5} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
   
         </View>
 
@@ -81,20 +78,14 @@ export class Card extends React.Component {
     },
     cardImg: {
       // marginTop: 24,
-      marginBottom: 14,
-      maxWidth: 55,
-      maxHeight: 55
+      // flex:1,
+      maxWidth: 70,
+      maxHeight: 70
     },
     cardLabel: {
       fontWeight: 'bold',
       textAlign: 'center',
-      flex:1
     },
-    // selectIconWrapper: {
-    //   display: 'flex',
-    //   justifyContent: 'flex-end',
-    //   textAlign: 'right',
-    // },
     topRightIcon: {
       position:'absolute',
       left:7, // was right before ar
@@ -111,9 +102,3 @@ export class Card extends React.Component {
   });
   
   
-  
-
-// Card.propTypes = {
-//   name: React.PropTypes.string,
-//   initialAge: React.PropTypes.number
-// };
