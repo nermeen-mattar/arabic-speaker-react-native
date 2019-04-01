@@ -186,7 +186,7 @@ class SettingsComponent extends Component {
          </ScrollView>
          </View>
          <TouchableOpacity style={styles.logo}   onPress={() => Linking.openURL('http://appsbunches.com')}> 
-           <Image style={{width: 200, height: 58}} source = {require('../../assets/images/3na8ed_logo.png')}/>
+           <Image style={{width: 166, height: 46}} source = {require('../../assets/images/3na8ed_logo.png')}/>
          </TouchableOpacity>
 
          </View>
@@ -233,7 +233,7 @@ const styles = StyleSheet.create({
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
-      marginVertical: 24,
+      marginVertical: 40,
     },
     drawerHeader: {
 
