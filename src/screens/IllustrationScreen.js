@@ -40,20 +40,20 @@ export default class IllustrationScreen extends React.Component {
           source={this.state.illustrateImgs[this.state.index]}
         />
         <TouchableOpacity
-          style={{ position: "absolute", top: "50%" }}
+          style={{ position: "absolute", top: "95%", right: "51%" }}
           onPress={() => {
             this.addToIndex(1);
           }}
         >
-          <Icon style={{ color: "white" }} name="arrow-right" size={24} />
+          <Icon style={{ color: "white" }} name="arrow-circle-right" size={38} />
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ position: "absolute", top: "50%", right: "0%" }}
+          style={{ position: "absolute", top: "95%", left: "51%"  }}
           onPress={() => {
             this.addToIndex(-1);
           }}
         >
-          <Icon style={{ color: "white" }} name="arrow-left" size={24} />
+          <Icon style={{ color: "white" }} name="arrow-circle-left" size={38} />
         </TouchableOpacity>
       </Modal>
     );
@@ -66,8 +66,9 @@ export default class IllustrationScreen extends React.Component {
           })
         this.props.onBackClicked();
     }
+    const newAmount = this.state.index + amount;
     this.setState({
-      index: this.state.index + amount
+      index: newAmount >=0 ? newAmount : 0
     });
   }
 }
