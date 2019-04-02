@@ -93,7 +93,9 @@ export default {
       label: "أريد ان تساعدني في كتابة عبارات جديدة لاستخدامها في المدرسة",
       default: true
     },
-    { label: "الى اللقاء مع السلامة", default: true, imgSrc: require("../../assets/images/sentences/التحيات/التحيات-الى_اللقاء_مع_السلامة.png") }
+    { label: "الى اللقاء مع السلامة", default: true,
+    //  imgSrc: require("../../assets/images/sentences/التحيات/التحيات-الى_اللقاء_مع_السلامة.png") 
+  }
   ],
 
   "المكتبات,المطعم": [
