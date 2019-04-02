@@ -47,14 +47,13 @@ export class Card extends React.Component {
           {
             // {width: 77, height: 55 }
             this.props.cardInfo.imgSrc ?   <Image style={[styles.cardImg,
-              // this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 90, minHeight: 58}
+              this.props.cardInfo.default ? {  minWidth: 42, minHeight: 42} : {minWidth: 90, minHeight: 58}
             ]} source={ this.props.cardInfo.imgSrc} /> : null
           }
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-          <MonoText fontFamily={fonts.tajawal}  numberOfLines={this.props.cardInfo.imgSrc ? 1 : 5} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
-  
+         <MonoText fontFamily={fonts.tajawal}  numberOfLines={this.props.cardInfo.imgSrc ? 2 : 5} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
         </View>
 
         </View>
@@ -100,5 +99,3 @@ export class Card extends React.Component {
       color:'#D0D0D0'
     }
   });
-  
-  

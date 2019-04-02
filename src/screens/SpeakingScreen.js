@@ -384,7 +384,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   spaceIcon: {
-    width: 116,
+    width: 121,
     height: 22,
     backgroundColor: Colors.borderColor,
     borderRadius: 10,
