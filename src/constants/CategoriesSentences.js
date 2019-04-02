@@ -1,9 +1,34 @@
 export default {
   "المكتبات,عام": [
-    ],
+    { label: "أنا جائع أريد الطعام", default: true },
+    {
+      label: "يمكنني ان استخدم هذا التطبيق للتواصل وإضافة عبارات جديدة",
+      default: true
+    },
+    { label: "أغلق النور لو سمحت", default: true },
+    { label: "إفتح النور لو سمحت", default: true },
+    { label: "عذرا أين دورة المياة؟", default: true },
+    { label: "أنا مشغول حاليا", default: true },
+    { label: "نعم أريده", default: true },
+    { label: "هذا الموقف خاص بذوي الاحتياجات الخاصة", default: true },
+    { label: "أنا سعيد بحضورك", default: true },
+    { label: "كل عام و أنتم بخير", default: true },
+    { label: "أريد ان أتوضأ و أصلي", default: true },
+    { label: "أين المفتاح؟ أنا لا أجده", default: true },
+    { label: "تفضل معي الى البيت", default: true },
+    { label: "افتح الباب من فضلك", default: true }
+  ],
 
   "المكتبات,التحيات": [
-   ],
+    { label: "السلام عليكم ورحمة الله وبركاته", default: true },
+    { label: "كيف حالك؟", default: true },
+    { label: "يا أهلا وسهلا", default: true },
+    { label: "مرحبا حياك الله", default: true },
+    { label: "أنا بخير والحمد لله", default: true },
+    { label: "وعليكم السلام", default: true },
+    { label: "ايش أخبارك؟", default: true },
+    { label: "سعدت بالحديث معك مع السلامة", default: true }
+  ],
 
   "المكتبات,العمل": [
     { label: "أين مكتب العمل؟", default: true },

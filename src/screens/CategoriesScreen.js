@@ -177,7 +177,8 @@ export default class CategoriesScreen extends React.Component {
           }
         />
         <ScrollView>
-          <MonoText> {this.state.test}</MonoText>
+        {/* <MonoText> {this.state.categoryPath}</MonoText> */}
+          {/* <MonoText> {this.state.test}</MonoText> */}
           <View style={styles.cardsContainer}>
             {this.state.categories.map((category, index) => {
               return category.type === "category" ? (
@@ -252,39 +253,41 @@ export default class CategoriesScreen extends React.Component {
     storageInstance
       .getItem(this.state.categoryPath.join(), result)
       .then(res => {
-        if (result.value && result.value[1].label !== "تحياتي") {
-          //
+        // this.setState({
+        //   test: JSON.stringify(  (result.value ))
+        // });
+        if (result.value) {
+          // storageInstance.removeItem( this.state.categoryPath.join());
           this.setState({
             categories: result.value
-            // test: JSON.stringify(result.value)
+            // , test: 'found in ' + this.state.categoryPath.join() + JSON.stringify(result.value)
           });
         } else {
-          // if(this.state.defaultCategories[this.state.categoryPath.join()])
-          if (
-            result &&
-            result.value &&
-            result.value[1] &&
-            result.value[1].label === "تحياتي"
-          ) {
-            storageInstance.removeItem("المكتبات,المستشفى");
-            storageInstance.removeItem("المكتبات,عام");
-            storageInstance.removeItem("المكتبات,التحيات");
-            storageInstance.removeItem("المكتبات,السوق");
-            storageInstance.removeItem("المكتبات,العمل");
-            storageInstance.removeItem("المكتبات,السفر");
-            storageInstance.removeItem("المكتبات,المطعم");
-            storageInstance.removeItem("المكتبات,المدرسة");
-            storageInstance.removeItem("المكتبات,المسجد");
-          }
+          // if (
+          //   result &&
+          //   result.value &&
+          //   result.value[1] &&
+          //   result.value[1].label === "تحياتي"
+          // ) {
+          //   storageInstance.removeItem("المكتبات,المستشفى");
+          //   storageInstance.removeItem("المكتبات,عام");
+          //   storageInstance.removeItem("المكتبات,التحيات");
+          //   storageInstance.removeItem("المكتبات,السوق");
+          //   storageInstance.removeItem("المكتبات,العمل");
+          //   storageInstance.removeItem("المكتبات,السفر");
+          //   storageInstance.removeItem("المكتبات,المطعم");
+          //   storageInstance.removeItem("المكتبات,المدرسة");
+          //   storageInstance.removeItem("المكتبات,المسجد");
+          // }
+         const defaultCategoriesOrSentences = this.state.defaultCategories[this.state.categoryPath.join()] || [];
           this.setState({
-            categories:
-              this.state.defaultCategories[this.state.categoryPath.join()] || []
-            // test: 'default categories'
+            categories: defaultCategoriesOrSentences
+            // , test: 'set ' +this.state.categoryPath.join() + ' to ' + JSON.stringify(this.state.defaultCategories[this.state.categoryPath.join()] )
+
           });
-          storageInstance.setItem(
-            this.state.categoryPath.join(),
-            this.state.categories
-          );
+            storageInstance.setItem(
+              this.state.categoryPath.join(), defaultCategoriesOrSentences
+            );
         }
       });
   };
@@ -316,8 +319,12 @@ export default class CategoriesScreen extends React.Component {
       this.selectionToggeled(index);
     } else {
       //  if(this.state.categories[index].type === 'category')
-      this.state.categoryPath.push(this.state.categories[index].label);
-      this.load();
+      this.setState({
+        categoryPath: [...this.state.categoryPath, this.state.categories[index].label]
+      });
+      setTimeout(() => {
+        this.load();
+      }, 2);
     }
     // else {
     //   this.sentenceClicked(index);
