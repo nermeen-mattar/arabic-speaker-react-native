@@ -40,7 +40,7 @@ export default class IllustrationScreen extends React.Component {
           source={this.state.illustrateImgs[this.state.index]}
         />
         <TouchableOpacity
-          style={{ position: "absolute", top: "95%", right: "51%" }}
+          style={{ position: "absolute", top: "92%", right: "51%" }}
           onPress={() => {
             this.addToIndex(1);
           }}
@@ -48,7 +48,7 @@ export default class IllustrationScreen extends React.Component {
           <Icon style={{ color: "white" }} name="arrow-circle-right" size={38} />
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ position: "absolute", top: "95%", left: "51%"  }}
+          style={{ position: "absolute", top: "92%", left: "51%"  }}
           onPress={() => {
             this.addToIndex(-1);
           }}
