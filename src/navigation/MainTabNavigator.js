@@ -30,7 +30,7 @@ const CategoriesStack = createStackNavigator({
 
 CategoriesStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
-    <MonoText style={{textAlign: 'center', marginRight: 4,  marginLeft: 4, color: focused ? Colors.brand: Colors.grayFontColor}}> المكتبات </MonoText>  
+    <MonoText style={{textAlign: 'center', marginRight: 10,  marginLeft: 10, color: focused ? Colors.brand: Colors.grayFontColor}}> المكتبات </MonoText>  
   ),
 
   // tabBarIcon:  ({ focused }) => (
@@ -50,7 +50,7 @@ const SpeakingStack = createStackNavigator({
 
 SpeakingStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
-    <MonoText style={{textAlign: 'center', marginRight: 4,  marginLeft: 4, color: focused ?  Colors.brand: Colors.grayFontColor}}> التحدث </MonoText>  
+    <MonoText style={{textAlign: 'center', marginRight: 10,  marginLeft: 10, color: focused ?  Colors.brand: Colors.grayFontColor}}> التحدث </MonoText>  
   ),
   tabBarIcon:  ({ focused }) => (
     <Icon name="comments" size={24} color={focused ? Colors.brand: Colors.grayFontColor}   />  
@@ -64,7 +64,7 @@ const FavourtiesStack = createStackNavigator({
 
 FavourtiesStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
-    <MonoText style={{textAlign: 'center', marginRight: 4,  marginLeft: 4, color: focused ?  Colors.brand: Colors.grayFontColor}}> المفضلة </MonoText>  
+    <MonoText style={{textAlign: 'center', marginRight: 10,  marginLeft: 10, color: focused ?  Colors.brand: Colors.grayFontColor}}> المفضلة </MonoText>  
   ),
   tabBarIcon:  ({ focused }) => (
     <Icon name="star" size={24} color={focused ? Colors.brand: Colors.grayFontColor} />  
@@ -77,7 +77,7 @@ const AlertStack = createStackNavigator({
 
 AlertStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
-    <MonoText style={{textAlign: 'center', marginRight: 4,  marginLeft: 4, color: focused ?  Colors.brand: Colors.grayFontColor}}> تنبيه </MonoText>  
+    <MonoText style={{textAlign: 'center', marginRight: 10,  marginLeft: 10, color: focused ?  Colors.brand: Colors.grayFontColor}}> تنبيه </MonoText>  
   ),
 //   <TabBarIcon
 //   focused={focused}
