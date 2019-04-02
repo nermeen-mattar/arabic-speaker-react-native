@@ -21,6 +21,7 @@ import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
 import DeleteAndCancel from "../components/DeleteAndCancel";
 import { TextToSpeach } from "../classes/TextToSpeach";
 import { ArabicRecorderAndPlayer } from "../classes/ArabicRecorderAndPlayer";
+import commonStyles from "../styles/commonStyles";
 
 export default class CategoriesScreen extends React.Component {
   constructor(props) {
@@ -179,7 +180,8 @@ export default class CategoriesScreen extends React.Component {
         <ScrollView>
         {/* <MonoText> {this.state.categoryPath}</MonoText> */}
           {/* <MonoText> {this.state.test}</MonoText> */}
-          <View style={styles.cardsContainer}>
+          <View style={commonStyles.flexCenter}>
+          <View style={[styles.cardsContainer, commonStyles.flexCenter]}>
             {this.state.categories.map((category, index) => {
               return category.type === "category" ? (
                 <TouchableOpacity
@@ -215,6 +217,7 @@ export default class CategoriesScreen extends React.Component {
                 </TouchableOpacity>
               ) : null;
             })}
+          </View>
           </View>
         </ScrollView>
         {this.state.selectMode ? (
@@ -466,10 +469,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
     // display: 'flex',
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center"
+    // flex: 1,
+    maxWidth: 480,
+    flexWrap: "wrap"
   }
 
   // welcomeImage: {

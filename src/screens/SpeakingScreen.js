@@ -162,8 +162,9 @@ export default class TextToSpeachScreen extends React.Component {
             </View>
           </View>
         </View>
+        <View style={commonStyles.flexCenter}>
 
-        <View style={styles.predectionsWrapper}>
+        <View style={[styles.predectionsWrapper, commonStyles.flexCenter]}>
           {this.state.predectedWords.map(word => {
             return (
               <TouchableOpacity
@@ -174,6 +175,7 @@ export default class TextToSpeachScreen extends React.Component {
               </TouchableOpacity>
             );
           })}
+        </View>
         </View>
           {/* <ScrollView>
           <MonoText>{JSON.stringify(   TextPrediction.getInstance().debuggingText)}</MonoText>
@@ -389,11 +391,9 @@ const styles = StyleSheet.create({
     marginBottom: 4
   },
   predectionsWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
-    flexWrap: "wrap",
     paddingVertical: 14,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    maxWidth: 500,
   },
   predectedWord: {
     marginHorizontal: 10,

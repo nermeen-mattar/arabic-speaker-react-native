@@ -13,6 +13,7 @@ import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 import LibrariesIcons from '../constants/LibrariesIcons';
 import {Card} from '../components/card';
+import commonStyles from '../styles/commonStyles';
 
 export default class IconsScreen extends React.Component {
 
@@ -45,7 +46,8 @@ navigation = {this.props.navigation} title={this.state.title} onBackClicked= { (
         {/* <ScrollView style={styles.container} > */}
     
         <ScrollView >
-          <View style={styles.cardsContainer}>
+        <View style={commonStyles.flexCenter}>
+          <View style={[styles.cardsContainer, commonStyles.flexCenter]}>
           {
             this.state.iconsToDisplay.map((icon, index) => {
               return(
@@ -59,6 +61,7 @@ navigation = {this.props.navigation} title={this.state.title} onBackClicked= { (
                    );
                   })
                 }
+                </View>
                 </View>
                 </ScrollView>
         {/* </ScrollView> */}
@@ -90,14 +93,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.appBackground,
   },
   cardsContainer: {
-    // alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
-    // display: 'flex',
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+    maxWidth: 480
   },
 
 });
