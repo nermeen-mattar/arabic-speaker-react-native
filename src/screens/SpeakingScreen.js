@@ -171,7 +171,7 @@ export default class TextToSpeachScreen extends React.Component {
                 style={[styles.predectedWord, commonStyles.shadow]}
                 onPress={() => this.selectPredectedWord(word)}
               >
-                <MonoText style={styles.predectedWordText}> {word} </MonoText>
+                <MonoText numberOfLines="1" style={styles.predectedWordText}> {word} </MonoText>
               </TouchableOpacity>
             );
           })}
