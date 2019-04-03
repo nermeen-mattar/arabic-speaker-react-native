@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Image, TouchableOpacity, View} from "react-native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
+import { MonoText } from "../components/StyledText";
 
 export default class IllustrationScreen extends React.Component {
   constructor(props) {
@@ -40,21 +41,13 @@ export default class IllustrationScreen extends React.Component {
         visible={this.state.isVisible}
       >
        <View  style={{ backgroundColor: '#5e5e5e'}}>
-       <TouchableOpacity
-          style={{padding: 5, marginHorizontal: 8 }} 
-          // position: "fixed", top: "4%", left: '4%'
-          onPress={this.props.onBackClicked}
-        >
-          <Icon style={{ color: "white" }} name="angle-down" size={40} /> 
-          {/* name="times-circle" */}
-        </TouchableOpacity>
-        
+      
           <Image
           style={{  height: '100%', width: '100%', resizeMode: 'contain'}}
           source={this.state.illustrateImgs[this.state.index]}
         />
         <TouchableOpacity
-          style={{ position: "absolute", top: "76%", right: "51%" }}
+          style={{ position: "absolute", top: "70%", right: "51%" }}
           onPress={() => {
             this.addToIndex(1);
           }}
@@ -62,12 +55,18 @@ export default class IllustrationScreen extends React.Component {
           <Icon style={{ color: "white" }} name="arrow-circle-right" size={38} />
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ position: "absolute", top: "76%", left: "51%"}}
+          style={{ position: "absolute", top: "70%", left: "51%"}}
           onPress={() => {
             this.addToIndex(-1);
           }}
         >
           <Icon style={{ color: "white" }} name="arrow-circle-left" size={38} />
+        </TouchableOpacity>
+      
+        <TouchableOpacity
+          style={{ position: "absolute", top: "71%", right: "2%"}}
+          onPress={this.props.onBackClicked} >
+          <MonoText style={{ color: "white" }}> تخطي الشرح </MonoText>
         </TouchableOpacity>
        </View>
       </Modal>
