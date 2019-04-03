@@ -1,4 +1,4 @@
 export default {
   cardWidth: 111,
-  cardHeight: 108
+  cardHeight: 111
 };

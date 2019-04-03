@@ -84,6 +84,7 @@ export class Card extends React.Component {
     cardLabel: {
       fontWeight: 'bold',
       textAlign: 'center',
+      marginTop: 6
     },
     topRightIcon: {
       position:'absolute',
