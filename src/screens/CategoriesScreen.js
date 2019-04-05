@@ -470,7 +470,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     // display: 'flex',
     // flex: 1,
-    maxWidth: 480,
+    // maxWidth: 480,
     flexWrap: "wrap"
   }
 

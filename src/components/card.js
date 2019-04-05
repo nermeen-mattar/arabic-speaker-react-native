@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Image
+  Image,
+  Platform,
+  Dimensions
 } from 'react-native';
 
 import Spacings from '../constants/Spacings';
@@ -53,7 +54,7 @@ export class Card extends React.Component {
 
          {/* <Image style={styles.cardImg} source={this.props.cardInfo.imgSrc} /> */}
 
-         <MonoText fontFamily={fonts.tajawal}  numberOfLines={this.props.cardInfo.imgSrc ? 2 : 5} style={[styles.cardLabel, {fontSize: this.props.fontSize}, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
+         <MonoText fontFamily={fonts.tajawal}  numberOfLines={this.props.cardInfo.imgSrc ? 2 : 5} style={[styles.cardLabel, {color: isCardSelected ?  Colors.primary: 'black'}]}>{this.state.cardInfo.label}</MonoText>
         </View>
 
         </View>
@@ -62,30 +63,31 @@ export class Card extends React.Component {
 
   }
 
-
+  const cardSize = Platform.isPad ? Dimensions.get('window').width / 4.5 : Spacings.size;
   const styles = StyleSheet.create({
     container: {
       ...commonStyles.flexCenter,
       alignItems: 'center',
-      width: Spacings.cardWidth,
-      height: Spacings.cardHeight,
+      width: cardSize,
+      height: cardSize,
       // backgroundColor: Colors.primary,
-      marginHorizontal: 4.5,
-      marginVertical: 3.5,
+      marginHorizontal: cardSize/30, // 4.5
+      marginVertical: cardSize/30, // 3.5
       borderRadius: 10 /* **N** */
       // marginBottom: 4,
     },
     cardImg: {
       // marginTop: 24,
-      // flex:1,
-      maxWidth: 70,
-      maxHeight: 66,
+      flex:1,
+      maxWidth: '100%', // 70
+      maxHeight: '100%', // 66
       resizeMode: 'stretch'
     },
     cardLabel: {
       fontWeight: 'bold',
       textAlign: 'center',
-      marginTop: 10
+      marginTop: 10,
+      // fontSize: this.props.fontSize
     },
     topRightIcon: {
       position:'absolute',
