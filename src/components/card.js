@@ -79,12 +79,13 @@ export class Card extends React.Component {
       // marginTop: 24,
       // flex:1,
       maxWidth: 70,
-      maxHeight: 70
+      maxHeight: 66,
+      resizeMode: 'stretch'
     },
     cardLabel: {
       fontWeight: 'bold',
       textAlign: 'center',
-      marginTop: 6
+      marginTop: 10
     },
     topRightIcon: {
       position:'absolute',

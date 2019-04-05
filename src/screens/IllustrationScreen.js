@@ -66,7 +66,7 @@ export default class IllustrationScreen extends React.Component {
         <TouchableOpacity
           style={{ position: "absolute", top: "71%", right: "2%"}}
           onPress={this.props.onBackClicked} >
-          <MonoText style={{ color: "white" }}> تخطي الشرح </MonoText>
+          <MonoText style={{ color: '#FDFD96', fontSize: 17 }}> تخطي الشرح </MonoText>
         </TouchableOpacity>
        </View>
       </Modal>
