@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: "#F7F7F7", // temp
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: 'center',
     paddingHorizontal: 16,
     height: 60,
