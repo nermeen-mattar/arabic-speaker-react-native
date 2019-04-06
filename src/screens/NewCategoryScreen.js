@@ -214,6 +214,7 @@ ImagePicker.showImagePicker(options, (response) => {
     // storageInstance.setItem('storageInstance', 'nermeen');
     const result = { value: "null" };
     storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
+      result.value = result.value ? result.value : [];
       storageInstance
         .setItem(this.state.categoryPath.join(), [
           ...result.value,

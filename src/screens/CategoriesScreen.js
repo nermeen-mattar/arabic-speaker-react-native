@@ -42,56 +42,56 @@ export default class CategoriesScreen extends React.Component {
           {
             label: "عام",
             type: "category",
-            imgSrc: require("../../assets/images/categories/info.png"),
+            imgSrc: require("../../assets/images/categories/عام.png"),
             default: true
           },
           {
             label: "التحيات",
             type: "category",
-            imgSrc: require("../../assets/images/categories/chat.png"),
+            imgSrc: require("../../assets/images/categories/التحيات.png"),
             default: true
           },
           // { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
           {
             label: "العمل",
             type: "category",
-            imgSrc: require("../../assets/images/categories/tools.png"),
+            imgSrc: require("../../assets/images/categories/العمل.png"),
             default: true
           },
           {
             label: "السوق",
             type: "category",
-            imgSrc: require("../../assets/images/categories/cart.png"),
+            imgSrc: require("../../assets/images/categories/السوق.png"),
             default: true
           },
           {
             label: "السفر",
             type: "category",
-            imgSrc: require("../../assets/images/categories/plane.png"),
+            imgSrc: require("../../assets/images/categories/السفر.png"),
             default: true
           },
           {
             label: "المدرسة",
             type: "category",
-            imgSrc: require("../../assets/images/categories/pencil.png"),
+            imgSrc: require("../../assets/images/categories/المدرسة.png"),
             default: true
           },
           {
             label: "المطعم",
             type: "category",
-            imgSrc: require("../../assets/images/categories/cake.png"),
+            imgSrc: require("../../assets/images/categories/المطعم.png"),
             default: true
           },
           {
             label: "المستشفى",
             type: "category",
-            imgSrc: require("../../assets/images/categories/health.png"),
+            imgSrc: require("../../assets/images/categories/المستشفى.png"),
             default: true
           },
           {
             label: "المسجد",
             type: "category",
-            imgSrc: require("../../assets/images/categories/mosque_Icon.png"),
+            imgSrc: require("../../assets/images/categories/المسجد.png"),
             default: true
           }
         ],
@@ -101,7 +101,15 @@ export default class CategoriesScreen extends React.Component {
     // storageInstance = Storage.getInstance();
     // storageInstance.removeItem('المكتبات');
     // storageInstance.removeItem( 'المكتبات,المستشفى');
-
+    //         storageInstance.removeItem("المكتبات,المستشفى");
+    //         storageInstance.removeItem("المكتبات,عام");
+    //         storageInstance.removeItem("المكتبات,التحيات");
+    //         storageInstance.removeItem("المكتبات,السوق");
+    //         storageInstance.removeItem("المكتبات,العمل");
+    //         storageInstance.removeItem("المكتبات,السفر");
+    //         storageInstance.removeItem("المكتبات,المطعم");
+    //         storageInstance.removeItem("المكتبات,المدرسة");
+    //         storageInstance.removeItem("المكتبات,المسجد");
     this.initCategories();
     // this.initVoiceGender();
     // this.load();
@@ -259,39 +267,14 @@ export default class CategoriesScreen extends React.Component {
         // this.setState({
         //   test: JSON.stringify(  (result.value ))
         // });
-        if (result.value) {
+        defaultCategories =  this.state.defaultCategories[this.state.categoryPath.join()] || [];
+        result.value = result.value ? result.value : [];
           // storageInstance.removeItem( this.state.categoryPath.join());
           this.setState({
-            categories: result.value
+            categories: [...defaultCategories, ...result.value],
+            // test: JSON.stringify([...defaultCategories, ...result.value])
             // , test: 'found in ' + this.state.categoryPath.join() + JSON.stringify(result.value)
           });
-        } else {
-          // if (
-          //   result &&
-          //   result.value &&
-          //   result.value[1] &&
-          //   result.value[1].label === "تحياتي"
-          // ) {
-          //   storageInstance.removeItem("المكتبات,المستشفى");
-          //   storageInstance.removeItem("المكتبات,عام");
-          //   storageInstance.removeItem("المكتبات,التحيات");
-          //   storageInstance.removeItem("المكتبات,السوق");
-          //   storageInstance.removeItem("المكتبات,العمل");
-          //   storageInstance.removeItem("المكتبات,السفر");
-          //   storageInstance.removeItem("المكتبات,المطعم");
-          //   storageInstance.removeItem("المكتبات,المدرسة");
-          //   storageInstance.removeItem("المكتبات,المسجد");
-          // }
-         const defaultCategoriesOrSentences = this.state.defaultCategories[this.state.categoryPath.join()] || [];
-          this.setState({
-            categories: defaultCategoriesOrSentences
-            // , test: 'set ' +this.state.categoryPath.join() + ' to ' + JSON.stringify(this.state.defaultCategories[this.state.categoryPath.join()] )
-
-          });
-            storageInstance.setItem(
-              this.state.categoryPath.join(), defaultCategoriesOrSentences
-            );
-        }
       });
   };
 

@@ -77,8 +77,8 @@ export class Card extends React.Component {
       width: cardSize,
       height: cardSize,
       // backgroundColor: Colors.primary,
-      marginHorizontal: cardSize/30, // 4.5
-      marginVertical: cardSize/30, // 3.5
+      margin: cardSize/30, // 4.5
+      padding: cardSize/40,
       borderRadius: 10 /* **N** */
       // marginBottom: 4,
     },

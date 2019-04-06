@@ -11,7 +11,7 @@ import Colors from './src/constants/Colors';
 import SettingsComponent from './src/components/SettingsComponent'
 import { I18nManager } from 'react-native';
 import IllustrationScreen from './src/screens/IllustrationScreen';
-I18nManager.forceRTL(true) // for testing RTL
+// I18nManager.forceRTL(true) // for testing RTL
 
 
 const SettingsDrawer = createDrawerNavigator({

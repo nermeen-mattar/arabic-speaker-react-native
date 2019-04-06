@@ -99,7 +99,7 @@ export default class TextToSpeachScreen extends React.Component {
       >
         <CustomHeader navigation={this.props.navigation} />
 
-        <View style={commonStyles.flexCenter}>
+        <View style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
         <View style={styles.inputAndToolsWrapper}>
             <TextInput
               value={this.state.text}
