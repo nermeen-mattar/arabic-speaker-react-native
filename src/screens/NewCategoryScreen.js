@@ -295,7 +295,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     maxWidth: 500,
-    height: 78,
+    height: 82, // 78,
     backgroundColor: Colors.primary,
     fontSize: 21,
     //   color: Colors.textSecondary,
@@ -307,8 +307,8 @@ const styles = StyleSheet.create({
     borderRadius: 10 /* **N** */
   },
   card: {
-    width: 81,
-    height: 78,
+    width: 82,
+    height: 82,
     backgroundColor: Colors.primary,
     margin: 11,
     borderRadius: 10 /* **N** */

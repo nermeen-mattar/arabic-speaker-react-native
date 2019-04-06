@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     maxWidth: 500,
     marginHorizontal: 16,
     // width: 350,
-    height: 78,
+    height: 100, // 78,
     backgroundColor: Colors.primary,
     fontSize: 21,
     textAlign: "right",
@@ -346,7 +346,7 @@ const styles = StyleSheet.create({
   card: {
     display: "flex",
     width: 108,
-    height: 104,
+    height: 108,
     backgroundColor: Colors.primary,
     marginVertical: 11,
     marginHorizontal: 5,

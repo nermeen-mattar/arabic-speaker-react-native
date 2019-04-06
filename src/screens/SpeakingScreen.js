@@ -358,11 +358,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     height: 60,
-    borderRadius: 10 /* **N** */
+    borderRadius: 10
   },
   tool: {
     // paddingVertical: 5,
     // paddingHorizontal: 16,
+    minWidth: 50,
     textAlign: "center"
   },
   speakActive: {
