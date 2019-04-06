@@ -382,17 +382,17 @@ const styles = StyleSheet.create({
   },
   predectionsWrapper: {
     paddingVertical: 14,
-    paddingHorizontal: 12,
+    // paddingHorizontal: 12,
     // maxWidth: 500,
+    display: 'flex', 
+    justifyContent: 'space-between'
   },
   predectedWord: {
-    marginHorizontal: 10,
+    // marginHorizontal: 10,
     backgroundColor: "white",
     borderRadius: 10,
-    // paddingHorizontal: 24,
     paddingVertical: 6, // was 10
     marginBottom: 10,
-    // commented paddingHorizantl and added static width instead
     width: '25%',
     minWidth: 95,
     maxWidth: 120
