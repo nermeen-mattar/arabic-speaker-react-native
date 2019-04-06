@@ -100,7 +100,6 @@ export default class TextToSpeachScreen extends React.Component {
         <CustomHeader navigation={this.props.navigation} />
 
         <View style={commonStyles.flexCenter}>
-        <View style= {{width: '85%', maxWidth: 500}}>
         <View style={styles.inputAndToolsWrapper}>
             <TextInput
               value={this.state.text}
@@ -161,7 +160,7 @@ export default class TextToSpeachScreen extends React.Component {
                 );
               })}
             </View>
-          </View>
+            </View>
           <View style={[styles.predectionsWrapper, commonStyles.flexCenter]}>
           {this.state.predectedWords.map(word => {
             return (
@@ -174,7 +173,7 @@ export default class TextToSpeachScreen extends React.Component {
             );
           })}
         </View>
-        </View>
+   
         </View>
           {/* <ScrollView>
           <MonoText>{JSON.stringify(   TextPrediction.getInstance().debuggingText)}</MonoText>
@@ -333,6 +332,8 @@ const styles = StyleSheet.create({
     //     padding: 13,
   },
   inputAndToolsWrapper: {
+    width: '85%', 
+    maxWidth: 500,
     marginTop: 10,
     paddingTop: 12,
     height: 144,
@@ -382,20 +383,19 @@ const styles = StyleSheet.create({
   },
   predectionsWrapper: {
     paddingVertical: 14,
+    maxWidth: 690
     // paddingHorizontal: 12,
     // maxWidth: 500,
-    display: 'flex', 
-    justifyContent: 'space-between'
   },
   predectedWord: {
-    // marginHorizontal: 10,
+    marginHorizontal: 10,
     backgroundColor: "white",
     borderRadius: 10,
-    paddingVertical: 6, // was 10
+    paddingVertical: '2%', // was 10
     marginBottom: 10,
-    width: '25%',
+    width: '20%',
     minWidth: 95,
-    maxWidth: 120
+    maxWidth: 200
   },
   predectedWordText: {
     fontSize: 18,
