@@ -100,7 +100,8 @@ export default class TextToSpeachScreen extends React.Component {
         <CustomHeader navigation={this.props.navigation} />
 
         <View style={commonStyles.flexCenter}>
-          <View style={styles.inputAndToolsWrapper}>
+        <View style= {{width: '85%', maxWidth: 500}}>
+        <View style={styles.inputAndToolsWrapper}>
             <TextInput
               value={this.state.text}
               style={styles.textInput}
@@ -161,10 +162,7 @@ export default class TextToSpeachScreen extends React.Component {
               })}
             </View>
           </View>
-        </View>
-        <View style={commonStyles.flexCenter}>
-
-        <View style={[styles.predectionsWrapper, commonStyles.flexCenter]}>
+          <View style={[styles.predectionsWrapper, commonStyles.flexCenter]}>
           {this.state.predectedWords.map(word => {
             return (
               <TouchableOpacity
@@ -175,6 +173,7 @@ export default class TextToSpeachScreen extends React.Component {
               </TouchableOpacity>
             );
           })}
+        </View>
         </View>
         </View>
           {/* <ScrollView>
@@ -337,41 +336,32 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 12,
     height: 144,
-    width: 350,
+    // width: 350,
     position: "relative",
-    // marginHorizontal: 'auto',
     backgroundColor: Colors.primary,
     borderRadius: 10 /* **N** */
   },
   textInput: {
-    // width: 350,
     height: 60,
-    // backgroundColor: Colors.primary,
     fontSize: 21,
-    //   color: Colors.textSecondary,
     textAlign: "right",
     paddingHorizontal: 8 // 11
-    // paddingVertical: 12, // 16 // moved to wrapper
-    // marginLeft: 'auto', // 10, // 12
-    // marginRight: 'auto',
   },
   toolsbar: {
     position: "absolute",
     top: 84,
+    width: '100%',
     backgroundColor: "#F7F7F7", // temp
     flexDirection: "row",
-    justifyContent: "center",
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-    // marginLeft: 'auto', // 10, // 12
-    // marginRight: 'auto',
+    justifyContent: "space-between",
+    alignItems: 'center',
+    paddingHorizontal: 16,
     height: 60,
     borderRadius: 10 /* **N** */
   },
   tool: {
-    paddingVertical: 5,
-    // width: 60,
-    paddingHorizontal: 16,
+    // paddingVertical: 5,
+    // paddingHorizontal: 16,
     textAlign: "center"
   },
   speakActive: {
@@ -393,7 +383,7 @@ const styles = StyleSheet.create({
   predectionsWrapper: {
     paddingVertical: 14,
     paddingHorizontal: 12,
-    maxWidth: 500,
+    // maxWidth: 500,
   },
   predectedWord: {
     marginHorizontal: 10,
@@ -403,7 +393,9 @@ const styles = StyleSheet.create({
     paddingVertical: 6, // was 10
     marginBottom: 10,
     // commented paddingHorizantl and added static width instead
-    width: 95
+    width: '25%',
+    minWidth: 95,
+    maxWidth: 120
   },
   predectedWordText: {
     fontSize: 18,
