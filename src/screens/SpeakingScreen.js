@@ -391,7 +391,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     backgroundColor: "white",
     borderRadius: 10,
-    paddingVertical: '2%', // was 10
+    paddingVertical: '1.5%', // was 10
     marginBottom: 10,
     width: '20%',
     minWidth: 95,

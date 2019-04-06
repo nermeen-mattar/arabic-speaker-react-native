@@ -293,12 +293,14 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textInput: {
-    width: 260,
+    flex: 1,
+    maxWidth: 500,
     height: 78,
     backgroundColor: Colors.primary,
     fontSize: 21,
     //   color: Colors.textSecondary,
     textAlign: "right",
+    marginHorizontal: 8,
     padding: 8,
     paddingTop: 12, // 20 didn't work
     marginTop: 11,

@@ -42,7 +42,7 @@ export class Card extends React.Component {
            {/* or check-square-o */}
 
                           {/*  was justify-content-center and there was no height 100%*/}
-            <View  style={{  height: '100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}} > 
+            <View  style={{ width: '100%', height: '100%', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}} > 
 
 
           {
@@ -63,7 +63,13 @@ export class Card extends React.Component {
 
   }
 
-  const cardSize = Platform.isPad ? Dimensions.get('window').width / 4.5 : Spacings.size;
+  // const cardSize = Platform.isPad ? Dimensions.get('window').width / 4.5 : Spacings.size;
+  // const deviceWidth =  Dimensions.get('window').width;
+  // const deviceHeight =  Dimensions.get('window').height;
+  // const cardSize = deviceWidth/deviceHeight ? Dimensions.get('window').width / 5 : Dimensions.get('window').width / 3.5;
+  
+  let cardSize = Dimensions.get('window').width / 5;
+  cardSize = cardSize < Spacings.size ? Spacings.size : cardSize;
   const styles = StyleSheet.create({
     container: {
       ...commonStyles.flexCenter,
@@ -79,14 +85,15 @@ export class Card extends React.Component {
     cardImg: {
       // marginTop: 24,
       flex:1,
-      maxWidth: '100%', // 70
-      maxHeight: '100%', // 66
+      width: '90%', // 70
+      // height: '90%', // 66
       resizeMode: 'stretch'
     },
     cardLabel: {
       fontWeight: 'bold',
       textAlign: 'center',
       marginTop: 10,
+      fontSize: Platform.isPad ? 20 : 15
       // fontSize: this.props.fontSize
     },
     topRightIcon: {

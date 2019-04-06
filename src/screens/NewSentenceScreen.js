@@ -330,7 +330,10 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   textInput: {
-    width: 350,
+    flex: 1,
+    maxWidth: 500,
+    marginHorizontal: 16,
+    // width: 350,
     height: 78,
     backgroundColor: Colors.primary,
     fontSize: 21,
