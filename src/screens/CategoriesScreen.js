@@ -324,7 +324,7 @@ export default class CategoriesScreen extends React.Component {
     } else if (this.state.categories[sentenceIndex].default) {
       this.playExistingSound(sentenceIndex);
     } else if (this.state.categories[sentenceIndex].soundPath) {
-      ArabicRecorderAndPlayer.getInstance().onStartPlay(
+      ArabicRecorderAndPlayer.getInstance().onStartPlayStoredFile(
         this.state.categories[sentenceIndex].soundPath
       );
       // this.onStartPlay(this.state.categories[sentenceIndex].soundPath);
@@ -456,28 +456,4 @@ const styles = StyleSheet.create({
     maxWidth: 900,
     flexWrap: "wrap"
   }
-
-  // welcomeImage: {
-  //   resizeMode: 'contain',
-  // },
-  // tabBarInfoContainer: {
-  //   position: 'absolute',
-  //   bottom: 0,
-  //   left: 0,
-  //   right: 0,
-  //   ...Platform.select({
-  //     ios: {
-  //       shadowColor: 'black',
-  //       shadowOffset: { height: -3 },
-  //       shadowOpacity: 0.1,
-  //       shadowRadius: 3,
-  //     },
-  //     android: {
-  //       elevation: 20,
-  //     },
-  //   }),
-  //   alignItems: 'center',
-  //   backgroundColor: '#fbfbfb',
-  //   paddingVertical: 20,
-  // }
 });

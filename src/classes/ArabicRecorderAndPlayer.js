@@ -1,82 +1,73 @@
-import AudioRecorderAndPlayer from 'react-native-audio-recorder-player';
-import { Platform } from 'react-native'
-import { requestPermission } from './AndroidPermissionRequester';
+import AudioRecorderAndPlayer from "react-native-audio-recorder-player";
+import { Platform } from "react-native";
+import { requestPermission } from "./AndroidPermissionRequester";
 export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
-    static instance;
-    constructor() {
-      super();
+  static instance;
+  constructor() {
+    super();
+  }
+
+  static getInstance() {
+    if (!ArabicRecorderAndPlayer.instance) {
+      ArabicRecorderAndPlayer.instance = new ArabicRecorderAndPlayer();
     }
+    return ArabicRecorderAndPlayer.instance;
+  }
 
-    static getInstance() {
-        if(!ArabicRecorderAndPlayer.instance) {
-            ArabicRecorderAndPlayer.instance = new ArabicRecorderAndPlayer();    
-        }
-        return ArabicRecorderAndPlayer.instance;
+  onStartPlayStoredFile = async fileName => {
+    if (Platform.OS === "android") {
+      if (requestPermission("READ_EXTERNAL_STORAGE")) {
+        ArabicRecorderAndPlayer.instance.onStartPlay(
+          "sdcard/".concat(fileName).concat(".mp4")
+        );
+      }
+    } else {
+      ArabicRecorderAndPlayer.instance.onStartPlay(fileName.concat(".m4a"));
     }
+  };
 
+  onStartPlay = async filePath => {
+    ArabicRecorderAndPlayer.instance.onStopPlay();
+    await ArabicRecorderAndPlayer.instance.startPlayer(filePath);
+    // console.log(msg);
+    ArabicRecorderAndPlayer.instance.addPlayBackListener(e => {
+      if (e.current_position === e.duration) {
+        ArabicRecorderAndPlayer.instance.stopPlayer();
+      }
+      return;
+    });
+  };
 
-    onStartPlay = async (fileName) => {
-      if(Platform.OS === 'android') {   
-        if(requestPermission('READ_EXTERNAL_STORAGE')) {
-          ArabicRecorderAndPlayer.instance.onStopPlay();
-          await ArabicRecorderAndPlayer.instance.startPlayer('sdcard/'.concat(fileName).concat('.mp4')); 
-          // console.log(msg);
-          ArabicRecorderAndPlayer.instance.addPlayBackListener((e) => {
-            if (e.current_position === e.duration) {
-              ArabicRecorderAndPlayer.instance.stopPlayer();
-            }
-            return;
-          });
-        }
-      } else {
-        ArabicRecorderAndPlayer.instance.onStopPlay();
-        await ArabicRecorderAndPlayer.instance.startPlayer(fileName.concat('.m4a')); 
-        // console.log(msg);
-        ArabicRecorderAndPlayer.instance.addPlayBackListener((e) => {
-          if (e.current_position === e.duration) {
-            ArabicRecorderAndPlayer.instance.stopPlayer();
-          }
+  onStartRecord = async fileName => {
+    if (Platform.OS === "android") {
+      if (
+        requestPermission("RECORD_AUDIO") &&
+        requestPermission("WRITE_EXTERNAL_STORAGE")
+      ) {
+        await ArabicRecorderAndPlayer.instance.startRecorder(
+          "sdcard/".concat(fileName).concat(".mp4")
+        );
+        ArabicRecorderAndPlayer.instance.addRecordBackListener(e => {
           return;
         });
       }
+    } else {
+      await ArabicRecorderAndPlayer.instance.startRecorder(
+        fileName.concat(".m4a")
+      );
+      ArabicRecorderAndPlayer.instance.addRecordBackListener(e => {
+        return;
+      });
     }
+  };
 
-    onStartRecord = async (fileName) => {
-      if(Platform.OS === 'android') {   
-        if(requestPermission('RECORD_AUDIO') && requestPermission('WRITE_EXTERNAL_STORAGE')) {
-          await ArabicRecorderAndPlayer.instance.startRecorder('sdcard/'.concat(fileName).concat('.mp4'));
-          ArabicRecorderAndPlayer.instance.addRecordBackListener((e) => {
-            return;
-          });
-        }
-        // requestPermission('RECORD_AUDIO').then((result) => {
-        //   await ArabicRecorderAndPlayer.instance.startRecorder('sdcard/'.concat(fileName).concat('.mp4'));
-        //   ArabicRecorderAndPlayer.instance.addRecordBackListener((e) => {
-        //     return;
-        //   });
-        // }).catch((err) => {
-          
-        // });
-      } else {
-        await ArabicRecorderAndPlayer.instance.startRecorder(fileName.concat('.m4a'));
-        ArabicRecorderAndPlayer.instance.addRecordBackListener((e) => {
-          return;
-        });
-      }
-      // const path = Platform.select({
-      //   ios: fileName.concat('.m4a'),
-      //   android: 'sdcard/'.concat(fileName).concat('.mp4'), // should give extra dir name in android. Won't grant permission to the first level of dir.
-      // });
-    }
-    
-    onStopRecord = async () => {
-      const result = await ArabicRecorderAndPlayer.instance.stopRecorder();
-      ArabicRecorderAndPlayer.instance.removeRecordBackListener();
-    }
+  onStopRecord = async () => {
+    const result = await ArabicRecorderAndPlayer.instance.stopRecorder();
+    ArabicRecorderAndPlayer.instance.removeRecordBackListener();
+  };
 
-
-    onStopPlay = async () => {
-      ArabicRecorderAndPlayer.instance.stopPlayer();
-      ArabicRecorderAndPlayer.instance.removePlayBackListener();
-    }
+  onStopPlay = async () => {
+    ArabicRecorderAndPlayer.instance.stopPlayer();
+    ArabicRecorderAndPlayer.instance.removePlayBackListener();
+  };
 }
