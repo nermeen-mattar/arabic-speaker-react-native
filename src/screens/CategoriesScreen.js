@@ -8,7 +8,6 @@ import {
   Alert
 } from "react-native";
 
-import { MonoText } from "../components/StyledText";
 import { Card } from "../components/card";
 import CustomHeader from "../components/CustomHeader";
 import Colors from "../constants/Colors";

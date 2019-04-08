@@ -121,7 +121,7 @@ export default {
     imgSrc: require("../../assets/images/sentences/المستشفى/المستشفى_لدي_الم_شديد_هنا.jpg") 
   },
     { label: "أريد الإسعاف عاجلا", default: true ,
-     imgSrc: require("../../assets/images/sentences/المستشفى/المستشفى_اريد_الإسعاف_عاجلا.png")
+     imgSrc: require("../../assets/images/sentences/المستشفى/المستشفى_اريد_الاسعاف_عاجلا.png")
   },
     { label: "هل يوجد مستوصف قريب من هنا", default: true },
     { label: "أريد صرف الدواء من فضلك", default: true },
