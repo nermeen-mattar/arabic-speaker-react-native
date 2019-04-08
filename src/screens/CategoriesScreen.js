@@ -369,39 +369,39 @@ export default class CategoriesScreen extends React.Component {
   };
 
   playExistingSound = sentenceIndex => {
-    const cleanedSentence = this.cleanSentence(
-      this.state.categories[sentenceIndex]
-    );
+    // const cleanedSentence = this.cleanSentence(
+    //   this.state.categories[sentenceIndex]
+    // );
     const storageInstance = Storage.getInstance();
     const result = { value: "null" };
     storageInstance.getItem("settingsValues", result).then(res => {
       const voiceGender =  result.value ? result.value.voiceGender : Genders.female;
-      const gender = voiceGender === Genders.female ? "ا" : "ر";
-      let soundPath =
-        this.state.categoryPath[1] + "-" + cleanedSentence + "-" + gender;
+      const gender = voiceGender === Genders.female ? "f" : "m";
+      let soundPath = CategoriesArabicToEnglish[this.state.categoryPath.join()] + '_' + sentenceIndex + '_'+ gender;
+        // this.state.categoryPath[1] + "-" + cleanedSentence + "-" + gender;
       PlaySound(soundPath);
     });
 
   };
 
-  cleanSentence(sentence) {
-    tashkeelCharCodes = [
-      "\u064e",
-      "\u064b",
-      "\u064c",
-      "\u064d",
-      "\u064f",
-      "\u0650",
-      "\u0651",
-      "\u0652"
-    ];
-    questionMarkCharCode = "\u061f";
-    const cleanRegExp = new RegExp(
-      [questionMarkCharCode + "|" + tashkeelCharCodes.join("|")],
-      "g"
-    );
-    return sentence.label.replace(cleanRegExp, "").replace(/ /g, "_");
-  }
+  // cleanSentence(sentence) {
+  //   tashkeelCharCodes = [
+  //     "\u064e",
+  //     "\u064b",
+  //     "\u064c",
+  //     "\u064d",
+  //     "\u064f",
+  //     "\u0650",
+  //     "\u0651",
+  //     "\u0652"
+  //   ];
+  //   questionMarkCharCode = "\u061f";
+  //   const cleanRegExp = new RegExp(
+  //     [questionMarkCharCode + "|" + tashkeelCharCodes.join("|")],
+  //     "g"
+  //   );
+  //   return sentence.label.replace(cleanRegExp, "").replace(/ /g, "_");
+  // }
 
   selectionToggeled = categoryIndex => {
     const categories = this.state.categories;
