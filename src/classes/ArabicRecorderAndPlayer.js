@@ -15,11 +15,11 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
     }
 
 
-    onStartPlay = async (path) => {
+    onStartPlay = async (fileName) => {
       if(Platform.OS === 'android') {   
         if(requestPermission('READ_EXTERNAL_STORAGE')) {
           ArabicRecorderAndPlayer.instance.onStopPlay();
-          await ArabicRecorderAndPlayer.instance.startPlayer(path); 
+          await ArabicRecorderAndPlayer.instance.startPlayer('sdcard/'.concat(fileName).concat('.mp4')); 
           // console.log(msg);
           ArabicRecorderAndPlayer.instance.addPlayBackListener((e) => {
             if (e.current_position === e.duration) {
@@ -30,7 +30,7 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
         }
       } else {
         ArabicRecorderAndPlayer.instance.onStopPlay();
-        await ArabicRecorderAndPlayer.instance.startPlayer(path); 
+        await ArabicRecorderAndPlayer.instance.startPlayer(fileName.concat('.m4a')); 
         // console.log(msg);
         ArabicRecorderAndPlayer.instance.addPlayBackListener((e) => {
           if (e.current_position === e.duration) {

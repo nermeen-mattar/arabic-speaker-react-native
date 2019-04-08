@@ -215,7 +215,7 @@ export default class NewSentenceScreen extends React.Component {
       ArabicRecorderAndPlayer.getInstance().onStartRecord(fileName);
       this.setState({
         recordingState: "recording",
-        soundPath: fileName.concat(".m4a")
+        soundPath: fileName
       }); //
       // const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';
       // // SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp4';
