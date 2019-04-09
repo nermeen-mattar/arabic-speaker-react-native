@@ -222,6 +222,7 @@
 		9BFB5C03225C23F900634C31 /* hospital_6_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5B5F225C23F800634C31 /* hospital_6_m.mp3 */; };
 		9BFB5C04225C23F900634C31 /* general_6_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5B60225C23F800634C31 /* general_6_m.mp3 */; };
 		9BFB5C05225C23F900634C31 /* greetings_3_f.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5B61225C23F900634C31 /* greetings_3_f.mp3 */; };
+		9BFB5C5D225C253B00634C31 /* general_1_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5C2E225C253B00634C31 /* general_1_m.mp3 */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B55EA235F4B444049E094DBF /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B8BFDB10EC44598D481804 /* libSplashScreen.a */; };
@@ -802,6 +803,7 @@
 		9BFB5B5F225C23F800634C31 /* hospital_6_m.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = hospital_6_m.mp3; path = ../assets/sounds/hospital_6_m.mp3; sourceTree = "<group>"; };
 		9BFB5B60225C23F800634C31 /* general_6_m.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = general_6_m.mp3; path = ../assets/sounds/general_6_m.mp3; sourceTree = "<group>"; };
 		9BFB5B61225C23F900634C31 /* greetings_3_f.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = greetings_3_f.mp3; path = ../assets/sounds/greetings_3_f.mp3; sourceTree = "<group>"; };
+		9BFB5C2E225C253B00634C31 /* general_1_m.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = general_1_m.mp3; path = ../assets/sounds/general_1_m.mp3; sourceTree = "<group>"; };
 		9CA086A4D7FF49DB95ACC204 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		A2A2177212D740C59FEED629 /* RNAudioRecorderPlayer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAudioRecorderPlayer.xcodeproj; path = "../node_modules/react-native-audio-recorder-player/ios/RNAudioRecorderPlayer.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -1192,6 +1194,7 @@
 				9BFB5B4D225C23F700634C31 /* general_0_f.mp3 */,
 				9BFB5B27225C23F400634C31 /* general_0_m.mp3 */,
 				9BFB5B51225C23F700634C31 /* general_1_f.mp3 */,
+				9BFB5C2E225C253B00634C31 /* general_1_m.mp3 */,
 				9BFB5B2D225C23F400634C31 /* general_2_f.mp3 */,
 				9BFB5AD6225C23EC00634C31 /* general_2_m.mp3 */,
 				9BFB5AC0225C23EA00634C31 /* general_3_f.mp3 */,
@@ -1989,6 +1992,7 @@
 				9BFB5B6B225C23F900634C31 /* work_6_m.mp3 in Resources */,
 				9BFB5BB8225C23F900634C31 /* greetings_7_f2.mp3 in Resources */,
 				9BFB5BA3225C23F900634C31 /* hospital_8_m.mp3 in Resources */,
+				9BFB5C5D225C253B00634C31 /* general_1_m.mp3 in Resources */,
 				9BFB5BEA225C23F900634C31 /* travel_4_m.mp3 in Resources */,
 				9BFB5BED225C23F900634C31 /* market_0_m.mp3 in Resources */,
 				9BFB5B66225C23F900634C31 /* market_1_m.mp3 in Resources */,
