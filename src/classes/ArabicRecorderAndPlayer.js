@@ -10,6 +10,7 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
   static getInstance() {
     if (!ArabicRecorderAndPlayer.instance) {
       ArabicRecorderAndPlayer.instance = new ArabicRecorderAndPlayer();
+      ArabicRecorderAndPlayer.instance.setVolume(1.0);
     }
     return ArabicRecorderAndPlayer.instance;
   }
