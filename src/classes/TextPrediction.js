@@ -5,7 +5,10 @@ import quadgram from "../constants/default-words/quadgram";
 import {
   Storage
 } from "../classes/Storage";
+import {
 
+  Alert
+} from "react-native";
 /**
  * @author Nermeen Mattar
  * Nice to have: push user words without checking if this.predict.. (but only checking if it exists in ur words).
@@ -223,7 +226,7 @@ export class TextPrediction {
     enteredWords = enteredWords.replace(/\sأ/g, " ا");
     enteredWordsArray = enteredWords.split(" ");
     numOfEnteredWords = enteredWordsArray.length;
-    let hasUpdated = false;
+    // let hasUpdated = false;
     const endIndex = enteredWordsArray.length < this.userWords.length ? enteredWordsArray.length : this.userWords.length + 1;
     for (let setIndex = 1; setIndex <= endIndex; setIndex++) {
       for (let currWordIndex = 0; currWordIndex < numOfEnteredWords; currWordIndex++) {
@@ -231,14 +234,15 @@ export class TextPrediction {
           break;
         }
         if (this.addWordsIfNew(enteredWordsArray.slice(currWordIndex, currWordIndex + setIndex).join(" "))) {
-          hasUpdated = true;
+          // hasUpdated = true;
+          this.sendSentenceToBackend(enteredWordsArray.slice(currWordIndex, currWordIndex + setIndex).join(" "));
         }
       }
     }
-    if (hasUpdated) {
-      this.sendSentenceToBackend(enteredWords); // (wordsWithoutLast.concat(' ').concat(lastWord)
-      this.updateUserWords();
-    }
+    // if (hasUpdated) {
+    //   this.sendSentenceToBackend(enteredWords); // (wordsWithoutLast.concat(' ').concat(lastWord)
+    //   this.updateUserWords();
+    // }
   }
 
   addWordsIfNew(enteredWords) {
@@ -340,6 +344,7 @@ export class TextPrediction {
   }
 
   sendSentenceToBackend(sentence) {
+    Alert.alert(sentence);
     // const storageInstance = Storage.getInstance(); // temp
     // const settings = { value: "null" };
     // storageInstance.getItem("settingsValues", settings).then(res => {
