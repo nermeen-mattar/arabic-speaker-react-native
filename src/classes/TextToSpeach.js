@@ -29,6 +29,7 @@ export class TextToSpeach {
 }
 
   speak(text) {
+    text = text.replace('بكم', 'بِكَمْ');
     NetInfo.isConnected.fetch().then(isConnected => {
       if (isConnected) {
         // handle  Platform.OS === 'android'
