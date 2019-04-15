@@ -5,10 +5,7 @@ import quadgram from "../constants/default-words/quadgram";
 import {
   Storage
 } from "../classes/Storage";
-import {
 
-  Alert
-} from "react-native";
 /**
  * @author Nermeen Mattar
  * Nice to have: push user words without checking if this.predict.. (but only checking if it exists in ur words).
@@ -344,7 +341,6 @@ export class TextPrediction {
   }
 
   sendSentenceToBackend(sentence) {
-    Alert.alert(sentence);
     // const storageInstance = Storage.getInstance(); // temp
     // const settings = { value: "null" };
     // storageInstance.getItem("settingsValues", settings).then(res => {
