@@ -6,44 +6,44 @@ export default {
       default: true
     },
     { label: "أغلق النور لو سمحت", default: true, 
-    imgSrc: require("../../assets/images/sentences/عام/عام_اغلق_النور_لو_سمحت.png") 
+    imgSrc: require("../../assets/images/sentences/general/light_off.png") 
    },
     { label: "إفتح النور لو سمحت", default: true ,
-     imgSrc: require("../../assets/images/sentences/عام/عام_افتح_النور_لو_سمحت.png")
+     imgSrc: require("../../assets/images/sentences/general/light_on.png")
      },
     { label: "عذرا أين دورة المياة؟", default: true },
     { label: "أنا مشغول حاليا", default: true },
     { label: "نعم أريده", default: true },
-    { label: "هذا الموقف خاص بذوي الاحتياجات الخاصة", default: true, imgSrc: require("../../assets/images/sentences/عام/عام_هذا_الموقف_خاص_بذوي_الاحتياجات_الخاصة.png") },
+    { label: "هذا الموقف خاص بذوي الاحتياجات الخاصة", default: true, imgSrc: require("../../assets/images/sentences/general/parking_for_special_needs.png") },
     { label: "أنا سعيد بحضورك", default: true },
     { label: "كل عام و أنتم بخير", default: true },
     { label: "أريد ان أتوضأ و أصلي", default: true },
     { label: "أين المفتاح؟ أنا لا أجده", default: true,
-     imgSrc: require("../../assets/images/sentences/عام/عام_اين_المفتاح_انا_لا_اجده.png")
+     imgSrc: require("../../assets/images/sentences/general/where_is_the_key.png")
    },
     { label: "تفضل معي الى البيت", default: true },
     { label: "افتح الباب من فضلك", default: true }
   ],
 
   "المكتبات,التحيات": [
-    { label: "السلام عليكم ورحمة الله وبركاته", default: true, imgSrc: require("../../assets/images/sentences/التحيات/التحيات-السلام_عليكم_و_رحمة_الله_بركاته.png")  },
+    { label: "السلام عليكم ورحمة الله وبركاته", default: true, imgSrc: require("../../assets/images/sentences/greetings/salam.png")  },
     { label: "كيف حالك؟", default: true },
     { label: "يا أهلا وسهلا", default: true },
     { label: "مرحبا حياك الله", default: true },
     { label: "أنا بخير والحمد لله", default: true },
     { label: "وعليكم السلام", default: true },
     { label: "ايش أخبارك؟", default: true },
-    { label: "سعدت بالحديث معك مع السلامة", default: true, imgSrc: require("../../assets/images/sentences/التحيات/التحيات-سعدت_بالحديث_معك_مع_السلامة.png")  }
+    { label: "سعدت بالحديث معك مع السلامة", default: true, imgSrc: require("../../assets/images/sentences/greetings/pleasure_talking.png")  }
   ],
 
   "المكتبات,العمل": [
     { label: "أين مكتب العمل؟", default: true },
     { label: "أريد السكرتير", default: true },
     { label: "أنا أبحث عن عمل يناسبني", default: true, 
-    imgSrc: require("../../assets/images/sentences/العمل/العمل-انا_ابحث_عن_عمل_يناسبني.png") 
+    imgSrc: require("../../assets/images/sentences/work/searching_for_work.png") 
    },
     { label: "يمكنني ان استخدم هذا التطبيق للتواصل مع العملاء", default: true , 
-    imgSrc: require("../../assets/images/sentences/العمل/العمل-يمكنني_ان_استخدم_هذا_التطبيق_للتواصل_مع_العملاء.png")
+    imgSrc: require("../../assets/images/sentences/work/can_use_app_to_contact_clients.png")
    },
     { label: "هل انتهى الدوام؟", default: true },
     { label: "كيف أخدمك؟", default: true },
@@ -51,7 +51,7 @@ export default {
   ],
 
   "المكتبات,السوق": [
-    { label: "كم سعر هذا؟", default: true, imgSrc: require("../../assets/images/sentences/السوق/السوق-كم_سعر_هذا.png") },
+    { label: "كم سعر هذا؟", default: true, imgSrc: require("../../assets/images/sentences/market/what_is_the_cost.png") },
     { label: "السعر مرتفع جدا", default: true },
     { label: "هل لديكم فرع آخر؟", default: true },
     { label: "أريد خضروات طازجة", default: true },
@@ -60,11 +60,11 @@ export default {
     {
       label: "أريدك ان تساعدني في الحصول على القطع في الرف المرتفع",
       default: true,
-       imgSrc: require("../../assets/images/sentences/السوق/السوق-اريدك_ان_تساعدني_في_الحصول_على_القطع_في_الرفع_المرتفع.png") 
+       imgSrc: require("../../assets/images/sentences/market/need_help.png") 
       },
     { label: "لقد سقط هذا مني ارجوك أحضره", default: true },
     { label: "أريد أن ادفع المبلغ تفضل", default: true,
-     imgSrc: require("../../assets/images/sentences/السوق/السوق-اريد_ان_ادفع_المبلغ_تفضل.png")  
+     imgSrc: require("../../assets/images/sentences/market/want_to_pay.png")  
   },
     { label: "أريد ارجاع هذا لانه لا يناسبني", default: true }
   ],
@@ -93,9 +93,7 @@ export default {
       label: "أريد ان تساعدني في كتابة عبارات جديدة لاستخدامها في المدرسة",
       default: true
     },
-    { label: "الى اللقاء مع السلامة", default: true,
-    //  imgSrc: require("../../assets/images/sentences/التحيات/التحيات-الى_اللقاء_مع_السلامة.png") 
-  }
+    { label: "الى اللقاء مع السلامة", default: true }
   ],
 
   "المكتبات,المطعم": [
@@ -111,17 +109,17 @@ export default {
     { label: "أريد الباقي لو سمحت", default: true },
     { label: "ابحث عن مطعم شعبي قريب من هنا", default: true },
     { label: "من فضلك اقرأ قائمة الطعام لي", default: true ,
-     imgSrc: require("../../assets/images/sentences/المطعم/المطعم-من_فضلك_اقرا_قايمة_الطعام_لي.png")
+     imgSrc: require("../../assets/images/sentences/resturant/please_read_menu.png")
    }
   ],
 
   "المكتبات,المستشفى": [
     { label: "أريد أن احجز موعدا قريبا", default: true },
     { label: "لدي الم شديد هنا", default: true, 
-    imgSrc: require("../../assets/images/sentences/المستشفى/المستشفى_لدي_الم_شديد_هنا.jpg") 
+    imgSrc: require("../../assets/images/sentences/hospital/pain.jpg") 
   },
     { label: "أريد الإسعاف عاجلا", default: true ,
-     imgSrc: require("../../assets/images/sentences/المستشفى/المستشفى_اريد_الاسعاف_عاجلا.png")
+     imgSrc: require("../../assets/images/sentences/hospital/need_ambulance_urgently.png")
   },
     { label: "هل يوجد مستوصف قريب من هنا", default: true },
     { label: "أريد صرف الدواء من فضلك", default: true },
@@ -137,15 +135,15 @@ export default {
   "المكتبات,المسجد": [
     { label: "هل قامت الصلاة", default: true },
     { label: "أريد ان اتوضأ أين المواضئ", default: true, 
-    imgSrc: require("../../assets/images/sentences/المسجد/المسجد-اريد_ان_اتوضا_اين_المواضي.jpg") 
+    imgSrc: require("../../assets/images/sentences/mosque/i_want_atwada.jpg") 
    },
     { label: "كم ركعة فاتتني", default: true },
     { label: "أين اتجاه القبلة", default: true,
-     imgSrc: require("../../assets/images/sentences/المسجد/المسجد-ما_اتجاه_القبلة.png")
+     imgSrc: require("../../assets/images/sentences/mosque/what_is_qibla_direction.png")
    },
     { label: "اين يقع اقرب مسجد", default: true },
     { label: "هل يوجد مدخل خاص للكراسي المتحركة؟", default: true, 
-    imgSrc: require("../../assets/images/sentences/المسجد/المسجد-هل_يوجد_مدخل_خاص_للكراسي_المتحركة.jpg") 
+    imgSrc: require("../../assets/images/sentences/mosque/special_entrance_for_wheelchair.jpg") 
    }
   ]
 
