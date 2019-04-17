@@ -41,56 +41,56 @@ export default class CategoriesScreen extends React.Component {
           {
             label: "عام",
             type: "category",
-            imgSrc: require("../../assets/images/categories/عام.png"),
+            imgSrc: require("../../assets/images/categories/general.png"),
             default: true
           },
           {
             label: "التحيات",
             type: "category",
-            imgSrc: require("../../assets/images/categories/التحيات.png"),
+            imgSrc: require("../../assets/images/categories/greetings.png"),
             default: true
           },
           // { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
           {
             label: "العمل",
             type: "category",
-            imgSrc: require("../../assets/images/categories/العمل.png"),
+            imgSrc: require("../../assets/images/categories/work.png"),
             default: true
           },
           {
             label: "السوق",
             type: "category",
-            imgSrc: require("../../assets/images/categories/السوق.png"),
+            imgSrc: require("../../assets/images/categories/market.png"),
             default: true
           },
           {
             label: "السفر",
             type: "category",
-            imgSrc: require("../../assets/images/categories/السفر.png"),
+            imgSrc: require("../../assets/images/categories/travel.png"),
             default: true
           },
           {
             label: "المدرسة",
             type: "category",
-            imgSrc: require("../../assets/images/categories/المدرسة.png"),
+            imgSrc: require("../../assets/images/categories/school.png"),
             default: true
           },
           {
             label: "المطعم",
             type: "category",
-            imgSrc: require("../../assets/images/categories/المطعم.png"),
+            imgSrc: require("../../assets/images/categories/resturant.png"),
             default: true
           },
           {
             label: "المستشفى",
             type: "category",
-            imgSrc: require("../../assets/images/categories/المستشفى.png"),
+            imgSrc: require("../../assets/images/categories/hospital.png"),
             default: true
           },
           {
             label: "المسجد",
             type: "category",
-            imgSrc: require("../../assets/images/categories/المسجد.png"),
+            imgSrc: require("../../assets/images/categories/mosque.png"),
             default: true
           }
         ],
