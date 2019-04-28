@@ -21,6 +21,7 @@
     "react-native-splash-screen": "^3.1.1",
     "react-native-tts": "^2.0.0",
     "react-native-vector-icons": "^6.0.2",
+    "rn-fetch-blob": "^0.10.15",
     "url-parse": "^1.4.3",
     "yarn": "^1.10.1"
   },
