@@ -36,11 +36,10 @@ export class AutoSoundsSaver {
   }
 
   getDirectory() {
-    Alert.alert( RNFetchBlob.fs.dirs.DocumentDir)
     return RNFetchBlob.fs.dirs.DocumentDir;
   }
 
-  updateAutoSounds() {
+  updateAutoSounds(formattedSentence) {
     this.autoSounds.push(formattedSentence);
     storageInstance.setItem("auto-sounds", this.autoSounds).then(res => res);
   }
@@ -73,7 +72,7 @@ export class AutoSoundsSaver {
                 //some headers ..
             })
             .then((res) => {
-               this.updateAutoSounds();
+               this.updateAutoSounds(formattedSentence);
             })
       }
     });
