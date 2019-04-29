@@ -19,7 +19,7 @@ import { Storage } from "../classes/Storage";
 import { TextPrediction } from "../classes/TextPrediction";
 import { ImagePickerHelper } from "../classes/ImagePickerHelper";
 import { ArabicRecorderAndPlayer } from "../classes/ArabicRecorderAndPlayer";
-
+import { AutoSoundsSaver }from "../classes/AutoSoundsSaver";
 export default class NewSentenceScreen extends React.Component {
   constructor(props) {
     super();
@@ -277,6 +277,10 @@ export default class NewSentenceScreen extends React.Component {
       this.startStopRecording(); // this.addNewSentence
       // return;
     }
+    const recordingPath = this.state.soundPath;
+    if(!recordingPath) {
+      AutoSoundsSaver.getInstance().storeSoundIfNotExist(this.state.sentence);
+    }
     const storageInstance = Storage.getInstance();
     // storageInstance.setItem('storageInstance', 'nermeen');categ
     const result = { value: "null" };
@@ -288,7 +292,7 @@ export default class NewSentenceScreen extends React.Component {
           {
             label: this.state.sentence,
             imgSrc: this.state.imgSrc,
-            soundPath: this.state.soundPath
+            soundPath: recordingPath
           }
         ])
         .then(() => {

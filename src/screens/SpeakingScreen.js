@@ -17,6 +17,7 @@ import { Storage } from "../classes/Storage";
 import { TextPrediction } from "../classes/TextPrediction";
 import commonStyles from "../styles/commonStyles";
 import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
+import { AutoSoundsSaver }from "../classes/AutoSoundsSaver";
 
 export default class TextToSpeachScreen extends React.Component {
   constructor(props) {
@@ -296,6 +297,7 @@ export default class TextToSpeachScreen extends React.Component {
       toolsColors["المفضلة"] = Colors.brand;
       if (!currFavourites.includes(this.state.text)) {
         currFavourites = [...currFavourites, this.state.text];
+        AutoSoundsSaver.getInstance().storeSoundIfNotExist(this.state.text);
         storageInstance.setItem("favourites", currFavourites).then(res => {});
       }
     }
