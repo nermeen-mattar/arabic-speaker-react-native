@@ -1,5 +1,4 @@
 import RNFetchBlob from 'rn-fetch-blob';
-import { Alert } from "react-native";
 
 import { Storage } from "./Storage";
 import Genders from "../constants/Genders"; 
@@ -41,7 +40,8 @@ export class AutoSoundsSaver {
 
   updateAutoSounds(formattedSentence) {
     this.autoSounds.push(formattedSentence);
-    storageInstance.setItem("auto-sounds", this.autoSounds).then(res => res);
+    const storageInstance = Storage.getInstance();
+    storageInstance.setItem("auto-sounds", this.autoSounds).then(res => {});
   }
 
    storeSoundIfNotExist(sentence) {

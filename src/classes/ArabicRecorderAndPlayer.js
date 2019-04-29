@@ -30,7 +30,6 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
   onStartPlay = async filePath => {
     ArabicRecorderAndPlayer.instance.onStopPlay();
     await ArabicRecorderAndPlayer.instance.startPlayer(filePath);
-    // console.log(msg);
     ArabicRecorderAndPlayer.instance.addPlayBackListener(e => {
       if (e.current_position === e.duration) {
         ArabicRecorderAndPlayer.instance.stopPlayer();
