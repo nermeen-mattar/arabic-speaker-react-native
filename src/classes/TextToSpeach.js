@@ -1,10 +1,10 @@
-import Tts from "react-native-tts";
 import { NetInfo, Alert, Platform } from "react-native";
+import Tts from "react-native-tts";
+
 import { ArabicRecorderAndPlayer } from "./ArabicRecorderAndPlayer";
 import { Storage } from "./Storage";
 import Genders from "../constants/Genders";
 import { AutoSoundsSaver } from "../classes/AutoSoundsSaver";
-import RNFetchBlob from "rn-fetch-blob";
 
 export class TextToSpeach {
   static instance;
@@ -40,13 +40,16 @@ export class TextToSpeach {
         settings.value && settings.value.voiceGender === Genders.female
           ? "female"
           : "male";
-      const autoSoundSaver = AutoSoundsSaver.getInstance();
-      const fileName = autoSoundSaver.getFileName(gender, text);
-      if (autoSoundSaver.isSoundExist(fileName)) {
-        ArabicRecorderAndPlayer.getInstance().onStartPlay(
-          autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
-        );
-      } else {
+          const autoSoundSaver = AutoSoundsSaver.getInstance();
+          const fileName = autoSoundSaver.getFileName(gender, text);
+          if (autoSoundSaver.isSoundExist(fileName)) {
+            ArabicRecorderAndPlayer.getInstance().onStartPlay( 
+              Platform.select({
+                ios: fileName + '.mpga',
+                andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
+              }) 
+            );
+          } else {
         NetInfo.isConnected.fetch().then(isConnected => {
           if (isConnected) {
             this.formatSentenceThenCallResponsiveVoice(text, gender);

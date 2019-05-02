@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import RNFetchBlob from 'rn-fetch-blob';
 
 import { Storage } from "./Storage";
@@ -11,7 +12,7 @@ export class AutoSoundsSaver {
     const storageInstance = Storage.getInstance();
     const result = {
       value: "null"
-    };
+  };
     storageInstance.getItem("auto-sounds", result).then(res => {
       if (result.value) {
         this.autoSounds = result.value;
@@ -31,7 +32,7 @@ export class AutoSoundsSaver {
   }
 
   getFileName(gender, sentence) {
-    return gender + '-' + sentence.replace(' ', '_');
+    return gender + '-' + sentence.replace(/ /g, '_');
   }
 
   getDirectory() {
@@ -59,14 +60,17 @@ export class AutoSoundsSaver {
       requestPath = requestPath
         .replace("$text", encodeURI(sentence))
         .replace("$gender", gender);
-
+        let filePath = this.getDirectory() + '/' + formattedSentence + '.mpga'
+        if(Platform.OS === "ios") {
+          filePath = filePath.replace('Documents', 'tmp');
+        }
         RNFetchBlob
             .config({
                 // add this option that makes response data to be stored as a file,
                 // this is much more performant.
                 // fileCache: true,
                 // appendExt: 'mpga',
-                path: this.getDirectory() + '/' + formattedSentence + '.mpga'
+                path: filePath
             })
             .fetch('GET', requestPath, {
                 //some headers ..
