@@ -10,6 +10,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 import Colors from './src/constants/Colors';
 import SettingsComponent from './src/components/SettingsComponent'
 import IllustrationScreen from './src/screens/IllustrationScreen';
+import { AutoSoundsSaver } from "./src/classes/AutoSoundsSaver";
 
 const SettingsDrawer = createDrawerNavigator({
   AppNavigator: {
@@ -33,6 +34,10 @@ export default class App extends React.Component {
   state = {
     isLoadingComplete: false
   };
+  constructor() {
+    super();
+    AutoSoundsSaver.getInstance();
+  }
   componentDidMount(){
     const storageInstance = Storage.getInstance();
     const result = { value: "null" };
