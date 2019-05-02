@@ -1,8 +1,8 @@
 import { Platform } from "react-native";
-import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from "rn-fetch-blob";
 
 import { Storage } from "./Storage";
-import Genders from "../constants/Genders"; 
+import Genders from "../constants/Genders";
 
 export class AutoSoundsSaver {
   static instance;
@@ -12,7 +12,7 @@ export class AutoSoundsSaver {
     const storageInstance = Storage.getInstance();
     const result = {
       value: "null"
-  };
+    };
     storageInstance.getItem("auto-sounds", result).then(res => {
       if (result.value) {
         this.autoSounds = result.value;
@@ -32,7 +32,7 @@ export class AutoSoundsSaver {
   }
 
   getFileName(gender, sentence) {
-    return gender + '-' + sentence.replace(/ /g, '_');
+    return gender + "-" + sentence.replace(/ /g, "_");
   }
 
   getDirectory() {
@@ -45,7 +45,7 @@ export class AutoSoundsSaver {
     storageInstance.setItem("auto-sounds", this.autoSounds).then(res => {});
   }
 
-   storeSoundIfNotExist(sentence) {
+  storeSoundIfNotExist(sentence) {
     const storageInstance = Storage.getInstance();
     const settings = { value: "null" };
     storageInstance.getItem("settingsValues", settings).then(res => {
@@ -54,30 +54,23 @@ export class AutoSoundsSaver {
           ? "female"
           : "male";
       const formattedSentence = this.getFileName(gender, sentence);
-      if(!this.isSoundExist(formattedSentence)) {
+      if (!this.isSoundExist(formattedSentence)) {
         let requestPath =
-        "https://code.responsivevoice.org/getvoice.php?t=$text&tl=ar&gender=$gender";
-      requestPath = requestPath
-        .replace("$text", encodeURI(sentence))
-        .replace("$gender", gender);
-        let filePath = this.getDirectory() + '/' + formattedSentence + '.mpga'
-        if(Platform.OS === "ios") {
-          filePath = filePath.replace('Documents', 'tmp');
+          "https://code.responsivevoice.org/getvoice.php?t=$text&tl=ar&gender=$gender";
+        requestPath = requestPath
+          .replace("$text", encodeURI(sentence))
+          .replace("$gender", gender);
+        let filePath = this.getDirectory() + "/" + formattedSentence + ".mpga";
+        if (Platform.OS === "ios") {
+          filePath = filePath.replace("Documents", "tmp");
         }
-        RNFetchBlob
-            .config({
-                // add this option that makes response data to be stored as a file,
-                // this is much more performant.
-                // fileCache: true,
-                // appendExt: 'mpga',
-                path: filePath
-            })
-            .fetch('GET', requestPath, {
-                //some headers ..
-            })
-            .then((res) => {
-               this.updateAutoSounds(formattedSentence);
-            })
+        RNFetchBlob.config({
+          path: filePath
+        })
+          .fetch("GET", requestPath)
+          .then(res => {
+            this.updateAutoSounds(formattedSentence);
+          });
       }
     });
   }

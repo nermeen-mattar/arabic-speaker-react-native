@@ -2,9 +2,7 @@ import unigramData from "../constants/default-words/unigramData";
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
-import {
-  Storage
-} from "../classes/Storage";
+import { Storage } from "../classes/Storage";
 
 /**
  * @author Nermeen Mattar
@@ -27,7 +25,6 @@ export class TextPrediction {
     "أنا",
     "لماذا"
   ];
-  debuggingText;
   userWords = [{}, {}, {}];
   maxNumOfPredictions = 12;
   defaultWords = [bigramData, trigramData, quadgram];
@@ -145,7 +142,6 @@ export class TextPrediction {
       );
     }
     // 4- Single default words only for incomplete ( what about single user words -> should store it too)
-    this.debuggingText = 'incom' + incompleteWord;
     if (incompleteWord) {
       this.concatUniqueAndMatchedEntries(
         predectedWords,
@@ -236,10 +232,6 @@ export class TextPrediction {
         }
       }
     }
-    // if (hasUpdated) {
-    //   this.sendSentenceToBackend(enteredWords); // (wordsWithoutLast.concat(' ').concat(lastWord)
-    //   this.updateUserWords();
-    // }
   }
 
   addWordsIfNew(enteredWords) {
@@ -252,7 +244,8 @@ export class TextPrediction {
     let lastWord = enteredWords.slice(indexOfLastWord + 1);
     let wordsWithoutLast = enteredWords.slice(0, indexOfLastWord);
     const numOfWordsWithoutLast = wordsWithoutLast.split(" ").length; //  wordsWithoutLast.split(/.+ .+/g);
-    const userWordsForEnteredWords = this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] || [];
+    const userWordsForEnteredWords =
+      this.userWords[numOfWordsWithoutLast - 1][wordsWithoutLast] || [];
     if (
       !userWordsForEnteredWords.includes(lastWord)
       // !this.getPredectedWords(wordsWithoutLast.concat(" ")).includes(lastWord)
@@ -276,7 +269,7 @@ export class TextPrediction {
     if (
       !this.userWords[0][word]
       // !this.getPredectedWords(word.concat(" ")).length === 0 &&
-      ) {
+    ) {
       this.userWords[0][word] = [];
       return true;
     }
@@ -341,36 +334,11 @@ export class TextPrediction {
   }
 
   sendSentenceToBackend(sentence) {
-    // const storageInstance = Storage.getInstance(); // temp
-    // const settings = { value: "null" };
-    // storageInstance.getItem("settingsValues", settings).then(res => {
-    //   if (settings.value) {
-    //     if (settings.value.helpImproveApp) {
     fetch("http://18.224.240.0:8080/addWord?word=".concat(sentence), {
       method: "GET"
     }).then(response => {
       response.json();
     });
-    //     }
-    //   }
-    // });
   }
 
-  findWords(currentWords) {
-    // let found=true;
-    const listToSearchIn =
-      userWords[currentWords.length] || defaultWords[currentWords.length];
-    // do {
-    if (listToSearchIn[currentWords.join("|")]) {
-      predictions.push(listToSearchIn[currentWords.join("|")]);
-    }
-    // }
-    // while (predictions.length < 4 ); // should be this.maxNumOfPredictions in the case of user values
-
-    if (predictions.length === 0) {
-      predictions = staticPredictions;
-    }
-
-    return predictions;
-  }
 }

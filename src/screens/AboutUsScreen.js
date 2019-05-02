@@ -127,10 +127,6 @@ export default class AboutUsScreen extends React.Component {
               The advanced application for communication in Arabic for young and
               adult people with speech difficulties
             </MonoText>
-
-            {/* <MonoText style={ commonStyles.textCenter}>
-      لذوي صعوبات النطق وكبار السن
-          </MonoText>  */}
             <MonoText
               style={[
                 commonStyles.textCenter,
@@ -149,7 +145,7 @@ export default class AboutUsScreen extends React.Component {
               { padding: 14 }
             ]}
           >
-                        فكرة وتنفيذ د. أمل السيف
+            فكرة وتنفيذ د. أمل السيف
           </MonoText>
 
           <View style={[styles.whiteSection, styles.paddingVertical10]}>
@@ -196,7 +192,7 @@ export default class AboutUsScreen extends React.Component {
                     { maxWidth: 100 }
                   ]}
                 >
-                                    Arabic Language Technologies
+                  Arabic Language Technologies
                 </MonoText>
               </View>
               <View style={{ margin: 8 }}>
@@ -213,7 +209,8 @@ export default class AboutUsScreen extends React.Component {
                     { maxWidth: 100 }
                   ]}
                 >
-                                    مدينة سلطان للخدمات الإنسانية                </MonoText>
+                  مدينة سلطان للخدمات الإنسانية
+                </MonoText>
               </View>
 
               <Image
@@ -240,7 +237,8 @@ export default class AboutUsScreen extends React.Component {
                     { maxWidth: 100, marginTop: 14 }
                   ]}
                 >
-                                    Responsive Voice                </MonoText>
+                  Responsive Voice
+                </MonoText>
               </View>
             </View>
             <View style={styles.divider} />
@@ -264,10 +262,9 @@ export default class AboutUsScreen extends React.Component {
               مركز أنس للتقنيات المساعدة لذوي الاحتياجات الخاصة
             </MonoText>
             <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
-            Anas Assistive Technology Center for people with disability 
-            Non-profit Organization             
+              Anas Assistive Technology Center for people with disability
+              Non-profit Organization
             </MonoText>
-
           </View>
 
           <View
@@ -288,8 +285,9 @@ export default class AboutUsScreen extends React.Component {
                       styles.primaryText,
                       { width: 72 }
                     ]}
-                  > {circleObj.text}
-                   </MonoText>
+                  >
+                    {circleObj.text}
+                  </MonoText>
                 </View>
               );
             })}
@@ -298,14 +296,17 @@ export default class AboutUsScreen extends React.Component {
           <View style={[styles.contactDetails]}>
             <View style={[styles.flexSpaceAround, { paddingVertical: 28 }]}>
               <TouchableOpacity
-                onPress={() => Linking.openURL("https://twitter.com/AnasCenterAT")}
+                onPress={() =>
+                  Linking.openURL("https://twitter.com/AnasCenterAT")
+                }
               >
                 <Image
                   style={{ marginLeft: "auto", marginRight: "auto" }}
                   source={require("../../assets/images/about-us/twitter.png")}
                 />
                 <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
-                                    @AnasCenterAt                </MonoText>
+                  @AnasCenterAt
+                </MonoText>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => Linking.openURL("mailto:AnasCenterAT@Gmail.com")}
@@ -319,12 +320,10 @@ export default class AboutUsScreen extends React.Component {
                   source={require("../../assets/images/about-us/mail.png")}
                 />
                 <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
-                                    AnasCenterAT@Gmail.com
+                  AnasCenterAT@Gmail.com
                 </MonoText>
               </TouchableOpacity>
             </View>
-
-            {/* <View style={styles.divider}/> */}
           </View>
         </ScrollView>
       </Modal>
@@ -353,12 +352,10 @@ const styles = StyleSheet.create({
   appNameArabic: {
     color: "white",
     fontSize: 31
-    // textAlign: 'center'
   },
   appNameEnglish: {
     color: "white",
     fontSize: 21
-    // textAlign: 'center'
   },
   divider: {
     borderBottomColor: "#f2f2f2",
@@ -384,16 +381,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around"
   },
-  // circlesSection: {
-  //   padding
-  // },
   contactDetails: {
     backgroundColor: "white"
   },
   whiteCircle: {
     backgroundColor: "white",
     borderRadius: 36,
-    // padding: 20
     width: 72,
     height: 72,
     flexDirection: "row",

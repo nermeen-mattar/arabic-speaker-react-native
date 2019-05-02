@@ -17,7 +17,7 @@ import { Storage } from "../classes/Storage";
 import { TextPrediction } from "../classes/TextPrediction";
 import commonStyles from "../styles/commonStyles";
 import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
-import { AutoSoundsSaver }from "../classes/AutoSoundsSaver";
+import { AutoSoundsSaver } from "../classes/AutoSoundsSaver";
 
 export default class TextToSpeachScreen extends React.Component {
   constructor(props) {
@@ -100,12 +100,22 @@ export default class TextToSpeachScreen extends React.Component {
       >
         <CustomHeader navigation={this.props.navigation} />
 
-        <View style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <View style={styles.inputAndToolsWrapper}>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <View style={styles.inputAndToolsWrapper}>
             <TextInput
               value={this.state.text}
               style={styles.textInput}
-              onChangeText={text => {this.setState({text: text}); this.onTextChanged(text)}}
+              onChangeText={text => {
+                this.setState({ text: text });
+                this.onTextChanged(text);
+              }}
               placeholder={this.state.inputPlaceholder}
               multiline={true}
             />
@@ -133,8 +143,7 @@ export default class TextToSpeachScreen extends React.Component {
                               ]
                             }
                           ]}
-                        >
-                                                 </MonoText>
+                        />
                       ) : (
                         // this.state.activeToolName === 'مسافة' ?  Colors.brand : Colors.borderColor}
 
@@ -153,7 +162,7 @@ export default class TextToSpeachScreen extends React.Component {
                           color: this.state.toolsColors[tool.title]
                         }}
                       >
-                                               {tool.title}{" "}
+                        {tool.title}
                       </MonoText>
                       {/* color: this.state.activeToolName === tool.title ? Colors.brand: Colors.borderColor */}
                     </View>
@@ -161,25 +170,20 @@ export default class TextToSpeachScreen extends React.Component {
                 );
               })}
             </View>
-            </View>
+          </View>
           <View style={[styles.predectionsWrapper, commonStyles.flexCenter]}>
-          {this.state.predectedWords.map(word => {
-            return (
-              <TouchableOpacity
-                style={[styles.predectedWord, commonStyles.shadow]}
-                onPress={() => this.selectPredectedWord(word)}
-              >
+            {this.state.predectedWords.map(word => {
+              return (
+                <TouchableOpacity
+                  style={[styles.predectedWord, commonStyles.shadow]}
+                  onPress={() => this.selectPredectedWord(word)}
+                >
                 <MonoText numberOfLines={1} style={styles.predectedWordText}> {word} </MonoText>
-              </TouchableOpacity>
-            );
-          })}
+                </TouchableOpacity>
+              );
+            })}
+          </View>
         </View>
-   
-        </View>
-          {/* <ScrollView>
-          <MonoText>{JSON.stringify(   TextPrediction.getInstance().debuggingText)}</MonoText>
-
-          </ScrollView> */}
         {this.state.showConfirmDialog ? (
           <ConfirmDeleteDialog
             customizedText={
@@ -200,8 +204,7 @@ export default class TextToSpeachScreen extends React.Component {
                 showConfirmDialog: false
               });
             }}
-          >
-                     </ConfirmDeleteDialog>
+          />
         ) : null}
       </TouchableOpacity>
     );
@@ -220,9 +223,8 @@ export default class TextToSpeachScreen extends React.Component {
     this.changeText(inputText.concat(word).concat(" "));
   }
 
-
   changeText(text) {
-    this.setState({text: text});
+    this.setState({ text: text });
     const toolsColors = this.state.toolsColors;
     toolsColors["المفضلة"] = this.state.favourites.includes(text)
       ? Colors.brand
@@ -307,9 +309,9 @@ export default class TextToSpeachScreen extends React.Component {
     });
   }
 
-  onTextChanged = this.debounce((text) => {
+  onTextChanged = this.debounce(text => {
     this.changeText(text);
-   }, 200);
+  }, 200);
 
   debounce(a, b, c) {
     let d, e;
@@ -334,7 +336,7 @@ const styles = StyleSheet.create({
     //     padding: 13,
   },
   inputAndToolsWrapper: {
-    width: '85%', 
+    width: "85%",
     maxWidth: 500,
     marginTop: 10,
     paddingTop: 12,
@@ -353,11 +355,11 @@ const styles = StyleSheet.create({
   toolsbar: {
     position: "absolute",
     top: 84,
-    width: '100%',
+    width: "100%",
     backgroundColor: "#F7F7F7", // temp
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: 'center',
+    alignItems: "center",
     paddingHorizontal: 16,
     height: 60,
     borderRadius: 10
@@ -394,9 +396,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     backgroundColor: "white",
     borderRadius: 10,
-    paddingVertical: '1.5%', // was 10
+    paddingVertical: "1.5%", // was 10
     marginBottom: 10,
-    width: '20%',
+    width: "20%",
     minWidth: 95,
     maxWidth: 200
   },

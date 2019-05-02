@@ -29,7 +29,6 @@ export default class CategoriesScreen extends React.Component {
       "المكتبات"
     ];
     this.state = {
-      // title: categoryPath.join(), // test> test
       categoryPath: categoryPath,
       categories: [],
       selectedCategories: [],
@@ -50,7 +49,6 @@ export default class CategoriesScreen extends React.Component {
             imgSrc: require("../../assets/images/categories/greetings.png"),
             default: true
           },
-          // { label: 'المفضلة', type: 'category' , imgSrc:  require('../../assets/images/categories/favourites.png'), default: true},
           {
             label: "العمل",
             type: "category",
@@ -97,43 +95,17 @@ export default class CategoriesScreen extends React.Component {
         ...CategoriesSentences
       }
     };
-    // storageInstance = Storage.getInstance();
-    // storageInstance.removeItem('المكتبات');
-    // storageInstance.removeItem( 'المكتبات,المستشفى');
-    //         storageInstance.removeItem("المكتبات,المستشفى");
-    //         storageInstance.removeItem("المكتبات,عام");
-    //         storageInstance.removeItem("المكتبات,التحيات");
-    //         storageInstance.removeItem("المكتبات,السوق");
-    //         storageInstance.removeItem("المكتبات,العمل");
-    //         storageInstance.removeItem("المكتبات,السفر");
-    //         storageInstance.removeItem("المكتبات,المطعم");
-    //         storageInstance.removeItem("المكتبات,المدرسة");
-    //         storageInstance.removeItem("المكتبات,المسجد");
     this.initCategories();
-    // this.initVoiceGender();
-    // this.load();
     props.navigation.addListener("willFocus", this.load);
-    // props.navigation.addListener('willBlur', this.load)
-    // props.navigation.addListener('didBlur', this.load)
   }
   static navigationOptions = {
     header: null
   };
 
   load = () => {
-    // this.updateTitle();
     this.cancelSelectMode();
-    // if(!this.state.selectMode) {
-    // this.updateGender();
     this.initCategories();
   };
-
-  // updateTitle = () => {
-  //   const categoryPath = this.props.navigation.getParam('categoryPath') || this.state.categoryPath || ['المكتبات'];
-  //   this.setState({
-  //     title: categoryPath.join('>')
-  //   })
-  // }
 
   render() {
     const currentDefaultCategories =
@@ -169,14 +141,6 @@ export default class CategoriesScreen extends React.Component {
               ? () => this.moveToCategoryLevel(-2)
               : null
           }
-          //    this.props.navigation.navigate(
-          //   {
-          //     routeName: 'CategoriesScreen',
-          //     params: {
-          //         categoryPath:  this.state.categoryPath.slice(0, -1)
-          //     },
-          //     key: 'CategoriesScreen'.concat(this.state.categoryPath.slice(0, -1).length)
-          // })
 
           onSelectClicked={
             this.state.categories.length > currentDefaultCategories.length
@@ -185,54 +149,51 @@ export default class CategoriesScreen extends React.Component {
           }
         />
         <ScrollView>
-        {/* <MonoText> {this.state.categoryPath}</MonoText> */}
-          {/* <MonoText> {this.state.test}</MonoText> */}
           <View style={commonStyles.flexCenter}>
-          <View style={[styles.cardsContainer, commonStyles.flexCenter]}>
-            {this.state.categories.map((category, index) => {
-              return category.type === "category" ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    this.categoryClicked(index);
-                  }}
-                >
-                  <Card
-                    key={category.label}
-                    cardInfo={category}
-                    selectMode={this.state.selectMode}
-                    fontSize={this.state.categoryPath.length > 1 ? 15 : 18} // this.state.categoryPath.length > 1 ? 12 : 15
-                    selected={category.selected}
-                  />
-                </TouchableOpacity>
-              ) : null;
-            })}
+            <View style={[styles.cardsContainer, commonStyles.flexCenter]}>
+              {this.state.categories.map((category, index) => {
+                return category.type === "category" ? (
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.categoryClicked(index);
+                    }}
+                  >
+                    <Card
+                      key={category.label}
+                      cardInfo={category}
+                      selectMode={this.state.selectMode}
+                      fontSize={this.state.categoryPath.length > 1 ? 15 : 18} // this.state.categoryPath.length > 1 ? 12 : 15
+                      selected={category.selected}
+                    />
+                  </TouchableOpacity>
+                ) : null;
+              })}
 
-            {this.state.categories.map((category, index) => {
-              return category.type !== "category" ? (
-                <TouchableOpacity
-                  onPress={() => {
-                    this.sentenceClicked(index);
-                  }}
-                >
-                  <Card
-                    key={category.label}
-                    cardInfo={category}
-                    selectMode={this.state.selectMode}
-                    fontSize={this.state.categoryPath.length > 1 ? 15 : 18} /// was 12: 15
-                    selected={category.selected}
-                  />
-                </TouchableOpacity>
-              ) : null;
-            })}
-          </View>
+              {this.state.categories.map((category, index) => {
+                return category.type !== "category" ? (
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.sentenceClicked(index);
+                    }}
+                  >
+                    <Card
+                      key={category.label}
+                      cardInfo={category}
+                      selectMode={this.state.selectMode}
+                      fontSize={this.state.categoryPath.length > 1 ? 15 : 18} /// was 12: 15
+                      selected={category.selected}
+                    />
+                  </TouchableOpacity>
+                ) : null;
+              })}
+            </View>
           </View>
         </ScrollView>
         {this.state.selectMode ? (
           <DeleteAndCancel
             onCancelClicked={this.cancelSelectMode}
             onDeleteClicked={this.deleteClicked}
-          >
-            {" "}
+          >        
           </DeleteAndCancel>
         ) : null}
         {this.state.showConfirmDialog ? (
@@ -249,8 +210,7 @@ export default class CategoriesScreen extends React.Component {
                 showConfirmDialog: false
               });
             }}
-          >
-            {" "}
+          >           
           </ConfirmDeleteDialog>
         ) : null}
       </View>
@@ -263,17 +223,12 @@ export default class CategoriesScreen extends React.Component {
     storageInstance
       .getItem(this.state.categoryPath.join(), result)
       .then(res => {
-        // this.setState({
-        //   test: JSON.stringify(  (result.value ))
-        // });
-        defaultCategories =  this.state.defaultCategories[this.state.categoryPath.join()] || [];
+        defaultCategories =
+          this.state.defaultCategories[this.state.categoryPath.join()] || [];
         result.value = result.value ? result.value : [];
-          // storageInstance.removeItem( this.state.categoryPath.join());
-          this.setState({
-            categories: [...defaultCategories, ...result.value],
-            // test: JSON.stringify([...defaultCategories, ...result.value])
-            // , test: 'found in ' + this.state.categoryPath.join() + JSON.stringify(result.value)
-          });
+        this.setState({
+          categories: [...defaultCategories, ...result.value]
+        });
       });
   };
 
@@ -305,19 +260,18 @@ export default class CategoriesScreen extends React.Component {
     } else {
       //  if(this.state.categories[index].type === 'category')
       this.setState({
-        categoryPath: [...this.state.categoryPath, this.state.categories[index].label]
+        categoryPath: [
+          ...this.state.categoryPath,
+          this.state.categories[index].label
+        ]
       });
       setTimeout(() => {
         this.load();
       }, 2);
     }
-    // else {
-    //   this.sentenceClicked(index);
-    // }
   };
 
   sentenceClicked = sentenceIndex => {
-    // StopSound();
     if (this.state.selectMode) {
       this.selectionToggeled(sentenceIndex);
     } else if (this.state.categories[sentenceIndex].default) {
@@ -326,24 +280,12 @@ export default class CategoriesScreen extends React.Component {
       ArabicRecorderAndPlayer.getInstance().onStartPlayStoredFile(
         this.state.categories[sentenceIndex].soundPath
       );
-      // this.onStartPlay(this.state.categories[sentenceIndex].soundPath);
-      // PlaySound(this.state.categories[sentenceIndex].soundPath.replace('.mp4', '')); // .mp3
     } else {
       TextToSpeach.getInstance().speak(
         this.state.categories[sentenceIndex].label
       );
     }
   };
-
-  // updateGender = () => {
-  //   const storageInstance = Storage.getInstance();
-  //   const result = { value: "null" };
-  //   storageInstance.getItem("settingsValues", result).then(res => {
-  //     this.setState({
-  //       voiceGender: result.value ? result.value.voiceGender : Genders.female
-  //     });
-  //   });
-  // };
 
   playExistingSoundDeprecated = sentenceIndex => {
     let soundPath = "";
@@ -368,19 +310,21 @@ export default class CategoriesScreen extends React.Component {
   };
 
   playExistingSound = sentenceIndex => {
-    // const cleanedSentence = this.cleanSentence(
-    //   this.state.categories[sentenceIndex]
-    // );
     const storageInstance = Storage.getInstance();
     const result = { value: "null" };
     storageInstance.getItem("settingsValues", result).then(res => {
-      const voiceGender =  result.value ? result.value.voiceGender : Genders.female;
+      const voiceGender = result.value
+        ? result.value.voiceGender
+        : Genders.female;
       const gender = voiceGender === Genders.female ? "f" : "m";
-      let soundPath = CategoriesArabicToEnglish[this.state.categoryPath.join()] + '_' + sentenceIndex + '_'+ gender;
-        // this.state.categoryPath[1] + "-" + cleanedSentence + "-" + gender;
+      let soundPath =
+        CategoriesArabicToEnglish[this.state.categoryPath.join()] +
+        "_" +
+        sentenceIndex +
+        "_" +
+        gender;
       PlaySound(soundPath);
     });
-
   };
 
   // cleanSentence(sentence) {
@@ -450,8 +394,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 10,
     marginBottom: 20,
-    // display: 'flex',
-    // flex: 1,
     maxWidth: 900,
     flexWrap: "wrap"
   }

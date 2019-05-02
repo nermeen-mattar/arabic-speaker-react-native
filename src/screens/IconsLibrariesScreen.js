@@ -38,12 +38,6 @@ export default class IconsLibrariesScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent= {<CustomHeader navigation = {this.props.navigation} title="Home" drawerOpen={() => this.props.navigation.navigate('DrawerOpen')} />}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-         /> */}
         <CustomHeader
           isSearchable={true}
           filterContent={searchText => this.filterContent(searchText)}
@@ -51,8 +45,7 @@ export default class IconsLibrariesScreen extends React.Component {
           title={this.state.title}
           onBackClicked={() => this.props.navigation.goBack()}
         />
-        {/* <Header centerComponent = {{ text: 'MY nerro', style: { color: '#fff' } }} />  */}
-        {/* <ScrollView style={styles.container} > */}
+
         <SectionList
           sections={[{ data: this.state.librariesToDisplay }]}
           renderItem={({ item, index }) => (
@@ -72,24 +65,13 @@ export default class IconsLibrariesScreen extends React.Component {
               <Icon style={styles.itemArrowIcon} name="chevron-left" />
             </TouchableOpacity>
           )}
-          // renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section}</Text>}
-          // keyExtractor={(library, index) => index}
         />
         <MonoText>{this.state.test}</MonoText>
-
-        {/* </ScrollView> */}
       </View>
     );
   }
 
-  // iconsLibraryClicked(index) {
-  //     this.props.navigation.navigate('iconsLibrary', {
-  //       iconsLibraryName: this.state.iconsLibraries[index]
-  //     });
-  // }
-
   filterContent(searchText) {
-    // const librariesToDisplay = Object.assign([], this.state.iconsLibraries);
     this.setState({
       librariesToDisplay: this.state.iconsLibraries.filter(iconsLibrary =>
         iconsLibrary.includes(searchText.trim())

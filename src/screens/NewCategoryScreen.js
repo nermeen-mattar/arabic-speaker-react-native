@@ -8,9 +8,6 @@ import {
   AsyncStorage,
   Keyboard,
   Alert
-  // CameraRoll,
-  // ScrollView,
-  // Button
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
@@ -43,55 +40,7 @@ export default class NewCategoryScreen extends React.Component {
       )
     };
     props.navigation.addListener("willFocus", this.load);
-    // thi._handleButtonPress()
-
-    // More info on all the options is below in the API Reference... just some common use cases shown here
-    const options = {
-      title: "Select Avatar",
-      customButtons: [{ name: "fb", title: "Choose Photo from Facebook" }],
-      storageOptions: {
-        skipBackup: true,
-        path: "images"
-      }
-    };
-    /**
- * The first arg is the options object for customization (it can also be null or omitted for default options),
- * The second arg is the callback which sends object: response (more info in the API Reference)
-
-ImagePicker.showImagePicker(options, (response) => {
-  console.log('Response = ', response);
-
-  if (response.didCancel) {
-    console.log('User cancelled image picker');
-  } else if (response.error) {
-    console.log('ImagePicker Error: ', response.error);
-  } else if (response.customButton) {
-    console.log('User tapped custom button: ', response.customButton);
-  } else {
-    const source = { uri: response.uri };
-
-    // You can also display the image using data:
-    // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-
-    this.setState({
-      avatarSource: source,
-    });
   }
-}); */
-  }
-
-  // _handleButtonPress = () => {
-  //   CameraRoll.getPhotos({
-  //       first: 20,
-  //       assetType: 'Photos',
-  //     })
-  //     .then(r => {
-  //       this.setState({ photos: r.edges });
-  //     })
-  //     .catch((err) => {
-  //        //Error Loading Images
-  //     });
-  //   };
 
   load = () => {
     const newState = {
@@ -121,24 +70,6 @@ ImagePicker.showImagePicker(options, (response) => {
         style={{ flex: 1 }}
         onPress={Keyboard.dismiss}
       >
-        {/* <View>
-     <Button title="Load Images" onPress={this._handleButtonPress} />
-     <ScrollView>
-       {this.state.photos.map((p, i) => {
-       return (
-         <Image
-           key={i}
-           style={{
-             width: 300,
-             height: 100,
-           }}
-           source={{ uri: p.node.image.uri }}
-         />
-       );
-     })}
-     </ScrollView>
-   </View> */}
-
         <FormHeader
           title={this.state.title}
           onCancelClicked={() =>
@@ -157,17 +88,6 @@ ImagePicker.showImagePicker(options, (response) => {
             value={this.state.categoryName}
           />
           <View style={styles.card}>
-            {/*<PhotoUpload
-   onPhotoSelect={avatar => {
-     if (avatar) {
-       console.log('Image base64 string: ', avatar)
-     }
-   }}>
-          <Image style={styles.cardIcon} source={require( '../../assets/images/icons/camera_icon.png')} />
-          </PhotoUpload>
-          <MonoText style={styles.cardLabel}>{this.state.cardInfo.label}</MonoText>
-        </View> */}
-
             <TouchableOpacity
               onPress={() =>
                 this.state.imagePickerInstance.displayImagePickerMenu()
@@ -230,26 +150,6 @@ ImagePicker.showImagePicker(options, (response) => {
           });
         });
     });
-
-    //   const newCategory  =  [
-    //     { label: 'nerrro', imgSrc:  require('../../assets/images/categories/favourites.png')},
-    // ];
-    //   storageInstance.setItem('categories', newCategory).then(res => {
-    //     this.setState({
-    //       title: 'yeees',
-    //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
-    //       inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
-    //     });
-    //     this.props.navigation.navigate('HomeStack');
-    //   })
-
-    //   AsyncStorage.getItem('UID123', (err, result) => {
-    //     this.setState({
-    //       title: 'wow',
-    //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/categories/chat.png')},
-    //     inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
-    //   });
-    // });
   };
 
   displayAlertMessage() {

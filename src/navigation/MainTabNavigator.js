@@ -7,7 +7,6 @@ import CategoriesScreen from '../screens/CategoriesScreen';
 import SpeakingScreen from '../screens/SpeakingScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import NewCategoryScreen from '../screens/NewCategoryScreen'; 
-// import SentencesScreen from '../screens/SentencesScreen'; 
 import NewSentenceScreen from '../screens/NewSentenceScreen'; 
 import IconsLibrariesScreen from '../screens/IconsLibrariesScreen'; 
 import IconsScreen from '../screens/IconsScreen'; 
@@ -18,7 +17,6 @@ import { MonoText } from '../components/StyledText';
 const CategoriesStack = createStackNavigator({
   CategoriesScreen: CategoriesScreen,
   NewCategoryScreen: NewCategoryScreen,
-  // SentencesScreen: SentencesScreen,
   NewSentenceScreen: NewSentenceScreen,
   IconsLibrariesScreen: IconsLibrariesScreen,
   IconsScreen: IconsScreen
@@ -32,10 +30,6 @@ CategoriesStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
     <MonoText style={{textAlign: 'center', marginRight: 10,  marginLeft: 10, color: focused ? Colors.brand: Colors.grayFontColor}}> المكتبات </MonoText>  
   ),
-
-  // tabBarIcon:  ({ focused }) => (
-  //   <Icon name="table" size={24} color={focused ? Colors.brand: Colors.grayFontColor}   />  
-  // ),
   tabBarIcon: ({ focused }) => (
       <Image source={ 
         focused ? require('../../assets/images/tabs-bar/categories-active.png') : 
@@ -79,10 +73,6 @@ AlertStack.navigationOptions = {
   tabBarLabel:  ({ focused }) => (
     <MonoText style={{textAlign: 'center', marginRight: 10,  marginLeft: 10, color: focused ?  Colors.brand: Colors.grayFontColor}}> تنبيه </MonoText>  
   ),
-//   <TabBarIcon
-//   focused={focused}
-//   name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
-// />
   tabBarIcon:  ({ focused }) => (
     <Icon name="bell" size={24}  color={focused ? Colors.brand: Colors.grayFontColor}  />  
   ),

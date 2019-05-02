@@ -20,10 +20,6 @@ export default class ContactUsScreen extends React.Component {
     super();
     this.state = {
       title: ["تواصل معنا"],
-      // userMessage: {
-      //   type: 'success',
-      //   text: ''
-      // },
       formFields: {
         name: {
           label: "الإسم",
@@ -40,7 +36,6 @@ export default class ContactUsScreen extends React.Component {
         rating: {
           label: "تقييم التطبيق",
           type: "stars",
-          // elements: this.getStarsElements,
           value: 5
         },
         body: {
@@ -51,9 +46,6 @@ export default class ContactUsScreen extends React.Component {
         }
       }
     };
-
-    // this.state.formFields.rating.elements = this.getStarsElements;
-
   }
 
   static navigationOptions = {
@@ -63,10 +55,8 @@ export default class ContactUsScreen extends React.Component {
 
   getStarsElements() {
     return <View style={[{flexDirection: 'row',  justifyContent: 'space-between'}, styles.inputStyle]}>  
-    {/* , alignItems: 'center' */}
     <MonoText style={styles.ratingLabel}> تقييم التطبيق </MonoText>
     <View style={{display: 'flex', flexDirection: 'row'}}>     
-    {/* onPress = { this.state.formFields.rating.value }   */}
     {        
       [1,2,3,4,5].map(index => {
         return (
@@ -101,11 +91,9 @@ export default class ContactUsScreen extends React.Component {
 
         <View style={[styles.container, commonStyles.flexCenter]}>
           <View>
-            {/* style={{flexDirection: 'row', justifyContent: 'center'}}>  */}
             {Object.keys(this.state.formFields).map(fieldName => {
               return (
                 this.state.formFields[fieldName].type === 'stars' ? // custom
-                // this.state.formFields[fieldName].elements()
                 this.getStarsElements() : 
                 <TextInput
                 style={[
@@ -128,11 +116,6 @@ export default class ContactUsScreen extends React.Component {
               <MonoText style={styles.buttonText}>إرسال الرسالة</MonoText>
             </TouchableOpacity>
           </View>
-
-          {/* <MonoText>
-      {this.state.userMessage}
-        </MonoText>
-                    */}
         </View>
       </Modal>
     );
@@ -143,13 +126,6 @@ export default class ContactUsScreen extends React.Component {
   }
 
   sendMessage() {
-    // const errorFields = [];
-    // this.state.formFields.forEach(field => {
-    //   if(!field.value) {
-    //     errorFields.push(field.label);
-    //   }
-    // });
-    // errorFields.length
     let requiredError = Object.keys(this.state.formFields).some(
       fieldName => !this.state.formFields[fieldName].value
     );
@@ -212,7 +188,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     textAlign: "right",
     padding: 6,
-    paddingTop: 12 // 20 didn't work
+    paddingTop: 12
   },
   ratingLabel: {
     color: Colors.grayFontColor,
@@ -240,6 +216,6 @@ const styles = StyleSheet.create({
     width: 315,
     minWidth: "60%",
     marginTop: 11,
-    borderRadius: 10 /* **N** */
+    borderRadius: 10
   }
 });

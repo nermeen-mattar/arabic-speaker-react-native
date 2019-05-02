@@ -1,44 +1,36 @@
-import { AsyncStorage } from "react-native"
+import { AsyncStorage } from "react-native";
 export class Storage {
-      static instance;
+  static instance;
 
-      static getInstance() {
-        if(!Storage.instance) {
-          Storage.instance = new Storage();    
-        }
-        return Storage.instance;
-      }
+  static getInstance() {
+    if (!Storage.instance) {
+      Storage.instance = new Storage();
+    }
+    return Storage.instance;
+  }
 
-      getItem = async (key, result) => {
-        try {
-          value = await AsyncStorage.getItem(key);
-           result.value = JSON.parse(value);
-         
-       } catch (error) {
-       }
-      }
+  getItem = async (key, result) => {
+    try {
+      value = await AsyncStorage.getItem(key);
+      result.value = JSON.parse(value);
+    } catch (error) {}
+  };
 
-      mergeItem = async (key, value) => {
-        try {
-          await AsyncStorage.mergeItem(key, JSON.stringify(value));
-        } catch (error) {
-        }
-      }
+  mergeItem = async (key, value) => {
+    try {
+      await AsyncStorage.mergeItem(key, JSON.stringify(value));
+    } catch (error) {}
+  };
 
-      
-      setItem = async (key, value) => {
-        try {
-          await AsyncStorage.setItem(key, JSON.stringify(value));
-        } catch (error) {
-        }
-        // const stringifiedValue = JSON.stringify(value);
-        // localStorage.setItem(key, stringifiedValue);
-      }
+  setItem = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {}
+  };
 
-      removeItem = async (key) => {
-        try {
-          await AsyncStorage.removeItem(key);
-        } catch (error) {
-        }
-      }
+  removeItem = async key => {
+    try {
+      await AsyncStorage.removeItem(key);
+    } catch (error) {}
+  };
 }

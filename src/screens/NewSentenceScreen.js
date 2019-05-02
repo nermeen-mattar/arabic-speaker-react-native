@@ -19,7 +19,7 @@ import { Storage } from "../classes/Storage";
 import { TextPrediction } from "../classes/TextPrediction";
 import { ImagePickerHelper } from "../classes/ImagePickerHelper";
 import { ArabicRecorderAndPlayer } from "../classes/ArabicRecorderAndPlayer";
-import { AutoSoundsSaver }from "../classes/AutoSoundsSaver";
+import { AutoSoundsSaver } from "../classes/AutoSoundsSaver";
 export default class NewSentenceScreen extends React.Component {
   constructor(props) {
     super();
@@ -97,19 +97,6 @@ export default class NewSentenceScreen extends React.Component {
         </View>
         <View style={styles.inputsWrapper}>
           <View style={styles.card}>
-            {/* <PhotoUpload
-        maxHeight= "100"
-        maxWidth = "100"
-        onResizedImageUri = {photo => {
-          this.setState({imgSrc: photo.uri})
-          this.setState({sentence: photo.uri})
-
-        }}
-        imagePickerProps = {{label: 'herllo nerro '}}
-        onPhotoSelect={photo => {
-          this.setState({imgSrc: photo})
-        }}
-        > */}
             <TouchableOpacity
               onPress={() =>
                 this.state.imagePickerInstance.displayImagePickerMenu()
@@ -196,15 +183,6 @@ export default class NewSentenceScreen extends React.Component {
 
   startStopRecording() {
     if (this.state.recordingState === "recording") {
-      /* already recording */
-      //   SoundRecorder.stop()
-      // .then((result) => {
-      //   PlaySound('alert');
-      //   // this.setState({text: JSON.stringify(result)})
-      //   // if(callBack) {
-      //   //   callBack();
-      //   // }
-      // });
       ArabicRecorderAndPlayer.getInstance().onStopRecord();
       this.setState({ recordingState: "recorded" });
     } else {
@@ -216,12 +194,7 @@ export default class NewSentenceScreen extends React.Component {
       this.setState({
         recordingState: "recording",
         soundPath: fileName
-      }); //
-      // const pathAndFile = SoundRecorder.PATH_CACHE + '/'+ Math.floor((Math.random() * 1000)) + '.mp4';
-      // // SoundRecorder.PATH_CACHE + '/' + this.state.sentence || Math.floor((Math.random() * 1000)) + '.mp4';
-      // SoundRecorder.start(pathAndFile)
-      // .then(()=> {
-      // });
+      }); 
     }
   }
 
@@ -256,17 +229,9 @@ export default class NewSentenceScreen extends React.Component {
     TextToSpeach.getInstance().speak(this.state.sentence);
   };
 
-
   displayAlertMessage() {
-    Alert.alert(
-        'فشل الحفظ',
-        'لا يمكن حفظ عبارة فارغة',
-        [
-        {text: 'حسناً'}
-        ]
-    )
-}
- 
+    Alert.alert("فشل الحفظ", "لا يمكن حفظ عبارة فارغة", [{ text: "حسناً" }]);
+  }
 
   addNewSentence = () => {
     if (!this.state.sentence) {
@@ -278,7 +243,7 @@ export default class NewSentenceScreen extends React.Component {
       // return;
     }
     const recordingPath = this.state.soundPath;
-    if(!recordingPath) {
+    if (!recordingPath) {
       AutoSoundsSaver.getInstance().storeSoundIfNotExist(this.state.sentence);
     }
     const storageInstance = Storage.getInstance();
@@ -300,29 +265,7 @@ export default class NewSentenceScreen extends React.Component {
             categoryPath: this.state.categoryPath
           });
         });
-
-      // this.props.navigation.navigate('SentencesScreen');
     });
-
-    //   const newSentence  =  [
-    //     { label: 'nerrro', imgSrc:  require('../../assets/images/sentences/favourites.png')},
-    // ];
-    //   storageInstance.setItem(this.state.categoryPath.join(), newSentence).then(res => {
-    //     this.setState({
-    //       title: 'yeees',
-    //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/sentences/chat.png')},
-    //       inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
-    //     });
-    //     this.props.navigation.navigate('HomeStack');
-    //   })
-
-    //   AsyncStorage.getItem('UID123', (err, result) => {
-    //     this.setState({
-    //       title: 'wow',
-    //       cardInfo: { label: 'ارفق صورة', imgSrc:  require('../../assets/images/sentences/chat.png')},
-    //     inputPlaceholder: "اكتب ثلاث كلمات بحد أقصى كعنوان للتصنيف الجديد"
-    //   });
-    // });
   };
 }
 
@@ -355,8 +298,6 @@ const styles = StyleSheet.create({
     marginVertical: 11,
     marginHorizontal: 5,
     borderRadius: 10
-    // marginBottom: 4,
-    // position: 'relative'
   },
   cardIcon: {
     marginVertical: 24,

@@ -40,16 +40,16 @@ export class TextToSpeach {
         settings.value && settings.value.voiceGender === Genders.female
           ? "female"
           : "male";
-          const autoSoundSaver = AutoSoundsSaver.getInstance();
-          const fileName = autoSoundSaver.getFileName(gender, text);
-          if (autoSoundSaver.isSoundExist(fileName)) {
-            ArabicRecorderAndPlayer.getInstance().onStartPlay( 
-              Platform.select({
-                ios: fileName + '.mpga',
-                andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
-              }) 
-            );
-          } else {
+      const autoSoundSaver = AutoSoundsSaver.getInstance();
+      const fileName = autoSoundSaver.getFileName(gender, text);
+      if (autoSoundSaver.isSoundExist(fileName)) {
+        ArabicRecorderAndPlayer.getInstance().onStartPlay(
+          Platform.select({
+            ios: fileName + ".mpga",
+            andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
+          })
+        );
+      } else {
         NetInfo.isConnected.fetch().then(isConnected => {
           if (isConnected) {
             this.formatSentenceThenCallResponsiveVoice(text, gender);
