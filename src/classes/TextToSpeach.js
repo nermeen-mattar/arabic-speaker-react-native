@@ -40,23 +40,14 @@ export class TextToSpeach {
         settings.value && settings.value.voiceGender === Genders.female
           ? "female"
           : "male";
-      const autoSoundSaver = AutoSoundsSaver.getInstance();
-      const fileName = autoSoundSaver.getFileName(gender, text);
-      if (autoSoundSaver.isSoundExist(fileName)) {
-        ArabicRecorderAndPlayer.getInstance().onStartPlay(
-          Platform.select({
-            ios: fileName + ".mpga",
-            andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
-          })
-        );
-      } else {
+      if(!this.playStoredFile(gender, text)) {
         NetInfo.isConnected.fetch().then(isConnected => {
           if (isConnected) {
             const responsiveVoiceSpeak = (text) => {
               ArabicRecorderAndPlayer.getInstance().onStartPlay(AutoSoundsSaver.getInstance().getUrlForResposiveVoiceRequest(text, gender));
             }
             this.formatSentenceAndExecuteCallback(text, responsiveVoiceSpeak);
-          } else {
+          } else if(!this.playStoredFile( gender === Genders.female ? Genders.male : Genders.female, text)) {
             if (Platform.OS === "android") {
               this.displayAlertMessage();
             } else {
@@ -66,6 +57,21 @@ export class TextToSpeach {
         });
       }
     });
+  }
+
+  playStoredFile(gender, text) {
+    const autoSoundSaver = AutoSoundsSaver.getInstance();
+    const fileName = autoSoundSaver.getFileName(gender, text);
+    const isSoundExist = autoSoundSaver.isSoundExist(fileName);
+    if (isSoundExist) {
+      ArabicRecorderAndPlayer.getInstance().onStartPlay(
+        Platform.select({
+          ios: fileName + ".mpga",
+          andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
+        })
+      );
+    } 
+    return isSoundExist;
   }
 
   formatSentenceAndExecuteCallback(text, callback) {
