@@ -52,7 +52,10 @@ export class TextToSpeach {
       } else {
         NetInfo.isConnected.fetch().then(isConnected => {
           if (isConnected) {
-            this.formatSentenceThenCallResponsiveVoice(text, gender);
+            const responsiveVoiceSpeak = (text) => {
+              ArabicRecorderAndPlayer.getInstance().onStartPlay(AutoSoundsSaver.getInstance().getUrlForResposiveVoiceRequest(text, gender));
+            }
+            this.formatSentenceAndExecuteCallback(text, responsiveVoiceSpeak);
           } else {
             if (Platform.OS === "android") {
               this.displayAlertMessage();
@@ -65,7 +68,7 @@ export class TextToSpeach {
     });
   }
 
-  formatSentenceThenCallResponsiveVoice(text, gender) {
+  formatSentenceAndExecuteCallback(text, callback) {
     TextToSpeach.instance
       .fetchWithTimeout(
         "http://18.224.240.0:8082/api/process?text=".concat(text),
@@ -74,25 +77,16 @@ export class TextToSpeach {
         }
       )
       .then(response => {
-        if (response.status == "200") {
-          text = response._bodyInit;
-        }
-        TextToSpeach.instance.responsiveVoiceSpeak(text, gender);
-      })
-      .catch(err => {
-        TextToSpeach.instance.responsiveVoiceSpeak(text, gender);
-      });
+      if (response.status == "200") {
+        text = response._bodyInit;
+      }
+      callback(text);
+    })
+    .catch(err => {
+      callback(text);
+    });
   }
 
-  responsiveVoiceSpeak(text, gender) {
-    let requestPath =
-      "https://code.responsivevoice.org/getvoice.php?t=$text&tl=ar&gender=$gender";
-    requestPath = requestPath
-      .replace("$text", encodeURI(text))
-      .replace("$gender", gender);
-
-    ArabicRecorderAndPlayer.getInstance().onStartPlay(requestPath);
-  }
   displayAlertMessage() {
     Alert.alert("يجب أن تكون متصل بالانترنت");
   }
