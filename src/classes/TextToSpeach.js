@@ -32,7 +32,6 @@ export class TextToSpeach {
   }
 
   speak(text) {
-    text = text.replace("بكم", "بِكَمْ");
     const storageInstance = Storage.getInstance();
     const settings = { value: "null" };
     storageInstance.getItem("settingsValues", settings).then(res => {
@@ -47,10 +46,11 @@ export class TextToSpeach {
               ArabicRecorderAndPlayer.getInstance().onStartPlay(AutoSoundsSaver.getInstance().getUrlForResposiveVoiceRequest(text, gender));
             }
             this.formatSentenceAndExecuteCallback(text, responsiveVoiceSpeak);
-          } else if(!this.playStoredFile( gender === Genders.female ? Genders.male : Genders.female, text)) {
+          } else if(!this.playStoredFile( gender === "male" ? "female" : "male", text)) {
             if (Platform.OS === "android") {
               this.displayAlertMessage();
             } else {
+              text = text.replace("بكم", "بِكَمْ");
               Tts.speak(text);
             }
           }
@@ -75,6 +75,7 @@ export class TextToSpeach {
   }
 
   formatSentenceAndExecuteCallback(text, callback) {
+    text = text.replace("بكم", "بِكَمْ");
     TextToSpeach.instance
       .fetchWithTimeout(
         "http://18.224.240.0:8082/api/process?text=".concat(text),
