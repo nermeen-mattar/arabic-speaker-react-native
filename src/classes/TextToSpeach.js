@@ -67,7 +67,7 @@ export class TextToSpeach {
       ArabicRecorderAndPlayer.getInstance().onStartPlay(
         Platform.select({
           ios: fileName + ".mpga",
-          andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
+          android: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
         })
       );
     } 
