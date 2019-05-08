@@ -32,7 +32,6 @@ export class TextToSpeach {
   }
 
   speak(text) {
-    text = text.replace("بكم", "بِكَمْ");
     const storageInstance = Storage.getInstance();
     const settings = { value: "null" };
     storageInstance.getItem("settingsValues", settings).then(res => {
@@ -40,26 +39,18 @@ export class TextToSpeach {
         settings.value && settings.value.voiceGender === Genders.female
           ? "female"
           : "male";
-      const autoSoundSaver = AutoSoundsSaver.getInstance();
-      const fileName = autoSoundSaver.getFileName(gender, text);
-      if (autoSoundSaver.isSoundExist(fileName)) {
-        ArabicRecorderAndPlayer.getInstance().onStartPlay(
-          Platform.select({
-            ios: fileName + ".mpga",
-            andrid: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
-          })
-        );
-      } else {
+      if(!this.playStoredFile(gender, text)) {
         NetInfo.isConnected.fetch().then(isConnected => {
           if (isConnected) {
             const responsiveVoiceSpeak = (text) => {
               ArabicRecorderAndPlayer.getInstance().onStartPlay(AutoSoundsSaver.getInstance().getUrlForResposiveVoiceRequest(text, gender));
             }
             this.formatSentenceAndExecuteCallback(text, responsiveVoiceSpeak);
-          } else {
+          } else if(!this.playStoredFile( gender === "male" ? "female" : "male", text)) {
             if (Platform.OS === "android") {
               this.displayAlertMessage();
             } else {
+              text = text.replace("بكم", "بِكَمْ");
               Tts.speak(text);
             }
           }
@@ -68,7 +59,23 @@ export class TextToSpeach {
     });
   }
 
+  playStoredFile(gender, text) {
+    const autoSoundSaver = AutoSoundsSaver.getInstance();
+    const fileName = autoSoundSaver.getFileName(gender, text);
+    const isSoundExist = autoSoundSaver.isSoundExist(fileName);
+    if (isSoundExist) {
+      ArabicRecorderAndPlayer.getInstance().onStartPlay(
+        Platform.select({
+          ios: fileName + ".mpga",
+          android: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
+        })
+      );
+    } 
+    return isSoundExist;
+  }
+
   formatSentenceAndExecuteCallback(text, callback) {
+    text = text.replace("بكم", "بِكَمْ");
     TextToSpeach.instance
       .fetchWithTimeout(
         "http://18.224.240.0:8082/api/process?text=".concat(text),
