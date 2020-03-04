@@ -5,6 +5,7 @@ import { Storage } from "./Storage";
 import Genders from "../constants/Genders";
 import { TextToSpeach } from "./TextToSpeach";
 
+const RV_KEY = "oH5oldm2";
 export class AutoSoundsSaver {
   static instance;
   autoSounds = [];
@@ -47,9 +48,7 @@ export class AutoSoundsSaver {
   }
 
   getUrlForResposiveVoiceRequest(text, gender) {
-    return "https://code.responsivevoice.org/getvoice.php?t=$text&tl=ar&gender=$gender"
-      .replace("$text", encodeURI(text))
-      .replace("$gender", gender);
+    return `https://code.responsivevoice.org/getvoice.php?t=${encodeURI(text)}&tl=ar&gender=${gender}&key=${RV_KEY}`;
   }
 
   storeSoundIfNotExist(sentence) {
