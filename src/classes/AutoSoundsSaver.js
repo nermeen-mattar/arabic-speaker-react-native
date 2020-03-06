@@ -1,5 +1,6 @@
 import { Platform } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
+import { Alert } from "react-native";
 
 import { Storage } from "./Storage";
 import Genders from "../constants/Genders";
@@ -72,7 +73,9 @@ export class AutoSoundsSaver {
             .fetch("GET", this.getUrlForResposiveVoiceRequest(formattedSentence, gender))
             .then(res => {
               this.updateAutoSounds(fileName);
-            });
+            }).catch(err => {
+              Alert.alert('Error');
+            }) ;
         }
         TextToSpeach.getInstance().formatSentenceAndExecuteCallback(sentence, callFetchBlob);
       }

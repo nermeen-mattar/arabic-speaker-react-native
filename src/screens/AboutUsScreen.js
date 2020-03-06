@@ -162,7 +162,7 @@ export default class AboutUsScreen extends React.Component {
               <Image
                 style={{
                   maxHeight: 100,
-                  maxWidth: 100,
+                  maxWidth: 140,
                   margin: 8,
                   marginBottom: 16
                 }}
@@ -171,7 +171,7 @@ export default class AboutUsScreen extends React.Component {
               <Image
                 style={{
                   maxHeight: 100,
-                  maxWidth: 100,
+                  maxWidth: 110,
                   margin: 8,
                   marginBottom: 16
                 }}
@@ -251,20 +251,43 @@ export default class AboutUsScreen extends React.Component {
             >
               رعاية
             </MonoText>
-
+          
+          <TouchableOpacity onPress={() => Linking.openURL('https://tawasal.org/')}> 
+            {/* 
+            on the same line (logo and name next to each other)
+            <View style={[commonStyles.flexCenter, {alignItems: 'center', paddingBottom: 5}]}>
+              <Image
+                style={{ height: 120, maxWidth: 124, margin: 5 }}
+                source={require("../../assets/images/about-us/tawasal-logo.png")}
+              />
+                 <Image
+                style={{ height: 48, width: 115, margin: 5 }}
+                source={require("../../assets/images/about-us/tawasal-name.png")}
+              />
+            </View> */}
             <View style={{ flexDirection: "row", justifyContent: "center" }}>
               <Image
-                style={{ height: 120, maxWidth: 130 }}
-                source={require("../../assets/images/about-us/logo_anas.png")}
+                style={{ height: 120, maxWidth: 124 }}
+                source={require("../../assets/images/about-us/tawasal-logo.png")}
               />
             </View>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                 <Image
+                style={{ height: 40, width: 100,  margin: 10 }}
+                source={require("../../assets/images/about-us/tawasal-name.png")}
+              />
+            </View>      
             <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
-              مركز أنس للتقنيات المساعدة لذوي الاحتياجات الخاصة
+            جمعية تواصل للتقنيات المساعدة لذوي الإعاقة
             </MonoText>
-            <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
+            </TouchableOpacity>
+
+            {/* <MonoText style={[styles.primaryText, commonStyles.textCenter]}>
               Anas Assistive Technology Center for people with disability
+       
+              Tawasul Association for Assistive Technology for Special Needs
               Non-profit Organization
-            </MonoText>
+            </MonoText> */}
           </View>
 
           <View
@@ -297,7 +320,7 @@ export default class AboutUsScreen extends React.Component {
             <View style={[styles.flexSpaceAround, { paddingVertical: 28 }]}>
               <TouchableOpacity
                 onPress={() =>
-                  Linking.openURL("https://twitter.com/AnasCenterAT")
+                  Linking.openURL("https://twitter.com/tawasal2019")
                 }
               >
                 <Image
@@ -305,11 +328,11 @@ export default class AboutUsScreen extends React.Component {
                   source={require("../../assets/images/about-us/twitter.png")}
                 />
                 <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
-                  @AnasCenterAt
+                  @tawasal2019
                 </MonoText>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => Linking.openURL("mailto:AnasCenterAT@Gmail.com")}
+                onPress={() => Linking.openURL("mailto:tawasal.2019@gmail.com")}
               >
                 <Image
                   style={{
@@ -320,7 +343,7 @@ export default class AboutUsScreen extends React.Component {
                   source={require("../../assets/images/about-us/mail.png")}
                 />
                 <MonoText style={[commonStyles.textCenter, styles.primaryText]}>
-                  AnasCenterAT@Gmail.com
+                  tawasal.2019@gmail.com
                 </MonoText>
               </TouchableOpacity>
             </View>

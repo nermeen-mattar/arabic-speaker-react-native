@@ -237,19 +237,19 @@ export default {
         imgSrc: require("../../assets/images/libraries-icons/clothing/change-clothes.gif")
       },
       {
-        label: "فتح الزر",
+        label: "اغلاق الزر",
         imgSrc: require("../../assets/images/libraries-icons/clothing/button.gif")
       },
       {
-        label: "اغلاق الزر",
+        label: "فتح الزر",
         imgSrc: require("../../assets/images/libraries-icons/clothing/unbutton.gif")
       },
       {
-        label: "ضيق جدآ",
+        label: "كبير جدآ",
         imgSrc: require("../../assets/images/libraries-icons/clothing/too-big.gif")
       },
       {
-        label: "كبير جدآ",
+        label: "ضيق جدآ",
         imgSrc: require("../../assets/images/libraries-icons/clothing/too-small.gif")
       },
       {
@@ -261,11 +261,11 @@ export default {
         imgSrc: require("../../assets/images/libraries-icons/clothing/get-dressed.gif")
       },
       {
-        label: "فتح السحاب",
+        label: "اغلاق السحاب",
         imgSrc: require("../../assets/images/libraries-icons/clothing/zip.gif")
       },
       {
-        label: "اغلاق السحاب",
+        label: "فتح السحاب",
         imgSrc: require("../../assets/images/libraries-icons/clothing/unzip.gif")
       },
       {

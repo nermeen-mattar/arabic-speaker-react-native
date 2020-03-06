@@ -26,6 +26,7 @@
     "yarn": "^1.10.1"
   },
   "devDependencies": {
+    "fsevents": "^2.1.2",
     "@babel/core": "^7.1.2",
     "@babel/runtime": "^7.1.2",
     "babel-jest": "23.6.0",
