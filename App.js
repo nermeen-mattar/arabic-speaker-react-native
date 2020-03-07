@@ -5,11 +5,11 @@ import {
   StatusBar,
   View
 } from "react-native";
-import { createDrawerNavigator } from "react-navigation";
+import { createDrawerNavigator, SafeAreaView } from "react-navigation";
 import SplashScreen from "react-native-splash-screen";
 import { Storage } from "./src/classes/Storage";
 
-import { NavigationActions, SafeAreaView } from "react-navigation";
+import { NavigationActions } from "react-navigation";
 import AppNavigator from "./src/navigation/AppNavigator";
 import Colors from "./src/constants/Colors";
 import SettingsComponent from "./src/components/SettingsComponent";
@@ -72,7 +72,7 @@ export default class App extends React.Component {
       SplashScreen.hide();
     }, 1000);
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.container}>
         <View style={styles.container}>
           {Platform.OS === "ios" && <StatusBar barStyle="default" />}
           {this.state.firstLaunch && (
