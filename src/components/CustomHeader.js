@@ -157,8 +157,8 @@ const styles = StyleSheet.create({
         margin: 6
       },
 iconsWrapper: {
-    height: 69,
-      paddingTop: 31,
+    height: 74,
+      paddingTop: 36,
       paddingBottom: 12,
         marginLeft: 13, // was horizantal
       flexDirection: 'row',
