@@ -144,6 +144,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-share')
     compile project(':rn-fetch-blob')
     compile project(':react-native-splash-screen')
     compile project(':react-native-vector-icons')
