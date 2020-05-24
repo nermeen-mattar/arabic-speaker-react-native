@@ -34,7 +34,7 @@ export default FormHeader;
 const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.brand,
-        height: 116
+        height: 120
     },
     title : {
         color: Colors.primary,
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
         marginLeft: 13
       },
     actionsWrapper: {
-      marginTop: 36,
-      marginBottom: 12,
+      marginTop: 40,
+      marginBottom: 8,
     //   marginRight: 17,
       flexDirection: 'row',
       justifyContent: 'space-between'
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     action: {
         color: Colors.primary,
         marginHorizontal: 14,
-        fontSize: 17
+        fontSize: 22
     }
 });
   
