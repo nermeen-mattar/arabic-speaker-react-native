@@ -1,5 +1,5 @@
-import { NetInfo, Alert, Platform } from "react-native";
-// import NetInfo from "@react-native-community/netinfo";
+import { Alert, Platform } from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 import Tts from "react-native-tts";
 
 import { ArabicRecorderAndPlayer } from "./ArabicRecorderAndPlayer";
@@ -46,8 +46,8 @@ export class TextToSpeach {
           ? "female"
           : "male";
       if(!this.playStoredFile(gender, text)) {
-        NetInfo.isConnected.fetch().then(isConnected => {
-          if (isConnected) {
+        NetInfo.fetch().then(state => {
+          if (state.isConnected) {
             const responsiveVoiceSpeak = (text) => {
               ArabicRecorderAndPlayer.getInstance().onStartPlay(AutoSoundsSaver.getInstance().getUrlForResposiveVoiceRequest(text, gender));
             }
