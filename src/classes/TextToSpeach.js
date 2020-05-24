@@ -1,4 +1,5 @@
 import { NetInfo, Alert, Platform } from "react-native";
+// import NetInfo from "@react-native-community/netinfo";
 import Tts from "react-native-tts";
 
 import { ArabicRecorderAndPlayer } from "./ArabicRecorderAndPlayer";
@@ -6,6 +7,7 @@ import { Storage } from "./Storage";
 import Genders from "../constants/Genders";
 import { AutoSoundsSaver } from "../classes/AutoSoundsSaver";
 
+let isConnected;
 export class TextToSpeach {
   static instance;
   constructor() {
@@ -14,6 +16,10 @@ export class TextToSpeach {
       Tts.setDefaultRate(0.5);
       Tts.setDefaultPitch(0.7);
     });
+    // NetInfo.addEventListener(state => {
+    //   isConnected = state.isConnected;
+    //   Alert.alert(isConnected);
+    // });
   }
 
   static getInstance() {
@@ -84,11 +90,16 @@ export class TextToSpeach {
         }
       )
       .then(response => {
-      if (response.status == "200") {
-        text = response._bodyInit;
-      }
-      callback(text);
-    })
+        if (response.status == "20") {
+           return response.text();
+        }
+        debugger;
+        return text;
+      }).then(formattedText => {
+        debugger;
+          text = formattedText || text;
+          callback(text);
+        })
     .catch(err => {
       callback(text);
     });

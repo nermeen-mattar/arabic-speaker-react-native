@@ -9,6 +9,7 @@
     "run-android": "npm run android-linux npx react-native run-android"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^5.9.0",
     "crypto-js": "^3.1.9-1",
     "react": "16.8.6",
     "react-native": "0.60.6",

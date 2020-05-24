@@ -1,3 +1,5 @@
 rootProject.name = 'textApp'
+include ':react-native-play-sound'
+project(':react-native-play-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-play-sound/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
