@@ -2,7 +2,7 @@
 
 
 import React from 'react';
-import { PlaySound } from 'react-native-play-sound';
+import SoundPlayer from 'react-native-sound-player'
 
 export default class AlertScreen extends React.Component {
 
@@ -12,7 +12,7 @@ export default class AlertScreen extends React.Component {
 
   }
   load = () => {
-    PlaySound('alert');
+    SoundPlayer.playSoundFile('alert', 'mp3');
   }
 
   render() {

@@ -36,7 +36,7 @@ export default class TextToSpeachScreen extends React.Component {
           iconName: "volume-up",
           iconSize: 34,
           onPress: () => this.speak(),
-          styles: [styles.tool]
+          styles: [{...styles.tool, minWidth: 50}]
         },
         {
           title: "مسافة",
@@ -96,7 +96,7 @@ export default class TextToSpeachScreen extends React.Component {
   };
 
   componentDidMount() {
-    TextPrediction.getInstance().initIndexedDefaultWords();
+    // TextPrediction.getInstance().initIndexedDefaultWords();
     setTimeout(() => {
       this.setState({textWidth: '100%'})
     }, 100)
@@ -330,12 +330,13 @@ export default class TextToSpeachScreen extends React.Component {
 
   speak() {
     let toolsBar = [...this.state.toolsBar];
-    toolsBar[0].styles = [styles.tool, styles.speakActive];
+    const defaultStyles = toolsBar[0].styles 
+    toolsBar[0].styles = [...defaultStyles, styles.speakActive];
     this.setState({ toolsBar: toolsBar });
     TextPrediction.getInstance().addSentenceToUserWords(this.state.text);
     TextToSpeach.getInstance().speak(this.state.text);
     setTimeout(() => {
-      toolsBar[0].styles = [styles.tool];
+      toolsBar[0].styles = defaultStyles;
       this.setState({ toolsBar: toolsBar });
     }, (this.state.text.length / 10.5) * 1000);
   }

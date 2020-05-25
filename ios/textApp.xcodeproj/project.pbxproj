@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* textAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* textAppTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -27,13 +26,12 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* textAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* textAppTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		52E46287E68C6642B31EFBAD /* libPods-textApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D2148DA8DDACDBABAD3CBD /* libPods-textApp-tvOS.a */; };
 		7004E4952474D83A00BF5CC3 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7004E4942474D83A00BF5CC3 /* JavaScriptCore.framework */; };
 		83AEAEF69FEE485B9697CEC7 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23B9B72D0ED34B7C80EF70F9 /* fontawesome-webfont.ttf */; };
-		8E712612FE39A650559E35AE /* libPods-textAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 335AE2733B7303D7038E4CD3 /* libPods-textAppTests.a */; };
-		9B2B87FA21F8A3A900F366D2 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		8C39BB0FFA10A3F5DF24806A /* libPods-textApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B898A0D35E9856B4631B37 /* libPods-textApp.a */; };
+		9B2B87FA21F8A3A900F366D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		9B45DA8A219B9E7200DD14C0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		9BFB5B62225C23F900634C31 /* school_6_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5A90225C23EA00634C31 /* school_6_m.mp3 */; };
 		9BFB5B63225C23F900634C31 /* general_3_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5ABF225C23EA00634C31 /* general_3_m.mp3 */; };
@@ -201,11 +199,9 @@
 		9BFB5C05225C23F900634C31 /* greetings_3_f.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5B61225C23F900634C31 /* greetings_3_f.mp3 */; };
 		9BFB5C5D225C253B00634C31 /* general_1_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9BFB5C2E225C253B00634C31 /* general_1_m.mp3 */; };
 		A0CDA2CD6BBA4C7788866914 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */; };
-		C62E8D3608D8016EDE98C6EE /* libPods-textApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B898A0D35E9856B4631B37 /* libPods-textApp.a */; };
 		D5B2C8A8DCC6478CB5D93D61 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A2804230E3D4E44A54A1F3D /* Tajawal-Bold.ttf */; };
 		E9CD730BF78C414DABE508A5 /* Hacen Casablanca Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */; };
 		EA341DBEA2DA49DDA8B55E94 /* SF-UI-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 31DCD3E45EC141DAB06E7831 /* SF-UI-Text-Regular.otf */; };
-		EC7531F065684D7BAA290425 /* libPlaySound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7AD2866FEBA418AA9744689 /* libPlaySound.a */; };
 		F03BA966CCEE42A08A2C0E84 /* Hacen Casablanca Light_0.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C344AF2AD4F32B5EE588E /* Hacen Casablanca Light_0.ttf */; };
 /* End PBXBuildFile section */
 
@@ -448,13 +444,6 @@
 			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
 			remoteInfo = "jsiexecutor-tvOS";
 		};
-		701BB28C247A647300A1B32A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B22FFD405C324298938E51E8 /* PlaySound.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E957A9331FE7A97E0009C115;
-			remoteInfo = PlaySound;
-		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -486,8 +475,6 @@
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* textAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = textAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* textAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = textAppTests.m; sourceTree = "<group>"; };
 		06CB9B45E07F4CC5189E76B3 /* Pods-textApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-textApp-tvOS/Pods-textApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		0984293C724210E670C753E1 /* Pods-textApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textApp.debug.xcconfig"; path = "Target Support Files/Pods-textApp/Pods-textApp.debug.xcconfig"; sourceTree = "<group>"; };
 		136452421EAA4CF7A905F3A2 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Regular.ttf"; path = "../assets/fonts/Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -508,7 +495,6 @@
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3BEC0F3EF2942A9800697E /* Pods-textApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textApp.release.xcconfig"; path = "Target Support Files/Pods-textApp/Pods-textApp.release.xcconfig"; sourceTree = "<group>"; };
 		31DCD3E45EC141DAB06E7831 /* SF-UI-Text-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-UI-Text-Regular.otf"; path = "../assets/fonts/SF-UI-Text-Regular.otf"; sourceTree = "<group>"; };
-		335AE2733B7303D7038E4CD3 /* libPods-textAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-textAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D8C344AF2AD4F32B5EE588E /* Hacen Casablanca Light_0.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; path = "Hacen Casablanca Light_0.ttf"; sourceTree = "<group>"; };
 		48A27544F555471DA6B42C91 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Light.ttf"; path = "../assets/fonts/Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		49BCD2C6055B7EA64FE54373 /* libPods-textApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-textApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -687,9 +673,7 @@
 		9BFB5C2E225C253B00634C31 /* general_1_m.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = general_1_m.mp3; path = ../assets/sounds/general_1_m.mp3; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B08E44CA24162D7E73794480 /* Pods-textAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textAppTests.release.xcconfig"; path = "Target Support Files/Pods-textAppTests/Pods-textAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		B22FFD405C324298938E51E8 /* PlaySound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = PlaySound.xcodeproj; path = "../node_modules/react-native-play-sound/PlaySound/PlaySound.xcodeproj"; sourceTree = "<group>"; };
 		BAF5FA1637834B43B8B474BE /* SpaceMono-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceMono-Regular.ttf"; path = "../assets/fonts/SpaceMono-Regular.ttf"; sourceTree = "<group>"; };
-		D7AD2866FEBA418AA9744689 /* libPlaySound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libPlaySound.a; sourceTree = "<group>"; };
 		E2D2148DA8DDACDBABAD3CBD /* libPods-textApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-textApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB719255BE5B4985B5D25D67 /* Hacen Casablanca Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Hacen Casablanca Light.ttf"; path = "../assets/fonts/Hacen Casablanca Light.ttf"; sourceTree = "<group>"; };
 		ED1DCA3641170B1C0172E913 /* Pods-textApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-textApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-textApp-tvOS/Pods-textApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -703,7 +687,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
-				8E712612FE39A650559E35AE /* libPods-textAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,8 +695,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7004E4952474D83A00BF5CC3 /* JavaScriptCore.framework in Frameworks */,
-				EC7531F065684D7BAA290425 /* libPlaySound.a in Frameworks */,
-				C62E8D3608D8016EDE98C6EE /* libPods-textApp.a in Frameworks */,
+				8C39BB0FFA10A3F5DF24806A /* libPods-textApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,23 +769,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* textAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				00E356F21AD99517003FC87E /* textAppTests.m */,
-				00E356F01AD99517003FC87E /* Supporting Files */,
-			);
-			path = textAppTests;
-			sourceTree = "<group>";
-		};
-		00E356F01AD99517003FC87E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				00E356F11AD99517003FC87E /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -867,7 +832,6 @@
 				28B898A0D35E9856B4631B37 /* libPods-textApp.a */,
 				E2D2148DA8DDACDBABAD3CBD /* libPods-textApp-tvOS.a */,
 				49BCD2C6055B7EA64FE54373 /* libPods-textApp-tvOSTests.a */,
-				335AE2733B7303D7038E4CD3 /* libPods-textAppTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -877,14 +841,6 @@
 			children = (
 				5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */,
 				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		701BB289247A647300A1B32A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				701BB28D247A647300A1B32A /* libPlaySound.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -913,7 +869,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				B22FFD405C324298938E51E8 /* PlaySound.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -932,7 +887,6 @@
 			children = (
 				13B07FAE1A68108700A75B9A /* textApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* textAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BAA047DFEDCC45BB9C2BBD34 /* Resources */,
@@ -974,7 +928,6 @@
 			isa = PBXGroup;
 			children = (
 				8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */,
-				D7AD2866FEBA418AA9744689 /* libPlaySound.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1292,10 +1245,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 701BB289247A647300A1B32A /* Products */;
-					ProjectRef = B22FFD405C324298938E51E8 /* PlaySound.xcodeproj */;
-				},
-				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -1579,13 +1528,6 @@
 			remoteRef = 7004E4882474D82F00BF5CC3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		701BB28D247A647300A1B32A /* libPlaySound.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPlaySound.a;
-			remoteRef = 701BB28C247A647300A1B32A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1712,7 +1654,7 @@
 				9BFB5BD7225C23F900634C31 /* travel_7_m.mp3 in Resources */,
 				9BFB5BB9225C23F900634C31 /* greetings_3_m.mp3 in Resources */,
 				9BFB5C00225C23F900634C31 /* school_0_m.mp3 in Resources */,
-				9B2B87FA21F8A3A900F366D2 /* BuildFile in Resources */,
+				9B2B87FA21F8A3A900F366D2 /* (null) in Resources */,
 				9BFB5B75225C23F900634C31 /* general_10_f.mp3 in Resources */,
 				9BFB5BCF225C23F900634C31 /* general_11_m.mp3 in Resources */,
 				9BFB5BC6225C23F900634C31 /* general_4_m.mp3 in Resources */,
@@ -1990,7 +1932,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* textAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2016,7 +1957,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* textAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2062,19 +2002,11 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = textAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lc++",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/textApp.app/textApp";
@@ -2091,19 +2023,11 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = textAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-lc++",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/textApp.app/textApp";
@@ -2124,7 +2048,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = textApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2159,7 +2082,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = textApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2197,14 +2119,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = "textApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2233,14 +2151,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = "textApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2269,14 +2183,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = "textApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -2305,14 +2215,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-speech",
-					"$(SRCROOT)/../node_modules/react-native-play-sound/PlaySound/PlaySound",
 				);
 				INFOPLIST_FILE = "textApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
