@@ -1,7 +1,8 @@
 import React from 'react';
-import { Platform , Image} from 'react-native';
+import { Image} from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 import CategoriesScreen from '../screens/CategoriesScreen';
 import SpeakingScreen from '../screens/SpeakingScreen';

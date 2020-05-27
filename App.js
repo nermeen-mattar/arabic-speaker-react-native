@@ -8,6 +8,7 @@ import {
 import { createDrawerNavigator } from "react-navigation";
 import SplashScreen from "react-native-splash-screen";
 import { Storage } from "./src/classes/Storage";
+import analytics from '@react-native-firebase/analytics';
 
 import { NavigationActions } from "react-navigation";
 import AppNavigator from "./src/navigation/AppNavigator";
@@ -86,7 +87,9 @@ export default class App extends React.Component {
               this.navigatorRef = navigatorRef;
             }}
             onNavigationStateChange={(prevState, currentState, action) => {
-              if (this.getActiveRouteName(currentState) == "Alert") {
+              const routeName = this.getActiveRouteName(currentState);
+              analytics().setCurrentScreen(routeName, routeName);
+              if (routeName == "Alert") {
                 this.navigatorRef.dispatch(
                   NavigationActions.navigate({
                     routeName: this.getActiveRouteName(prevState)
