@@ -56,7 +56,8 @@ export default class TextToSpeachScreen extends React.Component {
           iconName: "share",
           // iconSize: 28,
           onPress: () => this.onShare(),
-          styles: [{...styles.tool, marginLeft: 4}]
+          styles: [styles.tool] // styles: [{...styles.tool, marginLeft: 4}]
+
         },
         {
           title: "مسح",
@@ -69,7 +70,8 @@ export default class TextToSpeachScreen extends React.Component {
         نطق: Colors.brand,
         المفضلة: Colors.borderColor,
         مسح: Colors.borderColor,
-        مسافة: Colors.borderColor
+        مسافة: Colors.borderColor,
+        مشاركة: Colors.borderColor
       },
       activeToolName: "" // 'نطق',
     };

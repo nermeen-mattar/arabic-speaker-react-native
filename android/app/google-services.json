@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "456791612970",
+    "firebase_url": "https://talaqi-1567710613991.firebaseio.com",
+    "project_id": "talaqi-1567710613991",
+    "storage_bucket": "talaqi-1567710613991.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456791612970:android:30146a82f6f8c315822d53",
+        "android_client_info": {
+          "package_name": "com.ttsarabic.app.ttsaarabicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456791612970-poaimp2um46kmk7k1vecogrmgc5i89gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRwIpBOhIAfZ87Hg5y85lNaScjjOIhT0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456791612970-poaimp2um46kmk7k1vecogrmgc5i89gb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

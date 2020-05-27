@@ -8,6 +8,7 @@ import {
   Keyboard,
   Alert
 } from "react-native";
+import analytics from '@react-native-firebase/analytics';
 
 import { MonoText } from "../components/StyledText";
 import FormHeader from "../components/FormHeader";
@@ -261,6 +262,13 @@ export default class NewSentenceScreen extends React.Component {
           }
         ])
         .then(() => {
+          /////--
+          analytics().logEvent('create_new_sentence', {
+            id: 3745092,
+            sentence: this.state.sentence,
+            category: this.state.categoryPath
+          });
+          /////__
           this.props.navigation.navigate("CategoriesScreen", {
             categoryPath: this.state.categoryPath
           });
