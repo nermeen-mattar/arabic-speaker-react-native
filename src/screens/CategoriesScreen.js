@@ -13,7 +13,8 @@ import CustomHeader from "../components/CustomHeader";
 import Colors from "../constants/Colors";
 import { Storage } from "../classes/Storage";
 import CategoriesSentences from "../constants/CategoriesSentences";
-import { PlaySound } from "react-native-play-sound";
+// import { PlaySound } from "react-native-play-sound";
+import SoundPlayer from 'react-native-sound-player'
 import Genders from "../constants/Genders";
 import CategoriesArabicToEnglish from "../constants/CategoriesArabicToEnglish";
 import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
@@ -306,7 +307,7 @@ export default class CategoriesScreen extends React.Component {
         CategoriesArabicToEnglish[this.state.categoryPath.join()]
       )
       .replace("$sentenceIndex", sentenceIndex + 1);
-    PlaySound(soundPath);
+      // PlaySound(soundPath);
   };
 
   playExistingSound = sentenceIndex => {
@@ -323,7 +324,8 @@ export default class CategoriesScreen extends React.Component {
         sentenceIndex +
         "_" +
         gender;
-      PlaySound(soundPath);
+      // PlaySound(soundPath);
+      SoundPlayer.playSoundFile(soundPath, 'mp3')
     });
   };
 
