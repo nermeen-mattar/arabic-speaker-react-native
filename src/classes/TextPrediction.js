@@ -105,7 +105,7 @@ export class TextPrediction {
       return this.getSingleWordPredections(trimmedEnteredWords);
     }
     const incompleteWord = trimmedEnteredWords.slice(indexOfLastWord + 1);
-    completeWords = trimmedEnteredWords.slice(0, indexOfLastWord);
+    const completeWords = trimmedEnteredWords.slice(0, indexOfLastWord);
     const completeWordsLength = completeWords.split(" ").length; //  enteredWords.split(/.+ .+/g);
     if (completeWordsLength > this.defaultWords.length) {
       return this.getPredectedWords(
@@ -118,7 +118,6 @@ export class TextPrediction {
       this.userWords[completeWordsLength - 1][trimmedEnteredWords] || [],
       incompleteWord
     );
-
     // 2- Default sentences
     this.concatUniqueAndMatchedEntries(
       predectedWords,
@@ -217,8 +216,8 @@ export class TextPrediction {
     enteredWords = enteredWords.replace(/\s\s+/g, " ");
     enteredWords = enteredWords.replace(/^أ/g, "ا");
     enteredWords = enteredWords.replace(/\sأ/g, " ا");
-    enteredWordsArray = enteredWords.split(" ");
-    numOfEnteredWords = enteredWordsArray.length;
+    const enteredWordsArray = enteredWords.split(" ");
+    const numOfEnteredWords = enteredWordsArray.length;
     // let hasUpdated = false;
     const endIndex = enteredWordsArray.length < this.userWords.length ? enteredWordsArray.length : this.userWords.length + 1;
     for (let setIndex = 1; setIndex <= endIndex; setIndex++) {

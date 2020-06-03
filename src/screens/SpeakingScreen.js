@@ -98,7 +98,7 @@ export default class TextToSpeachScreen extends React.Component {
   };
 
   componentDidMount() {
-    // TextPrediction.getInstance().initIndexedDefaultWords();
+    TextPrediction.getInstance().initIndexedDefaultWords();
     setTimeout(() => {
       this.setState({textWidth: '100%'})
     }, 100)
@@ -464,16 +464,14 @@ const styles = StyleSheet.create({
   tool: {
     // paddingVertical: 5,
     // paddingHorizontal: 16,
-    minWidth: 40,
-    textAlign: "center"
+    minWidth: 40
   },
   speakActive: {
     backgroundColor: Colors.orange, // f9812A
     borderRadius: 10
   },
   space: {
-    padding:10,
-    textAlign: "center"
+    padding:10
   },
   spaceIcon: {
     width: 114,
