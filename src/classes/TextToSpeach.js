@@ -2,32 +2,27 @@ import { Alert, Platform } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 import Tts from "react-native-tts";
 
-import { ArabicRecorderAndPlayer } from "./ArabicRecorderAndPlayer";
-import { Storage } from "./Storage";
+import { ArabicRecorderAndPlayerObj } from "./ArabicRecorderAndPlayer";
+import { StorageObj } from "./Storage";
 import Genders from "../constants/Genders";
-import { AutoSoundsSaver } from "../classes/AutoSoundsSaver";
+import { AutoSoundsSaverObj } from "../classes/AutoSoundsSaver";
 
 let isConnected;
-export class TextToSpeach {
-  static instance;
+class TextToSpeach {
+  settings;
   constructor() {
     Tts.getInitStatus().then(() => {
       Tts.setDefaultLanguage("ar-SA");
       Tts.setDefaultRate(0.5);
       Tts.setDefaultPitch(0.7);
     });
+    this.initSettings(); 
     // NetInfo.addEventListener(state => {
     //   isConnected = state.isConnected;
     //   Alert.alert(isConnected);
     // });
   }
 
-  static getInstance() {
-    if (!TextToSpeach.instance) {
-      TextToSpeach.instance = new TextToSpeach();
-    }
-    return TextToSpeach.instance;
-  }
   fetchWithTimeout(url, options, timeout = 1000) {
     return Promise.race([
       fetch(url, options),
@@ -37,22 +32,35 @@ export class TextToSpeach {
     ]);
   }
 
-  speak(text) {
-    const storageInstance = Storage.getInstance();
+  initSettings() {
     const settings = { value: "null" };
-    storageInstance.getItem("settingsValues", settings).then(res => {
-      const gender =
-        settings.value && settings.value.voiceGender === Genders.female
-          ? "female"
-          : "male";
-      if(!this.playStoredFile(gender, text)) {
+    return StorageObj.getItem("settingsValues", settings).then(res => {
+      this.settings = settings.value;
+    });
+  }
+
+  setSettings (updatedSettings) {
+    StorageObj.setItem('settingsValues', updatedSettings).then(res => {
+      this.settings = updatedSettings;
+    });
+  }
+
+  getGender () {
+    return this.settings.voiceGender === Genders.female
+    ? "female" : "male";
+  }
+
+  speak(text) {
+      if(!this.playStoredFile(text)) {
+        debugger;
         NetInfo.fetch().then(state => {
           if (state.isConnected) {
-            const responsiveVoiceSpeak = (text) => {
-              ArabicRecorderAndPlayer.getInstance().onStartPlay(AutoSoundsSaver.getInstance().getUrlForResposiveVoiceRequest(text, gender));
+            const responsiveVoiceSpeak = (formattedText) => {
+              ArabicRecorderAndPlayerObj.onStartPlay(AutoSoundsSaverObj.getUrlForResposiveVoiceRequest(formattedText));
             }
             this.formatSentenceAndExecuteCallback(text, responsiveVoiceSpeak);
-          } else if(!this.playStoredFile( gender === "male" ? "female" : "male", text)) {
+          } 
+          else if(!this.playStoredFile(text, this.getGender() === "male" ? "female" : "male")) {
             if (Platform.OS === "android") {
               this.displayAlertMessage();
             } else {
@@ -62,18 +70,16 @@ export class TextToSpeach {
           }
         });
       }
-    });
   }
 
-  playStoredFile(gender, text) {
-    const autoSoundSaver = AutoSoundsSaver.getInstance();
-    const fileName = autoSoundSaver.getFileName(gender, text);
-    const isSoundExist = autoSoundSaver.isSoundExist(fileName);
+  playStoredFile(text, gender) {
+    const fileName = AutoSoundsSaverObj.getFileName(text, gender);
+    const isSoundExist = AutoSoundsSaverObj.isSoundExist(fileName);
     if (isSoundExist) {
-      ArabicRecorderAndPlayer.getInstance().onStartPlay(
+      ArabicRecorderAndPlayerObj.onStartPlay(
         Platform.select({
           ios: fileName + ".mpga",
-          android: autoSoundSaver.getDirectory() + "/" + fileName + ".mpga"
+          android: AutoSoundsSaverObj.getDirectory() + "/" + fileName + ".mpga"
         })
       );
     } 
@@ -82,8 +88,7 @@ export class TextToSpeach {
 
   formatSentenceAndExecuteCallback(text, callback) {
     text = text.replace("بكم", "بِكَمْ");
-    TextToSpeach.instance
-      .fetchWithTimeout(
+    this.fetchWithTimeout(
         "http://18.224.240.0:8082/api/process?text=".concat(text),
         {
           method: "GET"
@@ -96,7 +101,6 @@ export class TextToSpeach {
         debugger;
         return text;
       }).then(formattedText => {
-        debugger;
           text = formattedText || text;
           callback(text);
         })
@@ -109,3 +113,5 @@ export class TextToSpeach {
     Alert.alert("يجب أن تكون متصل بالانترنت");
   }
 }
+
+export const TextToSpeachObj =  new TextToSpeach();

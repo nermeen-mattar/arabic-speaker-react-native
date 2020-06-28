@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { createDrawerNavigator } from "react-navigation";
 import SplashScreen from "react-native-splash-screen";
-import { Storage } from "./src/classes/Storage";
+import { StorageObj } from "./src/classes/Storage";
 import analytics from '@react-native-firebase/analytics';
 
 import { NavigationActions } from "react-navigation";
@@ -15,7 +15,7 @@ import AppNavigator from "./src/navigation/AppNavigator";
 import Colors from "./src/constants/Colors";
 import SettingsComponent from "./src/components/SettingsComponent";
 import IllustrationScreen from "./src/screens/IllustrationScreen";
-import { AutoSoundsSaver } from "./src/classes/AutoSoundsSaver";
+import { logEvent, EVENTS } from "./src/classes/Events";
 
 const SettingsDrawer = createDrawerNavigator(
   {
@@ -40,14 +40,13 @@ export default class App extends React.Component {
   };
   constructor() {
     super();
-    AutoSoundsSaver.getInstance();
+    // AutoSoundsSaver.getInstance(); check if causes a problem
   }
   componentDidMount() {
-    const storageInstance = Storage.getInstance();
     const result = { value: "null" };
-    storageInstance.getItem("alreadyLaunched", result).then(res => {
+    StorageObj.getItem("alreadyLaunched", result).then(res => {
       if (result.value == null) {
-        storageInstance.setItem("alreadyLaunched", true); // No need to wait for `setItem` to finish, although you might want to handle errors
+        StorageObj.setItem("alreadyLaunched", true); // No need to wait for `setItem` to finish, although you might want to handle errors
         this.setState({ firstLaunch: true });
       } else {
         this.setState({ firstLaunch: false });
@@ -79,6 +78,7 @@ export default class App extends React.Component {
             <IllustrationScreen
               onBackClicked={() => {
                 this.setState({ firstLaunch: false });
+                logEvent(EVENTS.SKIP_TOUR);
               }}
             />
           )}

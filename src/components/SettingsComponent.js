@@ -14,11 +14,13 @@ import Colors from "../constants/Colors";
 import { MonoText } from '../components/StyledText';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import CustomListStyle, { CustomListItemSyle } from "../styles/CustomListStyle";
-import { Storage } from '../classes/Storage';
+import { StorageObj } from '../classes/Storage';
 import Genders from "../constants/Genders";
 import AboutUsScreen from "../screens/AboutUsScreen";
 import ContactUsScreen from "../screens/ContactUsScreen";
 import IllustrationScreen from "../screens/IllustrationScreen";
+import { TextToSpeachObj } from "../classes/TextToSpeach";
+import { logEvent, EVENTS } from "../classes/Events";
 
 class SettingsComponent extends Component {
     constructor (props) {
@@ -194,15 +196,14 @@ class SettingsComponent extends Component {
     }
 
   initSettings = ()  => {
-    const storageInstance = Storage.getInstance(); // temp 
     const updatedSettings = {value: 'null'};
-    storageInstance.getItem('settingsValues', updatedSettings).then(res => {
+    StorageObj.getItem('settingsValues', updatedSettings).then(res => {
       if(updatedSettings.value) {
         this.setState({
           settingsValues: updatedSettings.value,
         });
       } else {
-        storageInstance.setItem('settingsValues', this.state.settingsValues);
+        StorageObj.setItem('settingsValues', this.state.settingsValues);
       }
     })
   }
@@ -210,10 +211,9 @@ class SettingsComponent extends Component {
       const updatedSettings = this.state.settingsValues;
       updatedSettings[propertyToUpdate] = newValue
       this.setState({settingsValues: updatedSettings});
-        const storageInstance = Storage.getInstance();
-          storageInstance.setItem('settingsValues', updatedSettings).then(res => {
-          });
-      };
+      TextToSpeachObj.setSettings(updatedSettings);
+      logEvent(EVENTS.CHANGE_VOICE);
+    };
 }
 
 

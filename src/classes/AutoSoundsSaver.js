@@ -2,39 +2,29 @@ import { Platform } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
 import { Alert } from "react-native";
 
-import { Storage } from "./Storage";
-import Genders from "../constants/Genders";
-import { TextToSpeach } from "./TextToSpeach";
+import { StorageObj } from "./Storage";
+import { TextToSpeachObj } from "./TextToSpeach";
 
 const RV_KEY = "oH5oldm2";
 export class AutoSoundsSaver {
-  static instance;
   autoSounds = [];
 
   constructor() {
-    const storageInstance = Storage.getInstance();
     const result = {
       value: "null"
     };
-    storageInstance.getItem("auto-sounds", result).then(res => {
+    StorageObj.getItem("auto-sounds", result).then(res => {
       if (result.value) {
         this.autoSounds = result.value;
       }
     });
   }
 
-  static getInstance() {
-    if (!AutoSoundsSaver.instance) {
-      AutoSoundsSaver.instance = new AutoSoundsSaver();
-    }
-    return AutoSoundsSaver.instance;
-  }
-
   isSoundExist(fileName) {
     return this.autoSounds.includes(fileName);
   }
 
-  getFileName(gender, sentence) {
+  getFileName(sentence, gender = TextToSpeachObj.getGender()) {
     return gender + "-" + sentence.replace(/ /g, "_");
   }
 
@@ -44,41 +34,36 @@ export class AutoSoundsSaver {
 
   updateAutoSounds(formattedSentence) {
     this.autoSounds.push(formattedSentence);
-    const storageInstance = Storage.getInstance();
-    storageInstance.setItem("auto-sounds", this.autoSounds).then(res => {});
+    StorageObj.setItem("auto-sounds", this.autoSounds).then(res => {});
   }
 
-  getUrlForResposiveVoiceRequest(text, gender) {
+  getUrlForResposiveVoiceRequest(text) {
+    const gender = TextToSpeachObj.getGender();
     return `https://code.responsivevoice.org/getvoice.php?t=${encodeURI(text)}&tl=ar&gender=${gender}&key=${RV_KEY}`;
   }
 
+  //Storing in local device
   storeSoundIfNotExist(sentence) {
-    const storageInstance = Storage.getInstance();
-    const settings = { value: "null" };
-    storageInstance.getItem("settingsValues", settings).then(res => {
-      const gender =
-        settings.value && settings.value.voiceGender === Genders.female
-          ? "female"
-          : "male";
-      const fileName = this.getFileName(gender, sentence);
+      const fileName = this.getFileName(sentence);
       if (!this.isSoundExist(fileName)) {
         const callFetchBlob = (formattedSentence) => {
           let filePath = this.getDirectory() + "/" + fileName + ".mpga";
           if (Platform.OS === "ios") {
             filePath = filePath.replace("Documents", "tmp");
           }
-          RNFetchBlob.config({
+          return RNFetchBlob.config({
+            // fileCache: true,
             path: filePath
           })
-            .fetch("GET", this.getUrlForResposiveVoiceRequest(formattedSentence, gender))
+            .fetch("GET", this.getUrlForResposiveVoiceRequest(formattedSentence))
             .then(res => {
               this.updateAutoSounds(fileName);
             }).catch(err => {
               Alert.alert('Error');
             }) ;
         }
-        TextToSpeach.getInstance().formatSentenceAndExecuteCallback(sentence, callFetchBlob);
+        TextToSpeachObj.formatSentenceAndExecuteCallback(sentence, callFetchBlob);
       }
-    });
   }
 }
+export const AutoSoundsSaverObj = new AutoSoundsSaver();

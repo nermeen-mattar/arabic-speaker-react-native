@@ -15,7 +15,8 @@ import { MonoText } from "../components/StyledText";
 import FormHeader from "../components/FormHeader";
 import Colors from "../constants/Colors";
 import { ImagePickerHelper } from "../classes/ImagePickerHelper";
-import { Storage } from "../classes/Storage";
+import { StorageObj } from "../classes/Storage";
+import { logEvent, EVENTS } from "../classes/Events";
 
 export default class NewCategoryScreen extends React.Component {
   constructor(props) {
@@ -72,11 +73,15 @@ export default class NewCategoryScreen extends React.Component {
       >
         <FormHeader
           title={this.state.title}
-          onCancelClicked={() =>
+          onCancelClicked={() => {
             this.props.navigation.navigate("CategoriesScreen", {
               categoryPath: this.state.categoryPath
-            })
-          }
+            });
+            logEvent(EVENTS.CANCEL_NEW_CATEGORY, {
+              categoryPath: this.state.categoryPath,
+              text: this.state.categoryName
+            });
+          }}
           onSaveClicked={this.addNewCategory}
         />
         <View style={styles.inputsWrapper}>
@@ -130,12 +135,11 @@ export default class NewCategoryScreen extends React.Component {
       this.displayAlertMessage();
       return;
     }
-    const storageInstance = Storage.getInstance();
-    // storageInstance.setItem('storageInstance', 'nermeen');
+    // StorageObj.setItem('StorageObj', 'nermeen');
     const result = { value: "null" };
-    storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
+    StorageObj.getItem(this.state.categoryPath.join(), result).then(() => {
       result.value = result.value ? result.value : [];
-      storageInstance
+      StorageObj
         .setItem(this.state.categoryPath.join(), [
           ...result.value,
           {
@@ -147,6 +151,11 @@ export default class NewCategoryScreen extends React.Component {
         .then(res => {
           this.props.navigation.navigate("CategoriesScreen", {
             categoryPath: this.state.categoryPath
+          });
+          logEvent(EVENTS.CREATE_NEW_CATEGORY, {
+            categoryPath: this.state.categoryPath,
+            categoryName: this.state.categoryName,
+            withImage: Boolean(imgSrc)
           });
         });
     });

@@ -6,6 +6,7 @@ import { MonoText } from "../components/StyledText";
 import CustomHeader from "../components/CustomHeader";
 import Colors from "../constants/Colors";
 import CustomListStyle, { CustomListItemSyle } from "../styles/CustomListStyle";
+import { logEvent, EVENTS } from "../classes/Events";
 
 export default class IconsLibrariesScreen extends React.Component {
   constructor(props) {
@@ -72,11 +73,13 @@ export default class IconsLibrariesScreen extends React.Component {
   }
 
   filterContent(searchText) {
+    searchText= searchText.trim();
     this.setState({
       librariesToDisplay: this.state.iconsLibraries.filter(iconsLibrary =>
-        iconsLibrary.includes(searchText.trim())
+        iconsLibrary.includes(searchText)
       )
     });
+    logEvent(EVENTS.SEARCH_LIBRARIES, {text: searchText})
   }
 }
 

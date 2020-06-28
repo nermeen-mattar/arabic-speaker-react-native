@@ -1,38 +1,30 @@
 import AudioRecorderAndPlayer from "react-native-audio-recorder-player";
 import { Platform } from "react-native";
 import { requestPermission } from "./AndroidPermissionRequester";
-export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
-  static instance;
+class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
   constructor() {
     super();
-  }
-
-  static getInstance() {
-    if (!ArabicRecorderAndPlayer.instance) {
-      ArabicRecorderAndPlayer.instance = new ArabicRecorderAndPlayer();
-      ArabicRecorderAndPlayer.instance.setVolume(1.0);
-    }
-    return ArabicRecorderAndPlayer.instance;
+    this.setVolume(1.0);
   }
 
   onStartPlayStoredFile = async fileName => {
     if (Platform.OS === "android") {
       if (requestPermission("READ_EXTERNAL_STORAGE")) {
-        ArabicRecorderAndPlayer.instance.onStartPlay(
+        this.onStartPlay(
           "sdcard/".concat(fileName).concat(".mp4")
         );
       }
     } else {
-      ArabicRecorderAndPlayer.instance.onStartPlay(fileName.concat(".m4a"));
+      this.onStartPlay(fileName.concat(".m4a"));
     }
   };
 
   onStartPlay = async filePath => {
-    ArabicRecorderAndPlayer.instance.onStopPlay();
-    await ArabicRecorderAndPlayer.instance.startPlayer(filePath);
-    ArabicRecorderAndPlayer.instance.addPlayBackListener(e => {
+    this.onStopPlay();
+    await this.startPlayer(filePath);
+    this.addPlayBackListener(e => {
       if (e.current_position === e.duration) {
-        ArabicRecorderAndPlayer.instance.stopPlayer();
+        this.stopPlayer();
       }
       return;
     });
@@ -44,30 +36,32 @@ export class ArabicRecorderAndPlayer extends AudioRecorderAndPlayer {
         requestPermission("RECORD_AUDIO") &&
         requestPermission("WRITE_EXTERNAL_STORAGE")
       ) {
-        await ArabicRecorderAndPlayer.instance.startRecorder(
+        await this.startRecorder(
           "sdcard/".concat(fileName).concat(".mp4")
         );
-        ArabicRecorderAndPlayer.instance.addRecordBackListener(e => {
+        this.addRecordBackListener(e => {
           return;
         });
       }
     } else {
-      await ArabicRecorderAndPlayer.instance.startRecorder(
+      await this.startRecorder(
         fileName.concat(".m4a")
       );
-      ArabicRecorderAndPlayer.instance.addRecordBackListener(e => {
+      this.addRecordBackListener(e => {
         return;
       });
     }
   };
 
   onStopRecord = async () => {
-    const result = await ArabicRecorderAndPlayer.instance.stopRecorder();
-    ArabicRecorderAndPlayer.instance.removeRecordBackListener();
+    await this.stopRecorder();
+    this.removeRecordBackListener();
   };
 
   onStopPlay = async () => {
-    ArabicRecorderAndPlayer.instance.stopPlayer();
-    ArabicRecorderAndPlayer.instance.removePlayBackListener();
+    this.stopPlayer();
+    this.removePlayBackListener();
   };
 }
+
+export const  ArabicRecorderAndPlayerObj = new ArabicRecorderAndPlayer();

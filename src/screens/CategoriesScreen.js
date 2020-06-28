@@ -11,17 +11,17 @@ import {
 import { Card } from "../components/card";
 import CustomHeader from "../components/CustomHeader";
 import Colors from "../constants/Colors";
-import { Storage } from "../classes/Storage";
+import { StorageObj } from "../classes/Storage";
 import CategoriesSentences from "../constants/CategoriesSentences";
-// import { PlaySound } from "react-native-play-sound";
 import SoundPlayer from 'react-native-sound-player'
 import Genders from "../constants/Genders";
 import CategoriesArabicToEnglish from "../constants/CategoriesArabicToEnglish";
 import ConfirmDeleteDialog from "../components/ConfirmDeleteDialog";
 import DeleteAndCancel from "../components/DeleteAndCancel";
-import { TextToSpeach } from "../classes/TextToSpeach";
-import { ArabicRecorderAndPlayer } from "../classes/ArabicRecorderAndPlayer";
+import { TextToSpeachObj } from "../classes/TextToSpeach";
+import { ArabicRecorderAndPlayerObj } from "../classes/ArabicRecorderAndPlayer";
 import commonStyles from "../styles/commonStyles";
+import {EVENTS, logEvent} from "../classes/Events";
 
 export default class CategoriesScreen extends React.Component {
   constructor(props) {
@@ -219,12 +219,11 @@ export default class CategoriesScreen extends React.Component {
   }
 
   initCategories = () => {
-    const storageInstance = Storage.getInstance(); // temp
     const result = { value: "null" };
-    storageInstance
+    StorageObj
       .getItem(this.state.categoryPath.join(), result)
       .then(res => {
-        defaultCategories =
+        const defaultCategories =
           this.state.defaultCategories[this.state.categoryPath.join()] || [];
         result.value = result.value ? result.value : [];
         this.setState({
@@ -274,18 +273,28 @@ export default class CategoriesScreen extends React.Component {
 
   sentenceClicked = sentenceIndex => {
     if (this.state.selectMode) {
-      this.selectionToggeled(sentenceIndex);
-    } else if (this.state.categories[sentenceIndex].default) {
+      return this.selectionToggeled(sentenceIndex);
+    }
+    let soundType;
+    if (this.state.categories[sentenceIndex].default) {
       this.playExistingSound(sentenceIndex);
+      soundType = 'default'; // for event
     } else if (this.state.categories[sentenceIndex].soundPath) {
-      ArabicRecorderAndPlayer.getInstance().onStartPlayStoredFile(
+      ArabicRecorderAndPlayerObj.onStartPlayStoredFile(
         this.state.categories[sentenceIndex].soundPath
       );
+      soundType = 'recorded';
     } else {
-      TextToSpeach.getInstance().speak(
+      TextToSpeachObj.speak(
         this.state.categories[sentenceIndex].label
       );
+      soundType = 'responsive voice';
     }
+    logEvent(EVENTS.PLAY_SOUND, {
+      text: this.state.sentence,
+      categoryPath: this.state.categoryPath,
+      soundType
+    });
   };
 
   playExistingSoundDeprecated = sentenceIndex => {
@@ -311,22 +320,13 @@ export default class CategoriesScreen extends React.Component {
   };
 
   playExistingSound = sentenceIndex => {
-    const storageInstance = Storage.getInstance();
-    const result = { value: "null" };
-    storageInstance.getItem("settingsValues", result).then(res => {
-      const voiceGender = result.value
-        ? result.value.voiceGender
-        : Genders.female;
-      const gender = voiceGender === Genders.female ? "f" : "m";
       let soundPath =
         CategoriesArabicToEnglish[this.state.categoryPath.join()] +
         "_" +
         sentenceIndex +
-        "_" +
-        gender;
+        "_" + TextToSpeachObj.getGender().charAt(0);
       // PlaySound(soundPath);
       SoundPlayer.playSoundFile(soundPath, 'mp3')
-    });
   };
 
   // cleanSentence(sentence) {
@@ -372,18 +372,19 @@ export default class CategoriesScreen extends React.Component {
   };
 
   deleteSelectedCategories = () => {
-    const storageInstance = new Storage();
-    const unselectedCategories = this.state.categories.filter(
+    const remainingCategories = this.state.categories.filter(
       category => !category.selected
     );
-    storageInstance
-      .setItem(this.state.categoryPath.join(), unselectedCategories)
+    const deletedCategoriesLength = this.state.categories.length - remainingCategories.length;
+    StorageObj
+      .setItem(this.state.categoryPath.join(), remainingCategories)
       .then(res => {
         this.setState({
-          categories: unselectedCategories
+          categories: remainingCategories
         });
         this.cancelSelectMode();
       });
+      logEvent(EVENTS.DELETE_CATEGORIES, {length: deletedCategoriesLength});
   };
 }
 

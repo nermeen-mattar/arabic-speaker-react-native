@@ -14,13 +14,16 @@ import { MonoText } from "../components/StyledText";
 import FormHeader from "../components/FormHeader";
 import Colors from "../constants/Colors";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { TextToSpeach } from "../classes/TextToSpeach";
+import { TextToSpeachObj } from "../classes/TextToSpeach";
 
-import { Storage } from "../classes/Storage";
-import { TextPrediction } from "../classes/TextPrediction";
+import { StorageObj } from "../classes/Storage";
+import { TextPredictionObj } from "../classes/TextPrediction";
 import { ImagePickerHelper } from "../classes/ImagePickerHelper";
-import { ArabicRecorderAndPlayer } from "../classes/ArabicRecorderAndPlayer";
-import { AutoSoundsSaver } from "../classes/AutoSoundsSaver";
+import { ArabicRecorderAndPlayerObj } from "../classes/ArabicRecorderAndPlayer";
+import { AutoSoundsSaverObj } from "../classes/AutoSoundsSaver";
+
+import {EVENTS, logEvent} from "../classes/Events";
+
 export default class NewSentenceScreen extends React.Component {
   constructor(props) {
     super();
@@ -78,10 +81,16 @@ export default class NewSentenceScreen extends React.Component {
       >
         <FormHeader
           title={this.state.title}
-          onCancelClicked={() =>
+          onCancelClicked={() => {
             this.props.navigation.navigate("CategoriesScreen", {
               categoryPath: this.state.categoryPath
-            })
+            });
+            logEvent(EVENTS.CANCEL_NEW_CATEGORY, {
+              categoryPath: this.state.categoryPath,
+              text: this.state.sentence
+            });
+          }
+
           }
           onSaveClicked={this.addNewSentence}
         />
@@ -184,14 +193,15 @@ export default class NewSentenceScreen extends React.Component {
 
   startStopRecording() {
     if (this.state.recordingState === "recording") {
-      ArabicRecorderAndPlayer.getInstance().onStopRecord();
+      ArabicRecorderAndPlayerObj.onStopRecord();
       this.setState({ recordingState: "recorded" });
+      logEvent(EVENTS.RECORD_VOICE);
     } else {
       /* start recording */
       const fileName = "user-audios-".concat(
         this.state.sentence || (Math.random() * 1000).toString()
       ); // need to find a better solution than random
-      ArabicRecorderAndPlayer.getInstance().onStartRecord(fileName);
+      ArabicRecorderAndPlayerObj.onStartRecord(fileName);
       this.setState({
         recordingState: "recording",
         soundPath: fileName
@@ -209,6 +219,7 @@ export default class NewSentenceScreen extends React.Component {
     // Alert.alert('هل أنت متأكد أنك تريد التحويل الي الصوت الآلي سوف يتم حذف التسجيل الصوتي', );
     if (this.state.recordingState === null) {
       this.playAutoSound();
+      // may add event here - play sound
       return;
     }
     Alert.alert("تنبيه", "يتم حذف التسجيل الصوتي عند اختيار الصوت الآلي", [
@@ -216,8 +227,9 @@ export default class NewSentenceScreen extends React.Component {
         text: "تأكيد",
         style: "destructive",
         onPress: () => {
-          ArabicRecorderAndPlayer.getInstance().onStopRecord();
+          ArabicRecorderAndPlayerObj.onStopRecord();
           this.playAutoSound();
+          logEvent(EVENTS.CANCEL_RECORD);
         }
       },
       { text: "الغاء" }
@@ -226,8 +238,8 @@ export default class NewSentenceScreen extends React.Component {
 
   playAutoSound = () => {
     this.setState({ recordingState: null, soundPath: null });
-    TextPrediction.getInstance().addSentenceToUserWords(this.state.sentence);
-    TextToSpeach.getInstance().speak(this.state.sentence);
+    TextPredictionObj.addSentenceToUserWords(this.state.sentence);
+    TextToSpeachObj.speak(this.state.sentence);
   };
 
   displayAlertMessage() {
@@ -245,14 +257,13 @@ export default class NewSentenceScreen extends React.Component {
     }
     const recordingPath = this.state.soundPath;
     if (!recordingPath) {
-      AutoSoundsSaver.getInstance().storeSoundIfNotExist(this.state.sentence);
+      AutoSoundsSaverObj.storeSoundIfNotExist(this.state.sentence);
     }
-    const storageInstance = Storage.getInstance();
-    // storageInstance.setItem('storageInstance', 'nermeen');categ
+    // StorageObj.setItem('StorageObj', 'nermeen');categ
     const result = { value: "null" };
-    storageInstance.getItem(this.state.categoryPath.join(), result).then(() => {
+    StorageObj.getItem(this.state.categoryPath.join(), result).then(() => {
       result.value = result.value ? result.value : [];
-      storageInstance
+      StorageObj
         .setItem(this.state.categoryPath.join(), [
           ...result.value,
           {
@@ -262,15 +273,13 @@ export default class NewSentenceScreen extends React.Component {
           }
         ])
         .then(() => {
-          /////--
-          analytics().logEvent('create_new_sentence', {
-            id: 3745092,
-            sentence: this.state.sentence,
-            category: this.state.categoryPath
-          });
-          /////__
           this.props.navigation.navigate("CategoriesScreen", {
             categoryPath: this.state.categoryPath
+          });
+          logEvent(EVENTS.CREATE_NEW_SENTENCE, {
+            text: this.state.sentence,
+            categoryPath: this.state.categoryPath,
+            withImage: Boolean(imgSrc)
           });
         });
     });

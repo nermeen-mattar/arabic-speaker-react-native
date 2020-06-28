@@ -6,6 +6,7 @@ import Colors from "../constants/Colors";
 import LibrariesIcons from "../constants/LibrariesIcons";
 import { Card } from "../components/card";
 import commonStyles from "../styles/commonStyles";
+import { EVENTS } from "../classes/Events";
 
 export default class IconsScreen extends React.Component {
   constructor(props) {
@@ -67,11 +68,13 @@ export default class IconsScreen extends React.Component {
 
   filterContent(searchText) {
     // const iconsToDisplay = Object.assign([], this.state.icons);
+    searchText= searchText.trim();
     this.setState({
       iconsToDisplay: this.state.icons.filter(icon =>
-        icon.label.includes(searchText.trim())
+        icon.label.includes(searchText)
       )
     });
+    logEvent(EVENTS.SEARCH_ICONS, {text: searchText})
   }
 }
 

@@ -2,7 +2,7 @@ import unigramData from "../constants/default-words/unigramData";
 import bigramData from "../constants/default-words/bigramData";
 import trigramData from "../constants/default-words/trigramData";
 import quadgram from "../constants/default-words/quadgram";
-import { Storage } from "../classes/Storage";
+import { StorageObj } from "../classes/Storage";
 
 /**
  * @author Nermeen Mattar
@@ -10,7 +10,7 @@ import { Storage } from "../classes/Storage";
  * Reason: giving higher priority for default words which have been chosen by the user.
  * Need to be careful: if this got implemented it is better to filter out the words in default which exist in userWords (better memory and processing)
  */
-export class TextPrediction {
+class TextPrediction {
   staticWords = [
     "هل",
     "متى",
@@ -28,25 +28,17 @@ export class TextPrediction {
   userWords = [{}, {}, {}];
   maxNumOfPredictions = 12;
   defaultWords = [bigramData, trigramData, quadgram];
-  static instance;
+  
   constructor() {
-    const storageInstance = Storage.getInstance();
-    // storageInstance.deleteItem('userWords');
+    // StorageObj.deleteItem('userWords');
     const result = {
       value: "null"
     };
-    storageInstance.getItem("userWords", result).then(res => {
+    StorageObj.getItem("userWords", result).then(res => {
       if (result.value) {
         this.userWords = result.value;
       }
     });
-  }
-
-  static getInstance() {
-    if (!this.instance) {
-      this.instance = new TextPrediction();
-    }
-    return TextPrediction.instance;
   }
 
   initIndexedDefaultWords() {
@@ -328,8 +320,7 @@ export class TextPrediction {
   }
 
   updateUserWords() {
-    const storageInstance = Storage.getInstance();
-    storageInstance.setItem("userWords", this.userWords).then(res => {});
+    storageObj.setItem("userWords", this.userWords).then(res => {});
   }
 
   sendSentenceToBackend(sentence) {
@@ -341,3 +332,5 @@ export class TextPrediction {
   }
 
 }
+
+export const TextPredictionObj = new TextPrediction();
