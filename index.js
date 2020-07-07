@@ -9,12 +9,12 @@ AppRegistry.registerComponent(appName, () => App);
 
 if (!firebase.apps.length) {
     firebase.initializeApp({
-        appId: "1:456791612970:android:30146a82f6f8c315822d53",
-        apiKey: "AIzaSyCwlK_SJNxDr_vDOTTn6QThgSazUlzS2PA", // Auth / General Use
-        applicationId: "1:456791612970:android:30146a82f6f8c315822d53", // General Use
-        projectId: "talaqi-1567710613991", // General Use
-        databaseURL: "https://talaqi-1567710613991.firebaseio.com/users/ip3NKfdIfNmrcWecuoTR", // Realtime Database
-        storageBucket: "talaqi-1567710613991.appspot.com", // gs://talaqi-1567710613991.appspot.com
+        appId: "1:653677212422:android:89cf01c58775f29bed2487",
+        apiKey: "AIzaSyBSR9AzqNkeJL4iIwEz_gwP-ME5cDg_b3Y", // Auth / General Use
+        applicationId: "1:653677212422:android:4908206d049105e5ed2487", // General Use
+        projectId: "tts-arabic", // General Use
+        databaseURL: "https://tts-arabic.firebaseio.com/", // Realtime Database
+        storageBucket: "tts-arabic.appspot.com", // gs://talaqi-1567710613991.appspot.com
         messagingSenderId: "123456789", // Cloud Messaging
         persistence: true
     });

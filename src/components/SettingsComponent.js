@@ -21,6 +21,7 @@ import ContactUsScreen from "../screens/ContactUsScreen";
 import IllustrationScreen from "../screens/IllustrationScreen";
 import { TextToSpeachObj } from "../classes/TextToSpeach";
 import { logEvent, EVENTS } from "../classes/Events";
+import analytics from '@react-native-firebase/analytics';
 
 class SettingsComponent extends Component {
     constructor (props) {
@@ -35,6 +36,10 @@ class SettingsComponent extends Component {
             title: 'الإعدادات',  
         };
         this.initSettings();
+    }
+
+    componentDidMount () {
+      analytics().setCurrentScreen('SettingsScreen');
     }
 
     render() {

@@ -48,6 +48,7 @@ export default class App extends React.Component {
       if (result.value == null) {
         StorageObj.setItem("alreadyLaunched", true); // No need to wait for `setItem` to finish, although you might want to handle errors
         this.setState({ firstLaunch: true });
+        logEvent(EVENTS.FIRST_LAUNCH);
       } else {
         this.setState({ firstLaunch: false });
       }
@@ -88,7 +89,7 @@ export default class App extends React.Component {
             }}
             onNavigationStateChange={(prevState, currentState, action) => {
               const routeName = this.getActiveRouteName(currentState);
-              analytics().setCurrentScreen(routeName, routeName);
+              analytics().setCurrentScreen(routeName);
               if (routeName == "Alert") {
                 this.navigatorRef.dispatch(
                   NavigationActions.navigate({

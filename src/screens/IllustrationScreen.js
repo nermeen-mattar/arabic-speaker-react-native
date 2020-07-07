@@ -3,6 +3,7 @@ import { Modal, Image, TouchableOpacity, View } from "react-native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 import { MonoText } from "../components/StyledText";
+import { logEvent, EVENTS } from "../classes/Events";
 
 export default class IllustrationScreen extends React.Component {
   constructor(props) {
@@ -28,6 +29,10 @@ export default class IllustrationScreen extends React.Component {
       index: 0
     };
   }
+  componentDidMount () {
+    logEvent(EVENTS.TAKE_TOUR);
+  }
+
   render() {
     return (
       <Modal
@@ -44,6 +49,7 @@ export default class IllustrationScreen extends React.Component {
             style={{ position: "absolute", top: "70%", right: "51%" }}
             onPress={() => {
               this.addToIndex(1);
+              logEvent(EVENTS.TOUR_NEXT);
             }}
           >
             <Icon
@@ -56,6 +62,7 @@ export default class IllustrationScreen extends React.Component {
             style={{ position: "absolute", top: "70%", left: "51%" }}
             onPress={() => {
               this.addToIndex(-1);
+              logEvent(EVENTS.TOUR_PREVIOUS);
             }}
           >
             <Icon

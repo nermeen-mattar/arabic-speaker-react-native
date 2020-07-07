@@ -14,6 +14,7 @@ import { MonoText } from "../components/StyledText";
 import Colors from "../constants/Colors";
 import CustomHeader from "../components/CustomHeader";
 import commonStyles from "../styles/commonStyles";
+import analytics from '@react-native-firebase/analytics';
 
 export default class ContactUsScreen extends React.Component {
   constructor(props) {
@@ -46,6 +47,10 @@ export default class ContactUsScreen extends React.Component {
         }
       }
     };
+  }
+
+  componentDidMount () {
+    analytics().setCurrentScreen('ContactUsScreen');
   }
 
   static navigationOptions = {

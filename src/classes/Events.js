@@ -35,7 +35,11 @@ export const EVENTS = {
     SEND_MESSAGE: 'send_message',
     TAKE_TOUR: 'take_tour', // take guided tour
     SKIP_TOUR: 'skip_tour',
-    CLICK: 'click' // click link 
+    TOUR_NEXT: 'tour_next',
+    TOUR_PREVIOUS: 'tour_previous',
+    CLICK: 'click', // click link may remove it
+
+    FIRST_LAUNCH: 'first_launch'
 };
 
 export const logEvent = (event, options = {}) => {

@@ -9,7 +9,7 @@ import { AutoSoundsSaverObj } from "../classes/AutoSoundsSaver";
 
 let isConnected;
 class TextToSpeach {
-  settings;
+  settings = {};
   constructor() {
     Tts.getInitStatus().then(() => {
       Tts.setDefaultLanguage("ar-SA");
@@ -35,7 +35,7 @@ class TextToSpeach {
   initSettings() {
     const settings = { value: "null" };
     return StorageObj.getItem("settingsValues", settings).then(res => {
-      this.settings = settings.value;
+      this.settings = settings.value || {};
     });
   }
 

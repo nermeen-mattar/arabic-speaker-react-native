@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "456791612970",
-    "firebase_url": "https://talaqi-1567710613991.firebaseio.com",
-    "project_id": "talaqi-1567710613991",
-    "storage_bucket": "talaqi-1567710613991.appspot.com"
+    "project_number": "653677212422",
+    "firebase_url": "https://tts-arabic.firebaseio.com",
+    "project_id": "tts-arabic",
+    "storage_bucket": "tts-arabic.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:456791612970:android:30146a82f6f8c315822d53",
+        "mobilesdk_app_id": "1:653677212422:android:89cf01c58775f29bed2487",
         "android_client_info": {
           "package_name": "com.ttsarabic.app.ttsaarabicapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "456791612970-poaimp2um46kmk7k1vecogrmgc5i89gb.apps.googleusercontent.com",
+          "client_id": "653677212422-97ps71cvs693i2jbkjiv310ur9fej4c8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRwIpBOhIAfZ87Hg5y85lNaScjjOIhT0E"
+          "current_key": "AIzaSyBSR9AzqNkeJL4iIwEz_gwP-ME5cDg_b3Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "456791612970-poaimp2um46kmk7k1vecogrmgc5i89gb.apps.googleusercontent.com",
+              "client_id": "653677212422-97ps71cvs693i2jbkjiv310ur9fej4c8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
