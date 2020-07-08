@@ -46,8 +46,8 @@ class TextToSpeach {
   }
 
   getGender () {
-    return this.settings.voiceGender === Genders.female
-    ? "female" : "male";
+    return this.settings.voiceGender === Genders.male
+    ? "male" : "female";
   }
 
   speak(text) {
