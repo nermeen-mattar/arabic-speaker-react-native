@@ -49,7 +49,7 @@ export class AutoSoundsSaver {
         const callFetchBlob = (formattedSentence) => {
           let filePath = this.getDirectory() + "/" + fileName + ".mpga";
           if (Platform.OS === "ios") {
-            filePath = filePath.replace("Documents", "tmp");
+            filePath = filePath.replace("Documents", "Library/Caches");
           }
           return RNFetchBlob.config({
             // fileCache: true,
@@ -59,8 +59,8 @@ export class AutoSoundsSaver {
             .then(res => {
               this.updateAutoSounds(fileName);
             }).catch(err => {
-              Alert.alert('Error');
-            }) ;
+              // Alert.alert('Error');
+            });
         }
         TextToSpeachObj.formatSentenceAndExecuteCallback(sentence, callFetchBlob);
       }

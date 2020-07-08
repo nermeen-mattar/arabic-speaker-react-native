@@ -50,7 +50,7 @@ export const logEvent = (event, options = {}) => {
         }
         analytics().logEvent(event, {...options, id: 3745092, voice: TextToSpeachObj.getGender()});
     } else {
-        Alert.alert('no event');
+        // Alert.alert('no event');
     }
 };
 

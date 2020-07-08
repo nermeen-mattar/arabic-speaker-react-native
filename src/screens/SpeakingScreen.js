@@ -101,7 +101,6 @@ export default class TextToSpeachScreen extends React.Component {
   };
 
   componentDidMount() {
-    TextPredictionObj.initIndexedDefaultWords();
     setTimeout(() => {
       this.setState({textWidth: '100%'})
     }, 100)
@@ -273,7 +272,7 @@ export default class TextToSpeachScreen extends React.Component {
         title: 'Share via',
         // social: Share.Social.WHATSAPP,
         // whatsAppNumber: "00962797145530",  // country code + phone number
-        filename: 'nermeentest' , // only for base64 file in Android
+        // filename: 'nermeentest' , // only for base64 file in Android
     };
     // Share.shareSingle(shareOptions);
   

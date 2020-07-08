@@ -39,24 +39,30 @@ class TextPrediction {
         this.userWords = result.value;
       }
     });
+    this.initIndexedDefaultWords();
   }
 
+  /* 
+  * defaultWords = [{"yes": ["I want", ""]}]
+  */
   initIndexedDefaultWords() {
     const indexedDefaultWords = [];
     this.defaultWords.forEach((sentences, index) => {
       indexedDefaultWords.push({});
-      sentences.forEach(sentence => {
-        const nextWordIndex = sentence.lastIndexOf(" ");
-        if (indexedDefaultWords[index][sentence.slice(0, nextWordIndex)]) {
-          indexedDefaultWords[index][sentence.slice(0, nextWordIndex)].push(
-            sentence.slice(nextWordIndex + 1)
-          );
-        } else {
-          indexedDefaultWords[index][sentence.slice(0, nextWordIndex)] = [
-            sentence.slice(nextWordIndex + 1)
-          ];
-        }
-      });
+      if(sentences.length) {
+        sentences.forEach(sentence => {
+          const nextWordIndex = sentence.lastIndexOf(" ");
+          if (indexedDefaultWords[index][sentence.slice(0, nextWordIndex)]) {
+            indexedDefaultWords[index][sentence.slice(0, nextWordIndex)].push(
+              sentence.slice(nextWordIndex + 1)
+            );
+          } else {
+            indexedDefaultWords[index][sentence.slice(0, nextWordIndex)] = [
+              sentence.slice(nextWordIndex + 1)
+            ];
+          }
+        });
+      }
     });
     this.defaultWords = indexedDefaultWords;
   }
