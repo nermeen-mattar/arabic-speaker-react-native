@@ -260,17 +260,21 @@ export default class TextToSpeachScreen extends React.Component {
   }
 
   async shareSound() {
+    if (this.state.text.trim() === "") {
+      return;
+    }
+
     try {
       const fileName = autoSoundSaverInstance.getFileName(this.state.text);
+      const filePath = autoSoundSaverInstance.getFilePath(fileName);
       // if(!autoSoundSaverInstance.isSoundExist(fileName)) {
       await autoSoundSaverInstance.storeSoundIfNotExist(this.state.text);
       // }
-      const filePath = autoSoundSaverInstance.getDirectory() + "/" + fileName + ".mpga";
       const shareOptions = {
         url: Platform.OS === 'android' ? 'file://' + filePath: filePath,
         type: "audio/mpeg",
         title: 'Share via',
-        // social: Share.Social.WHATSAPP,
+        social: Share.Social.WHATSAPP,
         // whatsAppNumber: "00962797145530",  // country code + phone number
         // filename: 'nermeentest' , // only for base64 file in Android
     };

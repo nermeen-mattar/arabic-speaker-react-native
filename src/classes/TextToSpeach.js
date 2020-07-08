@@ -78,7 +78,9 @@ class TextToSpeach {
     if (isSoundExist) {
       ArabicRecorderAndPlayerObj.onStartPlay(
         Platform.select({
-          ios: fileName + ".mpga",
+          ios: fileName + ".mpga", 
+          // reads from file:///Users/nmattar/Library/Developer/CoreSimulator/Devices/device_id/data/Containers/Data/Application/app_id/Library/Caches/female-Ssss.mpga	
+
           android: AutoSoundsSaverObj.getDirectory() + "/" + fileName + ".mpga"
         })
       );

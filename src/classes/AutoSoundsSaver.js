@@ -1,6 +1,5 @@
 import { Platform } from "react-native";
 import RNFetchBlob from "rn-fetch-blob";
-import { Alert } from "react-native";
 
 import { StorageObj } from "./Storage";
 import { TextToSpeachObj } from "./TextToSpeach";
@@ -28,6 +27,15 @@ export class AutoSoundsSaver {
     return gender + "-" + sentence.replace(/ /g, "_");
   }
 
+  getFilePath(fileName) {
+    let filePath = this.getDirectory() + "/" + fileName + ".mpga";
+    if (Platform.OS === "ios") {
+      filePath = filePath.replace("Documents", "Library/Caches");
+      // writes on file:///Users/nmattar/Library/Developer/CoreSimulator/Devices/device_id/data/Containers/Data/Application/app_id/Library/Caches/female-Ssss.mpga	
+    }
+    return filePath;
+  }
+  
   getDirectory() {
     return RNFetchBlob.fs.dirs.DocumentDir;
   }
@@ -47,13 +55,9 @@ export class AutoSoundsSaver {
       const fileName = this.getFileName(sentence);
       if (!this.isSoundExist(fileName)) {
         const callFetchBlob = (formattedSentence) => {
-          let filePath = this.getDirectory() + "/" + fileName + ".mpga";
-          if (Platform.OS === "ios") {
-            filePath = filePath.replace("Documents", "Library/Caches");
-          }
           return RNFetchBlob.config({
             // fileCache: true,
-            path: filePath
+            path: this.getFilePath(fileName)
           })
             .fetch("GET", this.getUrlForResposiveVoiceRequest(formattedSentence))
             .then(res => {
