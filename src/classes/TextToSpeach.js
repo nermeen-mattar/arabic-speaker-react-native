@@ -52,7 +52,6 @@ class TextToSpeach {
 
   speak(text) {
       if(!this.playStoredFile(text)) {
-        debugger;
         NetInfo.fetch().then(state => {
           if (state.isConnected) {
             const responsiveVoiceSpeak = (formattedText) => {
@@ -100,7 +99,6 @@ class TextToSpeach {
         if (response.status == "20") {
            return response.text();
         }
-        debugger;
         return text;
       }).then(formattedText => {
           text = formattedText || text;

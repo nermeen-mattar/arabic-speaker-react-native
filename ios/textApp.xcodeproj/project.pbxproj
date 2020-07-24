@@ -29,8 +29,9 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		52E46287E68C6642B31EFBAD /* libPods-textApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2D2148DA8DDACDBABAD3CBD /* libPods-textApp-tvOS.a */; };
 		7004E4952474D83A00BF5CC3 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7004E4942474D83A00BF5CC3 /* JavaScriptCore.framework */; };
-		704C92AB248AAE1F0046B61C /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 704C92AA248AAE1F0046B61C /* main.jsbundle */; };
+		7025729924B67056000DA93C /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 7025729824B67056000DA93C /* main.jsbundle */; };
 		70A6C32E2486BA5F007152CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 70A6C32D2486BA5F007152CB /* GoogleService-Info.plist */; };
+		70EE094524B67F9900E5A904 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 70EE094424B67F9900E5A904 /* assets */; };
 		83AEAEF69FEE485B9697CEC7 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23B9B72D0ED34B7C80EF70F9 /* fontawesome-webfont.ttf */; };
 		8C39BB0FFA10A3F5DF24806A /* libPods-textApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28B898A0D35E9856B4631B37 /* libPods-textApp.a */; };
 		9B2B87FA21F8A3A900F366D2 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -471,7 +472,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -504,9 +504,9 @@
 		5A2804230E3D4E44A54A1F3D /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Tajawal-Bold.ttf"; path = "../assets/fonts/Tajawal-Bold.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		7004E4942474D83A00BF5CC3 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		70302CCF248BB0C600428685 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		704C92AA248AAE1F0046B61C /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		7025729824B67056000DA93C /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		70A6C32D2486BA5F007152CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "textApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		70EE094424B67F9900E5A904 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8B876AAD3CA84E5198D96141 /* libSpeechSynthesizer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSpeechSynthesizer.a; sourceTree = "<group>"; };
@@ -799,7 +799,6 @@
 			isa = PBXGroup;
 			children = (
 				70A6C32D2486BA5F007152CB /* GoogleService-Info.plist */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -895,8 +894,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				704C92AA248AAE1F0046B61C /* main.jsbundle */,
-				70302CCF248BB0C600428685 /* main.jsbundle */,
+				70EE094424B67F9900E5A904 /* assets */,
+				7025729824B67056000DA93C /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* textApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -1576,6 +1575,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EE094524B67F9900E5A904 /* assets in Resources */,
 				9BFB5BA2225C23F900634C31 /* school_3_m.mp3 in Resources */,
 				9BFB5BA5225C23F900634C31 /* resturant_0_m.mp3 in Resources */,
 				9BFB5BBF225C23F900634C31 /* hospital_6_f.mp3 in Resources */,
@@ -1639,6 +1639,7 @@
 				9BFB5BEA225C23F900634C31 /* travel_4_m.mp3 in Resources */,
 				9BFB5BED225C23F900634C31 /* market_0_m.mp3 in Resources */,
 				9BFB5B66225C23F900634C31 /* market_1_m.mp3 in Resources */,
+				7025729924B67056000DA93C /* main.jsbundle in Resources */,
 				9BFB5B72225C23F900634C31 /* school_4_m.mp3 in Resources */,
 				9BFB5BF8225C23F900634C31 /* market_2_m.mp3 in Resources */,
 				9BFB5BF3225C23F900634C31 /* mosque_2_f.mp3 in Resources */,
@@ -1752,7 +1753,6 @@
 				9BFB5BB6225C23F900634C31 /* hospital_5_m.mp3 in Resources */,
 				9BFB5B98225C23F900634C31 /* mosque_1_f2.mp3 in Resources */,
 				9BFB5BF6225C23F900634C31 /* resturant_3_f.mp3 in Resources */,
-				704C92AB248AAE1F0046B61C /* main.jsbundle in Resources */,
 				E9CD730BF78C414DABE508A5 /* Hacen Casablanca Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2065,8 +2065,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CODE_SIGN_IDENTITY = "Apple Development: Amal Alsaif (8C5HS7XYD7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Amal Alsaif (8C5HS7XYD7)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.7;
 				DEAD_CODE_STRIPPING = NO;
@@ -2089,7 +2089,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AppsBunches.arabicSpeak;
 				PRODUCT_NAME = textApp;
-				PROVISIONING_PROFILE_SPECIFIER = "Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = arabic_speaker_development_profile;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

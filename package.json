@@ -6,7 +6,8 @@
     "start": "react-native start",
     "test": "jest",
     "android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
-    "run-android": "npm run android-linux npx react-native run-android"
+    "run-android": "npm run android-linux npx react-native run-android",
+    "ios-build": "npx react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios"
   },
   "dependencies": {
     "@react-native-community/netinfo": "^5.9.1",

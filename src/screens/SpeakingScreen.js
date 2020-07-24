@@ -279,11 +279,16 @@ export default class TextToSpeachScreen extends React.Component {
         // filename: 'nermeentest' , // only for base64 file in Android
     };
     // Share.shareSingle(shareOptions);
-  
-       await Share.open(shareOptions);
-       logEvent(EVENTS.SHARE_SOUND, {
-        text: this.state.text,
-      });   
+      Share.open(shareOptions).then(res => {
+        logEvent(EVENTS.SHARE_SOUND, {
+          text: this.state.text,
+        });
+      }).catch(() => {
+        logEvent(EVENTS.CANCEL_SHARE_SOUND, {
+          text: this.state.text,
+        });
+        // or throw error
+      });
     } catch(e) {
       // Alert.alert('err', JSON.stringify(e));
       logEvent(EVENTS.CANCEL_SHARE_SOUND, {
