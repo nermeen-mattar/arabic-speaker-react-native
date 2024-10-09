@@ -26,7 +26,3 @@ The app is available on [Apple App Store](https://apps.apple.com/sa/app/%D8%A7%D
 ## Video Demonstration
 
 Check out our YouTube video for a detailed demonstration of the app: [Watch here](https://www.youtube.com/watch?v=CnoR4up4jnU).
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
